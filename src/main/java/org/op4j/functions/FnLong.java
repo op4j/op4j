@@ -2062,89 +2062,278 @@ public final class FnLong {
         return new Module(module);
     }
 
-    public final static Function<Long, Long> multiplyBy(Number multiplicand) {
+    /**
+	 * <p>
+	 * It multiplies target by multiplicand and returns its value
+	 * </p>
+	 * 
+	 * @param multiplicand the multiplicand
+	 * @return the result of target * multiplicand
+	 */
+	public final static Function<Long, Long> multiplyBy(Number multiplicand) {
         return new Multiply(fromNumber(multiplicand));
     }
 
-    public final static Function<Long, Long> multiplyBy(byte multiplicand) {
+    /**
+	 * <p>
+	 * It multiplies target by multiplicand and returns its value
+	 * </p>
+	 * 
+	 * @param multiplicand the multiplicand
+	 * @return the result of target * multiplicand
+	 */
+	public final static Function<Long, Long> multiplyBy(byte multiplicand) {
         return multiplyBy(Byte.valueOf(multiplicand));
     }
 
-    public final static Function<Long, Long> multiplyBy(short multiplicand) {
+    /**
+	 * <p>
+	 * It multiplies target by multiplicand and returns its value
+	 * </p>
+	 * 
+	 * @param multiplicand the multiplicand
+	 * @return the result of target * multiplicand
+	 */
+	public final static Function<Long, Long> multiplyBy(short multiplicand) {
         return multiplyBy(Short.valueOf(multiplicand));
     }
 
-    public final static Function<Long, Long> multiplyBy(int multiplicand) {
+    /**
+	 * <p>
+	 * It multiplies target by multiplicand and returns its value
+	 * </p>
+	 * 
+	 * @param multiplicand the multiplicand
+	 * @return the result of target * multiplicand
+	 */
+	public final static Function<Long, Long> multiplyBy(int multiplicand) {
         return multiplyBy(Integer.valueOf(multiplicand));
     }
 
-    public final static Function<Long, Long> multiplyBy(long multiplicand) {
+    /**
+	 * <p>
+	 * It multiplies target by multiplicand and returns its value
+	 * </p>
+	 * 
+	 * @param multiplicand the multiplicand
+	 * @return the result of target * multiplicand
+	 */
+	public final static Function<Long, Long> multiplyBy(long multiplicand) {
         return multiplyBy(Long.valueOf(multiplicand));
     }
 
-    public final static Function<Long, Long> multiplyBy(float multiplicand) {
+    /**
+	 * <p>
+	 * It multiplies target by multiplicand and returns its value
+	 * </p>
+	 * 
+	 * @param multiplicand the multiplicand
+	 * @return the result of target * multiplicand
+	 */
+	public final static Function<Long, Long> multiplyBy(float multiplicand) {
         return multiplyBy(Float.valueOf(multiplicand));
     }
 
-    public final static Function<Long, Long> multiplyBy(double multiplicand) {
+    /**
+	 * <p>
+	 * It multiplies target by multiplicand and returns its value
+	 * </p>
+	 * 
+	 * @param multiplicand the multiplicand
+	 * @return the result of target * multiplicand
+	 */
+	public final static Function<Long, Long> multiplyBy(double multiplicand) {
         return multiplyBy(Double.valueOf(multiplicand));
     }
 
 
-    public final static Function<Long, Long> multiplyBy(Number multiplicand, MathContext mathContext) {
+    /**
+	 * <p>
+	 * It multiplies target by multiplicand and returns its value. The result precision
+	 * and {@link RoundingMode} is specified by the given {@link MathContext}
+	 * </p>
+	 * 
+	 * @param multiplicand the multiplicand
+	 * @param mathContext the {@link MathContext} to define {@link RoundingMode} and precision
+	 * @return the result of target * multiplicand
+	 */
+	public final static Function<Long, Long> multiplyBy(Number multiplicand, MathContext mathContext) {
         return new Multiply(fromNumber(multiplicand), mathContext);
     }
 
-    public final static Function<Long, Long> multiplyBy(byte multiplicand, MathContext mathContext) {
+    /**
+	 * <p>
+	 * It multiplies target by multiplicand and returns its value. The result precision
+	 * and {@link RoundingMode} is specified by the given {@link MathContext}
+	 * </p>
+	 * 
+	 * @param multiplicand the multiplicand
+	 * @param mathContext the {@link MathContext} to define {@link RoundingMode} and precision
+	 * @return the result of target * multiplicand
+	 */
+	public final static Function<Long, Long> multiplyBy(byte multiplicand, MathContext mathContext) {
         return multiplyBy(Byte.valueOf(multiplicand), mathContext);
     }
 
-    public final static Function<Long, Long> multiplyBy(short multiplicand, MathContext mathContext) {
+    /**
+	 * <p>
+	 * It multiplies target by multiplicand and returns its value. The result precision
+	 * and {@link RoundingMode} is specified by the given {@link MathContext}
+	 * </p>
+	 * 
+	 * @param multiplicand the multiplicand
+	 * @param mathContext the {@link MathContext} to define {@link RoundingMode} and precision
+	 * @return the result of target * multiplicand
+	 */
+	public final static Function<Long, Long> multiplyBy(short multiplicand, MathContext mathContext) {
         return multiplyBy(Short.valueOf(multiplicand), mathContext);
     }
 
-    public final static Function<Long, Long> multiplyBy(int multiplicand, MathContext mathContext) {
+    /**
+	 * <p>
+	 * It multiplies target by multiplicand and returns its value. The result precision
+	 * and {@link RoundingMode} is specified by the given {@link MathContext}
+	 * </p>
+	 * 
+	 * @param multiplicand the multiplicand
+	 * @param mathContext the {@link MathContext} to define {@link RoundingMode} and precision
+	 * @return the result of target * multiplicand
+	 */
+	public final static Function<Long, Long> multiplyBy(int multiplicand, MathContext mathContext) {
         return multiplyBy(Integer.valueOf(multiplicand), mathContext);
     }
 
-    public final static Function<Long, Long> multiplyBy(long multiplicand, MathContext mathContext) {
+    /**
+	 * <p>
+	 * It multiplies target by multiplicand and returns its value. The result precision
+	 * and {@link RoundingMode} is specified by the given {@link MathContext}
+	 * </p>
+	 * 
+	 * @param multiplicand the multiplicand
+	 * @param mathContext the {@link MathContext} to define {@link RoundingMode} and precision
+	 * @return the result of target * multiplicand
+	 */
+	public final static Function<Long, Long> multiplyBy(long multiplicand, MathContext mathContext) {
         return multiplyBy(Long.valueOf(multiplicand), mathContext);
     }
 
-    public final static Function<Long, Long> multiplyBy(float multiplicand, MathContext mathContext) {
+    /**
+	 * <p>
+	 * It multiplies target by multiplicand and returns its value. The result precision
+	 * and {@link RoundingMode} is specified by the given {@link MathContext}
+	 * </p>
+	 * 
+	 * @param multiplicand the multiplicand
+	 * @param mathContext the {@link MathContext} to define {@link RoundingMode} and precision
+	 * @return the result of target * multiplicand
+	 */
+	public final static Function<Long, Long> multiplyBy(float multiplicand, MathContext mathContext) {
         return multiplyBy(Float.valueOf(multiplicand), mathContext);
     }
 
-    public final static Function<Long, Long> multiplyBy(double multiplicand, MathContext mathContext) {
+    /**
+	 * <p>
+	 * It multiplies target by multiplicand and returns its value. The result precision
+	 * and {@link RoundingMode} is specified by the given {@link MathContext}
+	 * </p>
+	 * 
+	 * @param multiplicand the multiplicand
+	 * @param mathContext the {@link MathContext} to define {@link RoundingMode} and precision
+	 * @return the result of target * multiplicand
+	 */
+	public final static Function<Long, Long> multiplyBy(double multiplicand, MathContext mathContext) {
         return multiplyBy(Double.valueOf(multiplicand), mathContext);
     }
 
 
-    public final static Function<Long, Long> multiplyBy(Number multiplicand, RoundingMode roundingMode) {
+    /**
+	 * <p>
+	 * It multiplies target by multiplicand and returns its value. The result is 
+	 * rounded based on the given {@link RoundingMode} 
+	 * </p>
+	 * 
+	 * @param multiplicand the multiplicand
+	 * @param roundingMode the {@link RoundingMode} 
+	 * @return the result of target * multiplicand
+	 */public final static Function<Long, Long> multiplyBy(Number multiplicand, RoundingMode roundingMode) {
         return new Multiply(fromNumber(multiplicand), roundingMode);
     }
 
-    public final static Function<Long, Long> multiplyBy(byte multiplicand, RoundingMode roundingMode) {
+    /**
+	 * <p>
+	 * It multiplies target by multiplicand and returns its value. The result is 
+	 * rounded based on the given {@link RoundingMode} 
+	 * </p>
+	 * 
+	 * @param multiplicand the multiplicand
+	 * @param roundingMode the {@link RoundingMode} 
+	 * @return the result of target * multiplicand
+	 */public final static Function<Long, Long> multiplyBy(byte multiplicand, RoundingMode roundingMode) {
         return multiplyBy(Byte.valueOf(multiplicand), roundingMode);
     }
 
-    public final static Function<Long, Long> multiplyBy(short multiplicand, RoundingMode roundingMode) {
+    /**
+	 * <p>
+	 * It multiplies target by multiplicand and returns its value. The result is 
+	 * rounded based on the given {@link RoundingMode} 
+	 * </p>
+	 * 
+	 * @param multiplicand the multiplicand
+	 * @param roundingMode the {@link RoundingMode} 
+	 * @return the result of target * multiplicand
+	 */public final static Function<Long, Long> multiplyBy(short multiplicand, RoundingMode roundingMode) {
         return multiplyBy(Short.valueOf(multiplicand), roundingMode);
     }
 
-    public final static Function<Long, Long> multiplyBy(int multiplicand, RoundingMode roundingMode) {
+    /**
+	 * <p>
+	 * It multiplies target by multiplicand and returns its value. The result is 
+	 * rounded based on the given {@link RoundingMode} 
+	 * </p>
+	 * 
+	 * @param multiplicand the multiplicand
+	 * @param roundingMode the {@link RoundingMode} 
+	 * @return the result of target * multiplicand
+	 */public final static Function<Long, Long> multiplyBy(int multiplicand, RoundingMode roundingMode) {
         return multiplyBy(Integer.valueOf(multiplicand), roundingMode);
     }
 
-    public final static Function<Long, Long> multiplyBy(long multiplicand, RoundingMode roundingMode) {
+    /**
+	 * <p>
+	 * It multiplies target by multiplicand and returns its value. The result is 
+	 * rounded based on the given {@link RoundingMode} 
+	 * </p>
+	 * 
+	 * @param multiplicand the multiplicand
+	 * @param roundingMode the {@link RoundingMode} 
+	 * @return the result of target * multiplicand
+	 */public final static Function<Long, Long> multiplyBy(long multiplicand, RoundingMode roundingMode) {
         return multiplyBy(Long.valueOf(multiplicand), roundingMode);
     }
 
-    public final static Function<Long, Long> multiplyBy(float multiplicand, RoundingMode roundingMode) {
+    /**
+	 * <p>
+	 * It multiplies target by multiplicand and returns its value. The result is 
+	 * rounded based on the given {@link RoundingMode} 
+	 * </p>
+	 * 
+	 * @param multiplicand the multiplicand
+	 * @param roundingMode the {@link RoundingMode} 
+	 * @return the result of target * multiplicand
+	 */public final static Function<Long, Long> multiplyBy(float multiplicand, RoundingMode roundingMode) {
         return multiplyBy(Float.valueOf(multiplicand), roundingMode);
     }
 
-    public final static Function<Long, Long> multiplyBy(double multiplicand, RoundingMode roundingMode) {
+    /**
+	 * <p>
+	 * It multiplies target by multiplicand and returns its value. The result is 
+	 * rounded based on the given {@link RoundingMode} 
+	 * </p>
+	 * 
+	 * @param multiplicand the multiplicand
+	 * @param roundingMode the {@link RoundingMode} 
+	 * @return the result of target * multiplicand
+	 */public final static Function<Long, Long> multiplyBy(double multiplicand, RoundingMode roundingMode) {
         return multiplyBy(Double.valueOf(multiplicand), roundingMode);
     }
 

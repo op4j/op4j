@@ -1737,35 +1737,100 @@ public final class FnBigInteger {
         return new Module(fromNumber(module));
     }
 
-    public final static Function<BigInteger, BigInteger> remainder(Number module) {
+    /**
+	 * <p>
+	 * It divides the target element by the given divisor and returns the
+	 * remainder (target % divisor)
+	 * </p>
+	 * 
+	 * @param divisor the divisor
+	 * @return the remainder of target/divisor
+	 */
+	public final static Function<BigInteger, BigInteger> remainder(Number module) {
         return new Remainder(fromNumber(module));
     }
 
-    public final static Function<BigInteger, BigInteger> multiplyBy(Number multiplicand) {
+    /**
+	 * <p>
+	 * It multiplies target by multiplicand and returns its value
+	 * </p>
+	 * 
+	 * @param multiplicand the multiplicand
+	 * @return the result of target * multiplicand
+	 */
+	public final static Function<BigInteger, BigInteger> multiplyBy(Number multiplicand) {
         return new Multiply(fromNumber(multiplicand));
     }
 
-    public final static Function<BigInteger, BigInteger> multiplyBy(byte multiplicand) {
+    /**
+	 * <p>
+	 * It multiplies target by multiplicand and returns its value
+	 * </p>
+	 * 
+	 * @param multiplicand the multiplicand
+	 * @return the result of target * multiplicand
+	 */
+	public final static Function<BigInteger, BigInteger> multiplyBy(byte multiplicand) {
         return multiplyBy(Byte.valueOf(multiplicand));
     }
 
-    public final static Function<BigInteger, BigInteger> multiplyBy(short multiplicand) {
+    /**
+	 * <p>
+	 * It multiplies target by multiplicand and returns its value
+	 * </p>
+	 * 
+	 * @param multiplicand the multiplicand
+	 * @return the result of target * multiplicand
+	 */
+	public final static Function<BigInteger, BigInteger> multiplyBy(short multiplicand) {
         return multiplyBy(Short.valueOf(multiplicand));
     }
 
-    public final static Function<BigInteger, BigInteger> multiplyBy(int multiplicand) {
+    /**
+	 * <p>
+	 * It multiplies target by multiplicand and returns its value
+	 * </p>
+	 * 
+	 * @param multiplicand the multiplicand
+	 * @return the result of target * multiplicand
+	 */
+	public final static Function<BigInteger, BigInteger> multiplyBy(int multiplicand) {
         return multiplyBy(Integer.valueOf(multiplicand));
     }
 
-    public final static Function<BigInteger, BigInteger> multiplyBy(long multiplicand) {
+    /**
+	 * <p>
+	 * It multiplies target by multiplicand and returns its value
+	 * </p>
+	 * 
+	 * @param multiplicand the multiplicand
+	 * @return the result of target * multiplicand
+	 */
+	public final static Function<BigInteger, BigInteger> multiplyBy(long multiplicand) {
         return multiplyBy(Long.valueOf(multiplicand));
     }
 
-    public final static Function<BigInteger, BigInteger> multiplyBy(float multiplicand) {
+    /**
+	 * <p>
+	 * It multiplies target by multiplicand and returns its value
+	 * </p>
+	 * 
+	 * @param multiplicand the multiplicand
+	 * @return the result of target * multiplicand
+	 */
+	public final static Function<BigInteger, BigInteger> multiplyBy(float multiplicand) {
         return multiplyBy(Float.valueOf(multiplicand));
     }
 
-    public final static Function<BigInteger, BigInteger> multiplyBy(double multiplicand) {
+    /**
+	 * <p>
+	 * It multiplies target by multiplicand and returns its value
+	 * </p>
+	 * 
+	 * @param multiplicand the multiplicand
+	 * @return the result of target * multiplicand
+	 */
+	public final static Function<BigInteger, BigInteger> multiplyBy(double multiplicand) {
         return multiplyBy(Double.valueOf(multiplicand));
     }
 

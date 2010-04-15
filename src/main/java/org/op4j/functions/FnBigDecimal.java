@@ -2496,146 +2496,481 @@ public final class FnBigDecimal {
 
     
 
+    /**
+     * <p>
+     * It divides the target element by the given divisor and returns the
+     * remainder (target % divisor)
+     * </p>
+     * 
+     * @param divisor the divisor
+     * @return the remainder of target/divisor
+     */
     public final static Function<BigDecimal, BigDecimal> remainder(Number divisor) {
         return new Remainder(fromNumber(divisor));
     }
 
+    /**
+     * <p>
+     * It divides the target element by the given divisor and returns the
+     * remainder (target % divisor)
+     * </p>
+     * 
+     * @param divisor the divisor
+     * @return the remainder of target/divisor
+     */
     public final static Function<BigDecimal, BigDecimal> remainder(byte divisor) {
         return remainder(Byte.valueOf(divisor));
     }
 
+    /**
+     * <p>
+     * It divides the target element by the given divisor and returns the
+     * remainder (target % divisor)
+     * </p>
+     * 
+     * @param divisor the divisor
+     * @return the remainder of target/divisor
+     */
     public final static Function<BigDecimal, BigDecimal> remainder(short divisor) {
         return remainder(Short.valueOf(divisor));
     }
 
+    /**
+     * <p>
+     * It divides the target element by the given divisor and returns the
+     * remainder (target % divisor)
+     * </p>
+     * 
+     * @param divisor the divisor
+     * @return the remainder of target/divisor
+     */
     public final static Function<BigDecimal, BigDecimal> remainder(int divisor) {
         return remainder(Integer.valueOf(divisor));
     }
 
+    /**
+     * <p>
+     * It divides the target element by the given divisor and returns the
+     * remainder (target % divisor)
+     * </p>
+     * 
+     * @param divisor the divisor
+     * @return the remainder of target/divisor
+     */
     public final static Function<BigDecimal, BigDecimal> remainder(long divisor) {
         return remainder(Long.valueOf(divisor));
     }
 
+    /**
+     * <p>
+     * It divides the target element by the given divisor and returns the
+     * remainder (target % divisor)
+     * </p>
+     * 
+     * @param divisor the divisor
+     * @return the remainder of target/divisor
+     */
     public final static Function<BigDecimal, BigDecimal> remainder(float divisor) {
         return remainder(Float.valueOf(divisor));
     }
 
+    /**
+     * <p>
+     * It divides the target element by the given divisor and returns the
+     * remainder (target % divisor)
+     * </p>
+     * 
+     * @param divisor the divisor
+     * @return the remainder of target/divisor
+     */
     public final static Function<BigDecimal, BigDecimal> remainder(double divisor) {
         return remainder(Double.valueOf(divisor));
     }
 
 
+    /**
+     * <p>
+     * It divides the target element by the given divisor and returns the
+     * remainder (target % divisor). The remainder precision and {@link RoundingMode}
+     * is specified by the given {@link MathContext}
+     * </p>
+     * 
+     * @param divisor the divisor
+     * @param mathContext the {@link MathContext} to define {@link RoundingMode} and precision
+     * @return the remainder of target/divisor
+     */
     public final static Function<BigDecimal, BigDecimal> remainder(Number divisor, MathContext mathContext) {
         return new Remainder(fromNumber(divisor), mathContext);
     }
 
+    /**
+     * <p>
+     * It divides the target element by the given divisor and returns the
+     * remainder (target % divisor). The remainder precision and {@link RoundingMode}
+     * is specified by the given {@link MathContext}
+     * </p>
+     * 
+     * @param divisor the divisor
+     * @param mathContext the {@link MathContext} to define {@link RoundingMode} and precision
+     * @return the remainder of target/divisor
+     */
     public final static Function<BigDecimal, BigDecimal> remainder(byte divisor, MathContext mathContext) {
         return remainder(Byte.valueOf(divisor), mathContext);
     }
 
+    /**
+     * <p>
+     * It divides the target element by the given divisor and returns the
+     * remainder (target % divisor). The remainder precision and {@link RoundingMode}
+     * is specified by the given {@link MathContext}
+     * </p>
+     * 
+     * @param divisor the divisor
+     * @param mathContext the {@link MathContext} to define {@link RoundingMode} and precision
+     * @return the remainder of target/divisor
+     */
     public final static Function<BigDecimal, BigDecimal> remainder(short divisor, MathContext mathContext) {
         return remainder(Short.valueOf(divisor), mathContext);
     }
 
+    /**
+     * <p>
+     * It divides the target element by the given divisor and returns the
+     * remainder (target % divisor). The remainder precision and {@link RoundingMode}
+     * is specified by the given {@link MathContext}
+     * </p>
+     * 
+     * @param divisor the divisor
+     * @param mathContext the {@link MathContext} to define {@link RoundingMode} and precision
+     * @return the remainder of target/divisor
+     */
     public final static Function<BigDecimal, BigDecimal> remainder(int divisor, MathContext mathContext) {
         return remainder(Integer.valueOf(divisor), mathContext);
     }
 
+    /**
+     * <p>
+     * It divides the target element by the given divisor and returns the
+     * remainder (target % divisor). The remainder precision and {@link RoundingMode}
+     * is specified by the given {@link MathContext}
+     * </p>
+     * 
+     * @param divisor the divisor
+     * @param mathContext the {@link MathContext} to define {@link RoundingMode} and precision
+     * @return the remainder of target/divisor
+     */
     public final static Function<BigDecimal, BigDecimal> remainder(long divisor, MathContext mathContext) {
         return remainder(Long.valueOf(divisor), mathContext);
     }
 
+    /**
+     * <p>
+     * It divides the target element by the given divisor and returns the
+     * remainder (target % divisor). The remainder precision and {@link RoundingMode}
+     * is specified by the given {@link MathContext}
+     * </p>
+     * 
+     * @param divisor the divisor
+     * @param mathContext the {@link MathContext} to define {@link RoundingMode} and precision
+     * @return the remainder of target/divisor
+     */
     public final static Function<BigDecimal, BigDecimal> remainder(float divisor, MathContext mathContext) {
         return remainder(Float.valueOf(divisor), mathContext);
     }
 
+    /**
+     * <p>
+     * It divides the target element by the given divisor and returns the
+     * remainder (target % divisor). The remainder precision and {@link RoundingMode}
+     * is specified by the given {@link MathContext}
+     * </p>
+     * 
+     * @param divisor the divisor
+     * @param mathContext the {@link MathContext} to define {@link RoundingMode} and precision
+     * @return the remainder of target/divisor
+     */
     public final static Function<BigDecimal, BigDecimal> remainder(double divisor, MathContext mathContext) {
         return remainder(Double.valueOf(divisor), mathContext);
     }
 
 
+    /**
+     * <p>
+     * It multiplies target by multiplicand and returns its value
+     * </p>
+     * 
+     * @param multiplicand the multiplicand
+     * @return the result of target * multiplicand
+     */
     public final static Function<BigDecimal, BigDecimal> multiplyBy(Number multiplicand) {
         return new Multiply(fromNumber(multiplicand));
     }
 
+    /**
+     * <p>
+     * It multiplies target by multiplicand and returns its value
+     * </p>
+     * 
+     * @param multiplicand the multiplicand
+     * @return the result of target * multiplicand
+     */
     public final static Function<BigDecimal, BigDecimal> multiplyBy(byte multiplicand) {
         return multiplyBy(Byte.valueOf(multiplicand));
     }
 
+    /**
+     * <p>
+     * It multiplies target by multiplicand and returns its value
+     * </p>
+     * 
+     * @param multiplicand the multiplicand
+     * @return the result of target * multiplicand
+     */
     public final static Function<BigDecimal, BigDecimal> multiplyBy(short multiplicand) {
         return multiplyBy(Short.valueOf(multiplicand));
     }
 
+    /**
+     * <p>
+     * It multiplies target by multiplicand and returns its value
+     * </p>
+     * 
+     * @param multiplicand the multiplicand
+     * @return the result of target * multiplicand
+     */
     public final static Function<BigDecimal, BigDecimal> multiplyBy(int multiplicand) {
         return multiplyBy(Integer.valueOf(multiplicand));
     }
 
+    /**
+     * <p>
+     * It multiplies target by multiplicand and returns its value
+     * </p>
+     * 
+     * @param multiplicand the multiplicand
+     * @return the result of target * multiplicand
+     */
     public final static Function<BigDecimal, BigDecimal> multiplyBy(long multiplicand) {
         return multiplyBy(Long.valueOf(multiplicand));
     }
 
+    /**
+     * <p>
+     * It multiplies target by multiplicand and returns its value
+     * </p>
+     * 
+     * @param multiplicand the multiplicand
+     * @return the result of target * multiplicand
+     */
     public final static Function<BigDecimal, BigDecimal> multiplyBy(float multiplicand) {
         return multiplyBy(Float.valueOf(multiplicand));
     }
 
+    /**
+     * <p>
+     * It multiplies target by multiplicand and returns its value
+     * </p>
+     * 
+     * @param multiplicand the multiplicand
+     * @return the result of target * multiplicand
+     */
     public final static Function<BigDecimal, BigDecimal> multiplyBy(double multiplicand) {
         return multiplyBy(Double.valueOf(multiplicand));
     }
 
 
+    /**
+     * <p>
+     * It multiplies target by multiplicand and returns its value. The result precision
+     * and {@link RoundingMode} is specified by the given {@link MathContext}
+     * </p>
+     * 
+     * @param multiplicand the multiplicand
+     * @param mathContext the {@link MathContext} to define {@link RoundingMode} and precision
+     * @return the result of target * multiplicand
+     */
     public final static Function<BigDecimal, BigDecimal> multiplyBy(Number multiplicand, MathContext mathContext) {
         return new Multiply(fromNumber(multiplicand), mathContext);
     }
 
+    /**
+     * <p>
+     * It multiplies target by multiplicand and returns its value. The result precision
+     * and {@link RoundingMode} is specified by the given {@link MathContext}
+     * </p>
+     * 
+     * @param multiplicand the multiplicand
+     * @param mathContext the {@link MathContext} to define {@link RoundingMode} and precision
+     * @return the result of target * multiplicand
+     */
     public final static Function<BigDecimal, BigDecimal> multiplyBy(byte multiplicand, MathContext mathContext) {
         return multiplyBy(Byte.valueOf(multiplicand), mathContext);
     }
 
+    /**
+     * <p>
+     * It multiplies target by multiplicand and returns its value. The result precision
+     * and {@link RoundingMode} is specified by the given {@link MathContext}
+     * </p>
+     * 
+     * @param multiplicand the multiplicand
+     * @param mathContext the {@link MathContext} to define {@link RoundingMode} and precision
+     * @return the result of target * multiplicand
+     */
     public final static Function<BigDecimal, BigDecimal> multiplyBy(short multiplicand, MathContext mathContext) {
         return multiplyBy(Short.valueOf(multiplicand), mathContext);
     }
 
+    /**
+     * <p>
+     * It multiplies target by multiplicand and returns its value. The result precision
+     * and {@link RoundingMode} is specified by the given {@link MathContext}
+     * </p>
+     * 
+     * @param multiplicand the multiplicand
+     * @param mathContext the {@link MathContext} to define {@link RoundingMode} and precision
+     * @return the result of target * multiplicand
+     */
     public final static Function<BigDecimal, BigDecimal> multiplyBy(int multiplicand, MathContext mathContext) {
         return multiplyBy(Integer.valueOf(multiplicand), mathContext);
     }
 
+    /**
+     * <p>
+     * It multiplies target by multiplicand and returns its value. The result precision
+     * and {@link RoundingMode} is specified by the given {@link MathContext}
+     * </p>
+     * 
+     * @param multiplicand the multiplicand
+     * @param mathContext the {@link MathContext} to define {@link RoundingMode} and precision
+     * @return the result of target * multiplicand
+     */
     public final static Function<BigDecimal, BigDecimal> multiplyBy(long multiplicand, MathContext mathContext) {
         return multiplyBy(Long.valueOf(multiplicand), mathContext);
     }
 
+    /**
+     * <p>
+     * It multiplies target by multiplicand and returns its value. The result precision
+     * and {@link RoundingMode} is specified by the given {@link MathContext}
+     * </p>
+     * 
+     * @param multiplicand the multiplicand
+     * @param mathContext the {@link MathContext} to define {@link RoundingMode} and precision
+     * @return the result of target * multiplicand
+     */
     public final static Function<BigDecimal, BigDecimal> multiplyBy(float multiplicand, MathContext mathContext) {
         return multiplyBy(Float.valueOf(multiplicand), mathContext);
     }
 
+    /**
+     * <p>
+     * It multiplies target by multiplicand and returns its value. The result precision
+     * and {@link RoundingMode} is specified by the given {@link MathContext}
+     * </p>
+     * 
+     * @param multiplicand the multiplicand
+     * @param mathContext the {@link MathContext} to define {@link RoundingMode} and precision
+     * @return the result of target * multiplicand
+     */
     public final static Function<BigDecimal, BigDecimal> multiplyBy(double multiplicand, MathContext mathContext) {
         return multiplyBy(Double.valueOf(multiplicand), mathContext);
     }
 
-
+    /**
+     * <p>
+     * It multiplies target by multiplicand and returns its value. The result is 
+     * rounded based on the given {@link RoundingMode} 
+     * </p>
+     * 
+     * @param multiplicand the multiplicand
+     * @param roundingMode the {@link RoundingMode} 
+     * @return the result of target * multiplicand
+     */
     public final static Function<BigDecimal, BigDecimal> multiplyBy(Number multiplicand, RoundingMode roundingMode) {
         return new Multiply(fromNumber(multiplicand), roundingMode);
     }
 
+    /**
+     * <p>
+     * It multiplies target by multiplicand and returns its value. The result is 
+     * rounded based on the given {@link RoundingMode} 
+     * </p>
+     * 
+     * @param multiplicand the multiplicand
+     * @param roundingMode the {@link RoundingMode} 
+     * @return the result of target * multiplicand
+     */
     public final static Function<BigDecimal, BigDecimal> multiplyBy(byte multiplicand, RoundingMode roundingMode) {
         return multiplyBy(Byte.valueOf(multiplicand), roundingMode);
     }
 
+    /**
+     * <p>
+     * It multiplies target by multiplicand and returns its value. The result is 
+     * rounded based on the given {@link RoundingMode} 
+     * </p>
+     * 
+     * @param multiplicand the multiplicand
+     * @param roundingMode the {@link RoundingMode} 
+     * @return the result of target * multiplicand
+     */
     public final static Function<BigDecimal, BigDecimal> multiplyBy(short multiplicand, RoundingMode roundingMode) {
         return multiplyBy(Short.valueOf(multiplicand), roundingMode);
     }
 
+    /**
+     * <p>
+     * It multiplies target by multiplicand and returns its value. The result is 
+     * rounded based on the given {@link RoundingMode} 
+     * </p>
+     * 
+     * @param multiplicand the multiplicand
+     * @param roundingMode the {@link RoundingMode} 
+     * @return the result of target * multiplicand
+     */
     public final static Function<BigDecimal, BigDecimal> multiplyBy(int multiplicand, RoundingMode roundingMode) {
         return multiplyBy(Integer.valueOf(multiplicand), roundingMode);
     }
 
+    /**
+     * <p>
+     * It multiplies target by multiplicand and returns its value. The result is 
+     * rounded based on the given {@link RoundingMode} 
+     * </p>
+     * 
+     * @param multiplicand the multiplicand
+     * @param roundingMode the {@link RoundingMode} 
+     * @return the result of target * multiplicand
+     */
     public final static Function<BigDecimal, BigDecimal> multiplyBy(long multiplicand, RoundingMode roundingMode) {
         return multiplyBy(Long.valueOf(multiplicand), roundingMode);
     }
 
+    /**
+     * <p>
+     * It multiplies target by multiplicand and returns its value. The result is 
+     * rounded based on the given {@link RoundingMode} 
+     * </p>
+     * 
+     * @param multiplicand the multiplicand
+     * @param roundingMode the {@link RoundingMode} 
+     * @return the result of target * multiplicand
+     */
     public final static Function<BigDecimal, BigDecimal> multiplyBy(float multiplicand, RoundingMode roundingMode) {
         return multiplyBy(Float.valueOf(multiplicand), roundingMode);
     }
 
+    /**
+     * <p>
+     * It multiplies target by multiplicand and returns its value. The result is 
+     * rounded based on the given {@link RoundingMode} 
+     * </p>
+     * 
+     * @param multiplicand the multiplicand
+     * @param roundingMode the {@link RoundingMode} 
+     * @return the result of target * multiplicand
+     */
     public final static Function<BigDecimal, BigDecimal> multiplyBy(double multiplicand, RoundingMode roundingMode) {
         return multiplyBy(Double.valueOf(multiplicand), roundingMode);
     }
