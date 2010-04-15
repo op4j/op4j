@@ -1674,7 +1674,7 @@ public final class FnString {
     /**
      * <p>
      * Determines whether the target object is less than the specified object
-     * in value, this is, whether <tt>target.compareTo(object) < 0</tt>. Both
+     * in value, this is, whether <tt>target.compareTo(object) &lt; 0</tt>. Both
      * the target and the specified object have to implement {@link Comparable}.
      * </p>
      * 
@@ -1700,7 +1700,7 @@ public final class FnString {
     /**
      * <p>
      * Determines whether the target object is less or equal to the specified object
-     * in value, this is, whether <tt>target.compareTo(object) <= 0</tt>. Both
+     * in value, this is, whether <tt>target.compareTo(object) &lt;= 0</tt>. Both
      * the target and the specified object have to implement {@link Comparable}.
      * </p>
      * 

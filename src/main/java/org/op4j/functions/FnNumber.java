@@ -403,7 +403,7 @@ public final class FnNumber {
      * If necessary, it will add leading or trailing zeros to the string based on the given parameters. So,
      * </p>
      * <code>toStr(Locale.ENGLISH, 3, 2, 2, true) would return 010.00 if target number is 10</code>
-     * <br>
+     * <br />
      * <code>toStr(Locale.ENGLISH, 2, 2, 4, true) would return 00.00 if target number is 0</code>
      *    
      * @param locale the {@link Locale} to be used
@@ -429,7 +429,7 @@ public final class FnNumber {
      * If necessary, it will add leading or trailing zeros to the string based on the given parameters. So,
      * </p>
      * <code>toStr(Locale.ENGLISH.toString(), 3, 2, 2, true) would return 010.00 if target number is 10</code>
-     * <br>
+     * <br />
      * <code>toStr(Locale.ENGLISH.toString(), 2, 2, 4, true) would return 00.00 if target number is 0</code>
      *    
      * @param locale the locale to be used
@@ -456,7 +456,7 @@ public final class FnNumber {
      * If necessary, it will add leading or trailing zeros to the string based on the given parameters. So,
      * </p>
      * <code>toStr(Locale.ENGLISH, 3, 2, 2, ',', '.', true) would return 1,000.00 if target number is 1000</code>
-     * <br>
+     * <br />
      * <code>toStr(Locale.ENGLISH, 2, 2, 4, ',', '.', true) would return 00.00 if target number is 0</code>
      *        
      * @param locale the {@link Locale} to be used
@@ -487,7 +487,7 @@ public final class FnNumber {
      * If necessary, it will add leading or trailing zeros to the string based on the given parameters. So,
      * </p>
      * <code>toStr(Locale.ENGLISH, 3, 2, 2, true, ',', true) would return 1,000,00 if target number is 1000</code>
-     * <br>
+     * <br />
      * <code>toStr(Locale.ENGLISH, 2, 2, 4, true, ',', true) would return 00,00 if target number is 0</code>
      *  
      * @param locale the {@link Locale} to be used
@@ -518,7 +518,7 @@ public final class FnNumber {
      * If necessary, it will add leading or trailing zeros to the string based on the given parameters. So,
      * </p>
      * <code>toStr(Locale.ENGLISH.toString(), 3, 2, 2, ',', '.', true) would return 1,000.00 if target number is 1000</code>
-     * <br>
+     * <br />
      * <code>toStr(Locale.ENGLISH.toString(), 2, 2, 4, ',', '.', true) would return 00.00 if target number is 0</code>
      *        
      * @param locale the locale to be used
@@ -549,7 +549,7 @@ public final class FnNumber {
      * If necessary, it will add leading or trailing zeros to the string based on the given parameters. So,
      * </p>
      * <code>toStr(Locale.ENGLISH.toString(), 3, 2, 2, true, ',', true) would return 1,000,00 if target number is 1000</code>
-     * <br>
+     * <br />
      * <code>toStr(Locale.ENGLISH.toString(), 2, 2, 4, true, ',', true) would return 00,00 if target number is 0</code>
      *  
      * @param locale the locale to be used
@@ -665,7 +665,7 @@ public final class FnNumber {
      * If necessary, it will add leading or trailing zeros to the string based on the given parameters. So,
      * </p>
      * <code>toCurrencyStr(Locale.UK, 3, 2, 2, true) would return &pound;1,000.00 if target number is 1000</code>
-     * <br>
+     * <br />
      * <code>toCurrencyStr(Locale.UK, 2, 2, 4, true) would return &pound;00.00 if target number is 0</code>
      * 
      * 
@@ -693,7 +693,7 @@ public final class FnNumber {
      * If necessary, it will add leading or trailing zeros to the string based on the given parameters. So,
      * </p>
      * <code>toCurrencyStr(Locale.UK.toString(), 3, 2, 2, true) would return &pound;1,000.00 if target number is 1000</code>
-     * <br>
+     * <br />
      * <code>toCurrencyStr(Locale.UK.toString(), 2, 2, 4, true) would return &pound;00.00 if target number is 0</code>
      * 
      * 
@@ -721,7 +721,7 @@ public final class FnNumber {
      * If necessary, it will add leading or trailing zeros to the string based on the given parameters. So,
      * </p>
      * <code>toCurrencyStr(Locale.UK, 3, 2, 2, ',', ',', true) would return &pound;1,000,00 if target number is 1000</code>
-     * <br>
+     * <br />
      * <code>toCurrencyStr(Locale.UK, 2, 2, 4, ',', ',', true) would return &pound;00,00 if target number is 0</code>
      * 
      * @param locale the {@link Locale} to be used
@@ -754,7 +754,7 @@ public final class FnNumber {
      * If necessary, it will add leading or trailing zeros to the string based on the given parameters. So,
      * </p>
      * <code>toCurrencyStr(Locale.UK.toString(), 3, 2, 2, ',', ',', true) would return &pound;1,000,00 if target number is 1000</code>
-     * <br>
+     * <br />
      * <code>toCurrencyStr(Locale.UK.toString(), 2, 2, 4, ',', ',', true) would return &pound;00,00 if target number is 0</code>
      * 
      * @param locale the {@link Locale} to be used
@@ -787,7 +787,7 @@ public final class FnNumber {
      * If necessary, it will add leading or trailing zeros to the string based on the given parameters. So,
      * </p>
      * <code>toCurrencyStr(Locale.UK, 3, 2, 2, ',', ',', true) would return &pound;1,000,00 if target number is 1000</code>
-     * <br>
+     * <br />
      * <code>toCurrencyStr(Locale.UK, 2, 2, 4, ',', ',', true) would return &pound;00,00 if target number is 0</code>
      * 
      * @param locale the locale to be used
@@ -820,7 +820,7 @@ public final class FnNumber {
      * If necessary, it will add leading or trailing zeros to the string based on the given parameters. So,
      * </p>
      * <code>toCurrencyStr(Locale.UK.toString(), 3, 2, 2, ',', ',', true) would return &pound;1,000,00 if target number is 1000</code>
-     * <br>
+     * <br />
      * <code>toCurrencyStr(Locale.UK.toString(), 2, 2, 4, ',', ',', true) would return &pound;00,00 if target number is 0</code>
      * 
      * @param locale the locale to be used
@@ -865,7 +865,7 @@ public final class FnNumber {
      * either using grouping or not depending on the given parameter. So,
      * </p>
      * <code>toPercentStr(true) would return 100,000% if target number is 1000</code>
-     * <br>
+     * <br />
      * <code>toPercentStr(false) would return 100000% if target number is 1000</code>
      * 
      * @param groupingUsed whether or not grouping will be used
@@ -1507,7 +1507,7 @@ public final class FnNumber {
     /**
      * <p>
      * Determines whether the target object is less than the specified object
-     * in value, this is, whether <tt>target.compareTo(object) < 0</tt>. Both
+     * in value, this is, whether <tt>target.compareTo(object) &lt; 0</tt>. Both
      * the target and the specified object have to implement {@link Comparable}.
      * </p>
      * 
@@ -1523,7 +1523,7 @@ public final class FnNumber {
     /**
      * <p>
      * Determines whether the target object is less than the specified object
-     * in value, this is, whether <tt>target.compareTo(object) < 0</tt>. Both
+     * in value, this is, whether <tt>target.compareTo(object) &lt; 0</tt>. Both
      * the target and the specified object have to implement {@link Comparable}.
      * </p>
      * 
@@ -1539,7 +1539,7 @@ public final class FnNumber {
     /**
      * <p>
      * Determines whether the target object is less than the specified object
-     * in value, this is, whether <tt>target.compareTo(object) < 0</tt>. Both
+     * in value, this is, whether <tt>target.compareTo(object) &lt; 0</tt>. Both
      * the target and the specified object have to implement {@link Comparable}.
      * </p>
      * 
@@ -1555,7 +1555,7 @@ public final class FnNumber {
     /**
      * <p>
      * Determines whether the target object is less than the specified object
-     * in value, this is, whether <tt>target.compareTo(object) < 0</tt>. Both
+     * in value, this is, whether <tt>target.compareTo(object) &lt; 0</tt>. Both
      * the target and the specified object have to implement {@link Comparable}.
      * </p>
      * 
@@ -1571,7 +1571,7 @@ public final class FnNumber {
     /**
      * <p>
      * Determines whether the target object is less than the specified object
-     * in value, this is, whether <tt>target.compareTo(object) < 0</tt>. Both
+     * in value, this is, whether <tt>target.compareTo(object) &lt; 0</tt>. Both
      * the target and the specified object have to implement {@link Comparable}.
      * </p>
      * 
@@ -1587,7 +1587,7 @@ public final class FnNumber {
     /**
      * <p>
      * Determines whether the target object is less than the specified object
-     * in value, this is, whether <tt>target.compareTo(object) < 0</tt>. Both
+     * in value, this is, whether <tt>target.compareTo(object) &lt; 0</tt>. Both
      * the target and the specified object have to implement {@link Comparable}.
      * </p>
      * 
@@ -1603,7 +1603,7 @@ public final class FnNumber {
     /**
      * <p>
      * Determines whether the target object is less than the specified object
-     * in value, this is, whether <tt>target.compareTo(object) < 0</tt>. Both
+     * in value, this is, whether <tt>target.compareTo(object) &lt; 0</tt>. Both
      * the target and the specified object have to implement {@link Comparable}.
      * </p>
      * 
@@ -1621,7 +1621,7 @@ public final class FnNumber {
     /**
      * <p>
      * Determines whether the target object is less or equal to the specified object
-     * in value, this is, whether <tt>target.compareTo(object) <= 0</tt>. Both
+     * in value, this is, whether <tt>target.compareTo(object) &lt;= 0</tt>. Both
      * the target and the specified object have to implement {@link Comparable}.
      * </p>
      * 
@@ -1637,7 +1637,7 @@ public final class FnNumber {
     /**
      * <p>
      * Determines whether the target object is less or equal to the specified object
-     * in value, this is, whether <tt>target.compareTo(object) <= 0</tt>. Both
+     * in value, this is, whether <tt>target.compareTo(object) &lt;= 0</tt>. Both
      * the target and the specified object have to implement {@link Comparable}.
      * </p>
      * 
@@ -1653,7 +1653,7 @@ public final class FnNumber {
     /**
      * <p>
      * Determines whether the target object is less or equal to the specified object
-     * in value, this is, whether <tt>target.compareTo(object) <= 0</tt>. Both
+     * in value, this is, whether <tt>target.compareTo(object) &lt;= 0</tt>. Both
      * the target and the specified object have to implement {@link Comparable}.
      * </p>
      * 
@@ -1669,7 +1669,7 @@ public final class FnNumber {
     /**
      * <p>
      * Determines whether the target object is less or equal to the specified object
-     * in value, this is, whether <tt>target.compareTo(object) <= 0</tt>. Both
+     * in value, this is, whether <tt>target.compareTo(object) &lt;= 0</tt>. Both
      * the target and the specified object have to implement {@link Comparable}.
      * </p>
      * 
@@ -1685,7 +1685,7 @@ public final class FnNumber {
     /**
      * <p>
      * Determines whether the target object is less or equal to the specified object
-     * in value, this is, whether <tt>target.compareTo(object) <= 0</tt>. Both
+     * in value, this is, whether <tt>target.compareTo(object) &lt;= 0</tt>. Both
      * the target and the specified object have to implement {@link Comparable}.
      * </p>
      * 
@@ -1701,7 +1701,7 @@ public final class FnNumber {
     /**
      * <p>
      * Determines whether the target object is less or equal to the specified object
-     * in value, this is, whether <tt>target.compareTo(object) <= 0</tt>. Both
+     * in value, this is, whether <tt>target.compareTo(object) &lt;= 0</tt>. Both
      * the target and the specified object have to implement {@link Comparable}.
      * </p>
      * 
@@ -1717,7 +1717,7 @@ public final class FnNumber {
     /**
      * <p>
      * Determines whether the target object is less or equal to the specified object
-     * in value, this is, whether <tt>target.compareTo(object) <= 0</tt>. Both
+     * in value, this is, whether <tt>target.compareTo(object) &lt;= 0</tt>. Both
      * the target and the specified object have to implement {@link Comparable}.
      * </p>
      * 
@@ -2446,7 +2446,7 @@ public final class FnNumber {
      * <p>
      * Determines whether the result of executing the specified function
      * on the target object is less than the specified object parameter
-     * in value, this is, whether <tt>functionResult.compareTo(object) < 0</tt>. Both
+     * in value, this is, whether <tt>functionResult.compareTo(object) &lt; 0</tt>. Both
      * the target and the specified object have to implement {@link Comparable}.
      * </p>
      * 
@@ -2463,7 +2463,7 @@ public final class FnNumber {
      * <p>
      * Determines whether the result of executing the specified function
      * on the target object is less than the specified object parameter
-     * in value, this is, whether <tt>functionResult.compareTo(object) < 0</tt>. Both
+     * in value, this is, whether <tt>functionResult.compareTo(object) &lt; 0</tt>. Both
      * the target and the specified object have to implement {@link Comparable}.
      * </p>
      * 
@@ -2480,7 +2480,7 @@ public final class FnNumber {
      * <p>
      * Determines whether the result of executing the specified function
      * on the target object is less than the specified object parameter
-     * in value, this is, whether <tt>functionResult.compareTo(object) < 0</tt>. Both
+     * in value, this is, whether <tt>functionResult.compareTo(object) &lt; 0</tt>. Both
      * the target and the specified object have to implement {@link Comparable}.
      * </p>
      * 
@@ -2497,7 +2497,7 @@ public final class FnNumber {
      * <p>
      * Determines whether the result of executing the specified function
      * on the target object is less than the specified object parameter
-     * in value, this is, whether <tt>functionResult.compareTo(object) < 0</tt>. Both
+     * in value, this is, whether <tt>functionResult.compareTo(object) &lt; 0</tt>. Both
      * the target and the specified object have to implement {@link Comparable}.
      * </p>
      * 
@@ -2514,7 +2514,7 @@ public final class FnNumber {
      * <p>
      * Determines whether the result of executing the specified function
      * on the target object is less than the specified object parameter
-     * in value, this is, whether <tt>functionResult.compareTo(object) < 0</tt>. Both
+     * in value, this is, whether <tt>functionResult.compareTo(object) &lt; 0</tt>. Both
      * the target and the specified object have to implement {@link Comparable}.
      * </p>
      * 
@@ -2531,7 +2531,7 @@ public final class FnNumber {
      * <p>
      * Determines whether the result of executing the specified function
      * on the target object is less than the specified object parameter
-     * in value, this is, whether <tt>functionResult.compareTo(object) < 0</tt>. Both
+     * in value, this is, whether <tt>functionResult.compareTo(object) &lt; 0</tt>. Both
      * the target and the specified object have to implement {@link Comparable}.
      * </p>
      * 
@@ -2548,7 +2548,7 @@ public final class FnNumber {
      * <p>
      * Determines whether the result of executing the specified function
      * on the target object is less than the specified object parameter
-     * in value, this is, whether <tt>functionResult.compareTo(object) < 0</tt>. Both
+     * in value, this is, whether <tt>functionResult.compareTo(object) &lt; 0</tt>. Both
      * the target and the specified object have to implement {@link Comparable}.
      * </p>
      * 
@@ -2567,7 +2567,7 @@ public final class FnNumber {
      * <p>
      * Determines whether the result of executing the specified function
      * on the target object is less or equal to the specified object parameter
-     * in value, this is, whether <tt>functionResult.compareTo(object) <= 0</tt>. Both
+     * in value, this is, whether <tt>functionResult.compareTo(object) &lt;= 0</tt>. Both
      * the target and the specified object have to implement {@link Comparable}.
      * </p>
      * 
@@ -2584,7 +2584,7 @@ public final class FnNumber {
      * <p>
      * Determines whether the result of executing the specified function
      * on the target object is less or equal to the specified object parameter
-     * in value, this is, whether <tt>functionResult.compareTo(object) <= 0</tt>. Both
+     * in value, this is, whether <tt>functionResult.compareTo(object) &lt;= 0</tt>. Both
      * the target and the specified object have to implement {@link Comparable}.
      * </p>
      * 
@@ -2601,7 +2601,7 @@ public final class FnNumber {
      * <p>
      * Determines whether the result of executing the specified function
      * on the target object is less or equal to the specified object parameter
-     * in value, this is, whether <tt>functionResult.compareTo(object) <= 0</tt>. Both
+     * in value, this is, whether <tt>functionResult.compareTo(object) &lt;= 0</tt>. Both
      * the target and the specified object have to implement {@link Comparable}.
      * </p>
      * 
@@ -2618,7 +2618,7 @@ public final class FnNumber {
      * <p>
      * Determines whether the result of executing the specified function
      * on the target object is less or equal to the specified object parameter
-     * in value, this is, whether <tt>functionResult.compareTo(object) <= 0</tt>. Both
+     * in value, this is, whether <tt>functionResult.compareTo(object) &lt;= 0</tt>. Both
      * the target and the specified object have to implement {@link Comparable}.
      * </p>
      * 
@@ -2635,7 +2635,7 @@ public final class FnNumber {
      * <p>
      * Determines whether the result of executing the specified function
      * on the target object is less or equal to the specified object parameter
-     * in value, this is, whether <tt>functionResult.compareTo(object) <= 0</tt>. Both
+     * in value, this is, whether <tt>functionResult.compareTo(object) &lt;= 0</tt>. Both
      * the target and the specified object have to implement {@link Comparable}.
      * </p>
      * 
@@ -2652,7 +2652,7 @@ public final class FnNumber {
      * <p>
      * Determines whether the result of executing the specified function
      * on the target object is less or equal to the specified object parameter
-     * in value, this is, whether <tt>functionResult.compareTo(object) <= 0</tt>. Both
+     * in value, this is, whether <tt>functionResult.compareTo(object) &lt;= 0</tt>. Both
      * the target and the specified object have to implement {@link Comparable}.
      * </p>
      * 
@@ -2669,7 +2669,7 @@ public final class FnNumber {
      * <p>
      * Determines whether the result of executing the specified function
      * on the target object is less or equal to the specified object parameter
-     * in value, this is, whether <tt>functionResult.compareTo(object) <= 0</tt>. Both
+     * in value, this is, whether <tt>functionResult.compareTo(object) &lt;= 0</tt>. Both
      * the target and the specified object have to implement {@link Comparable}.
      * </p>
      * 
