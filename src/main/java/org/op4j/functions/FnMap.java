@@ -24,6 +24,12 @@ import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
 
 /**
+ * <p>
+ * Function hub class for functions on maps. As these functions have to be parameterized
+ * depending on the type of the map elements, this function hub class does not
+ * contain the real functions, but instead provides methods for specifying the type of the
+ * map components so that the appropiate functions are offered.
+ * </p>
  * 
  * @since 1.0
  * 
@@ -41,22 +47,68 @@ public final class FnMap {
     
     
     
+    /**
+     * <p>
+     * Specifies the type of the map components (key+value), so that the adequate map functions
+     * can be offered.
+     * </p>
+     * 
+     * @param keyType the type of the map key components
+     * @param valueType the type of the map value components
+     * @return the adequate set function hub
+     */
     public static <K,V> FnMapOf<K,V> of(final Type<K> keyType, final Type<V> valueType) {
         return new FnMapOf<K,V>(keyType, valueType);
     }
     
+    
+    /**
+     * <p>
+     * Specifies the map as a Map&lt;Object,Object&gt;, so that the adequate map functions
+     * can be offered.
+     * </p>
+     * 
+     * @return the adequate map function hub
+     */
     public static FnMapOf<Object,Object> ofObjectObject() {
         return OF_OBJECT_OBJECT;
     }
     
+
+    /**
+     * <p>
+     * Specifies the map as a Map&lt;String,String&gt;, so that the adequate map functions
+     * can be offered.
+     * </p>
+     * 
+     * @return the adequate map function hub
+     */
     public static FnMapOf<String,String> ofStringString() {
         return OF_STRING_STRING;
     }
+
     
+    /**
+     * <p>
+     * Specifies the map as a Map&lt;Integer,String&gt;, so that the adequate map functions
+     * can be offered.
+     * </p>
+     * 
+     * @return the adequate map function hub
+     */
     public static FnMapOf<Integer,String> ofIntegerString() {
         return OF_INTEGER_STRING;
     }
+
     
+    /**
+     * <p>
+     * Specifies the map as a Map&lt;String,Integer&gt;, so that the adequate map functions
+     * can be offered.
+     * </p>
+     * 
+     * @return the adequate map function hub
+     */
     public static FnMapOf<String,Integer> ofStringInteger() {
         return OF_STRING_INTEGER;
     }

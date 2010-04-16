@@ -29,6 +29,12 @@ import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
 
 /**
+ * <p>
+ * Function hub class for functions on arrays. As these functions have to be parameterized
+ * depending on the type of the array elements, this function hub class does not
+ * contain the real functions, but instead provides methods for specifying the type of the
+ * array components so that the appropiate functions are offered.
+ * </p>
  * 
  * @since 1.0
  * 
@@ -55,6 +61,15 @@ public class FnArray {
     
     
     
+    /**
+     * <p>
+     * Specifies the type of the array components, so that the adequate array functions
+     * can be offered.
+     * </p>
+     * 
+     * @param type the type of the array components
+     * @return the adequate array function hub
+     */
     public static <T> FnArrayOf<T> of(final Type<T> type) {
         return new FnArrayOf<T>(type);
     }
@@ -70,59 +85,185 @@ public class FnArray {
     public static <T> FnArrayOfSetOf<T> ofSetOf(final Type<T> type) {
         return new FnArrayOfSetOf<T>(type);
     }
+
     
+    /**
+     * <p>
+     * Specifies the array as an Object[], so that the adequate array functions
+     * can be offered.
+     * </p>
+     * 
+     * @return the adequate array function hub
+     */
     public static FnArrayOf<Object> ofObject() {
         return OF_OBJECT;
     }
     
+
+    /**
+     * <p>
+     * Specifies the array as a BigInteger[], so that the adequate array functions
+     * can be offered.
+     * </p>
+     * 
+     * @return the adequate array function hub
+     */
     public static FnArrayOf<BigInteger> ofBigInteger() {
         return OF_BIG_INTEGER;
     }
     
+
+    /**
+     * <p>
+     * Specifies the array as a BigDecimal[], so that the adequate array functions
+     * can be offered.
+     * </p>
+     * 
+     * @return the adequate array function hub
+     */
     public static FnArrayOf<BigDecimal> ofBigDecimal() {
         return OF_BIG_DECIMAL;
     }
+
     
+    /**
+     * <p>
+     * Specifies the array as a Boolean[], so that the adequate array functions
+     * can be offered.
+     * </p>
+     * 
+     * @return the adequate array function hub
+     */
     public static FnArrayOf<Boolean> ofBoolean() {
         return OF_BOOLEAN;
     }
     
+    
+    /**
+     * <p>
+     * Specifies the array as a Byte[], so that the adequate array functions
+     * can be offered.
+     * </p>
+     * 
+     * @return the adequate array function hub
+     */
     public static FnArrayOf<Byte> ofByte() {
         return OF_BYTE;
     }
     
+    
+    /**
+     * <p>
+     * Specifies the array as a Character[], so that the adequate array functions
+     * can be offered.
+     * </p>
+     * 
+     * @return the adequate array function hub
+     */
     public static FnArrayOf<Character> ofCharacter() {
         return OF_CHARACTER;
     }
     
+    
+    /**
+     * <p>
+     * Specifies the array as a Calendar[], so that the adequate array functions
+     * can be offered.
+     * </p>
+     * 
+     * @return the adequate array function hub
+     */
     public static FnArrayOf<Calendar> ofCalendar() {
         return OF_CALENDAR;
     }
     
+
+    /**
+     * <p>
+     * Specifies the array as a Date[], so that the adequate array functions
+     * can be offered.
+     * </p>
+     * 
+     * @return the adequate array function hub
+     */
     public static FnArrayOf<Date> ofDate() {
         return OF_DATE;
     }
     
+    
+    /**
+     * <p>
+     * Specifies the array as a Double[], so that the adequate array functions
+     * can be offered.
+     * </p>
+     * 
+     * @return the adequate array function hub
+     */
     public static FnArrayOf<Double> ofDouble() {
         return OF_DOUBLE;
     }
     
+
+    /**
+     * <p>
+     * Specifies the array as a Float[], so that the adequate array functions
+     * can be offered.
+     * </p>
+     * 
+     * @return the adequate array function hub
+     */
     public static FnArrayOf<Float> ofFloat() {
         return OF_FLOAT;
     }
     
+    
+    /**
+     * <p>
+     * Specifies the array as an Integer[], so that the adequate array functions
+     * can be offered.
+     * </p>
+     * 
+     * @return the adequate array function hub
+     */
     public static FnArrayOf<Integer> ofInteger() {
         return OF_INTEGER;
     }
     
+    
+    /**
+     * <p>
+     * Specifies the array as a Long[], so that the adequate array functions
+     * can be offered.
+     * </p>
+     * 
+     * @return the adequate array function hub
+     */
     public static FnArrayOf<Long> ofLong() {
         return OF_LONG;
     }
     
+    
+    /**
+     * <p>
+     * Specifies the array as a Short[], so that the adequate array functions
+     * can be offered.
+     * </p>
+     * 
+     * @return the adequate array function hub
+     */
     public static FnArrayOf<Short> ofShort() {
         return OF_SHORT;
     }
     
+    
+    /**
+     * <p>
+     * Specifies the array as a String[], so that the adequate array functions
+     * can be offered.
+     * </p>
+     * 
+     * @return the adequate array function hub
+     */
     public static FnArrayOf<String> ofString() {
         return OF_STRING;
     }

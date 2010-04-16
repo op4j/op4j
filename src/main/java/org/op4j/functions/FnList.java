@@ -29,6 +29,12 @@ import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
 
 /**
+ * <p>
+ * Function hub class for functions on lists. As these functions have to be parameterized
+ * depending on the type of the list elements, this function hub class does not
+ * contain the real functions, but instead provides methods for specifying the type of the
+ * list components so that the appropiate functions are offered.
+ * </p>
  * 
  * @since 1.0
  * 
@@ -56,6 +62,15 @@ public class FnList {
         
     
     
+    /**
+     * <p>
+     * Specifies the type of the list components, so that the adequate list functions
+     * can be offered.
+     * </p>
+     * 
+     * @param type the type of the list components
+     * @return the adequate list function hub
+     */
     public static <T> FnListOf<T> of(final Type<T> type) {
         return new FnListOf<T>(type);
     }
@@ -72,58 +87,184 @@ public class FnList {
         return new FnListOfSetOf<T>(type);
     }
     
+
+    /**
+     * <p>
+     * Specifies the list as a List&lt;Object&gt;, so that the adequate list functions
+     * can be offered.
+     * </p>
+     * 
+     * @return the adequate list function hub
+     */
     public static FnListOf<Object> ofObject() {
         return OF_OBJECT;
     }
+
     
+    /**
+     * <p>
+     * Specifies the list as a List&lt;BigInteger&gt;, so that the adequate list functions
+     * can be offered.
+     * </p>
+     * 
+     * @return the adequate list function hub
+     */
     public static FnListOf<BigInteger> ofBigInteger() {
         return OF_BIG_INTEGER;
     }
+
     
+    /**
+     * <p>
+     * Specifies the list as a List&lt;BigDecimal&gt;, so that the adequate list functions
+     * can be offered.
+     * </p>
+     * 
+     * @return the adequate list function hub
+     */
     public static FnListOf<BigDecimal> ofBigDecimal() {
         return OF_BIG_DECIMAL;
     }
+
     
+    /**
+     * <p>
+     * Specifies the list as a List&lt;Boolean&gt;, so that the adequate list functions
+     * can be offered.
+     * </p>
+     * 
+     * @return the adequate list function hub
+     */
     public static FnListOf<Boolean> ofBoolean() {
         return OF_BOOLEAN;
     }
     
+    
+    /**
+     * <p>
+     * Specifies the list as a List&lt;Byte&gt;, so that the adequate list functions
+     * can be offered.
+     * </p>
+     * 
+     * @return the adequate list function hub
+     */
     public static FnListOf<Byte> ofByte() {
         return OF_BYTE;
     }
     
+
+    /**
+     * <p>
+     * Specifies the list as a List&lt;Character&gt;, so that the adequate list functions
+     * can be offered.
+     * </p>
+     * 
+     * @return the adequate list function hub
+     */
     public static FnListOf<Character> ofCharacter() {
         return OF_CHARACTER;
     }
     
+
+    /**
+     * <p>
+     * Specifies the list as a List&lt;Calendar&gt;, so that the adequate list functions
+     * can be offered.
+     * </p>
+     * 
+     * @return the adequate list function hub
+     */
     public static FnListOf<Calendar> ofCalendar() {
         return OF_CALENDAR;
     }
+
     
+    /**
+     * <p>
+     * Specifies the list as a List&lt;Date&gt;, so that the adequate list functions
+     * can be offered.
+     * </p>
+     * 
+     * @return the adequate list function hub
+     */
     public static FnListOf<Date> ofDate() {
         return OF_DATE;
     }
     
+    
+    /**
+     * <p>
+     * Specifies the list as a List&lt;Double&gt;, so that the adequate list functions
+     * can be offered.
+     * </p>
+     * 
+     * @return the adequate list function hub
+     */
     public static FnListOf<Double> ofDouble() {
         return OF_DOUBLE;
     }
     
+
+    /**
+     * <p>
+     * Specifies the list as a List&lt;Float&gt;, so that the adequate list functions
+     * can be offered.
+     * </p>
+     * 
+     * @return the adequate list function hub
+     */
     public static FnListOf<Float> ofFloat() {
         return OF_FLOAT;
     }
+
     
+    /**
+     * <p>
+     * Specifies the list as a List&lt;Integer&gt;, so that the adequate list functions
+     * can be offered.
+     * </p>
+     * 
+     * @return the adequate list function hub
+     */
     public static FnListOf<Integer> ofInteger() {
         return OF_INTEGER;
     }
     
+
+    /**
+     * <p>
+     * Specifies the list as a List&lt;Long&gt;, so that the adequate list functions
+     * can be offered.
+     * </p>
+     * 
+     * @return the adequate list function hub
+     */
     public static FnListOf<Long> ofLong() {
         return OF_LONG;
     }
     
+
+    /**
+     * <p>
+     * Specifies the list as a List&lt;Short&gt;, so that the adequate list functions
+     * can be offered.
+     * </p>
+     * 
+     * @return the adequate list function hub
+     */
     public static FnListOf<Short> ofShort() {
         return OF_SHORT;
     }
     
+
+    /**
+     * <p>
+     * Specifies the list as a List&lt;String&gt;, so that the adequate list functions
+     * can be offered.
+     * </p>
+     * 
+     * @return the adequate list function hub
+     */
     public static FnListOf<String> ofString() {
         return OF_STRING;
     }
