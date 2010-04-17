@@ -15,6 +15,7 @@ import junit.framework.TestCase;
 
 import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang.time.DateUtils;
+import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
 import org.junit.Test;
 import org.op4j.functions.Call;
@@ -742,11 +743,91 @@ public class RecipesTests extends TestCase {
     }
 
     
+    @Test
+    public void testOP4J_021() throws Exception {
+        // Creating a list with the results of calling a method on each element of another list
+        
+        final String[] namesArr = 
+            new String[] { "James Cheddar", "Richard Stilton", "Bernard Brie", "Antonio Cabrales" };
+        
+        final User user1 = new User(namesArr[0]);
+        final User user2 = new User(namesArr[1]);
+        final User user3 = new User(namesArr[2]);
+        final User user4 = new User(namesArr[3]);
+        
+        final List<User> users = Arrays.asList(new User[] { user1, user2, user3, user4 });
+        final List<String> namesResult = Arrays.asList(namesArr);
+        
+        {
+            
+            List<String> names =
+                Op.on(users).map(Get.attrOfString("name")).get();
+            
+            assertEquals(namesResult, names);
+            
+        }
+        
+        {
+            
+            List<String> names =
+                Op.on(users).map(Call.methodForString("getName")).get();
+            
+            assertEquals(namesResult, names);
+            
+        }
+        
+        {
+            
+            List<String> names =
+                Op.on(users).forEach().exec(Get.attrOfString("name")).get();
+            
+            assertEquals(namesResult, names);
+            
+        }
+        
+        {
+            
+            List<String> names = new ArrayList<String>();
+            for (User user : users) {
+                names.add(user.getName());
+            }
+            
+            assertEquals(namesResult, names);
+            
+        }
+        
+        {
+            
+            User[] usersArray = users.toArray(new User[users.size()]);
+
+            Type<User> userType = Types.forClass(User.class);
+            String[] names =
+                Op.onArrayOf(userType, usersArray).
+                    map(Types.STRING, Get.attrOfString("name")).get();
+            
+            assertEquals(namesResult, Arrays.asList(names));
+            
+        }
+        
+        {
+            
+            List<String> namesList = new ArrayList<String>();
+            for (User user : users) {
+                namesList.add(user.getName());
+            }
+            String[] names = namesList.toArray(new String[namesList.size()]);
+            
+            assertEquals(namesResult, Arrays.asList(names));
+            
+        }
+        
+    }
+    
     
         
         
     @Test
-    public void testOP4J_021() throws Exception {
+    public void testOP4J_02X() throws Exception {
         // Creating a grouped map from a set of objects
 
         Set<City> cities = new LinkedHashSet<City>();
@@ -830,9 +911,23 @@ public class RecipesTests extends TestCase {
      * 
      */
     
-    protected static class User {
+    public static class User {
         
-        // empty
+        private final String name;
+        
+        public User() {
+            super();
+            this.name = "[none]";
+        }
+        
+        public User(final String name) {
+            super();
+            this.name = name;
+        }
+        
+        public String getName() {
+            return this.name;
+        }
         
     }
 
