@@ -4,7 +4,7 @@
   <groupId>org.op4j</groupId>
   <artifactId>op4j</artifactId>
   <packaging>jar</packaging>
-  <version>1.0-beta4-SNAPSHOT</version>
+  <version>1.0</version>
   <name>op4j</name>
   <description>op4j</description>
   <url>http://www.op4j.org</url>
@@ -23,9 +23,9 @@
   </organization>
   
   <scm>
-    <url>scm:svn:http://op4j.svn.sourceforge.net/svnroot/op4j/trunk/op4j</url>
-    <connection>scm:svn:https://op4j.svn.sourceforge.net/svnroot/op4j/trunk/op4j</connection>
-    <developerConnection>scm:svn:https://op4j.svn.sourceforge.net/svnroot/op4j/trunk/op4j</developerConnection>
+    <url>scm:svn:http://op4j.svn.sourceforge.net/svnroot/op4j/tags/op4j/op4j-1.0</url>
+    <connection>scm:svn:https://op4j.svn.sourceforge.net/svnroot/op4j/tags/op4j/op4j-1.0</connection>
+    <developerConnection>scm:svn:https://op4j.svn.sourceforge.net/svnroot/op4j/tags/op4j/op4j-1.0</developerConnection>
   </scm>
   
   <developers>
