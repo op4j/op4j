@@ -1746,8 +1746,86 @@ public final class FnBigInteger {
 	 * @param divisor the divisor
 	 * @return the remainder of target/divisor
 	 */
-	public final static Function<BigInteger, BigInteger> remainder(Number module) {
-        return new Remainder(fromNumber(module));
+	public final static Function<BigInteger, BigInteger> remainder(Number divisor) {
+        return new Remainder(fromNumber(divisor));
+    }
+	
+	/**
+     * <p>
+     * It divides the target element by the given divisor and returns the
+     * remainder (target % divisor)
+     * </p>
+     * 
+     * @param divisor the divisor
+     * @return the remainder of target/divisor
+     */
+    public final static Function<BigInteger, BigInteger> remainder(byte divisor) {
+        return remainder(Byte.valueOf(divisor));
+    }
+
+    /**
+     * <p>
+     * It divides the target element by the given divisor and returns the
+     * remainder (target % divisor)
+     * </p>
+     * 
+     * @param divisor the divisor
+     * @return the remainder of target/divisor
+     */
+    public final static Function<BigInteger, BigInteger> remainder(short divisor) {
+        return remainder(Short.valueOf(divisor));
+    }
+
+    /**
+     * <p>
+     * It divides the target element by the given divisor and returns the
+     * remainder (target % divisor)
+     * </p>
+     * 
+     * @param divisor the divisor
+     * @return the remainder of target/divisor
+     */
+    public final static Function<BigInteger, BigInteger> remainder(int divisor) {
+        return remainder(Integer.valueOf(divisor));
+    }
+
+    /**
+     * <p>
+     * It divides the target element by the given divisor and returns the
+     * remainder (target % divisor)
+     * </p>
+     * 
+     * @param divisor the divisor
+     * @return the remainder of target/divisor
+     */
+    public final static Function<BigInteger, BigInteger> remainder(long divisor) {
+        return remainder(Long.valueOf(divisor));
+    }
+
+    /**
+     * <p>
+     * It divides the target element by the given divisor and returns the
+     * remainder (target % divisor)
+     * </p>
+     * 
+     * @param divisor the divisor
+     * @return the remainder of target/divisor
+     */
+    public final static Function<BigInteger, BigInteger> remainder(float divisor) {
+        return remainder(Float.valueOf(divisor));
+    }
+
+    /**
+     * <p>
+     * It divides the target element by the given divisor and returns the
+     * remainder (target % divisor)
+     * </p>
+     * 
+     * @param divisor the divisor
+     * @return the remainder of target/divisor
+     */
+    public final static Function<BigInteger, BigInteger> remainder(double divisor) {
+        return remainder(Double.valueOf(divisor));
     }
 
     /**
