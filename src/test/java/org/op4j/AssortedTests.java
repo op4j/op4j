@@ -3,6 +3,7 @@ package org.op4j;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -31,6 +32,7 @@ import org.op4j.functions.FnDouble;
 import org.op4j.functions.FnInteger;
 import org.op4j.functions.FnLong;
 import org.op4j.functions.FnNumber;
+import org.op4j.functions.FnShort;
 import org.op4j.functions.FnString;
 import org.op4j.functions.Function;
 import org.op4j.functions.IFunction;
@@ -843,5 +845,36 @@ public class AssortedTests extends TestCase {
         
     }
     
+    @Test
+    public void test57() throws Exception {
+        Short b = Short.valueOf((short)10);
+        Short c = Short.valueOf((short)-3);
+        
+        assertEquals(Op.on(c).exec(FnShort.module(b.intValue())).get(),
+                Short.valueOf(BigInteger.valueOf(c.longValue())
+                        .mod(BigInteger.valueOf(b.longValue())).shortValue()));
+        assertEquals(Op.on(c).exec(FnShort.remainder(b.intValue())).get(),
+                Short.valueOf(BigInteger.valueOf(c.longValue())
+                        .remainder(BigInteger.valueOf(b.longValue())).shortValue()));
+        assertNotSame(Op.on(c).exec(FnShort.remainder(b.intValue())).get(),
+                Short.valueOf(BigInteger.valueOf(c.longValue())
+                        .mod(BigInteger.valueOf(b.longValue())).shortValue()));       
+    }
+    
+    @Test
+    public void test58() throws Exception {
+        Long b = Long.valueOf(56756710);
+        Long c = Long.valueOf(-38799);
+        
+        assertEquals(Op.on(c).exec(FnLong.module(b.intValue())).get(),
+                Long.valueOf(BigInteger.valueOf(c.longValue())
+                        .mod(BigInteger.valueOf(b.longValue())).longValue()));
+        assertEquals(Op.on(c).exec(FnLong.remainder(b.intValue())).get(),
+                Long.valueOf(BigInteger.valueOf(c.longValue())
+                        .remainder(BigInteger.valueOf(b.longValue())).longValue()));
+        assertNotSame(Op.on(c).exec(FnLong.remainder(b.intValue())).get(),
+                Long.valueOf(BigInteger.valueOf(c.longValue())
+                        .mod(BigInteger.valueOf(b.longValue())).longValue()));
+    }
 }
 
