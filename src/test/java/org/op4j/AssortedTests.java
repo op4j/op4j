@@ -876,5 +876,21 @@ public class AssortedTests extends TestCase {
                 Long.valueOf(BigInteger.valueOf(c.longValue())
                         .mod(BigInteger.valueOf(b.longValue())).longValue()));
     }
+    
+    @Test
+    public void test59() throws Exception {
+        Integer b = Integer.valueOf(56756710);
+        Integer c = Integer.valueOf(-38799);
+        
+        assertEquals(Op.on(c).exec(FnInteger.module(b.intValue())).get(),
+                Integer.valueOf(BigInteger.valueOf(c.longValue())
+                        .mod(BigInteger.valueOf(b.longValue())).intValue()));
+        assertEquals(Op.on(c).exec(FnInteger.remainder(b.intValue())).get(),
+                Integer.valueOf(BigInteger.valueOf(c.longValue())
+                        .remainder(BigInteger.valueOf(b.longValue())).intValue()));
+        assertNotSame(Op.on(c).exec(FnInteger.remainder(b.intValue())).get(),
+                Integer.valueOf(BigInteger.valueOf(c.longValue())
+                        .mod(BigInteger.valueOf(b.longValue())).intValue()));
+    }
 }
 
