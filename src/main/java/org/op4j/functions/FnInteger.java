@@ -20,6 +20,7 @@
 package org.op4j.functions;
 
 import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.math.MathContext;
 import java.math.RoundingMode;
 import java.util.Locale;
@@ -2060,11 +2061,111 @@ public final class FnInteger {
         return divideBy(Double.valueOf(divisor), roundingMode);
     }
 
-
+	/**
+     * <p>
+     * It performs a module operation and returns the value
+     * of (input mod module) which is always positive 
+     * (whereas remainder is not)
+     * </p>
+     * 
+     * @param module the module
+     * @return the result of (input mod module)
+     */
     public final static Function<Integer, Integer> module(int module) {
         return new Module(module);
     }
 
+    /**
+     * <p>
+     * It divides the target element by the given divisor and returns the
+     * remainder (target % divisor)
+     * </p>
+     * 
+     * @param divisor the divisor
+     * @return the remainder of target/divisor
+     */
+    public final static Function<Integer, Integer> remainder(Number divisor) {
+        return new Remainder(fromNumber(divisor));
+    }
+
+    /**
+     * <p>
+     * It divides the target element by the given divisor and returns the
+     * remainder (target % divisor)
+     * </p>
+     * 
+     * @param divisor the divisor
+     * @return the remainder of target/divisor
+     */
+    public final static Function<Integer, Integer> remainder(byte divisor) {
+        return remainder(Byte.valueOf(divisor));
+    }
+
+    /**
+     * <p>
+     * It divides the target element by the given divisor and returns the
+     * remainder (target % divisor)
+     * </p>
+     * 
+     * @param divisor the divisor
+     * @return the remainder of target/divisor
+     */
+    public final static Function<Integer, Integer> remainder(short divisor) {
+        return remainder(Short.valueOf(divisor));
+    }
+
+    /**
+     * <p>
+     * It divides the target element by the given divisor and returns the
+     * remainder (target % divisor)
+     * </p>
+     * 
+     * @param divisor the divisor
+     * @return the remainder of target/divisor
+     */
+    public final static Function<Integer, Integer> remainder(int divisor) {
+        return remainder(Integer.valueOf(divisor));
+    }
+
+    /**
+     * <p>
+     * It divides the target element by the given divisor and returns the
+     * remainder (target % divisor)
+     * </p>
+     * 
+     * @param divisor the divisor
+     * @return the remainder of target/divisor
+     */
+    public final static Function<Integer, Integer> remainder(long divisor) {
+        return remainder(Long.valueOf(divisor));
+    }
+
+    /**
+     * <p>
+     * It divides the target element by the given divisor and returns the
+     * remainder (target % divisor)
+     * </p>
+     * 
+     * @param divisor the divisor
+     * @return the remainder of target/divisor
+     */
+    public final static Function<Integer, Integer> remainder(float divisor) {
+        return remainder(Float.valueOf(divisor));
+    }
+
+    /**
+     * <p>
+     * It divides the target element by the given divisor and returns the
+     * remainder (target % divisor)
+     * </p>
+     * 
+     * @param divisor the divisor
+     * @return the remainder of target/divisor
+     */
+    public final static Function<Integer, Integer> remainder(double divisor) {
+        return remainder(Double.valueOf(divisor));
+    }
+    
     /**
 	 * <p>
 	 * It multiplies target by multiplicand and returns its value
@@ -2742,9 +2843,26 @@ public final class FnInteger {
 		
 		@Override
 		protected Integer nullAsNullExecute(final Integer input, final ExecCtx ctx) throws Exception {
-			return Integer.valueOf(input.intValue() % this.module);
+		    return Integer.valueOf(BigInteger.valueOf(input.longValue())
+                    .mod(BigInteger.valueOf(this.module)).intValue());
 		}	
 	}
+	
+	static final class Remainder extends AbstractNullAsNullFunction<Integer, Integer> {
+
+        private final Integer divisor;
+        
+        Remainder(Integer divisor) {
+            super();
+            this.divisor = divisor;
+        }
+        
+        @Override
+        protected Integer nullAsNullExecute(final Integer input, final ExecCtx ctx) throws Exception {
+            return Integer.valueOf(BigInteger.valueOf(input.longValue())
+                    .remainder(BigInteger.valueOf(this.divisor.longValue())).intValue());
+        }   
+    }
 	
 	static final class Multiply extends AbstractNullAsNullFunction<Integer, Integer> {
 
