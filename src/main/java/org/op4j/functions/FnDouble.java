@@ -2620,11 +2620,204 @@ public final class FnDouble {
         return divideBy(Double.valueOf(divisor), roundingMode);
     }
 
-
-    public final static Function<Double, Double> module(int module) {
-        return new Module(module);
+    /**
+     * <p>
+     * It divides the target element by the given divisor and returns the
+     * remainder (target % divisor)
+     * </p>
+     * 
+     * @param divisor the divisor
+     * @return the remainder of target/divisor
+     */
+    public final static Function<Double, Double> remainder(Number divisor) {
+        return new Remainder(fromNumber(divisor));
     }
 
+    /**
+     * <p>
+     * It divides the target element by the given divisor and returns the
+     * remainder (target % divisor)
+     * </p>
+     * 
+     * @param divisor the divisor
+     * @return the remainder of target/divisor
+     */
+    public final static Function<Double, Double> remainder(byte divisor) {
+        return remainder(Byte.valueOf(divisor));
+    }
+
+    /**
+     * <p>
+     * It divides the target element by the given divisor and returns the
+     * remainder (target % divisor)
+     * </p>
+     * 
+     * @param divisor the divisor
+     * @return the remainder of target/divisor
+     */
+    public final static Function<Double, Double> remainder(short divisor) {
+        return remainder(Short.valueOf(divisor));
+    }
+
+    /**
+     * <p>
+     * It divides the target element by the given divisor and returns the
+     * remainder (target % divisor)
+     * </p>
+     * 
+     * @param divisor the divisor
+     * @return the remainder of target/divisor
+     */
+    public final static Function<Double, Double> remainder(int divisor) {
+        return remainder(Integer.valueOf(divisor));
+    }
+
+    /**
+     * <p>
+     * It divides the target element by the given divisor and returns the
+     * remainder (target % divisor)
+     * </p>
+     * 
+     * @param divisor the divisor
+     * @return the remainder of target/divisor
+     */
+    public final static Function<Double, Double> remainder(long divisor) {
+        return remainder(Long.valueOf(divisor));
+    }
+
+    /**
+     * <p>
+     * It divides the target element by the given divisor and returns the
+     * remainder (target % divisor)
+     * </p>
+     * 
+     * @param divisor the divisor
+     * @return the remainder of target/divisor
+     */
+    public final static Function<Double, Double> remainder(float divisor) {
+        return remainder(Float.valueOf(divisor));
+    }
+
+    /**
+     * <p>
+     * It divides the target element by the given divisor and returns the
+     * remainder (target % divisor)
+     * </p>
+     * 
+     * @param divisor the divisor
+     * @return the remainder of target/divisor
+     */
+    public final static Function<Double, Double> remainder(double divisor) {
+        return remainder(Double.valueOf(divisor));
+    }
+
+
+    /**
+     * <p>
+     * It divides the target element by the given divisor and returns the
+     * remainder (target % divisor). The remainder precision and {@link RoundingMode}
+     * is specified by the given {@link MathContext}
+     * </p>
+     * 
+     * @param divisor the divisor
+     * @param mathContext the {@link MathContext} to define {@link RoundingMode} and precision
+     * @return the remainder of target/divisor
+     */
+    public final static Function<Double, Double> remainder(Number divisor, MathContext mathContext) {
+        return new Remainder(fromNumber(divisor), mathContext);
+    }
+
+    /**
+     * <p>
+     * It divides the target element by the given divisor and returns the
+     * remainder (target % divisor). The remainder precision and {@link RoundingMode}
+     * is specified by the given {@link MathContext}
+     * </p>
+     * 
+     * @param divisor the divisor
+     * @param mathContext the {@link MathContext} to define {@link RoundingMode} and precision
+     * @return the remainder of target/divisor
+     */
+    public final static Function<Double, Double> remainder(byte divisor, MathContext mathContext) {
+        return remainder(Byte.valueOf(divisor), mathContext);
+    }
+
+    /**
+     * <p>
+     * It divides the target element by the given divisor and returns the
+     * remainder (target % divisor). The remainder precision and {@link RoundingMode}
+     * is specified by the given {@link MathContext}
+     * </p>
+     * 
+     * @param divisor the divisor
+     * @param mathContext the {@link MathContext} to define {@link RoundingMode} and precision
+     * @return the remainder of target/divisor
+     */
+    public final static Function<Double, Double> remainder(short divisor, MathContext mathContext) {
+        return remainder(Short.valueOf(divisor), mathContext);
+    }
+
+    /**
+     * <p>
+     * It divides the target element by the given divisor and returns the
+     * remainder (target % divisor). The remainder precision and {@link RoundingMode}
+     * is specified by the given {@link MathContext}
+     * </p>
+     * 
+     * @param divisor the divisor
+     * @param mathContext the {@link MathContext} to define {@link RoundingMode} and precision
+     * @return the remainder of target/divisor
+     */
+    public final static Function<Double, Double> remainder(int divisor, MathContext mathContext) {
+        return remainder(Integer.valueOf(divisor), mathContext);
+    }
+
+    /**
+     * <p>
+     * It divides the target element by the given divisor and returns the
+     * remainder (target % divisor). The remainder precision and {@link RoundingMode}
+     * is specified by the given {@link MathContext}
+     * </p>
+     * 
+     * @param divisor the divisor
+     * @param mathContext the {@link MathContext} to define {@link RoundingMode} and precision
+     * @return the remainder of target/divisor
+     */
+    public final static Function<Double, Double> remainder(long divisor, MathContext mathContext) {
+        return remainder(Long.valueOf(divisor), mathContext);
+    }
+
+    /**
+     * <p>
+     * It divides the target element by the given divisor and returns the
+     * remainder (target % divisor). The remainder precision and {@link RoundingMode}
+     * is specified by the given {@link MathContext}
+     * </p>
+     * 
+     * @param divisor the divisor
+     * @param mathContext the {@link MathContext} to define {@link RoundingMode} and precision
+     * @return the remainder of target/divisor
+     */
+    public final static Function<Double, Double> remainder(float divisor, MathContext mathContext) {
+        return remainder(Float.valueOf(divisor), mathContext);
+    }
+
+    /**
+     * <p>
+     * It divides the target element by the given divisor and returns the
+     * remainder (target % divisor). The remainder precision and {@link RoundingMode}
+     * is specified by the given {@link MathContext}
+     * </p>
+     * 
+     * @param divisor the divisor
+     * @param mathContext the {@link MathContext} to define {@link RoundingMode} and precision
+     * @return the remainder of target/divisor
+     */
+    public final static Function<Double, Double> remainder(double divisor, MathContext mathContext) {
+        return remainder(Double.valueOf(divisor), mathContext);
+    }
+
+    
     /**
 	 * <p>
 	 * It multiplies target by multiplicand and returns its value
@@ -3321,20 +3514,33 @@ public final class FnDouble {
 	}
 	
 	
-	static final class Module extends AbstractNullAsNullFunction<Double, Double> {
+	static final class Remainder extends AbstractNullAsNullFunction<Double, Double> {
 
-		private final int module;
-		
-		Module(int module) {
-			super();
-			this.module = module;
-		}
-		
-		@Override
-		protected Double nullAsNullExecute(final Double input, final ExecCtx ctx) throws Exception {
-			return Double.valueOf(input.doubleValue() % this.module);
-		}	
-	}
+        private final Double divisor;
+        private final MathContext mathContext;
+        
+        Remainder(Double divisor) {
+            super();
+            this.divisor = divisor;
+            this.mathContext = null;
+        }
+        
+        Remainder(Double divisor, MathContext mathContext) {
+            super();
+            this.divisor = divisor;
+            this.mathContext = mathContext;
+        }
+        
+        @Override
+        protected Double nullAsNullExecute(final Double input, final ExecCtx ctx) throws Exception {
+            if (this.mathContext != null) {
+                return Double.valueOf(BigDecimal.valueOf(input.doubleValue())
+                        .remainder(BigDecimal.valueOf(this.divisor.doubleValue()), this.mathContext).doubleValue());
+            }
+            return Double.valueOf(BigDecimal.valueOf(input.doubleValue())
+                    .remainder(BigDecimal.valueOf(this.divisor.doubleValue())).doubleValue());
+        }   
+    }
 	
 	static final class Multiply extends AbstractNullAsNullFunction<Double, Double> {
 
