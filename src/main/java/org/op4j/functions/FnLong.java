@@ -2069,7 +2069,147 @@ public final class FnLong {
      * @param module the module
      * @return the result of (input mod module)
      */
+    public final static Function<Long, Long> module(byte module) {
+        return new Module(BigInteger.valueOf(Byte.valueOf(module).longValue()));
+    }
+    
+    /**
+     * <p>
+     * It performs a module operation and returns the value
+     * of (input mod module) which is always positive 
+     * (whereas remainder is not)
+     * </p>
+     * 
+     * @param module the module
+     * @return the result of (input mod module)
+     */
+    public final static Function<Long, Long> module(short module) {
+        return new Module(BigInteger.valueOf(Short.valueOf(module).longValue()));
+    }
+    
+    /**
+     * <p>
+     * It performs a module operation and returns the value
+     * of (input mod module) which is always positive 
+     * (whereas remainder is not)
+     * </p>
+     * 
+     * @param module the module
+     * @return the result of (input mod module)
+     */
     public final static Function<Long, Long> module(int module) {
+        return new Module(BigInteger.valueOf(Integer.valueOf(module).longValue()));
+    }
+    
+    /**
+     * <p>
+     * It performs a module operation and returns the value
+     * of (input mod module) which is always positive 
+     * (whereas remainder is not)
+     * </p>
+     * 
+     * @param module the module
+     * @return the result of (input mod module)
+     */
+    public final static Function<Long, Long> module(long module) {
+        return new Module(BigInteger.valueOf(Long.valueOf(module).longValue()));
+    }
+    
+    /**
+     * <p>
+     * It performs a module operation and returns the value
+     * of (input mod module) which is always positive 
+     * (whereas remainder is not)
+     * </p>
+     * 
+     * @param module the module
+     * @return the result of (input mod module)
+     */
+    public final static Function<Long, Long> module(float module) {
+        return new Module(BigInteger.valueOf(Float.valueOf(module).longValue()));
+    }
+    
+    /**
+     * <p>
+     * It performs a module operation and returns the value
+     * of (input mod module) which is always positive 
+     * (whereas remainder is not)
+     * </p>
+     * 
+     * @param module the module
+     * @return the result of (input mod module)
+     */
+    public final static Function<Long, Long> module(Byte module) {
+        return new Module(BigInteger.valueOf(module.longValue()));
+    }
+    
+    /**
+     * <p>
+     * It performs a module operation and returns the value
+     * of (input mod module) which is always positive 
+     * (whereas remainder is not)
+     * </p>
+     * 
+     * @param module the module
+     * @return the result of (input mod module)
+     */
+    public final static Function<Long, Long> module(Short module) {
+        return new Module(BigInteger.valueOf(module.longValue()));
+    }
+    
+    /**
+     * <p>
+     * It performs a module operation and returns the value
+     * of (input mod module) which is always positive 
+     * (whereas remainder is not)
+     * </p>
+     * 
+     * @param module the module
+     * @return the result of (input mod module)
+     */
+    public final static Function<Long, Long> module(Integer module) {
+        return new Module(BigInteger.valueOf(module.longValue()));
+    }
+    
+    /**
+     * <p>
+     * It performs a module operation and returns the value
+     * of (input mod module) which is always positive 
+     * (whereas remainder is not)
+     * </p>
+     * 
+     * @param module the module
+     * @return the result of (input mod module)
+     */
+    public final static Function<Long, Long> module(Long module) {
+        return new Module(BigInteger.valueOf(module.longValue()));
+    }
+    
+    /**
+     * <p>
+     * It performs a module operation and returns the value
+     * of (input mod module) which is always positive 
+     * (whereas remainder is not)
+     * </p>
+     * 
+     * @param module the module
+     * @return the result of (input mod module)
+     */
+    public final static Function<Long, Long> module(Float module) {
+        return new Module(BigInteger.valueOf(module.longValue()));
+    }
+    
+    /**
+     * <p>
+     * It performs a module operation and returns the value
+     * of (input mod module) which is always positive 
+     * (whereas remainder is not)
+     * </p>
+     * 
+     * @param module the module
+     * @return the result of (input mod module)
+     */
+    public final static Function<Long, Long> module(BigInteger module) {
         return new Module(module);
     }
 
@@ -2845,19 +2985,19 @@ public final class FnLong {
 	
 	static final class Module extends AbstractNullAsNullFunction<Long, Long> {
 
-		private final int module;
-		
-		Module(int module) {
-			super();
-			this.module = module;
-		}
-		
-		@Override
-		protected Long nullAsNullExecute(final Long input, final ExecCtx ctx) throws Exception {
-		    return Long.valueOf(BigInteger.valueOf(input.longValue())
-                    .mod(BigInteger.valueOf(this.module)).longValue());
-		}		
-	}
+        private final BigInteger module;
+        
+        Module(BigInteger module) {
+            super();
+            this.module = module;
+        }
+        
+        @Override
+        protected Long nullAsNullExecute(final Long input, final ExecCtx ctx) throws Exception {
+            return Long.valueOf(BigInteger.valueOf(input.longValue())
+                    .mod(this.module).longValue());
+        }   
+    }
 	
 	static final class Remainder extends AbstractNullAsNullFunction<Long, Long> {
 
