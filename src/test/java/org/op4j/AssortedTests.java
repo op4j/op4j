@@ -27,8 +27,10 @@ import org.op4j.functions.ExecCtx;
 import org.op4j.functions.Fn;
 import org.op4j.functions.FnArray;
 import org.op4j.functions.FnBigDecimal;
+import org.op4j.functions.FnBigInteger;
 import org.op4j.functions.FnBoolean;
 import org.op4j.functions.FnDouble;
+import org.op4j.functions.FnFloat;
 import org.op4j.functions.FnInteger;
 import org.op4j.functions.FnLong;
 import org.op4j.functions.FnNumber;
@@ -891,6 +893,47 @@ public class AssortedTests extends TestCase {
         assertNotSame(Op.on(c).exec(FnInteger.remainder(b.intValue())).get(),
                 Integer.valueOf(BigInteger.valueOf(c.longValue())
                         .mod(BigInteger.valueOf(b.longValue())).intValue()));
+    
+    }
+    
+    @Test
+    public void test60() throws Exception {
+        Float b = Float.valueOf(56756710);
+        Float c = Float.valueOf(-3856799);
+        
+        assertEquals(Op.on(c).exec(FnFloat.module(b.intValue())).get(),
+                Float.valueOf(BigInteger.valueOf(c.longValue())
+                        .mod(BigInteger.valueOf(b.longValue())).floatValue()));
+        assertEquals(Op.on(c).exec(FnFloat.remainder(b.intValue())).get(),
+                Float.valueOf(BigInteger.valueOf(c.longValue())
+                        .remainder(BigInteger.valueOf(b.longValue())).floatValue()));
+        assertNotSame(Op.on(c).exec(FnFloat.remainder(b.intValue())).get(),
+                Float.valueOf(BigInteger.valueOf(c.longValue())
+                        .mod(BigInteger.valueOf(b.longValue())).floatValue()));
+    }
+    
+    @Test
+    public void test61() throws Exception {
+        Double b = Double.valueOf(56756.710);
+        Double c = Double.valueOf(-3856.9799);
+        
+        assertEquals(Op.on(c).exec(FnDouble.remainder(b.doubleValue())).get(),
+                Double.valueOf(BigDecimal.valueOf(c.doubleValue())
+                        .remainder(BigDecimal.valueOf(b.doubleValue())).doubleValue()));        
+    }
+    
+    @Test
+    public void test62() throws Exception {
+        BigInteger b = BigInteger.valueOf(56756710);
+        BigInteger c = BigInteger.valueOf(-3856799);
+        
+        assertEquals(Op.on(c).exec(FnBigInteger.module(b)).get(),
+                BigInteger.valueOf(c.longValue())
+                        .mod(BigInteger.valueOf(b.longValue())));
+        assertEquals(Op.on(c).exec(FnBigInteger.remainder(b.intValue())).get(),
+                c.remainder(b));
+        assertNotSame(Op.on(c).exec(FnBigInteger.remainder(b.intValue())).get(),
+                c.mod(b));
     }
 }
 
