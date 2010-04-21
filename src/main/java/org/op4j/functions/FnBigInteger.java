@@ -1732,7 +1732,16 @@ public final class FnBigInteger {
         return divideBy(Double.valueOf(divisor));
     }
 
-
+	/**
+     * <p>
+     * It performs a module operation and returns the value
+     * of (input mod module) which is always positive 
+     * (whereas remainder is not)
+     * </p>
+     * 
+     * @param module the module
+     * @return the result of (input mod module)
+     */
     public final static Function<BigInteger, BigInteger> module(Number module) {
         return new Module(fromNumber(module));
     }
@@ -2304,9 +2313,9 @@ public final class FnBigInteger {
 
 		private final BigInteger divisor;
 		
-		Remainder(BigInteger module) {
+		Remainder(BigInteger divisor) { 
 			super();
-			this.divisor = module;
+			this.divisor = divisor;
 		}
 		
 		@Override
