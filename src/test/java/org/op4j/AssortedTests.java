@@ -877,6 +877,9 @@ public class AssortedTests extends TestCase {
         assertNotSame(Op.on(c).exec(FnLong.remainder(b.intValue())).get(),
                 Long.valueOf(BigInteger.valueOf(c.longValue())
                         .mod(BigInteger.valueOf(b.longValue())).longValue()));
+        assertEquals(Op.on(c).exec(FnLong.remainder(Double.valueOf(4.5))).get(),
+                Long.valueOf(BigInteger.valueOf(c.longValue())
+                        .remainder(BigInteger.valueOf(Double.valueOf(4.5).longValue())).longValue()));
         assertEquals(Op.on(c).exec(FnLong.remainder((short)56)).get(),
                 Long.valueOf(BigInteger.valueOf(c.longValue())
                         .remainder(BigInteger.valueOf(56)).longValue()));
@@ -896,7 +899,10 @@ public class AssortedTests extends TestCase {
         assertNotSame(Op.on(c).exec(FnInteger.remainder(b.intValue())).get(),
                 Integer.valueOf(BigInteger.valueOf(c.longValue())
                         .mod(BigInteger.valueOf(b.longValue())).intValue()));
-    
+        assertEquals(Op.on(c).exec(FnInteger.remainder(Long.valueOf(33))).get(),
+                Integer.valueOf(BigInteger.valueOf(c.longValue())
+                        .remainder(BigInteger.valueOf(33)).intValue()));
+        
     }
     
     @Test
