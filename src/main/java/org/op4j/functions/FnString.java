@@ -98,6 +98,10 @@ public final class FnString {
     
     private static final Function<String,String> ASCIIFY = new Asciify();
     
+    private static final Function<String, Boolean> IS_ALPHA = new IsAlpha();
+    private static final Function<String, Boolean> IS_ALPHA_SPACE = new IsAlpha(true);
+    private static final Function<String, Boolean> IS_NUMERIC = new IsNumeric();
+    private static final Function<String, Boolean> IS_NUMERIC_SPACE = new IsNumeric(true);
     
     
 	
@@ -2112,10 +2116,51 @@ public final class FnString {
     }
     
     
+    /**
+     * <p>
+     * Checks if a String contains only unicode letters or not
+     * </p>
+     * 
+     * @return whether the input String contains only unicode letters or not
+     */
+    public static final Function<String, Boolean> isAlpha() {
+        return IS_ALPHA;
+    }
     
+    /**
+     * <p>
+     * Checks if a String contains only unicode letters and spaces or not
+     * </p>
+     * 
+     * @return true if the input String contains only unicode letters and spaces. 
+     * Otherwise, false
+     */
+    public static final Function<String, Boolean> isAlphaSpace() {
+        return IS_ALPHA_SPACE;
+    }
+	
+    /**
+     * <p>
+     * Checks if a String contains only unicode digits or not
+     * </p>
+     * 
+     * @return whether the input String contains only unicode digits or not
+     */
+    public static final Function<String, Boolean> isNumeric() {
+        return IS_NUMERIC;
+    }
     
-	
-	
+    /**
+     * <p>
+     * Checks if a String contains only unicode digits and spaces or not
+     * </p>
+     * 
+     * @return true if the input String contains only unicode digits and spaces. 
+     * Otherwise, false
+     */
+    public static final Function<String, Boolean> isNumericSpace() {
+        return IS_NUMERIC_SPACE;
+    }
 	
 	
 	/**
@@ -2956,4 +3001,45 @@ public final class FnString {
         
     }
     
+    static final class IsAlpha extends Function<String,Boolean> {
+        final boolean spacesAllowed;
+        
+        public IsAlpha() {
+            super();
+            this.spacesAllowed = false;
+        }
+
+        public IsAlpha(boolean spacesAllowed) {
+            super();
+            this.spacesAllowed = spacesAllowed;
+        }
+        
+        public Boolean execute(String input, ExecCtx ctx) throws Exception {
+            if (this.spacesAllowed) {
+                return Boolean.valueOf(StringUtils.isAlphaSpace(input));
+            } 
+            return Boolean.valueOf(StringUtils.isAlpha(input));            
+        }
+    }
+    
+    static final class IsNumeric extends Function<String,Boolean> {
+        final boolean spacesAllowed;
+        
+        public IsNumeric() {
+            super();
+            this.spacesAllowed = false;
+        }
+        
+        public IsNumeric(boolean spacesAllowed) {
+            super();
+            this.spacesAllowed = spacesAllowed;
+        }
+        
+        public Boolean execute(String input, ExecCtx ctx) throws Exception {
+            if (this.spacesAllowed) {
+                return Boolean.valueOf(StringUtils.isNumericSpace(input));
+            } 
+            return Boolean.valueOf(StringUtils.isNumeric(input));            
+        }
+    }
 }
