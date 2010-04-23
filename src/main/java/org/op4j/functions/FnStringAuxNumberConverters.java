@@ -394,6 +394,7 @@ final class FnStringAuxNumberConverters {
                     return fromString(object, this.scale, this.roundingMode);
                 case PARAM_SCALE_ROUNDINGMODE_LOCALE:
                     try {
+                        //TODO Should use ParsePosition to make sure the whole string has been converted into a number
                         return fromNumber(this.decimalFormat.parse(object), this.scale, this.roundingMode);
                     } catch (final ParseException e) {
                         throw new ExecutionException("Unable to parse: \"" + object + "\"", e);

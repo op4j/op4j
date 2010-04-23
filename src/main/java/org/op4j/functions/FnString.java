@@ -103,6 +103,7 @@ public final class FnString {
     private static final Function<String, Boolean> IS_NUMERIC = new IsNumeric();
     private static final Function<String, Boolean> IS_NUMERIC_SPACE = new IsNumeric(true);
     
+    private static final Function<String, Boolean> IS_BIG_DECIMAL = new IsBigDecimal();
     
 	
 	private FnString() {
@@ -2162,7 +2163,109 @@ public final class FnString {
         return IS_NUMERIC_SPACE;
     }
 	
-	
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    /**
+     * <p>
+     * Returns true if the input {@link String} can be converted into a 
+     * valid {@link BigDecimal}. It uses the default configuration from the JVM (en_US)
+     * to check whether the string is valid or not.
+     * </p>
+     * 
+     * @return true if the input {@link String} represents a valid {@link BigDecimal}. 
+     * Otherwise, false
+     */
+    public static final Function<String,Boolean> isBigDecimal() {
+        return IS_BIG_DECIMAL;
+    }
+    
+    
+    /**
+     * <p>
+     * Returns true if the input {@link String} can be converted into a 
+     * valid {@link BigDecimal} in the given {@link Locale}
+     * </p>
+     * 
+     * @param locale the locale defining the way in which the number is written
+     * @return true if the input {@link String} represents a valid {@link BigDecimal}. 
+     * Otherwise, false
+     */
+    public static final Function<String,Boolean> isBigDecimal(final Locale locale) {
+        return new IsBigDecimal(locale);
+    }
+
+    
+    /**
+     * <p>
+     * Returns true if the input {@link String} can be converted into a 
+     * valid {@link BigDecimal} in the given {@link Locale} specified as a {@link String}
+     * </p>
+     * 
+     * @param locale the locale defining the way in which the number is written
+     * @return true if the input {@link String} represents a valid {@link BigDecimal}. 
+     * Otherwise, false
+     */
+    public static final Function<String,Boolean> isBigDecimal(final String locale) {
+        return new IsBigDecimal(locale);
+    }
+
+    
+    /**
+     * <p>
+     * Returns true if the input {@link String} can be converted into a 
+     * valid {@link BigDecimal} using the specified decimal point
+     * configuration ({@link DecimalPoint}). 
+     * </p>
+     * 
+     * @param decimalPoint the decimal point being used by the String
+     * @return true if the input {@link String} represents a valid {@link BigDecimal}. 
+     * Otherwise, false
+     */
+    public static final Function<String,Boolean> isBigDecimal(final DecimalPoint decimalPoint) {
+        return new IsBigDecimal(decimalPoint);
+    }
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 	/**
 	 * The String is returned in a way it can be used to fill in a CSV column as StringEscapeUtils does
 	 *
@@ -3040,6 +3143,64 @@ public final class FnString {
                 return Boolean.valueOf(StringUtils.isNumericSpace(input));
             } 
             return Boolean.valueOf(StringUtils.isNumeric(input));            
+        }
+    }
+    
+    static final class IsBigDecimal extends Function<String,Boolean> {
+         
+        final Locale locale;
+        final DecimalPoint decimalPoint;
+        
+        public IsBigDecimal() {
+            super();
+            this.locale = null;
+            this.decimalPoint = null;
+        }
+        
+        public IsBigDecimal(Locale locale) {
+            super();
+            this.locale = locale;
+            this.decimalPoint = null;
+        }
+        
+        public IsBigDecimal(String locale) {
+            super();
+            this.locale = LocaleUtils.toLocale(locale);
+            this.decimalPoint = null;
+        }
+        
+        public IsBigDecimal(DecimalPoint decimalPoint) {
+            super();
+            this.locale = null;
+            this.decimalPoint = decimalPoint;
+        }
+        
+        public Boolean execute(String input, ExecCtx ctx) throws Exception {
+            if (this.locale == null && this.decimalPoint == null) {
+                try {
+                    Op.on(input).exec(FnString.toBigDecimal()).get();
+                    return Boolean.TRUE;
+                } catch (ExecutionException e) {
+                    return Boolean.FALSE;
+                }
+            }
+            if (this.locale != null) {
+                try {
+                    Op.on(input).exec(FnString.toBigDecimal(this.locale)).get();
+                    return Boolean.TRUE;
+                } catch (ExecutionException e) {
+                    return Boolean.FALSE;
+                }
+            }
+            if (this.decimalPoint != null) {
+                try {
+                    Op.on(input).exec(FnString.toBigDecimal(this.decimalPoint)).get();
+                    return Boolean.TRUE;
+                } catch (ExecutionException e) {
+                    return Boolean.FALSE;
+                }
+            }   
+            return Boolean.FALSE;
         }
     }
 }

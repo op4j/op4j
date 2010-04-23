@@ -16,6 +16,7 @@ import java.util.Set;
 
 import junit.framework.TestCase;
 
+import org.apache.commons.lang.LocaleUtils;
 import org.apache.commons.lang.StringUtils;
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
@@ -946,6 +947,28 @@ public class AssortedTests extends TestCase {
                 c.remainder(b));
         assertNotSame(Op.on(c).exec(FnBigInteger.remainder(b.intValue())).get(),
                 c.mod(b));
+    }
+    
+    @Test
+    public void test63() throws Exception {
+        assertFalse(Op.on("67e").exec(FnString.isBigDecimal()).get().booleanValue());        
+        assertTrue(Op.on("67.5").exec(FnString.isBigDecimal()).get().booleanValue());  
+        assertTrue(Op.on("6997.89").exec(FnString.isBigDecimal()).get().booleanValue());
+        assertTrue(Op.on("6,8989898989898989898989898989898989898989898").exec(FnString
+                .isBigDecimal(LocaleUtils.toLocale("es"))).get().booleanValue());
+        
+        
+        System.out.println(Op.on("6,9.9.7.89fgfd").exec(FnString
+                .toBigDecimal(LocaleUtils.toLocale("es"))).get());
+        System.out.println(Op.on("6.9.97,89").exec(FnString
+                .toBigDecimal(LocaleUtils.toLocale("es"))).get());
+        
+        assertFalse(Op.on("6,997.89").exec(FnString
+                .isBigDecimal(LocaleUtils.toLocale("es"))).get().booleanValue());
+        assertTrue(Op.on("6.997,89").exec(FnString
+                .isBigDecimal(LocaleUtils.toLocale("es"))).get().booleanValue());
+        assertTrue(Op.on("6.9.9.7,89").exec(FnString
+                .isBigDecimal(LocaleUtils.toLocale("es"))).get().booleanValue());        
     }
 }
 
