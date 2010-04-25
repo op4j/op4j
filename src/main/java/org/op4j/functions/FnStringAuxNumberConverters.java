@@ -25,6 +25,7 @@ import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.text.ParseException;
+import java.text.ParsePosition;
 import java.util.Locale;
 
 import org.apache.commons.lang.LocaleUtils;
@@ -120,7 +121,15 @@ final class FnStringAuxNumberConverters {
                     return fromString(string);
                 case PARAM_LOCALE:
                     try {
-                        return fromNumber(this.decimalFormat.parse(string));
+                        //It uses ParsePosition to make sure the whole 
+                        //string has been converted into a number
+                        ParsePosition pp = new ParsePosition(0);
+                        Number number = this.decimalFormat.parse(string, pp);
+                        if (pp.getIndex() != string.length()) {
+                            throw new ParseException("The whole input String does not represent a valid number", 
+                                    pp.getIndex());
+                        }
+                        return fromNumber(number);
                     } catch (final ParseException e) {
                         throw new ExecutionException("Unable to parse: \"" + string + "\"", e);
                     }
@@ -266,7 +275,15 @@ final class FnStringAuxNumberConverters {
                     return fromString(string, this.roundingMode);
                 case PARAM_ROUNDINGMODE_LOCALE:
                     try {
-                        return fromNumber(this.decimalFormat.parse(string), this.roundingMode);
+                        //It uses ParsePosition to make sure the whole 
+                        //string has been converted into a number
+                        ParsePosition pp = new ParsePosition(0);
+                        Number number = this.decimalFormat.parse(string, pp);
+                        if (pp.getIndex() != string.length()) {
+                            throw new ParseException("The whole input String does not represent a valid number", 
+                                    pp.getIndex());
+                        }
+                        return fromNumber(number, this.roundingMode);
                     } catch (final ParseException e) {
                         throw new ExecutionException("Unable to parse: \"" + string + "\"", e);
                     }
@@ -394,8 +411,15 @@ final class FnStringAuxNumberConverters {
                     return fromString(object, this.scale, this.roundingMode);
                 case PARAM_SCALE_ROUNDINGMODE_LOCALE:
                     try {
-                        //TODO Should use ParsePosition to make sure the whole string has been converted into a number
-                        return fromNumber(this.decimalFormat.parse(object), this.scale, this.roundingMode);
+                        //It uses ParsePosition to make sure the whole 
+                        //string has been converted into a number
+                        ParsePosition pp = new ParsePosition(0);
+                        Number number = this.decimalFormat.parse(object, pp);
+                        if (pp.getIndex() != object.length()) {
+                            throw new ParseException("The whole input String does not represent a valid number", 
+                                    pp.getIndex());
+                        }
+                        return fromNumber(number, this.scale, this.roundingMode);
                     } catch (final ParseException e) {
                         throw new ExecutionException("Unable to parse: \"" + object + "\"", e);
                     }
