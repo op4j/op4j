@@ -24,6 +24,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.op4j.exceptions.ExecutionException;
 import org.op4j.functions.Call;
+import org.op4j.functions.DecimalPoint;
 import org.op4j.functions.ExecCtx;
 import org.op4j.functions.Fn;
 import org.op4j.functions.FnArray;
@@ -956,19 +957,31 @@ public class AssortedTests extends TestCase {
         assertTrue(Op.on("6997.89").exec(FnString.isBigDecimal()).get().booleanValue());
         assertTrue(Op.on("6,8989898989898989898989898989898989898989898").exec(FnString
                 .isBigDecimal(LocaleUtils.toLocale("es"))).get().booleanValue());
-        
-        
-        System.out.println(Op.on("6,9.9.7.89fgfd").exec(FnString
-                .toBigDecimal(LocaleUtils.toLocale("es"))).get());
-        System.out.println(Op.on("6.9.97,89").exec(FnString
-                .toBigDecimal(LocaleUtils.toLocale("es"))).get());
+                
+        assertFalse(Op.on("6,9.9.7.89fgfd").exec(FnString
+                .isBigDecimal(LocaleUtils.toLocale("es"))).get().booleanValue());
+        assertTrue(Op.on("6.9.97,89").exec(FnString
+                .isBigDecimal(LocaleUtils.toLocale("es"))).get().booleanValue());
         
         assertFalse(Op.on("6,997.89").exec(FnString
                 .isBigDecimal(LocaleUtils.toLocale("es"))).get().booleanValue());
         assertTrue(Op.on("6.997,89").exec(FnString
                 .isBigDecimal(LocaleUtils.toLocale("es"))).get().booleanValue());
         assertTrue(Op.on("6.9.9.7,89").exec(FnString
-                .isBigDecimal(LocaleUtils.toLocale("es"))).get().booleanValue());        
+                .isBigDecimal(LocaleUtils.toLocale("es"))).get().booleanValue()); 
+        
+        assertTrue(Op.on("69,9").exec(FnString
+                .isBigDecimal(DecimalPoint.IS_COMMA)).get().booleanValue()); 
+        assertTrue(Op.on("69.9").exec(FnString
+                .isBigDecimal(DecimalPoint.IS_POINT)).get().booleanValue());
+        assertTrue(Op.on("69,9").exec(FnString
+                .isBigDecimal(DecimalPoint.CAN_BE_POINT_OR_COMMA)).get().booleanValue()); 
+        assertTrue(Op.on("69.9").exec(FnString
+                .isBigDecimal(DecimalPoint.CAN_BE_POINT_OR_COMMA)).get().booleanValue()); 
+        
+        assertFalse(Op.on("69-9").exec(FnString
+                .isBigDecimal(DecimalPoint.CAN_BE_POINT_OR_COMMA)).get().booleanValue()); 
+        
     }
 }
 
