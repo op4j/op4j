@@ -2829,8 +2829,8 @@ public final class FnFloat {
         
         @Override
         protected Float nullAsNullExecute(final Float input, final ExecCtx ctx) throws Exception {
-            return Float.valueOf(BigDecimal.valueOf(input.floatValue())
-                    .remainder(BigDecimal.valueOf(this.divisor.floatValue())).floatValue());
+            return Float.valueOf(BigDecimal.valueOf(input.doubleValue())
+                    .remainder(BigDecimal.valueOf(this.divisor.doubleValue())).floatValue());
         }   
     }
 	

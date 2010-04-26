@@ -97,7 +97,10 @@ public class AssortedTests extends TestCase {
 		List<String> aResult = new ArrayList<String>();
 		data1.addAll(data2);
 		for (String string : data1) {
-			if (!StringUtils.contains("a", string)) {
+		    if (string == null) {
+		        continue;
+		    }
+			if (StringUtils.contains("a", string)) {
 				aResult.add(string);
 			}
 		}		
@@ -909,21 +912,20 @@ public class AssortedTests extends TestCase {
     
     @Test
     public void test60() throws Exception {
-        Float b = Float.valueOf(56756710);
-        Float c = Float.valueOf(-3856799);
-        
-        assertEquals(Op.on(c).exec(FnFloat.module(b.intValue())).get(),
-                Float.valueOf(BigInteger.valueOf(c.longValue())
-                        .mod(BigInteger.valueOf(b.longValue())).floatValue()));
-        assertEquals(Op.on(c).exec(FnFloat.remainder(b.intValue())).get(),
-                Float.valueOf(BigInteger.valueOf(c.longValue())
-                        .remainder(BigInteger.valueOf(b.longValue())).floatValue()));
+        Float b = Float.valueOf(56756710.34f);
+        Float c = Float.valueOf(-3856799.134f);
+        assertEquals(Op.on(c).exec(FnFloat.remainder(b.floatValue())).get(),
+                Float.valueOf(BigDecimal.valueOf(c.doubleValue())
+                        .remainder(BigDecimal.valueOf(b.doubleValue())).floatValue()));
+        assertEquals(Op.on(c).exec(FnFloat.remainder(b.floatValue())).get(),
+                Float.valueOf(BigDecimal.valueOf(c.doubleValue())
+                        .remainder(BigDecimal.valueOf(b.doubleValue())).floatValue()));
         assertEquals(Op.on(c).exec(FnFloat.remainder(b)).get(),
-                Float.valueOf(BigInteger.valueOf(c.longValue())
-                        .remainder(BigInteger.valueOf(b.longValue())).floatValue()));
-        assertNotSame(Op.on(c).exec(FnFloat.remainder(b.intValue())).get(),
-                Float.valueOf(BigInteger.valueOf(c.longValue())
-                        .mod(BigInteger.valueOf(b.longValue())).floatValue()));        
+                Float.valueOf(BigDecimal.valueOf(c.doubleValue())
+                        .remainder(BigDecimal.valueOf(b.doubleValue())).floatValue()));
+        assertNotSame(Op.on(c).exec(FnFloat.remainder(b.doubleValue())).get(),
+                Float.valueOf(BigDecimal.valueOf(c.doubleValue())
+                        .remainder(BigDecimal.valueOf(b.doubleValue())).floatValue()));        
     }
     
     @Test
