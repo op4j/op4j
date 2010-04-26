@@ -479,7 +479,7 @@ public class FnListOf<T> {
 
     
     
-    static final class RemoveAllFalse<T> extends FnCollection.RemoveAllTrue<T, List<T>> {
+    static final class RemoveAllFalse<T> extends FnCollection.RemoveAllFalse<T, List<T>> {
 
         RemoveAllFalse(final IFunction<? super T,Boolean> eval) {
             super(eval);

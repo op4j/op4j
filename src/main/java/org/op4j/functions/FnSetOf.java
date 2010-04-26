@@ -462,7 +462,7 @@ public class FnSetOf<T> {
 
     
     
-    static final class RemoveAllFalse<T> extends FnCollection.RemoveAllTrue<T, Set<T>> {
+    static final class RemoveAllFalse<T> extends FnCollection.RemoveAllFalse<T, Set<T>> {
 
         RemoveAllFalse(final IFunction<? super T,Boolean> eval) {
             super(eval);
