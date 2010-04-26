@@ -23,6 +23,8 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.math.RoundingMode;
 import java.nio.charset.Charset;
+import java.text.ParseException;
+import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -2586,7 +2588,16 @@ public final class FnString {
             // parsing the string into the new calendar object
             final Calendar calendar = 
                 DateUtils.truncate(Calendar.getInstance(), Calendar.YEAR);
-            calendar.setTime(this.simpleDateFormat.parse(object));
+            
+            //It uses ParsePosition to make sure the whole 
+            //string has been converted into a number
+            ParsePosition pp = new ParsePosition(0);
+            Date date = this.simpleDateFormat.parse(object, pp);
+            if (pp.getIndex() != object.length()) {
+                throw new ParseException("The whole input String does not represent a valid Date", 
+                        pp.getIndex());
+            }            
+            calendar.setTime(date);
             return calendar;
         }
         
@@ -2635,7 +2646,16 @@ public final class FnString {
             // parsing the string into the new calendar object
             final Calendar calendar = 
                 DateUtils.truncate(Calendar.getInstance(), Calendar.YEAR);
-            calendar.setTime(this.simpleDateFormat.parse(object));
+            
+            //It uses ParsePosition to make sure the whole 
+            //string has been converted into a number
+            ParsePosition pp = new ParsePosition(0);
+            Date date = this.simpleDateFormat.parse(object, pp);
+            if (pp.getIndex() != object.length()) {
+                throw new ParseException("The whole input String does not represent a valid Date", 
+                        pp.getIndex());
+            }            
+            calendar.setTime(date);
             return calendar.getTime();
         }
         
