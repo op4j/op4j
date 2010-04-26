@@ -526,7 +526,7 @@ public class FnSetOf<T> {
 
     
     
-    static final class RemoveAllNotNullAndFalse<T> extends FnCollection.RemoveAllNotNullAndTrue<T, Set<T>> {
+    static final class RemoveAllNotNullAndFalse<T> extends FnCollection.RemoveAllNotNullAndFalse<T, Set<T>> {
 
         RemoveAllNotNullAndFalse(final IFunction<? super T,Boolean> eval) {
             super(eval);
@@ -558,7 +558,7 @@ public class FnSetOf<T> {
 
     
     
-    static final class RemoveAllNullOrFalse<T> extends FnCollection.RemoveAllNullOrTrue<T, Set<T>> {
+    static final class RemoveAllNullOrFalse<T> extends FnCollection.RemoveAllNullOrFalse<T, Set<T>> {
 
         RemoveAllNullOrFalse(final IFunction<? super T,Boolean> eval) {
             super(eval);

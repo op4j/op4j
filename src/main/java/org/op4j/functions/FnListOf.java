@@ -543,7 +543,7 @@ public class FnListOf<T> {
 
     
     
-    static final class RemoveAllNotNullAndFalse<T> extends FnCollection.RemoveAllNotNullAndTrue<T, List<T>> {
+    static final class RemoveAllNotNullAndFalse<T> extends FnCollection.RemoveAllNotNullAndFalse<T, List<T>> {
 
         RemoveAllNotNullAndFalse(final IFunction<? super T,Boolean> eval) {
             super(eval);
@@ -573,7 +573,7 @@ public class FnListOf<T> {
     
     
     
-    static final class RemoveAllNullOrFalse<T> extends FnCollection.RemoveAllNullOrTrue<T, List<T>> {
+    static final class RemoveAllNullOrFalse<T> extends FnCollection.RemoveAllNullOrFalse<T, List<T>> {
 
         RemoveAllNullOrFalse(final IFunction<? super T,Boolean> eval) {
             super(eval);
