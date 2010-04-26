@@ -128,7 +128,7 @@ final class FnStringAuxNumberConverters {
                         if (pp.getIndex() != string.length()) {
                             throw new ParseException("The whole input String does not represent a valid number", 
                                     pp.getIndex());
-                        }
+                        }                        
                         return fromNumber(number);
                     } catch (final ParseException e) {
                         throw new ExecutionException("Unable to parse: \"" + string + "\"", e);
