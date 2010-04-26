@@ -21,6 +21,8 @@ package org.op4j.functions;
 
 import java.sql.Timestamp;
 import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -1087,7 +1089,16 @@ public final class FnDate {
         if ((safeYear.intValue() >= 0) && (yearAsString.length() <= 2)) {
             final SimpleDateFormat sdf = new SimpleDateFormat("yy");
             final Calendar calendar = Calendar.getInstance();
-            calendar.setTime(sdf.parse(yearAsString));
+          
+            //It uses ParsePosition to make sure the whole 
+            //string has been converted into a number
+            ParsePosition pp = new ParsePosition(0);
+            Date date = sdf.parse(yearAsString, pp);
+            if (pp.getIndex() != yearAsString.length()) {
+                throw new ParseException("The whole input String does not represent a valid Date", 
+                        pp.getIndex());
+            }            
+            calendar.setTime(date);
             safeYear = Integer.valueOf(calendar.get(Calendar.YEAR));
         }      
             
