@@ -983,5 +983,23 @@ public class AssortedTests extends TestCase {
                 .isBigDecimal(DecimalPoint.CAN_BE_POINT_OR_COMMA)).get().booleanValue()); 
         
     }
+    
+    @Test
+    public void test64() throws Exception {
+        try {
+            Op.on("19800805shouldnotwork").exec(FnString.toCalendar("yyyyMMdd")).get(); 
+            fail("Should not reach this point. 19800805shouldnotwork has been converted to Calendar");
+        } catch (ExecutionException e) {
+            // Do nothing            
+        }
+        
+        Calendar result = Op.on("19800805").exec(FnString.toCalendar("yyyyMMdd")).get(); 
+        Calendar correct = Calendar.getInstance();
+        correct.clear();
+        correct.set(Calendar.YEAR, 1980);
+        correct.set(Calendar.MONTH, 7);
+        correct.set(Calendar.DAY_OF_MONTH, 5);        
+        assertEquals(result, correct);
+    }
 }
 
