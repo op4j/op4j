@@ -20,7 +20,6 @@
 package org.op4j.functions;
 
 import java.math.BigDecimal;
-import java.math.BigInteger;
 import java.math.MathContext;
 import java.math.RoundingMode;
 import java.util.Locale;
@@ -2056,160 +2055,6 @@ public final class FnFloat {
         return divideBy(Double.valueOf(divisor), roundingMode);
     }
 
-	/**
-     * <p>
-     * It performs a module operation and returns the value
-     * of (input mod module) which is always positive 
-     * (whereas remainder is not)
-     * </p>
-     * 
-     * @param module the module
-     * @return the result of (input mod module)
-     */
-    public final static Function<Float, Float> module(byte module) {
-        return new Module(BigInteger.valueOf(Byte.valueOf(module).longValue()));
-    }
-    
-    /**
-     * <p>
-     * It performs a module operation and returns the value
-     * of (input mod module) which is always positive 
-     * (whereas remainder is not)
-     * </p>
-     * 
-     * @param module the module
-     * @return the result of (input mod module)
-     */
-    public final static Function<Float, Float> module(short module) {
-        return new Module(BigInteger.valueOf(Short.valueOf(module).longValue()));
-    }
-    
-    /**
-     * <p>
-     * It performs a module operation and returns the value
-     * of (input mod module) which is always positive 
-     * (whereas remainder is not)
-     * </p>
-     * 
-     * @param module the module
-     * @return the result of (input mod module)
-     */
-    public final static Function<Float, Float> module(int module) {
-        return new Module(BigInteger.valueOf(Integer.valueOf(module).longValue()));
-    }
-    
-    /**
-     * <p>
-     * It performs a module operation and returns the value
-     * of (input mod module) which is always positive 
-     * (whereas remainder is not)
-     * </p>
-     * 
-     * @param module the module
-     * @return the result of (input mod module)
-     */
-    public final static Function<Float, Float> module(long module) {
-        return new Module(BigInteger.valueOf(Long.valueOf(module).longValue()));
-    }
-    
-    /**
-     * <p>
-     * It performs a module operation and returns the value
-     * of (input mod module) which is always positive 
-     * (whereas remainder is not)
-     * </p>
-     * 
-     * @param module the module
-     * @return the result of (input mod module)
-     */
-    public final static Function<Float, Float> module(float module) {
-        return new Module(BigInteger.valueOf(Float.valueOf(module).longValue()));
-    }
-    
-    /**
-     * <p>
-     * It performs a module operation and returns the value
-     * of (input mod module) which is always positive 
-     * (whereas remainder is not)
-     * </p>
-     * 
-     * @param module the module
-     * @return the result of (input mod module)
-     */
-    public final static Function<Float, Float> module(Byte module) {
-        return new Module(BigInteger.valueOf(module.longValue()));
-    }
-    
-    /**
-     * <p>
-     * It performs a module operation and returns the value
-     * of (input mod module) which is always positive 
-     * (whereas remainder is not)
-     * </p>
-     * 
-     * @param module the module
-     * @return the result of (input mod module)
-     */
-    public final static Function<Float, Float> module(Short module) {
-        return new Module(BigInteger.valueOf(module.longValue()));
-    }
-    
-    /**
-     * <p>
-     * It performs a module operation and returns the value
-     * of (input mod module) which is always positive 
-     * (whereas remainder is not)
-     * </p>
-     * 
-     * @param module the module
-     * @return the result of (input mod module)
-     */
-    public final static Function<Float, Float> module(Integer module) {
-        return new Module(BigInteger.valueOf(module.longValue()));
-    }
-    
-    /**
-     * <p>
-     * It performs a module operation and returns the value
-     * of (input mod module) which is always positive 
-     * (whereas remainder is not)
-     * </p>
-     * 
-     * @param module the module
-     * @return the result of (input mod module)
-     */
-    public final static Function<Float, Float> module(Long module) {
-        return new Module(BigInteger.valueOf(module.longValue()));
-    }
-    
-    /**
-     * <p>
-     * It performs a module operation and returns the value
-     * of (input mod module) which is always positive 
-     * (whereas remainder is not)
-     * </p>
-     * 
-     * @param module the module
-     * @return the result of (input mod module)
-     */
-    public final static Function<Float, Float> module(Float module) {
-        return new Module(BigInteger.valueOf(module.longValue()));
-    }
-    
-    /**
-     * <p>
-     * It performs a module operation and returns the value
-     * of (input mod module) which is always positive 
-     * (whereas remainder is not)
-     * </p>
-     * 
-     * @param module the module
-     * @return the result of (input mod module)
-     */
-    public final static Function<Float, Float> module(BigInteger module) {
-        return new Module(module);
-    }
-
     /**
      * <p>
      * It divides the target element by the given divisor and returns the
@@ -2973,23 +2818,6 @@ public final class FnFloat {
 		}		
 	}
 	
-	
-	static final class Module extends AbstractNullAsNullFunction<Float, Float> {
-
-        private final BigInteger module;
-        
-        Module(BigInteger module) {
-            super();
-            this.module = module;
-        }
-        
-        @Override
-        protected Float nullAsNullExecute(final Float input, final ExecCtx ctx) throws Exception {
-            return Float.valueOf(BigInteger.valueOf(input.longValue())
-                    .mod(this.module).floatValue());
-        }   
-    }
-	
 	static final class Remainder extends AbstractNullAsNullFunction<Float, Float> {
 
         private final Float divisor;
@@ -3001,8 +2829,8 @@ public final class FnFloat {
         
         @Override
         protected Float nullAsNullExecute(final Float input, final ExecCtx ctx) throws Exception {
-            return Float.valueOf(BigInteger.valueOf(input.longValue())
-                    .remainder(BigInteger.valueOf(this.divisor.longValue())).floatValue());
+            return Float.valueOf(BigDecimal.valueOf(input.floatValue())
+                    .remainder(BigDecimal.valueOf(this.divisor.floatValue())).floatValue());
         }   
     }
 	
