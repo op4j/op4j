@@ -2112,21 +2112,7 @@ public final class FnShort {
     public final static Function<Short, Short> module(long module) {
         return new Module(BigInteger.valueOf(Long.valueOf(module).longValue()));
     }
-    
-    /**
-     * <p>
-     * It performs a module operation and returns the value
-     * of (input mod module) which is always positive 
-     * (whereas remainder is not)
-     * </p>
-     * 
-     * @param module the module
-     * @return the result of (input mod module)
-     */
-    public final static Function<Short, Short> module(float module) {
-        return new Module(BigInteger.valueOf(Float.valueOf(module).longValue()));
-    }
-    
+        
     /**
      * <p>
      * It performs a module operation and returns the value
@@ -2180,20 +2166,6 @@ public final class FnShort {
      * @return the result of (input mod module)
      */
     public final static Function<Short, Short> module(Long module) {
-        return new Module(BigInteger.valueOf(module.longValue()));
-    }
-    
-    /**
-     * <p>
-     * It performs a module operation and returns the value
-     * of (input mod module) which is always positive 
-     * (whereas remainder is not)
-     * </p>
-     * 
-     * @param module the module
-     * @return the result of (input mod module)
-     */
-    public final static Function<Short, Short> module(Float module) {
         return new Module(BigInteger.valueOf(module.longValue()));
     }
     
