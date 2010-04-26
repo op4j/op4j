@@ -558,15 +558,15 @@ public class MathFuncsTest extends TestCase {
 	@SuppressWarnings({ "unchecked", "boxing" })
 	@Test
 	public void testFloat() {
-		
 		// Module
-		List<Float> result = Op.onList(this.data).forEach().exec(FnNumber.toFloat())
-			.exec(FnFloat.module(3)).get();
+	    List<Float> result = Op.onList(this.data).forEach().exec(FnNumber.toFloat())
+			.exec(FnFloat.remainder(3)).get();
 		int index = 0;
 		for(Float aNumber : result) {
 			Float bNumber = null;
 			if (this.data.get(index) != null) {
-				bNumber = Float.valueOf(this.data.get(index).floatValue() % 3);
+				bNumber = Float.valueOf(BigDecimal.valueOf(this.data.get(index).floatValue())
+				        .remainder(BigDecimal.valueOf(3)).floatValue());
 			}			
 			assertEquals(aNumber, bNumber);	
 			index++;
@@ -656,7 +656,8 @@ public class MathFuncsTest extends TestCase {
 		for(Short aNumber : result) {
 			Short bNumber = null;
 			if (this.data.get(index) != null) {
-				bNumber = Short.valueOf(Integer.valueOf(this.data.get(index).shortValue() % 3).shortValue());
+				bNumber = Short.valueOf(BigInteger.valueOf(this.data.get(index).intValue())
+				        .mod(BigInteger.valueOf(Long.valueOf(3))).shortValue());
 			}			
 			assertEquals(aNumber, bNumber);	
 			index++;
