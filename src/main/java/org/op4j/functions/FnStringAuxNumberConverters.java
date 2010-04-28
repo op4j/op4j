@@ -70,9 +70,16 @@ final class FnStringAuxNumberConverters {
         private final DecimalFormat decimalFormat;
         private final DecimalPoint decimalPoint;
 
+        private final DecimalFormat defaultDecimalFormat = (DecimalFormat) NumberFormat.getInstance(Locale.US);
+        
+        private final void configureDefaultDecimalFormat() {
+            this.defaultDecimalFormat.setParseBigDecimal(true);
+            // TODO Set max decimal digits ¿?
+        }
         
         protected ToNumber(final Delegated delegated) {
             super();
+            configureDefaultDecimalFormat();
             this.execType = ExecType.DELEGATED;
             this.decimalFormat = null;
             this.decimalPoint = null;
@@ -80,6 +87,7 @@ final class FnStringAuxNumberConverters {
         
         protected ToNumber() {
             super();
+            configureDefaultDecimalFormat();
             this.execType = ExecType.PARAM_NONE;
             this.decimalFormat = null;
             this.decimalPoint = null;
@@ -88,6 +96,7 @@ final class FnStringAuxNumberConverters {
         protected ToNumber(final Locale locale) {
             super();
             Validate.notNull(locale, "A locale must be specified");
+            configureDefaultDecimalFormat();
             this.execType = ExecType.PARAM_LOCALE;
             this.decimalFormat = (DecimalFormat) NumberFormat.getNumberInstance(locale);
             this.decimalFormat.setParseBigDecimal(true);
@@ -97,6 +106,7 @@ final class FnStringAuxNumberConverters {
         protected ToNumber(final String locale) {
             super();
             Validate.notNull(locale, "A locale must be specified");
+            configureDefaultDecimalFormat();
             this.execType = ExecType.PARAM_LOCALE;
             this.decimalFormat = (DecimalFormat) NumberFormat.getNumberInstance(LocaleUtils.toLocale(locale));
             this.decimalFormat.setParseBigDecimal(true);
@@ -106,6 +116,7 @@ final class FnStringAuxNumberConverters {
         protected ToNumber(final DecimalPoint decimalPoint) {
             super();
             Validate.notNull(decimalPoint, "A decimal point type must be specified");
+            configureDefaultDecimalFormat();
             this.execType = ExecType.PARAM_DECIMALPOINT;
             this.decimalFormat = null;
             this.decimalPoint = decimalPoint;
@@ -148,7 +159,22 @@ final class FnStringAuxNumberConverters {
         
         abstract X numberExecute(final String object);
         
-        abstract X fromString(final String string);
+        final X fromString(final String string) {
+            try {
+                //It uses ParsePosition to make sure the whole 
+                //string has been converted into a number
+                ParsePosition pp = new ParsePosition(0);
+                Number number = this.defaultDecimalFormat.parse(string, pp);
+                if (pp.getIndex() != string.length()) {
+                    throw new ParseException("The whole input String does not represent a valid number", 
+                            pp.getIndex());
+                }    
+                return fromNumber(number);     
+            } catch (final ParseException e) {
+                throw new ExecutionException("Unable to parse: \"" + string + "\"", e);
+            }
+        }
+        
         abstract X fromNumber(final Number number);
 
         
@@ -511,12 +537,6 @@ final class FnStringAuxNumberConverters {
                 return BigDecimal.valueOf(number.doubleValue()); 
             }
         }
-
-        @Override
-        protected BigDecimal fromString(final String string) {
-            return new BigDecimal(string);
-        }
-
     }
     
     
@@ -560,12 +580,6 @@ final class FnStringAuxNumberConverters {
         protected Double fromNumber(final Number number) {
             return Double.valueOf(number.doubleValue());
         }
-
-        @Override
-        protected Double fromString(final String string) {
-            return Double.valueOf(string);
-        }
-
     }
     
     
@@ -609,12 +623,6 @@ final class FnStringAuxNumberConverters {
         protected Float fromNumber(final Number number) {
             return Float.valueOf(number.floatValue());
         }
-
-        @Override
-        protected Float fromString(final String string) {
-            return Float.valueOf(string);
-        }
-
     }
     
     
@@ -673,12 +681,10 @@ final class FnStringAuxNumberConverters {
         }
 
         @Override
-        protected BigInteger fromString(final String string) {
-            return new BigInteger(string);
-        }
-
-        @Override
         protected BigInteger fromString(final String string, final int radix) {
+            // It's directly converted into Long instead of creating a 
+            //BigDecimal and removing the decimal part -if present. This
+            //way, a decimal string is not valid
             return new BigInteger(string, radix);
         }
 
@@ -730,12 +736,10 @@ final class FnStringAuxNumberConverters {
         }
 
         @Override
-        protected Long fromString(final String string) {
-            return Long.valueOf(string);
-        }
-
-        @Override
         protected Long fromString(final String string, final int radix) {
+            // It's directly converted into Long instead of creating a 
+            //BigDecimal and removing the decimal part -if present. This
+            //way, a decimal string is not valid
             return Long.valueOf(string, radix);
         }
 
@@ -787,12 +791,10 @@ final class FnStringAuxNumberConverters {
         }
 
         @Override
-        protected Integer fromString(final String string) {
-            return Integer.valueOf(string);
-        }
-
-        @Override
         protected Integer fromString(final String string, final int radix) {
+            // It's directly converted into Long instead of creating a 
+            //BigDecimal and removing the decimal part -if present. This
+            //way, a decimal string is not valid
             return Integer.valueOf(string, radix);
         }
 
@@ -844,12 +846,10 @@ final class FnStringAuxNumberConverters {
         }
 
         @Override
-        protected Short fromString(final String string) {
-            return Short.valueOf(string);
-        }
-
-        @Override
         protected Short fromString(final String string, final int radix) {
+            // It's directly converted into Long instead of creating a 
+            //BigDecimal and removing the decimal part -if present. This
+            //way, a decimal string is not valid
             return Short.valueOf(string, radix);
         }
 
@@ -901,12 +901,10 @@ final class FnStringAuxNumberConverters {
         }
 
         @Override
-        protected Byte fromString(final String string) {
-            return Byte.valueOf(string);
-        }
-
-        @Override
         protected Byte fromString(final String string, final int radix) {
+            // It's directly converted into Long instead of creating a 
+            //BigDecimal and removing the decimal part -if present. This
+            //way, a decimal string is not valid
             return Byte.valueOf(string, radix);
         }
 

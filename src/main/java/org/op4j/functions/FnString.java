@@ -106,6 +106,13 @@ public final class FnString {
     private static final Function<String, Boolean> IS_NUMERIC_SPACE = new IsNumeric(true);
     
     private static final Function<String, Boolean> IS_BIG_DECIMAL = new IsBigDecimal();
+    private static final Function<String, Boolean> IS_BIG_INTEGER = new IsBigInteger();
+    private static final Function<String, Boolean> IS_DOUBLE = new IsDouble();
+    private static final Function<String, Boolean> IS_FLOAT = new IsFloat();
+    private static final Function<String, Boolean> IS_LONG = new IsLong();
+    private static final Function<String, Boolean> IS_INTEGER = new IsInteger();
+    private static final Function<String, Boolean> IS_SHORT = new IsShort();
+    private static final Function<String, Boolean> IS_BYTE = new IsByte();
     
 	
 	private FnString() {
@@ -299,7 +306,8 @@ public final class FnString {
     /**
      * <p>
      * Converts a String into a BigInteger, using the specified radix for computing the
-     * equivalent number. 
+     * equivalent number. The input String must be a valid BigInteger in the given radix
+     * (i.e. if radix is 5, 34 would be a valid input whereas 34.3 wouldn't as '.' is not allowed) 
      * </p>
      * 
      * @param radix the radix in which the number is supposedly represented in the String
@@ -685,7 +693,8 @@ public final class FnString {
     /**
      * <p>
      * Converts a String into a Long, using the specified radix for computing the
-     * equivalent number. 
+     * equivalent number. The input String must be a valid Long in the given radix
+     * (i.e. if radix is 5, 34 would be a valid input whereas 34.3 wouldn't as '.' is not allowed) 
      * </p>
      * 
      * @param radix the radix in which the number is supposedly represented in the String
@@ -820,7 +829,8 @@ public final class FnString {
     /**
      * <p>
      * Converts a String into an Integer, using the specified radix for computing the
-     * equivalent number. 
+     * equivalent number. The input String must be a valid Integer in the given radix
+     * (i.e. if radix is 5, 34 would be a valid input whereas 34.3 wouldn't as '.' is not allowed) 
      * </p>
      * 
      * @param radix the radix in which the number is supposedly represented in the String
@@ -955,7 +965,8 @@ public final class FnString {
     /**
      * <p>
      * Converts a String into a Short, using the specified radix for computing the
-     * equivalent number. 
+     * equivalent number. The input String must be a valid Short in the given radix
+     * (i.e. if radix is 5, 34 would be a valid input whereas 34.3 wouldn't as '.' is not allowed) 
      * </p>
      * 
      * @param radix the radix in which the number is supposedly represented in the String
@@ -1090,7 +1101,7 @@ public final class FnString {
     /**
      * <p>
      * Converts a String into a Byte, using the specified radix for computing the
-     * equivalent number. 
+     * equivalent number. The input String must be a valid Byte in the given radix
      * </p>
      * 
      * @param radix the radix in which the number is supposedly represented in the String
@@ -2236,36 +2247,501 @@ public final class FnString {
         return new IsBigDecimal(decimalPoint);
     }
 
+    /**
+     * <p>
+     * Returns true if the input {@link String} can be converted into a 
+     * valid {@link BigInteger}. It uses the default configuration from the JVM (en_US)
+     * to check whether the string is valid or not.
+     * </p>
+     * 
+     * @return true if the input {@link String} represents a valid {@link BigInteger}. 
+     * Otherwise, false
+     */
+    public static final Function<String,Boolean> isBigInteger() {
+        return IS_BIG_INTEGER;
+    }
     
     
+    /**
+     * <p>
+     * Returns true if the input {@link String} can be converted into a 
+     * valid {@link BigInteger} in the given {@link Locale}
+     * </p>
+     * 
+     * @param locale the locale defining the way in which the number is written
+     * @return true if the input {@link String} represents a valid {@link BigInteger}. 
+     * Otherwise, false
+     */
+    public static final Function<String,Boolean> isBigInteger(final Locale locale) {
+        return new IsBigInteger(locale);
+    }
+
+    
+    /**
+     * <p>
+     * Returns true if the input {@link String} can be converted into a 
+     * valid {@link BigInteger} in the given {@link Locale} specified as a {@link String}
+     * </p>
+     * 
+     * @param locale the locale defining the way in which the number is written
+     * @return true if the input {@link String} represents a valid {@link BigInteger}. 
+     * Otherwise, false
+     */
+    public static final Function<String,Boolean> isBigInteger(final String locale) {
+        return new IsBigInteger(locale);
+    }
+
+    
+    /**
+     * <p>
+     * Returns true if the input {@link String} can be converted into a 
+     * valid {@link BigInteger} using the specified decimal point
+     * configuration ({@link DecimalPoint}). 
+     * </p>
+     * 
+     * @param decimalPoint the decimal point being used by the String
+     * @return true if the input {@link String} represents a valid {@link BigInteger}. 
+     * Otherwise, false
+     */
+    public static final Function<String,Boolean> isBigInteger(final DecimalPoint decimalPoint) {
+        return new IsBigInteger(decimalPoint);
+    }
+    
+    /**
+     * <p>
+     * Returns true if the input {@link String} can be converted into a 
+     * valid {@link BigInteger} in the specified radix. It uses the default
+     * configuration to check the {@link String}
+     * </p>
+     * 
+     * @param decimalPoint the decimal point being used by the String
+     * @return true if the input {@link String} represents a valid {@link BigInteger}. 
+     * Otherwise, false
+     */
+    public static final Function<String,Boolean> isBigInteger(final int radix) {
+        return new IsBigInteger(radix);
+    }
+        
+    /**
+     * <p>
+     * Returns true if the input {@link String} can be converted into a 
+     * valid {@link Double}. It uses the default configuration from the JVM (en_US)
+     * to check whether the string is valid or not.
+     * </p>
+     * 
+     * @return true if the input {@link String} represents a valid {@link Double}. 
+     * Otherwise, false
+     */
+    public static final Function<String,Boolean> isDouble() {
+        return IS_DOUBLE;
+    }
     
     
+    /**
+     * <p>
+     * Returns true if the input {@link String} can be converted into a 
+     * valid {@link Double} in the given {@link Locale}
+     * </p>
+     * 
+     * @param locale the locale defining the way in which the number is written
+     * @return true if the input {@link String} represents a valid {@link Double}. 
+     * Otherwise, false
+     */
+    public static final Function<String,Boolean> isDouble(final Locale locale) {
+        return new IsDouble(locale);
+    }
+
+    
+    /**
+     * <p>
+     * Returns true if the input {@link String} can be converted into a 
+     * valid {@link Double} in the given {@link Locale} specified as a {@link String}
+     * </p>
+     * 
+     * @param locale the locale defining the way in which the number is written
+     * @return true if the input {@link String} represents a valid {@link Double}. 
+     * Otherwise, false
+     */
+    public static final Function<String,Boolean> isDouble(final String locale) {
+        return new IsDouble(locale);
+    }
+
+    
+    /**
+     * <p>
+     * Returns true if the input {@link String} can be converted into a 
+     * valid {@link Double} using the specified decimal point
+     * configuration ({@link DecimalPoint}). 
+     * </p>
+     * 
+     * @param decimalPoint the decimal point being used by the String
+     * @return true if the input {@link String} represents a valid {@link Double}. 
+     * Otherwise, false
+     */
+    public static final Function<String,Boolean> isDouble(final DecimalPoint decimalPoint) {
+        return new IsDouble(decimalPoint);
+    }
+    
+    /**
+     * <p>
+     * Returns true if the input {@link String} can be converted into a 
+     * valid {@link Float}. It uses the default configuration from the JVM (en_US)
+     * to check whether the string is valid or not.
+     * </p>
+     * 
+     * @return true if the input {@link String} represents a valid {@link Float}. 
+     * Otherwise, false
+     */
+    public static final Function<String,Boolean> isFloat() {
+        return IS_FLOAT;
+    }
     
     
+    /**
+     * <p>
+     * Returns true if the input {@link String} can be converted into a 
+     * valid {@link Float} in the given {@link Locale}
+     * </p>
+     * 
+     * @param locale the locale defining the way in which the number is written
+     * @return true if the input {@link String} represents a valid {@link Float}. 
+     * Otherwise, false
+     */
+    public static final Function<String,Boolean> isFloat(final Locale locale) {
+        return new IsFloat(locale);
+    }
+
+    
+    /**
+     * <p>
+     * Returns true if the input {@link String} can be converted into a 
+     * valid {@link Float} in the given {@link Locale} specified as a {@link String}
+     * </p>
+     * 
+     * @param locale the locale defining the way in which the number is written
+     * @return true if the input {@link String} represents a valid {@link Float}. 
+     * Otherwise, false
+     */
+    public static final Function<String,Boolean> isFloat(final String locale) {
+        return new IsFloat(locale);
+    }
+
+    
+    /**
+     * <p>
+     * Returns true if the input {@link String} can be converted into a 
+     * valid {@link Float} using the specified decimal point
+     * configuration ({@link DecimalPoint}). 
+     * </p>
+     * 
+     * @param decimalPoint the decimal point being used by the String
+     * @return true if the input {@link String} represents a valid {@link Float}. 
+     * Otherwise, false
+     */
+    public static final Function<String,Boolean> isFloat(final DecimalPoint decimalPoint) {
+        return new IsFloat(decimalPoint);
+    }
+    
+    /**
+     * <p>
+     * Returns true if the input {@link String} can be converted into a 
+     * valid {@link Long}. It uses the default configuration from the JVM (en_US)
+     * to check whether the string is valid or not.
+     * </p>
+     * 
+     * @return true if the input {@link String} represents a valid {@link Long}. 
+     * Otherwise, false
+     */
+    public static final Function<String,Boolean> isLong() {
+        return IS_LONG;
+    }
     
     
+    /**
+     * <p>
+     * Returns true if the input {@link String} can be converted into a 
+     * valid {@link Long} in the given {@link Locale}
+     * </p>
+     * 
+     * @param locale the locale defining the way in which the number is written
+     * @return true if the input {@link String} represents a valid {@link Long}. 
+     * Otherwise, false
+     */
+    public static final Function<String,Boolean> isLong(final Locale locale) {
+        return new IsLong(locale);
+    }
+
+    
+    /**
+     * <p>
+     * Returns true if the input {@link String} can be converted into a 
+     * valid {@link Long} in the given {@link Locale} specified as a {@link String}
+     * </p>
+     * 
+     * @param locale the locale defining the way in which the number is written
+     * @return true if the input {@link String} represents a valid {@link Long}. 
+     * Otherwise, false
+     */
+    public static final Function<String,Boolean> isLong(final String locale) {
+        return new IsLong(locale);
+    }
+
+    
+    /**
+     * <p>
+     * Returns true if the input {@link String} can be converted into a 
+     * valid {@link Long} using the specified decimal point
+     * configuration ({@link DecimalPoint}). 
+     * </p>
+     * 
+     * @param decimalPoint the decimal point being used by the String
+     * @return true if the input {@link String} represents a valid {@link Long}. 
+     * Otherwise, false
+     */
+    public static final Function<String,Boolean> isLong(final DecimalPoint decimalPoint) {
+        return new IsLong(decimalPoint);
+    }
+    
+    /**
+     * <p>
+     * Returns true if the input {@link String} can be converted into a 
+     * valid {@link Long} in the specified radix. It uses the default
+     * configuration to check the {@link String}
+     * </p>
+     * 
+     * @param decimalPoint the decimal point being used by the String
+     * @return true if the input {@link String} represents a valid {@link Long}. 
+     * Otherwise, false
+     */
+    public static final Function<String,Boolean> isLong(final int radix) {
+        return new IsLong(radix);
+    }
+    
+    /**
+     * <p>
+     * Returns true if the input {@link String} can be converted into a 
+     * valid {@link Integer}. It uses the default configuration from the JVM (en_US)
+     * to check whether the string is valid or not.
+     * </p>
+     * 
+     * @return true if the input {@link String} represents a valid {@link Integer}. 
+     * Otherwise, false
+     */
+    public static final Function<String,Boolean> isInteger() {
+        return IS_INTEGER;
+    }
     
     
+    /**
+     * <p>
+     * Returns true if the input {@link String} can be converted into a 
+     * valid {@link Integer} in the given {@link Locale}
+     * </p>
+     * 
+     * @param locale the locale defining the way in which the number is written
+     * @return true if the input {@link String} represents a valid {@link Integer}. 
+     * Otherwise, false
+     */
+    public static final Function<String,Boolean> isInteger(final Locale locale) {
+        return new IsInteger(locale);
+    }
+
+    
+    /**
+     * <p>
+     * Returns true if the input {@link String} can be converted into a 
+     * valid {@link Integer} in the given {@link Locale} specified as a {@link String}
+     * </p>
+     * 
+     * @param locale the locale defining the way in which the number is written
+     * @return true if the input {@link String} represents a valid {@link Integer}. 
+     * Otherwise, false
+     */
+    public static final Function<String,Boolean> isInteger(final String locale) {
+        return new IsInteger(locale);
+    }
+
+    
+    /**
+     * <p>
+     * Returns true if the input {@link String} can be converted into a 
+     * valid {@link Integer} using the specified decimal point
+     * configuration ({@link DecimalPoint}). 
+     * </p>
+     * 
+     * @param decimalPoint the decimal point being used by the String
+     * @return true if the input {@link String} represents a valid {@link Integer}. 
+     * Otherwise, false
+     */
+    public static final Function<String,Boolean> isInteger(final DecimalPoint decimalPoint) {
+        return new IsInteger(decimalPoint);
+    }
+    
+    /**
+     * <p>
+     * Returns true if the input {@link String} can be converted into a 
+     * valid {@link Integer} in the specified radix. It uses the default
+     * configuration to check the {@link String}
+     * </p>
+     * 
+     * @param decimalPoint the decimal point being used by the String
+     * @return true if the input {@link String} represents a valid {@link Integer}. 
+     * Otherwise, false
+     */
+    public static final Function<String,Boolean> isInteger(final int radix) {
+        return new IsInteger(radix);
+    }
     
     
+    /**
+     * <p>
+     * Returns true if the input {@link String} can be converted into a 
+     * valid {@link Short}. It uses the default configuration from the JVM (en_US)
+     * to check whether the string is valid or not.
+     * </p>
+     * 
+     * @return true if the input {@link String} represents a valid {@link Short}. 
+     * Otherwise, false
+     */
+    public static final Function<String,Boolean> isShort() {
+        return IS_SHORT;
+    }
     
     
+    /**
+     * <p>
+     * Returns true if the input {@link String} can be converted into a 
+     * valid {@link Short} in the given {@link Locale}
+     * </p>
+     * 
+     * @param locale the locale defining the way in which the number is written
+     * @return true if the input {@link String} represents a valid {@link Short}. 
+     * Otherwise, false
+     */
+    public static final Function<String,Boolean> isShort(final Locale locale) {
+        return new IsShort(locale);
+    }
+
+    
+    /**
+     * <p>
+     * Returns true if the input {@link String} can be converted into a 
+     * valid {@link Short} in the given {@link Locale} specified as a {@link String}
+     * </p>
+     * 
+     * @param locale the locale defining the way in which the number is written
+     * @return true if the input {@link String} represents a valid {@link Short}. 
+     * Otherwise, false
+     */
+    public static final Function<String,Boolean> isShort(final String locale) {
+        return new IsShort(locale);
+    }
+
+    
+    /**
+     * <p>
+     * Returns true if the input {@link String} can be converted into a 
+     * valid {@link Short} using the specified decimal point
+     * configuration ({@link DecimalPoint}). 
+     * </p>
+     * 
+     * @param decimalPoint the decimal point being used by the String
+     * @return true if the input {@link String} represents a valid {@link Short}. 
+     * Otherwise, false
+     */
+    public static final Function<String,Boolean> isShort(final DecimalPoint decimalPoint) {
+        return new IsShort(decimalPoint);
+    }
+    
+    /**
+     * <p>
+     * Returns true if the input {@link String} can be converted into a 
+     * valid {@link Short} in the specified radix. It uses the default
+     * configuration to check the {@link String}
+     * </p>
+     * 
+     * @param decimalPoint the decimal point being used by the String
+     * @return true if the input {@link String} represents a valid {@link Short}. 
+     * Otherwise, false
+     */
+    public static final Function<String,Boolean> isShort(final int radix) {
+        return new IsShort(radix);
+    }
+    
+    /**
+     * <p>
+     * Returns true if the input {@link String} can be converted into a 
+     * valid {@link Byte}. It uses the default configuration from the JVM (en_US)
+     * to check whether the string is valid or not.
+     * </p>
+     * 
+     * @return true if the input {@link String} represents a valid {@link Byte}. 
+     * Otherwise, false
+     */
+    public static final Function<String,Boolean> isByte() {
+        return IS_BYTE;
+    }
     
     
+    /**
+     * <p>
+     * Returns true if the input {@link String} can be converted into a 
+     * valid {@link Byte} in the given {@link Locale}
+     * </p>
+     * 
+     * @param locale the locale defining the way in which the number is written
+     * @return true if the input {@link String} represents a valid {@link Byte}. 
+     * Otherwise, false
+     */
+    public static final Function<String,Boolean> isByte(final Locale locale) {
+        return new IsByte(locale);
+    }
+
     
+    /**
+     * <p>
+     * Returns true if the input {@link String} can be converted into a 
+     * valid {@link Byte} in the given {@link Locale} specified as a {@link String}
+     * </p>
+     * 
+     * @param locale the locale defining the way in which the number is written
+     * @return true if the input {@link String} represents a valid {@link Byte}. 
+     * Otherwise, false
+     */
+    public static final Function<String,Boolean> isByte(final String locale) {
+        return new IsByte(locale);
+    }
+
     
+    /**
+     * <p>
+     * Returns true if the input {@link String} can be converted into a 
+     * valid {@link Byte} using the specified decimal point
+     * configuration ({@link DecimalPoint}). 
+     * </p>
+     * 
+     * @param decimalPoint the decimal point being used by the String
+     * @return true if the input {@link String} represents a valid {@link Byte}. 
+     * Otherwise, false
+     */
+    public static final Function<String,Boolean> isByte(final DecimalPoint decimalPoint) {
+        return new IsByte(decimalPoint);
+    }
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    /**
+     * <p>
+     * Returns true if the input {@link String} can be converted into a 
+     * valid {@link Byte} in the specified radix. It uses the default
+     * configuration to check the {@link String}
+     * </p>
+     * 
+     * @param decimalPoint the decimal point being used by the String
+     * @return true if the input {@link String} represents a valid {@link Byte}. 
+     * Otherwise, false
+     */
+    public static final Function<String,Boolean> isByte(final int radix) {
+        return new IsByte(radix);
+    }
     
     
 	/**
@@ -3215,6 +3691,512 @@ public final class FnString {
             if (this.decimalPoint != null) {
                 try {
                     Op.on(input).exec(FnString.toBigDecimal(this.decimalPoint)).get();
+                    return Boolean.TRUE;
+                } catch (ExecutionException e) {
+                    return Boolean.FALSE;
+                }
+            }   
+            return Boolean.FALSE;
+        }
+    }
+    
+    static final class IsBigInteger extends Function<String,Boolean> {
+        
+        final Locale locale;
+        final DecimalPoint decimalPoint;
+        final Integer radix;
+        
+        public IsBigInteger() {
+            super();
+            this.locale = null;
+            this.decimalPoint = null;
+            this.radix = null;
+        }
+        
+        public IsBigInteger(Locale locale) {
+            super();
+            this.locale = locale;
+            this.decimalPoint = null;
+            this.radix = null;
+        }
+        
+        public IsBigInteger(String locale) {
+            super();
+            this.locale = LocaleUtils.toLocale(locale);
+            this.decimalPoint = null;
+            this.radix = null;
+        }
+        
+        public IsBigInteger(DecimalPoint decimalPoint) {
+            super();
+            this.locale = null;
+            this.decimalPoint = decimalPoint;
+            this.radix = null;
+        }
+        
+        public IsBigInteger(int radix) {
+            super();
+            this.locale = null;
+            this.decimalPoint = null;
+            this.radix = Integer.valueOf(radix);
+        }
+        
+        public Boolean execute(String input, ExecCtx ctx) throws Exception {
+            if (this.locale == null && this.decimalPoint == null) {
+                if (this.radix != null) {
+                    try {
+                        Op.on(input).exec(FnString.toBigInteger(this.radix.intValue())).get();
+                        return Boolean.TRUE;
+                    } catch (ExecutionException e) {
+                        return Boolean.FALSE;
+                    } 
+                }
+                try {
+                    Op.on(input).exec(FnString.toBigInteger()).get();
+                    return Boolean.TRUE;
+                } catch (ExecutionException e) {
+                    return Boolean.FALSE;
+                }
+            }
+            if (this.locale != null) {
+                try {
+                    Op.on(input).exec(FnString.toBigInteger(this.locale)).get();
+                    return Boolean.TRUE;
+                } catch (ExecutionException e) {
+                    return Boolean.FALSE;
+                }
+            }
+            if (this.decimalPoint != null) {
+                try {
+                    Op.on(input).exec(FnString.toBigInteger(this.decimalPoint)).get();
+                    return Boolean.TRUE;
+                } catch (ExecutionException e) {
+                    return Boolean.FALSE;
+                }
+            }   
+            return Boolean.FALSE;
+        }
+    }
+    
+    static final class IsDouble extends Function<String,Boolean> {
+        
+        final Locale locale;
+        final DecimalPoint decimalPoint;
+        
+        public IsDouble() {
+            super();
+            this.locale = null;
+            this.decimalPoint = null;
+        }
+        
+        public IsDouble(Locale locale) {
+            super();
+            this.locale = locale;
+            this.decimalPoint = null;
+        }
+        
+        public IsDouble(String locale) {
+            super();
+            this.locale = LocaleUtils.toLocale(locale);
+            this.decimalPoint = null;
+        }
+        
+        public IsDouble(DecimalPoint decimalPoint) {
+            super();
+            this.locale = null;
+            this.decimalPoint = decimalPoint;
+        }
+        
+        public Boolean execute(String input, ExecCtx ctx) throws Exception {
+            if (this.locale == null && this.decimalPoint == null) {
+                try {
+                    Op.on(input).exec(FnString.toDouble()).get();
+                    return Boolean.TRUE;
+                } catch (ExecutionException e) {
+                    return Boolean.FALSE;
+                }
+            }
+            if (this.locale != null) {
+                try {
+                    Op.on(input).exec(FnString.toDouble(this.locale)).get();
+                    return Boolean.TRUE;
+                } catch (ExecutionException e) {
+                    return Boolean.FALSE;
+                }
+            }
+            if (this.decimalPoint != null) {
+                try {
+                    Op.on(input).exec(FnString.toDouble(this.decimalPoint)).get();
+                    return Boolean.TRUE;
+                } catch (ExecutionException e) {
+                    return Boolean.FALSE;
+                }
+            }   
+            return Boolean.FALSE;
+        }
+    }
+    
+    static final class IsFloat extends Function<String,Boolean> {
+        
+        final Locale locale;
+        final DecimalPoint decimalPoint;
+        
+        public IsFloat() {
+            super();
+            this.locale = null;
+            this.decimalPoint = null;
+        }
+        
+        public IsFloat(Locale locale) {
+            super();
+            this.locale = locale;
+            this.decimalPoint = null;
+        }
+        
+        public IsFloat(String locale) {
+            super();
+            this.locale = LocaleUtils.toLocale(locale);
+            this.decimalPoint = null;
+        }
+        
+        public IsFloat(DecimalPoint decimalPoint) {
+            super();
+            this.locale = null;
+            this.decimalPoint = decimalPoint;
+        }
+        
+        public Boolean execute(String input, ExecCtx ctx) throws Exception {
+            if (this.locale == null && this.decimalPoint == null) {
+                try {
+                    Op.on(input).exec(FnString.toFloat()).get();
+                    return Boolean.TRUE;
+                } catch (ExecutionException e) {
+                    return Boolean.FALSE;
+                }
+            }
+            if (this.locale != null) {
+                try {
+                    Op.on(input).exec(FnString.toFloat(this.locale)).get();
+                    return Boolean.TRUE;
+                } catch (ExecutionException e) {
+                    return Boolean.FALSE;
+                }
+            }
+            if (this.decimalPoint != null) {
+                try {
+                    Op.on(input).exec(FnString.toFloat(this.decimalPoint)).get();
+                    return Boolean.TRUE;
+                } catch (ExecutionException e) {
+                    return Boolean.FALSE;
+                }
+            }   
+            return Boolean.FALSE;
+        }
+    }
+    
+    static final class IsLong extends Function<String,Boolean> {
+        
+        final Locale locale;
+        final DecimalPoint decimalPoint;
+        final Integer radix;
+        
+        public IsLong() {
+            super();
+            this.locale = null;
+            this.decimalPoint = null;
+            this.radix = null;
+        }
+        
+        public IsLong(Locale locale) {
+            super();
+            this.locale = locale;
+            this.decimalPoint = null;
+            this.radix = null;
+        }
+        
+        public IsLong(String locale) {
+            super();
+            this.locale = LocaleUtils.toLocale(locale);
+            this.decimalPoint = null;
+            this.radix = null;
+        }
+        
+        public IsLong(DecimalPoint decimalPoint) {
+            super();
+            this.locale = null;
+            this.decimalPoint = decimalPoint;
+            this.radix = null;
+        }
+        
+        public IsLong(int radix) {
+            super();
+            this.locale = null;
+            this.decimalPoint = null;
+            this.radix = Integer.valueOf(radix);
+        }
+        
+        public Boolean execute(String input, ExecCtx ctx) throws Exception {
+            if (this.locale == null && this.decimalPoint == null) {
+                if (this.radix != null) {
+                    try {
+                        Op.on(input).exec(FnString.toLong(this.radix.intValue())).get();
+                        return Boolean.TRUE;
+                    } catch (ExecutionException e) {
+                        return Boolean.FALSE;
+                    } 
+                }
+                try {
+                    Op.on(input).exec(FnString.toLong()).get();
+                    return Boolean.TRUE;
+                } catch (ExecutionException e) {
+                    return Boolean.FALSE;
+                }
+            }
+            if (this.locale != null) {
+                try {
+                    Op.on(input).exec(FnString.toLong(this.locale)).get();
+                    return Boolean.TRUE;
+                } catch (ExecutionException e) {
+                    return Boolean.FALSE;
+                }
+            }
+            if (this.decimalPoint != null) {
+                try {
+                    Op.on(input).exec(FnString.toLong(this.decimalPoint)).get();
+                    return Boolean.TRUE;
+                } catch (ExecutionException e) {
+                    return Boolean.FALSE;
+                }
+            }   
+            return Boolean.FALSE;
+        }
+    }
+    
+    static final class IsInteger extends Function<String,Boolean> {
+        
+        final Locale locale;
+        final DecimalPoint decimalPoint;
+        final Integer radix;
+        
+        public IsInteger() {
+            super();
+            this.locale = null;
+            this.decimalPoint = null;
+            this.radix = null;
+        }
+        
+        public IsInteger(Locale locale) {
+            super();
+            this.locale = locale;
+            this.decimalPoint = null;
+            this.radix = null;
+        }
+        
+        public IsInteger(String locale) {
+            super();
+            this.locale = LocaleUtils.toLocale(locale);
+            this.decimalPoint = null;
+            this.radix = null;
+        }
+        
+        public IsInteger(DecimalPoint decimalPoint) {
+            super();
+            this.locale = null;
+            this.decimalPoint = decimalPoint;
+            this.radix = null;
+        }
+        
+        public IsInteger(int radix) {
+            super();
+            this.locale = null;
+            this.decimalPoint = null;
+            this.radix = Integer.valueOf(radix);
+        }
+        
+        public Boolean execute(String input, ExecCtx ctx) throws Exception {
+            if (this.locale == null && this.decimalPoint == null) {
+                if (this.radix != null) {
+                    try {
+                        Op.on(input).exec(FnString.toInteger(this.radix.intValue())).get();
+                        return Boolean.TRUE;
+                    } catch (ExecutionException e) {
+                        return Boolean.FALSE;
+                    } 
+                }
+                try {
+                    Op.on(input).exec(FnString.toInteger()).get();
+                    return Boolean.TRUE;
+                } catch (ExecutionException e) {
+                    return Boolean.FALSE;
+                }
+            }
+            if (this.locale != null) {
+                try {
+                    Op.on(input).exec(FnString.toInteger(this.locale)).get();
+                    return Boolean.TRUE;
+                } catch (ExecutionException e) {
+                    return Boolean.FALSE;
+                }
+            }
+            if (this.decimalPoint != null) {
+                try {
+                    Op.on(input).exec(FnString.toInteger(this.decimalPoint)).get();
+                    return Boolean.TRUE;
+                } catch (ExecutionException e) {
+                    return Boolean.FALSE;
+                }
+            }   
+            return Boolean.FALSE;
+        }
+    }
+    
+    static final class IsShort extends Function<String,Boolean> {
+        
+        final Locale locale;
+        final DecimalPoint decimalPoint;
+        final Integer radix;
+        
+        public IsShort() {
+            super();
+            this.locale = null;
+            this.decimalPoint = null;
+            this.radix = null;
+        }
+        
+        public IsShort(Locale locale) {
+            super();
+            this.locale = locale;
+            this.decimalPoint = null;
+            this.radix = null;
+        }
+        
+        public IsShort(String locale) {
+            super();
+            this.locale = LocaleUtils.toLocale(locale);
+            this.decimalPoint = null;
+            this.radix = null;
+        }
+        
+        public IsShort(DecimalPoint decimalPoint) {
+            super();
+            this.locale = null;
+            this.decimalPoint = decimalPoint;
+            this.radix = null;
+        }
+        
+        public IsShort(int radix) {
+            super();
+            this.locale = null;
+            this.decimalPoint = null;
+            this.radix = Integer.valueOf(radix);
+        }
+        
+        public Boolean execute(String input, ExecCtx ctx) throws Exception {
+            if (this.locale == null && this.decimalPoint == null) {
+                if (this.radix != null) {
+                    try {
+                        Op.on(input).exec(FnString.toShort(this.radix.intValue())).get();
+                        return Boolean.TRUE;
+                    } catch (ExecutionException e) {
+                        return Boolean.FALSE;
+                    } 
+                }
+                try {
+                    Op.on(input).exec(FnString.toShort()).get();
+                    return Boolean.TRUE;
+                } catch (ExecutionException e) {
+                    return Boolean.FALSE;
+                }
+            }
+            if (this.locale != null) {
+                try {
+                    Op.on(input).exec(FnString.toShort(this.locale)).get();
+                    return Boolean.TRUE;
+                } catch (ExecutionException e) {
+                    return Boolean.FALSE;
+                }
+            }
+            if (this.decimalPoint != null) {
+                try {
+                    Op.on(input).exec(FnString.toShort(this.decimalPoint)).get();
+                    return Boolean.TRUE;
+                } catch (ExecutionException e) {
+                    return Boolean.FALSE;
+                }
+            }   
+            return Boolean.FALSE;
+        }
+    }
+    
+    static final class IsByte extends Function<String,Boolean> {
+        
+        final Locale locale;
+        final DecimalPoint decimalPoint;
+        final Integer radix;
+        
+        public IsByte() {
+            super();
+            this.locale = null;
+            this.decimalPoint = null;
+            this.radix = null;
+        }
+        
+        public IsByte(Locale locale) {
+            super();
+            this.locale = locale;
+            this.decimalPoint = null;
+            this.radix = null;
+        }
+        
+        public IsByte(String locale) {
+            super();
+            this.locale = LocaleUtils.toLocale(locale);
+            this.decimalPoint = null;
+            this.radix = null;
+        }
+        
+        public IsByte(DecimalPoint decimalPoint) {
+            super();
+            this.locale = null;
+            this.decimalPoint = decimalPoint;
+            this.radix = null;
+        }
+        
+        public IsByte(int radix) {
+            super();
+            this.locale = null;
+            this.decimalPoint = null;
+            this.radix = Integer.valueOf(radix);
+        }
+        
+        public Boolean execute(String input, ExecCtx ctx) throws Exception {
+            if (this.locale == null && this.decimalPoint == null) {
+                if (this.radix != null) {
+                    try {
+                        Op.on(input).exec(FnString.toByte(this.radix.intValue())).get();
+                        return Boolean.TRUE;
+                    } catch (ExecutionException e) {
+                        return Boolean.FALSE;
+                    } 
+                }
+                try {
+                    Op.on(input).exec(FnString.toByte()).get();
+                    return Boolean.TRUE;
+                } catch (ExecutionException e) {
+                    return Boolean.FALSE;
+                }
+            }
+            if (this.locale != null) {
+                try {
+                    Op.on(input).exec(FnString.toByte(this.locale)).get();
+                    return Boolean.TRUE;
+                } catch (ExecutionException e) {
+                    return Boolean.FALSE;
+                }
+            }
+            if (this.decimalPoint != null) {
+                try {
+                    Op.on(input).exec(FnString.toByte(this.decimalPoint)).get();
                     return Boolean.TRUE;
                 } catch (ExecutionException e) {
                     return Boolean.FALSE;
