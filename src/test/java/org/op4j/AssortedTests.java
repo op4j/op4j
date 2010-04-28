@@ -5,12 +5,15 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.math.RoundingMode;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 
@@ -955,8 +958,8 @@ public class AssortedTests extends TestCase {
     @Test
     public void test63() throws Exception {
         assertFalse(Op.on("67e").exec(FnString.isBigDecimal()).get().booleanValue());        
-        assertTrue(Op.on("67.5").exec(FnString.isBigDecimal()).get().booleanValue());  
-        assertTrue(Op.on("6997.89").exec(FnString.isBigDecimal()).get().booleanValue());
+        assertTrue(Op.on("67.5").exec(FnString.isBigDecimal(Locale.ENGLISH)).get().booleanValue());  
+        assertTrue(Op.on("6997.89").exec(FnString.isBigDecimal(Locale.ENGLISH)).get().booleanValue());
         assertTrue(Op.on("6,8989898989898989898989898989898989898989898").exec(FnString
                 .isBigDecimal(LocaleUtils.toLocale("es"))).get().booleanValue());
                 
@@ -1003,5 +1006,601 @@ public class AssortedTests extends TestCase {
         correct.set(Calendar.DAY_OF_MONTH, 5);        
         assertEquals(result, correct);
     }
+    
+    @Test
+    public void test65() throws Exception {
+
+        DecimalFormat nf = (DecimalFormat) NumberFormat.getInstance(Locale.US);
+        nf.setParseBigDecimal(true);
+        
+        assertFalse(Op.on("67e").exec(FnString.isBigInteger()).get().booleanValue());        
+        try {
+            Op.on("67e").exec(FnString.toBigInteger()).get();
+            fail("Value was not expected to be converted into a BigInteger");
+        } catch (ExecutionException e) {
+            // Do nothing
+        }
+        
+        assertTrue(Op.on("67.5").exec(FnString.isBigInteger(Locale.ENGLISH)).get().booleanValue());  
+        assertEquals(Op.on("67.5").exec(FnString.toBigInteger(Locale.ENGLISH)).get(),
+                BigInteger.valueOf(nf.parse("67.5").longValue()));  
+                
+        assertTrue(Op.on("6997.89").exec(FnString.isBigInteger(Locale.ENGLISH)).get().booleanValue());
+        assertEquals(Op.on("6997.89").exec(FnString.toBigInteger(Locale.ENGLISH)).get(),
+                BigInteger.valueOf(nf.parse("6997.89").longValue()));  
+        
+        assertFalse(Op.on("6.7,5").exec(FnString.isBigInteger(Locale.ENGLISH)).get().booleanValue());  
+        try {
+            Op.on("6.7,5").exec(FnString.toBigInteger(Locale.ENGLISH)).get();
+            fail("Value was not expected to be converted into a BigInteger");
+        } catch (ExecutionException e) {
+            // Do nothing
+        } 
+        
+        assertTrue(Op.on("6,8989898989898989898989898989898989898989898").exec(FnString
+                .isBigInteger(LocaleUtils.toLocale("es"))).get().booleanValue());
+        assertEquals(Op.on("6,8989898989898989898989898989898989898989898").exec(FnString
+                .toBigInteger(LocaleUtils.toLocale("es"))).get(),
+                BigInteger.valueOf(nf.parse("6.8989898989898989898989898989898989898989898").longValue()));  
+                
+        assertFalse(Op.on("6,9.9.7.89fgfd").exec(FnString
+                .isBigInteger(LocaleUtils.toLocale("es"))).get().booleanValue());
+        try {
+            Op.on("6,9.9.7.89fgfd").exec(FnString
+                    .toBigInteger(LocaleUtils.toLocale("es"))).get();
+            fail("Value was not expected to be converted into a BigInteger");
+        } catch (ExecutionException e) {
+            // Do nothing
+        } 
+        
+        assertTrue(Op.on("6.9.97,89").exec(FnString
+                .isBigInteger(LocaleUtils.toLocale("es"))).get().booleanValue());
+        assertEquals(Op.on("6.9.97,89").exec(FnString
+                .toBigInteger(LocaleUtils.toLocale("es"))).get(),
+                BigInteger.valueOf(nf.parse("6,9,97.89").longValue()));  
+        
+        assertFalse(Op.on("6,997.89").exec(FnString
+                .isBigInteger(LocaleUtils.toLocale("es"))).get().booleanValue());
+        try {
+            Op.on("6,997.89").exec(FnString
+                    .toBigInteger(LocaleUtils.toLocale("es"))).get();
+            fail("Value was not expected to be converted into a BigInteger");
+        } catch (ExecutionException e) {
+            // Do nothing
+        } 
+        
+        assertTrue(Op.on("6.997,89").exec(FnString
+                .isBigInteger(LocaleUtils.toLocale("es"))).get().booleanValue());
+        assertEquals(Op.on("6.997,89").exec(FnString
+                .toBigInteger(LocaleUtils.toLocale("es"))).get(),
+                BigInteger.valueOf(nf.parse("6,997.89").longValue()));  
+        
+        assertTrue(Op.on("6.9.9.7,89").exec(FnString
+                .isBigInteger(LocaleUtils.toLocale("es"))).get().booleanValue()); 
+        assertEquals(Op.on("6.9.9.7,89").exec(FnString
+                .toBigInteger(LocaleUtils.toLocale("es"))).get(),
+                BigInteger.valueOf(nf.parse("6,9,9,7.89").longValue()));  
+                   
+        //
+        
+        assertFalse(Op.on("67e").exec(FnString.isBigDecimal()).get().booleanValue());        
+        try {
+            Op.on("67e").exec(FnString.toBigDecimal()).get();
+            fail("Value was not expected to be converted into a BigDecimal");
+        } catch (ExecutionException e) {
+            // Do nothing
+        }
+                
+        assertTrue(Op.on("67.5").exec(FnString.isBigDecimal(Locale.ENGLISH)).get().booleanValue());  
+        assertEquals(Op.on("67.5").exec(FnString.toBigDecimal(Locale.ENGLISH)).get(),
+                BigDecimal.valueOf(nf.parse("67.5").doubleValue()));  
+                
+        assertTrue(Op.on("6997.89").exec(FnString.isBigDecimal(Locale.ENGLISH)).get().booleanValue());
+        assertEquals(Op.on("6997.89").exec(FnString.toBigDecimal(Locale.ENGLISH)).get(),
+                BigDecimal.valueOf(nf.parse("6997.89").doubleValue()));  
+        
+        assertFalse(Op.on("6.7,5").exec(FnString.isBigDecimal(Locale.ENGLISH)).get().booleanValue());  
+        try {
+            Op.on("6.7,5").exec(FnString.toBigDecimal(Locale.ENGLISH)).get();
+            fail("Value was not expected to be converted into a BigDecimal");
+        } catch (ExecutionException e) {
+            // Do nothing
+        } 
+        
+        assertTrue(Op.on("6,8989898989898989898989898989898989898989898").exec(FnString
+                .isBigDecimal(LocaleUtils.toLocale("es"))).get().booleanValue());
+        assertEquals(Op.on("6,8989898989898989898989898989898989898989898").exec(FnString
+                .toBigDecimal(LocaleUtils.toLocale("es"))).get(),
+                nf.parse("6.8989898989898989898989898989898989898989898"));  
+                
+        assertFalse(Op.on("6,9.9.7.89fgfd").exec(FnString
+                .isBigDecimal(LocaleUtils.toLocale("es"))).get().booleanValue());
+        try {
+            Op.on("6,9.9.7.89fgfd").exec(FnString
+                    .toBigDecimal(LocaleUtils.toLocale("es"))).get();
+            fail("Value was not expected to be converted into a BigDecimal");
+        } catch (ExecutionException e) {
+            // Do nothing
+        } 
+        
+        assertTrue(Op.on("6.9.97,89").exec(FnString
+                .isBigDecimal(LocaleUtils.toLocale("es"))).get().booleanValue());
+        assertEquals(Op.on("6.9.97,89").exec(FnString
+                .toBigDecimal(LocaleUtils.toLocale("es"))).get(),
+                BigDecimal.valueOf(nf.parse("6,9,97.89").doubleValue()));  
+        
+        assertFalse(Op.on("6,997.89").exec(FnString
+                .isBigDecimal(LocaleUtils.toLocale("es"))).get().booleanValue());
+        try {
+            Op.on("6,997.89").exec(FnString
+                    .toBigDecimal(LocaleUtils.toLocale("es"))).get();
+            fail("Value was not expected to be converted into a BigDecimal");
+        } catch (ExecutionException e) {
+            // Do nothing
+        } 
+        
+        assertTrue(Op.on("6.997,89").exec(FnString
+                .isBigDecimal(LocaleUtils.toLocale("es"))).get().booleanValue());
+        assertEquals(Op.on("6.997,89").exec(FnString
+                .toBigDecimal(LocaleUtils.toLocale("es"))).get(),
+                BigDecimal.valueOf(nf.parse("6,997.89").doubleValue()));  
+        
+        assertTrue(Op.on("6.9.9.7,89").exec(FnString
+                .isBigDecimal(LocaleUtils.toLocale("es"))).get().booleanValue()); 
+        assertEquals(Op.on("6.9.9.7,89").exec(FnString
+                .toBigDecimal(LocaleUtils.toLocale("es"))).get(),
+                BigDecimal.valueOf(nf.parse("6,9,9,7.89").doubleValue())); 
+        
+//
+        
+        assertFalse(Op.on("67e").exec(FnString.isDouble()).get().booleanValue());        
+        try {
+            Op.on("67e").exec(FnString.toDouble()).get();
+            fail("Value was not expected to be converted into a Double");
+        } catch (ExecutionException e) {
+            // Do nothing
+        }
+                
+        assertTrue(Op.on("67.5").exec(FnString.isDouble(Locale.ENGLISH)).get().booleanValue());  
+        assertEquals(Op.on("67.5").exec(FnString.toDouble(Locale.ENGLISH)).get(),
+                Double.valueOf(nf.parse("67.5").doubleValue()));  
+                
+        assertTrue(Op.on("6997.89").exec(FnString.isDouble(Locale.ENGLISH)).get().booleanValue());
+        assertEquals(Op.on("6997.89").exec(FnString.toDouble(Locale.ENGLISH)).get(),
+                Double.valueOf(nf.parse("6997.89").doubleValue()));  
+        
+        assertFalse(Op.on("6.7,5").exec(FnString.isDouble(Locale.ENGLISH)).get().booleanValue());  
+        try {
+            Op.on("6.7,5").exec(FnString.toDouble(Locale.ENGLISH)).get();
+            fail("Value was not expected to be converted into a Double");
+        } catch (ExecutionException e) {
+            // Do nothing
+        } 
+        
+        assertTrue(Op.on("6,8989898989898989898989898989898989898989898").exec(FnString
+                .isDouble(LocaleUtils.toLocale("es"))).get().booleanValue());
+        assertEquals(Op.on("6,8989898989898989898989898989898989898989898").exec(FnString
+                .toDouble(LocaleUtils.toLocale("es"))).get(),
+                Double.valueOf(nf.parse("6.8989898989898989898989898989898989898989898").doubleValue()));  
+                
+        assertFalse(Op.on("6,9.9.7.89fgfd").exec(FnString
+                .isDouble(LocaleUtils.toLocale("es"))).get().booleanValue());
+        try {
+            Op.on("6,9.9.7.89fgfd").exec(FnString
+                    .toDouble(LocaleUtils.toLocale("es"))).get();
+            fail("Value was not expected to be converted into a Double");
+        } catch (ExecutionException e) {
+            // Do nothing
+        } 
+        
+        assertTrue(Op.on("6.9.97,89").exec(FnString
+                .isDouble(LocaleUtils.toLocale("es"))).get().booleanValue());
+        assertEquals(Op.on("6.9.97,89").exec(FnString
+                .toDouble(LocaleUtils.toLocale("es"))).get(),
+                Double.valueOf(nf.parse("6,9,97.89").doubleValue()));  
+        
+        assertFalse(Op.on("6,997.89").exec(FnString
+                .isDouble(LocaleUtils.toLocale("es"))).get().booleanValue());
+        try {
+            Op.on("6,997.89").exec(FnString
+                    .toDouble(LocaleUtils.toLocale("es"))).get();
+            fail("Value was not expected to be converted into a Double");
+        } catch (ExecutionException e) {
+            // Do nothing
+        } 
+        
+        assertTrue(Op.on("6.997,89").exec(FnString
+                .isDouble(LocaleUtils.toLocale("es"))).get().booleanValue());
+        assertEquals(Op.on("6.997,89").exec(FnString
+                .toDouble(LocaleUtils.toLocale("es"))).get(),
+                Double.valueOf(nf.parse("6,997.89").doubleValue()));  
+        
+        assertTrue(Op.on("6.9.9.7,89").exec(FnString
+                .isDouble(LocaleUtils.toLocale("es"))).get().booleanValue()); 
+        assertEquals(Op.on("6.9.9.7,89").exec(FnString
+                .toDouble(LocaleUtils.toLocale("es"))).get(),
+                Double.valueOf(nf.parse("6,9,9,7.89").doubleValue()));  
+        
+//
+        
+        assertFalse(Op.on("67e").exec(FnString.isFloat()).get().booleanValue());        
+        try {
+            Op.on("67e").exec(FnString.toFloat()).get();
+            fail("Value was not expected to be converted into a Float");
+        } catch (ExecutionException e) {
+            // Do nothing
+        }
+                
+        assertTrue(Op.on("67.5").exec(FnString.isFloat(Locale.ENGLISH)).get().booleanValue());  
+        assertEquals(Op.on("67.5").exec(FnString.toFloat(Locale.ENGLISH)).get(),
+                Float.valueOf(nf.parse("67.5").floatValue()));  
+                
+        assertTrue(Op.on("6997.89").exec(FnString.isFloat(Locale.ENGLISH)).get().booleanValue());
+        assertEquals(Op.on("6997.89").exec(FnString.toFloat(Locale.ENGLISH)).get(),
+                Float.valueOf(nf.parse("6997.89").floatValue()));  
+        
+        assertFalse(Op.on("6.7,5").exec(FnString.isFloat(Locale.ENGLISH)).get().booleanValue());  
+        try {
+            Op.on("6.7,5").exec(FnString.toFloat(Locale.ENGLISH)).get();
+            fail("Value was not expected to be converted into a Float");
+        } catch (ExecutionException e) {
+            // Do nothing
+        } 
+        
+        assertTrue(Op.on("6,8989898989898989898989898989898989898989898").exec(FnString
+                .isFloat(LocaleUtils.toLocale("es"))).get().booleanValue());
+        assertEquals(Op.on("6,8989898989898989898989898989898989898989898").exec(FnString
+                .toFloat(LocaleUtils.toLocale("es"))).get(),
+                Float.valueOf(nf.parse("6.8989898989898989898989898989898989898989898").floatValue()));  
+                
+        assertFalse(Op.on("6,9.9.7.89fgfd").exec(FnString
+                .isFloat(LocaleUtils.toLocale("es"))).get().booleanValue());
+        try {
+            Op.on("6,9.9.7.89fgfd").exec(FnString
+                    .toFloat(LocaleUtils.toLocale("es"))).get();
+            fail("Value was not expected to be converted into a Float");
+        } catch (ExecutionException e) {
+            // Do nothing
+        } 
+        
+        assertTrue(Op.on("6.9.97,89").exec(FnString
+                .isFloat(LocaleUtils.toLocale("es"))).get().booleanValue());
+        assertEquals(Op.on("6.9.97,89").exec(FnString
+                .toFloat(LocaleUtils.toLocale("es"))).get(),
+                Float.valueOf(nf.parse("6,9,97.89").floatValue()));  
+        
+        assertFalse(Op.on("6,997.89").exec(FnString
+                .isFloat(LocaleUtils.toLocale("es"))).get().booleanValue());
+        try {
+            Op.on("6,997.89").exec(FnString
+                    .toFloat(LocaleUtils.toLocale("es"))).get();
+            fail("Value was not expected to be converted into a Float");
+        } catch (ExecutionException e) {
+            // Do nothing
+        } 
+        
+        assertTrue(Op.on("6.997,89").exec(FnString
+                .isFloat(LocaleUtils.toLocale("es"))).get().booleanValue());
+        assertEquals(Op.on("6.997,89").exec(FnString
+                .toFloat(LocaleUtils.toLocale("es"))).get(),
+                Float.valueOf(nf.parse("6,997.89").floatValue()));  
+        
+        assertTrue(Op.on("6.9.9.7,89").exec(FnString
+                .isFloat(LocaleUtils.toLocale("es"))).get().booleanValue()); 
+        assertEquals(Op.on("6.9.9.7,89").exec(FnString
+                .toFloat(LocaleUtils.toLocale("es"))).get(),
+                Float.valueOf(nf.parse("6,9,9,7.89").floatValue()));  
+    
+        //
+        
+        
+        assertFalse(Op.on("67e").exec(FnString.isLong()).get().booleanValue());        
+        try {
+            Op.on("67e").exec(FnString.toLong()).get();
+            fail("Value was not expected to be converted into a Long");
+        } catch (ExecutionException e) {
+            // Do nothing
+        }
+                
+        assertTrue(Op.on("67.5").exec(FnString.isLong(Locale.ENGLISH)).get().booleanValue());  
+        assertEquals(Op.on("67.5").exec(FnString.toLong(Locale.ENGLISH)).get(),
+                Long.valueOf(nf.parse("67.5").longValue()));  
+                
+        assertTrue(Op.on("6997.89").exec(FnString.isLong(Locale.ENGLISH)).get().booleanValue());
+        assertEquals(Op.on("6997.89").exec(FnString.toLong(Locale.ENGLISH)).get(),
+                Long.valueOf(nf.parse("6997.89").longValue()));  
+        
+        assertFalse(Op.on("6.7,5").exec(FnString.isLong(Locale.ENGLISH)).get().booleanValue());  
+        try {
+            Op.on("6.7,5").exec(FnString.toLong(Locale.ENGLISH)).get();
+            fail("Value was not expected to be converted into a Long");
+        } catch (ExecutionException e) {
+            // Do nothing
+        } 
+        
+        assertTrue(Op.on("6,8989898989898989898989898989898989898989898").exec(FnString
+                .isLong(LocaleUtils.toLocale("es"))).get().booleanValue());
+        assertEquals(Op.on("6,8989898989898989898989898989898989898989898").exec(FnString
+                .toLong(LocaleUtils.toLocale("es"))).get(),
+                Long.valueOf(nf.parse("6.8989898989898989898989898989898989898989898").longValue()));  
+                
+        assertFalse(Op.on("6,9.9.7.89fgfd").exec(FnString
+                .isLong(LocaleUtils.toLocale("es"))).get().booleanValue());
+        try {
+            Op.on("6,9.9.7.89fgfd").exec(FnString
+                    .toLong(LocaleUtils.toLocale("es"))).get();
+            fail("Value was not expected to be converted into a Long");
+        } catch (ExecutionException e) {
+            // Do nothing
+        } 
+        
+        assertTrue(Op.on("6.9.97,89").exec(FnString
+                .isLong(LocaleUtils.toLocale("es"))).get().booleanValue());
+        assertEquals(Op.on("6.9.97,89").exec(FnString
+                .toLong(LocaleUtils.toLocale("es"))).get(),
+                Long.valueOf(nf.parse("6,9,97.89").longValue()));  
+        
+        assertFalse(Op.on("6,997.89").exec(FnString
+                .isLong(LocaleUtils.toLocale("es"))).get().booleanValue());
+        try {
+            Op.on("6,997.89").exec(FnString
+                    .toLong(LocaleUtils.toLocale("es"))).get();
+            fail("Value was not expected to be converted into a Long");
+        } catch (ExecutionException e) {
+            // Do nothing
+        } 
+        
+        assertTrue(Op.on("6.997,89").exec(FnString
+                .isLong(LocaleUtils.toLocale("es"))).get().booleanValue());
+        assertEquals(Op.on("6.997,89").exec(FnString
+                .toLong(LocaleUtils.toLocale("es"))).get(),
+                Long.valueOf(nf.parse("6,997.89").longValue()));  
+        
+        assertTrue(Op.on("6.9.9.7,89").exec(FnString
+                .isLong(LocaleUtils.toLocale("es"))).get().booleanValue()); 
+        assertEquals(Op.on("6.9.9.7,89").exec(FnString
+                .toLong(LocaleUtils.toLocale("es"))).get(),
+                Long.valueOf(nf.parse("6,9,9,7.89").longValue()));  
+     
+        //
+        
+        
+        assertFalse(Op.on("67e").exec(FnString.isInteger()).get().booleanValue());        
+        try {
+            Op.on("67e").exec(FnString.toInteger()).get();
+            fail("Value was not expected to be converted into an Integer");
+        } catch (ExecutionException e) {
+            // Do nothing
+        }
+                
+        assertTrue(Op.on("67.5").exec(FnString.isInteger(Locale.ENGLISH)).get().booleanValue());  
+        assertEquals(Op.on("67.5").exec(FnString.toInteger(Locale.ENGLISH)).get(),
+                Integer.valueOf(nf.parse("67.5").intValue()));  
+                
+        assertTrue(Op.on("6997.89").exec(FnString.isInteger(Locale.ENGLISH)).get().booleanValue());
+        assertEquals(Op.on("6997.89").exec(FnString.toInteger(Locale.ENGLISH)).get(),
+                Integer.valueOf(nf.parse("6997.89").intValue()));  
+        
+        assertFalse(Op.on("6.7,5").exec(FnString.isInteger(Locale.ENGLISH)).get().booleanValue());  
+        try {
+            Op.on("6.7,5").exec(FnString.toInteger(Locale.ENGLISH)).get();
+            fail("Value was not expected to be converted into an Integer");
+        } catch (ExecutionException e) {
+            // Do nothing
+        } 
+        
+        assertTrue(Op.on("6,8989898989898989898989898989898989898989898").exec(FnString
+                .isInteger(LocaleUtils.toLocale("es"))).get().booleanValue());
+        assertEquals(Op.on("6,8989898989898989898989898989898989898989898").exec(FnString
+                .toInteger(LocaleUtils.toLocale("es"))).get(),
+                Integer.valueOf(nf.parse("6.8989898989898989898989898989898989898989898").intValue()));  
+                
+        assertFalse(Op.on("6,9.9.7.89fgfd").exec(FnString
+                .isInteger(LocaleUtils.toLocale("es"))).get().booleanValue());
+        try {
+            Op.on("6,9.9.7.89fgfd").exec(FnString
+                    .toInteger(LocaleUtils.toLocale("es"))).get();
+            fail("Value was not expected to be converted into an Integer");
+        } catch (ExecutionException e) {
+            // Do nothing
+        } 
+        
+        assertTrue(Op.on("6.9.97,89").exec(FnString
+                .isInteger(LocaleUtils.toLocale("es"))).get().booleanValue());
+        assertEquals(Op.on("6.9.97,89").exec(FnString
+                .toInteger(LocaleUtils.toLocale("es"))).get(),
+                Integer.valueOf(nf.parse("6,9,97.89").intValue()));  
+        
+        assertFalse(Op.on("6,997.89").exec(FnString
+                .isInteger(LocaleUtils.toLocale("es"))).get().booleanValue());
+        try {
+            Op.on("6,997.89").exec(FnString
+                    .toInteger(LocaleUtils.toLocale("es"))).get();
+            fail("Value was not expected to be converted into an Integer");
+        } catch (ExecutionException e) {
+            // Do nothing
+        } 
+        
+        assertTrue(Op.on("6.997,89").exec(FnString
+                .isInteger(LocaleUtils.toLocale("es"))).get().booleanValue());
+        assertEquals(Op.on("6.997,89").exec(FnString
+                .toInteger(LocaleUtils.toLocale("es"))).get(),
+                Integer.valueOf(nf.parse("6,997.89").intValue()));  
+        
+        assertTrue(Op.on("6.9.9.7,89").exec(FnString
+                .isInteger(LocaleUtils.toLocale("es"))).get().booleanValue()); 
+        assertEquals(Op.on("6.9.9.7,89").exec(FnString
+                .toInteger(LocaleUtils.toLocale("es"))).get(),
+                Integer.valueOf(nf.parse("6,9,9,7.89").intValue())); 
+        
+        //
+        
+        assertFalse(Op.on("67e").exec(FnString.isShort()).get().booleanValue());        
+        try {
+            Op.on("67e").exec(FnString.toShort()).get();
+            fail("Value was not expected to be converted into a Short");
+        } catch (ExecutionException e) {
+            // Do nothing
+        }
+                
+        assertTrue(Op.on("67.5").exec(FnString.isShort(Locale.ENGLISH)).get().booleanValue());  
+        assertEquals(Op.on("67.5").exec(FnString.toShort(Locale.ENGLISH)).get(),
+                Short.valueOf(nf.parse("67.5").shortValue()));  
+                
+        assertTrue(Op.on("6997.89").exec(FnString.isShort(Locale.ENGLISH)).get().booleanValue());
+        assertEquals(Op.on("6997.89").exec(FnString.toShort(Locale.ENGLISH)).get(),
+                Short.valueOf(nf.parse("6997.89").shortValue()));  
+        
+        assertFalse(Op.on("6.7,5").exec(FnString.isShort(Locale.ENGLISH)).get().booleanValue());  
+        try {
+            Op.on("6.7,5").exec(FnString.toShort(Locale.ENGLISH)).get();
+            fail("Value was not expected to be converted into a Short");
+        } catch (ExecutionException e) {
+            // Do nothing
+        } 
+        
+        assertTrue(Op.on("6,8989898989898989898989898989898989898989898").exec(FnString
+                .isShort(LocaleUtils.toLocale("es"))).get().booleanValue());
+        assertEquals(Op.on("6,8989898989898989898989898989898989898989898").exec(FnString
+                .toShort(LocaleUtils.toLocale("es"))).get(),
+                Short.valueOf(nf.parse("6.8989898989898989898989898989898989898989898").shortValue()));  
+                
+        assertFalse(Op.on("6,9.9.7.89fgfd").exec(FnString
+                .isShort(LocaleUtils.toLocale("es"))).get().booleanValue());
+        try {
+            Op.on("6,9.9.7.89fgfd").exec(FnString
+                    .toShort(LocaleUtils.toLocale("es"))).get();
+            fail("Value was not expected to be converted into a Short");
+        } catch (ExecutionException e) {
+            // Do nothing
+        } 
+        
+        assertTrue(Op.on("6.9.97,89").exec(FnString
+                .isShort(LocaleUtils.toLocale("es"))).get().booleanValue());
+        assertEquals(Op.on("6.9.97,89").exec(FnString
+                .toShort(LocaleUtils.toLocale("es"))).get(),
+                Short.valueOf(nf.parse("6,9,97.89").shortValue()));  
+        
+        assertFalse(Op.on("6,997.89").exec(FnString
+                .isShort(LocaleUtils.toLocale("es"))).get().booleanValue());
+        try {
+            Op.on("6,997.89").exec(FnString
+                    .toShort(LocaleUtils.toLocale("es"))).get();
+            fail("Value was not expected to be converted into a Short");
+        } catch (ExecutionException e) {
+            // Do nothing
+        } 
+        
+        assertTrue(Op.on("6.997,89").exec(FnString
+                .isShort(LocaleUtils.toLocale("es"))).get().booleanValue());
+        assertEquals(Op.on("6.997,89").exec(FnString
+                .toShort(LocaleUtils.toLocale("es"))).get(),
+                Short.valueOf(nf.parse("6,997.89").shortValue()));  
+        
+        assertTrue(Op.on("6.9.9.7,89").exec(FnString
+                .isShort(LocaleUtils.toLocale("es"))).get().booleanValue()); 
+        assertEquals(Op.on("6.9.9.7,89").exec(FnString
+                .toShort(LocaleUtils.toLocale("es"))).get(),
+                Short.valueOf(nf.parse("6,9,9,7.89").shortValue()));
+        
+        assertTrue(Op.on("688").exec(FnString
+                .isShort(9)).get().booleanValue()); 
+        assertEquals(Op.on("688").exec(FnString
+                .toShort(9)).get(),
+                Short.valueOf("688", 9));
+        
+        assertFalse(Op.on("662.1").exec(FnString
+                .isShort(7)).get().booleanValue());
+        try {
+            Op.on("662.1").exec(FnString
+                    .toShort(7)).get();
+            fail("Value was not expected to be converted into a Short");
+        } catch (ExecutionException e) {
+            // Do nothing
+        } 
+        
+        //
+        
+        
+        assertFalse(Op.on("67e").exec(FnString.isByte()).get().booleanValue());        
+        try {
+            Op.on("67e").exec(FnString.toByte()).get();
+            fail("Value was not expected to be converted into a Byte");
+        } catch (ExecutionException e) {
+            // Do nothing
+        }
+                
+        assertTrue(Op.on("67.5").exec(FnString.isByte(Locale.ENGLISH)).get().booleanValue());  
+        assertEquals(Op.on("67.5").exec(FnString.toByte(Locale.ENGLISH)).get(),
+                Byte.valueOf(nf.parse("67.5").byteValue()));  
+                
+        assertTrue(Op.on("6997.89").exec(FnString.isByte(Locale.ENGLISH)).get().booleanValue());
+        assertEquals(Op.on("6997.89").exec(FnString.toByte(Locale.ENGLISH)).get(),
+                Byte.valueOf(nf.parse("6997.89").byteValue()));  
+        
+        assertFalse(Op.on("6.7,5").exec(FnString.isByte(Locale.ENGLISH)).get().booleanValue());  
+        try {
+            Op.on("6.7,5").exec(FnString.toByte(Locale.ENGLISH)).get();
+            fail("Value was not expected to be converted into a Byte");
+        } catch (ExecutionException e) {
+            // Do nothing
+        } 
+        
+        assertTrue(Op.on("6,8989898989898989898989898989898989898989898").exec(FnString
+                .isByte(LocaleUtils.toLocale("es"))).get().booleanValue());
+        assertEquals(Op.on("6,8989898989898989898989898989898989898989898").exec(FnString
+                .toByte(LocaleUtils.toLocale("es"))).get(),
+                Byte.valueOf(nf.parse("6.8989898989898989898989898989898989898989898").byteValue()));  
+                
+        assertFalse(Op.on("6,9.9.7.89fgfd").exec(FnString
+                .isByte(LocaleUtils.toLocale("es"))).get().booleanValue());
+        try {
+            Op.on("6,9.9.7.89fgfd").exec(FnString
+                    .toByte(LocaleUtils.toLocale("es"))).get();
+            fail("Value was not expected to be converted into a Byte");
+        } catch (ExecutionException e) {
+            // Do nothing
+        } 
+        
+        assertTrue(Op.on("6.9.97,89").exec(FnString
+                .isByte(LocaleUtils.toLocale("es"))).get().booleanValue());
+        assertEquals(Op.on("6.9.97,89").exec(FnString
+                .toByte(LocaleUtils.toLocale("es"))).get(),
+                Byte.valueOf(nf.parse("6,9,97.89").byteValue()));  
+        
+        assertFalse(Op.on("6,997.89").exec(FnString
+                .isByte(LocaleUtils.toLocale("es"))).get().booleanValue());
+        try {
+            Op.on("6,997.89").exec(FnString
+                    .toByte(LocaleUtils.toLocale("es"))).get();
+            fail("Value was not expected to be converted into a Byte");
+        } catch (ExecutionException e) {
+            // Do nothing
+        } 
+        
+        assertTrue(Op.on("6.997,89").exec(FnString
+                .isByte(LocaleUtils.toLocale("es"))).get().booleanValue());
+        assertEquals(Op.on("6.997,89").exec(FnString
+                .toByte(LocaleUtils.toLocale("es"))).get(),
+                Byte.valueOf(nf.parse("6,997.89").byteValue()));  
+        
+        assertTrue(Op.on("6.9.9.7,89").exec(FnString
+                .isByte(LocaleUtils.toLocale("es"))).get().booleanValue()); 
+        assertEquals(Op.on("6.9.9.7,89").exec(FnString
+                .toByte(LocaleUtils.toLocale("es"))).get(),
+                Byte.valueOf(nf.parse("6,9,9,7.89").byteValue()));
+        
+        assertTrue(Op.on("68").exec(FnString
+                .isByte(9)).get().booleanValue()); 
+        assertEquals(Op.on("68").exec(FnString.toByte(9)).get(),
+                Byte.valueOf("68", 9));
+        
+    }
+    
+    @Test
+    public void test66() throws Exception {
+        //TODO i.e Integer not bigger than max_int when calling isInteger
+    }
+        
 }
 
