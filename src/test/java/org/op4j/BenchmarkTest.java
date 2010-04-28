@@ -28,7 +28,6 @@ import org.apache.commons.lang.math.RandomUtils;
 import org.apache.commons.lang.time.StopWatch;
 import org.javaruntype.type.Types;
 import org.junit.Test;
-import org.op4j.functions.Call;
 import org.op4j.functions.FnNumber;
 import org.op4j.functions.FnString;
 import org.op4j.operators.impl.op.array.Level0ArrayOperator;
@@ -53,9 +52,9 @@ public class BenchmarkTest {
 		
 		try {
 			
-			final List<User> users = new ArrayList<User>();
+			final List<String> strings = new ArrayList<String>();
 			for (int i = 0; i < STRUCTURE_SIZE; i++) {
-				users.add(new User());
+			    strings.add(RandomStringUtils.random(20));
 			}
 			
 			final StopWatch stopWatch1 = new StopWatch();
@@ -69,24 +68,24 @@ public class BenchmarkTest {
 				
 				stopWatch1.start();
 				
-                String[] upperNames1 = null; 
+                String[] upper1 = null; 
 				for (int i = 0; i < ITERATIONS; i++) {
-					upperNames1 = 
-						Op.onList(users).forEach().exec(Call.methodForString("getName")).exec(FnString.toUpperCase()).endFor().toArrayOf(Types.STRING).get();
+					upper1 = 
+						Op.onList(strings).forEach().exec(FnString.toUpperCase()).endFor().toArrayOf(Types.STRING).get();
 				}
 				
 				stopWatch1.stop();
 				
 				stopWatch2.start();
 				
-                String[] upperNames2 = null; 
+                String[] upper2 = null; 
 				for (int i = 0; i < ITERATIONS; i++) {
-					List<String> upperNames2List = new ArrayList<String>();
-					for (final User user : users) {
-						upperNames2List.add(user.getName().toUpperCase());
+					List<String> upper2List = new ArrayList<String>();
+					for (final String string : strings) {
+						upper2List.add(string.toUpperCase());
 					}
-					upperNames2 = 
-						upperNames2List.toArray(new String[upperNames2List.size()]);
+					upper2 = 
+						upper2List.toArray(new String[upper2List.size()]);
 				}
 				
 				stopWatch2.stop();
@@ -99,14 +98,14 @@ public class BenchmarkTest {
 				
 				stopWatch1.start();
 				
-                String[] upperNames1 = null; 
+                String[] upper1 = null; 
 				for (int i = 0; i < ITERATIONS; i++) {
-					List<String> upperNames1List = new ArrayList<String>();
-					for (final User user : users) {
-						upperNames1List.add(user.getName().toUpperCase());
+					List<String> upper1List = new ArrayList<String>();
+					for (final String string : strings) {
+						upper1List.add(string.toUpperCase());
 					}
-					upperNames1 = 
-						upperNames1List.toArray(new String[upperNames1List.size()]);
+					upper1 = 
+						upper1List.toArray(new String[upper1List.size()]);
 				}
 				
 				stopWatch1.stop();
@@ -114,10 +113,10 @@ public class BenchmarkTest {
 				
 				stopWatch2.start();
 				
-                String[] upperNames2 = null; 
+                String[] upper2 = null; 
 				for (int i = 0; i < ITERATIONS; i++) {
-				    upperNames2 = 
-						Op.onList(users).forEach().exec(Call.methodForString("getName")).exec(FnString.toUpperCase()).endFor().toArrayOf(Types.STRING).get();
+				    upper2 = 
+						Op.onList(strings).forEach().exec(FnString.toUpperCase()).endFor().toArrayOf(Types.STRING).get();
 				}
 				
 				stopWatch2.stop();
@@ -132,17 +131,17 @@ public class BenchmarkTest {
 			
 			StopWatch op4jWatch = new StopWatch();
 			
-			Level0ListOperator<List<User>,User> op1 = null;
+			Level0ListOperator<List<String>,String> op1 = null;
 			op4jWatch.start();
 			for (int i = 0; i < ITERATIONS; i++) {
-				op1 = Op.onList(users);
+				op1 = Op.onList(strings);
 			}
 			op4jWatch.stop();
 			
 			String time1 = op4jWatch.toString();
 			op4jWatch.reset();
 			
-			Level1ListElementsOperator<List<User>,User> op2 = null;
+			Level1ListElementsOperator<List<String>,String> op2 = null;
 			op4jWatch.start();
 			for (int i = 0; i < ITERATIONS; i++) {
 				op2 = op1.forEach();
@@ -152,54 +151,44 @@ public class BenchmarkTest {
 			String time2 = op4jWatch.toString();
 			op4jWatch.reset();
 			
-			Level1ListElementsOperator<List<User>,String> op3 = null;
+			Level1ListElementsOperator<List<String>,String> op3 = null;
 			op4jWatch.start();
 			for (int i = 0; i < ITERATIONS; i++) {
-				op3 = op2.exec(Call.methodForString("getName"));
+				op3 = op2.exec(FnString.toUpperCase());
 			}
 			op4jWatch.stop();
 			
 			String time3 = op4jWatch.toString();
 			op4jWatch.reset();
 			
-			Level1ListElementsOperator<List<User>,String> op4 = null;
+			Level0ListOperator<List<String>,String> op4 = null;
 			op4jWatch.start();
 			for (int i = 0; i < ITERATIONS; i++) {
-				op4 = op3.exec(FnString.toUpperCase());
+				op4 = op3.endFor();
 			}
 			op4jWatch.stop();
 			
 			String time4 = op4jWatch.toString();
 			op4jWatch.reset();
 			
-			Level0ListOperator<List<User>,String> op5 = null;
+			Level0ArrayOperator<List<String>,String> op5 = null;
 			op4jWatch.start();
 			for (int i = 0; i < ITERATIONS; i++) {
-				op5 = op4.endFor();
+				op5 = op4.toArrayOf(Types.STRING);
 			}
 			op4jWatch.stop();
 			
 			String time5 = op4jWatch.toString();
 			op4jWatch.reset();
-			
-			Level0ArrayOperator<List<User>,String> op6 = null;
-			op4jWatch.start();
-			for (int i = 0; i < ITERATIONS; i++) {
-				op6 = op5.toArrayOf(Types.STRING);
-			}
-			op4jWatch.stop();
-			
-			String time6 = op4jWatch.toString();
-			op4jWatch.reset();
             
-            String[] op7 = null;
+            String[] op6 = null;
             op4jWatch.start();
             for (int i = 0; i < ITERATIONS; i++) {
-                op7 = op6.get();
+                op6 = op5.get();
             }
             op4jWatch.stop();
             
-            String time7 = op4jWatch.toString();
+            String time6 = op4jWatch.toString();
             op4jWatch.reset();
 
 			
@@ -209,7 +198,6 @@ public class BenchmarkTest {
 			System.out.println("Time 04: " + time4);
 			System.out.println("Time 05: " + time5);
 			System.out.println("Time 06: " + time6);
-            System.out.println("Time 07: " + time7);
 			
 			
 		} catch (Exception e) {
@@ -218,27 +206,8 @@ public class BenchmarkTest {
 		
 	}
 	
-	
-	public static class User {
-		
-		private final String name;
-		
-		public User() {
-			super();
-			this.name = RandomStringUtils.randomAlphanumeric(25);
-		}
-
-		public String getName() {
-			return this.name;
-		}
-		
-	}
-
-	
-    
     public static void main(String[] args) {
         (new BenchmarkTest()).test();
     }
-	
 	
 }
