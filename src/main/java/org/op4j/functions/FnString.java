@@ -250,6 +250,7 @@ public final class FnString {
     /**
      * <p>
      * Converts a String into a BigInteger, using the default configuration.
+     * Any fractional part of the input String will be removed. 
      * </p>
      * 
      * @return the resulting BigInteger object
@@ -263,6 +264,7 @@ public final class FnString {
      * <p>
      * Converts a String into a BigInteger, using the specified locale for decimal
      * point and thousands separator configuration.
+     * Any fractional part of the input String will be removed.
      * </p>
      * 
      * @param locale the locale defining the way in which the number was written
@@ -277,7 +279,8 @@ public final class FnString {
      * <p>
      * Converts a String into a BigInteger, using the specified locale for decimal
      * point and thousands separator configuration. Locale is specified as a String
-     * (for example: "en_US", "es_ES", etc.)
+     * (for example: "en_US", "es_ES", etc.).
+     * Any fractional part of the input String will be removed.
      * </p>
      * 
      * @param locale the locale defining the way in which the number was written
@@ -293,6 +296,7 @@ public final class FnString {
      * Converts a String into a BigInteger, using the specified decimal point
      * configuration ({@link DecimalPoint}). The target String should contain no
      * thousand separators.
+     * Any fractional part of the input String will be removed.
      * </p>
      * 
      * @param decimalPoint the decimal point being used by the String
@@ -307,7 +311,7 @@ public final class FnString {
      * <p>
      * Converts a String into a BigInteger, using the specified radix for computing the
      * equivalent number. The input String must be a valid BigInteger in the given radix
-     * (i.e. if radix is 5, 34 would be a valid input whereas 34.3 wouldn't as '.' is not allowed) 
+     * (i.e. if radix is 5, 34 would be a valid input whereas 34.3 wouldn't as '.' is not allowed). 
      * </p>
      * 
      * @param radix the radix in which the number is supposedly represented in the String
@@ -323,6 +327,7 @@ public final class FnString {
      * Converts a String into a BigInteger, using the default configuration
      * for for decimal point and thousands separator. Rounding
      * mode is used for removing the decimal part of the number. 
+     * Any fractional part of the input String will be removed.
      * </p>
      * 
      * @param roundingMode the rounding mode to be used when setting the scale
@@ -339,6 +344,7 @@ public final class FnString {
      * configuration ({@link DecimalPoint}). Rounding mode is used for removing the 
      * decimal part of the number. The target String should contain no
      * thousand separators.
+     * Any fractional part of the input String will be removed.
      * </p>
      * 
      * @param roundingMode the rounding mode to be used when setting the scale
@@ -355,6 +361,7 @@ public final class FnString {
      * Converts a String into a BigInteger, using the specified locale for determining
      * decimal point. Rounding mode is used for removing the 
      * decimal part of the number.
+     * Any fractional part of the input String will be removed.
      * </p>
      * 
      * @param roundingMode the rounding mode to be used when setting the scale
@@ -371,7 +378,8 @@ public final class FnString {
      * Converts a String into a BigInteger, using the specified locale for determining
      * decimal point. Rounding mode is used for removing the 
      * decimal part of the number. Locale is specified as a String
-     * (for example: "en_US", "es_ES", etc.)
+     * (for example: "en_US", "es_ES", etc.).
+     * Any fractional part of the input String will be removed.
      * </p>
      * 
      * @param roundingMode the rounding mode to be used when setting the scale
@@ -386,7 +394,9 @@ public final class FnString {
     /**
      * <p>
      * Converts a String into a Double, using the default configuration
-     * for for decimal point and precision.
+     * for for decimal point and precision. 
+     * The input string must be between 
+     * {@link Double#MIN_VALUE} and {@link Double#MAX_VALUE}
      * </p>
      * 
      * @return the resulting Double object
@@ -399,7 +409,9 @@ public final class FnString {
     /**
      * <p>
      * Converts a String into a Double, using the specified locale for decimal
-     * point and thousands separator configuration.
+     * point and thousands separator configuration. 
+     * The input string must be between 
+     * {@link Double#MIN_VALUE} and {@link Double#MAX_VALUE}
      * </p>
      * 
      * @param locale the locale defining the way in which the number was written
@@ -414,7 +426,8 @@ public final class FnString {
      * <p>
      * Converts a String into a Double, using the specified locale for decimal
      * point and thousands separator configuration. Locale is specified as a String
-     * (for example: "en_US", "es_ES", etc.)
+     * (for example: "en_US", "es_ES", etc.). The input string must be between 
+     * {@link Double#MIN_VALUE} and {@link Double#MAX_VALUE}
      * </p>
      * 
      * @param locale the locale defining the way in which the number was written
@@ -429,7 +442,8 @@ public final class FnString {
      * <p>
      * Converts a String into a Double, using the specified decimal point
      * configuration ({@link DecimalPoint}). The target String should contain no
-     * thousand separators.
+     * thousand separators. The input string must be between 
+     * {@link Double#MIN_VALUE} and {@link Double#MAX_VALUE}
      * </p>
      * 
      * @param decimalPoint the decimal point being used by the String
@@ -445,6 +459,8 @@ public final class FnString {
      * Converts a String into a Double, using the default configuration
      * for for decimal point and thousands separator and establishing the specified scale. Rounding
      * mode is used for setting the scale to the specified value. 
+     * The input string must be between 
+     * {@link Double#MIN_VALUE} and {@link Double#MAX_VALUE}
      * </p>
      * 
      * @param scale the desired scale for the resulting Double object
@@ -459,7 +475,9 @@ public final class FnString {
      * <p>
      * Converts a String into a Double, using the specified locale for decimal
      * point and thousands separator configuration and establishing the specified scale. Rounding
-     * mode is used for setting the scale to the specified value.
+     * mode is used for setting the scale to the specified value. 
+     * The input string must be between 
+     * {@link Double#MIN_VALUE} and {@link Double#MAX_VALUE}
      * </p>
      * 
      * @param scale the desired scale for the resulting Double object
@@ -477,7 +495,9 @@ public final class FnString {
      * Converts a String into a Double, using the specified locale for decimal
      * point and thousands separator configuration and establishing the specified scale. Rounding
      * mode is used for setting the scale to the specified value.  Locale is specified as a String
-     * (for example: "en_US", "es_ES", etc.)
+     * (for example: "en_US", "es_ES", etc.).
+     * The input string must be between 
+     * {@link Double#MIN_VALUE} and {@link Double#MAX_VALUE}
      * </p>
      * 
      * @param scale the desired scale for the resulting Double object
@@ -494,8 +514,9 @@ public final class FnString {
      * <p>
      * Converts a String into a Double, using the specified decimal point
      * configuration ({@link DecimalPoint}) and establishing the specified scale. Rounding
-     * mode is used for setting the scale to the specified value.. The target String should contain no
-     * thousand separators.
+     * mode is used for setting the scale to the specified value.
+     * The input string must be between 
+     * {@link Double#MIN_VALUE} and {@link Double#MAX_VALUE}
      * </p>
      * 
      * @param scale the desired scale for the resulting Double object
@@ -511,7 +532,9 @@ public final class FnString {
     /**
      * <p>
      * Converts a String into a Float, using the default configuration
-     * for for decimal point and precision.
+     * for for decimal point and precision. 
+     * The input string must be between 
+     * {@link Float#MIN_VALUE} and {@link Float#MAX_VALUE}
      * </p>
      * 
      * @return the resulting Float object
@@ -524,7 +547,8 @@ public final class FnString {
     /**
      * <p>
      * Converts a String into a Float, using the specified locale for decimal
-     * point and thousands separator configuration.
+     * point and thousands separator configuration. The input string must be between 
+     * {@link Float#MIN_VALUE} and {@link Float#MAX_VALUE}
      * </p>
      * 
      * @param locale the locale defining the way in which the number was written
@@ -539,7 +563,8 @@ public final class FnString {
      * <p>
      * Converts a String into a Float, using the specified locale for decimal
      * point and thousands separator configuration. Locale is specified as a String
-     * (for example: "en_US", "es_ES", etc.)
+     * (for example: "en_US", "es_ES", etc.). The input string must be between 
+     * {@link Float#MIN_VALUE} and {@link Float#MAX_VALUE}
      * </p>
      * 
      * @param locale the locale defining the way in which the number was written
@@ -554,7 +579,8 @@ public final class FnString {
      * <p>
      * Converts a String into a Float, using the specified decimal point
      * configuration ({@link DecimalPoint}). The target String should contain no
-     * thousand separators.
+     * thousand separators. The input string must be between 
+     * {@link Float#MIN_VALUE} and {@link Float#MAX_VALUE}
      * </p>
      * 
      * @param decimalPoint the decimal point being used by the String
@@ -570,6 +596,8 @@ public final class FnString {
      * Converts a String into a Float, using the default configuration
      * for for decimal point and thousands separator and establishing the specified scale. Rounding
      * mode is used for setting the scale to the specified value. 
+     * The input string must be between 
+     * {@link Float#MIN_VALUE} and {@link Float#MAX_VALUE}
      * </p>
      * 
      * @param scale the desired scale for the resulting Float object
@@ -585,7 +613,9 @@ public final class FnString {
      * <p>
      * Converts a String into a Float, using the specified locale for decimal
      * point and thousands separator configuration and establishing the specified scale. Rounding
-     * mode is used for setting the scale to the specified value.
+     * mode is used for setting the scale to the specified value. 
+     * The input string must be between 
+     * {@link Float#MIN_VALUE} and {@link Float#MAX_VALUE}
      * </p>
      * 
      * @param scale the desired scale for the resulting Float object
@@ -603,7 +633,8 @@ public final class FnString {
      * Converts a String into a Float, using the specified locale for decimal
      * point and thousands separator configuration and establishing the specified scale. Rounding
      * mode is used for setting the scale to the specified value.  Locale is specified as a String
-     * (for example: "en_US", "es_ES", etc.)
+     * (for example: "en_US", "es_ES", etc.). The input string must be between 
+     * {@link Float#MIN_VALUE} and {@link Float#MAX_VALUE}
      * </p>
      * 
      * @param scale the desired scale for the resulting Float object
@@ -621,7 +652,8 @@ public final class FnString {
      * Converts a String into a Float, using the specified decimal point
      * configuration ({@link DecimalPoint}) and establishing the specified scale. Rounding
      * mode is used for setting the scale to the specified value.. The target String should contain no
-     * thousand separators.
+     * thousand separators. The input string must be between 
+     * {@link Float#MIN_VALUE} and {@link Float#MAX_VALUE}
      * </p>
      * 
      * @param scale the desired scale for the resulting Float object
@@ -637,6 +669,8 @@ public final class FnString {
     /**
      * <p>
      * Converts a String into a Long, using the default configuration.
+     * The integer part of the input string must be between 
+     * {@link Long#MIN_VALUE} and {@link Long#MAX_VALUE}
      * </p>
      * 
      * @return the resulting Long object
@@ -649,7 +683,9 @@ public final class FnString {
     /**
      * <p>
      * Converts a String into a Long, using the specified locale for decimal
-     * point and thousands separator configuration.
+     * point and thousands separator configuration. The 
+     * integer part of the input string must be between 
+     * {@link Long#MIN_VALUE} and {@link Long#MAX_VALUE}
      * </p>
      * 
      * @param locale the locale defining the way in which the number was written
@@ -664,7 +700,9 @@ public final class FnString {
      * <p>
      * Converts a String into a Long, using the specified locale for decimal
      * point and thousands separator configuration. Locale is specified as a String
-     * (for example: "en_US", "es_ES", etc.)
+     * (for example: "en_US", "es_ES", etc.). The 
+     * integer part of the input string must be between 
+     * {@link Long#MIN_VALUE} and {@link Long#MAX_VALUE}
      * </p>
      * 
      * @param locale the locale defining the way in which the number was written
@@ -679,7 +717,8 @@ public final class FnString {
      * <p>
      * Converts a String into a Long, using the specified decimal point
      * configuration ({@link DecimalPoint}). The target String should contain no
-     * thousand separators.
+     * thousand separators. The integer part of the input string must be between 
+     * {@link Long#MIN_VALUE} and {@link Long#MAX_VALUE}
      * </p>
      * 
      * @param decimalPoint the decimal point being used by the String
@@ -709,7 +748,9 @@ public final class FnString {
      * <p>
      * Converts a String into a Long, using the default configuration
      * for for decimal point and thousands separator. Rounding
-     * mode is used for removing the decimal part of the number. 
+     * mode is used for removing the decimal part of the number. The 
+     * integer part of the input string must be between 
+     * {@link Long#MIN_VALUE} and {@link Long#MAX_VALUE}
      * </p>
      * 
      * @param roundingMode the rounding mode to be used when setting the scale
@@ -725,7 +766,8 @@ public final class FnString {
      * Converts a String into a Long, using the specified decimal point
      * configuration ({@link DecimalPoint}). Rounding mode is used for removing the 
      * decimal part of the number. The target String should contain no
-     * thousand separators.
+     * thousand separators. The integer part of the input string must be between 
+     * {@link Long#MIN_VALUE} and {@link Long#MAX_VALUE}
      * </p>
      * 
      * @param roundingMode the rounding mode to be used when setting the scale
@@ -741,7 +783,8 @@ public final class FnString {
      * <p>
      * Converts a String into a Long, using the specified locale for determining
      * decimal point. Rounding mode is used for removing the 
-     * decimal part of the number.
+     * decimal part of the number. The integer part of the input string must be between 
+     * {@link Long#MIN_VALUE} and {@link Long#MAX_VALUE}
      * </p>
      * 
      * @param roundingMode the rounding mode to be used when setting the scale
@@ -758,7 +801,9 @@ public final class FnString {
      * Converts a String into a Long, using the specified locale for determining
      * decimal point. Rounding mode is used for removing the 
      * decimal part of the number. Locale is specified as a String
-     * (for example: "en_US", "es_ES", etc.)
+     * (for example: "en_US", "es_ES", etc.). The 
+     * integer part of the input string must be between 
+     * {@link Long#MIN_VALUE} and {@link Long#MAX_VALUE}
      * </p>
      * 
      * @param roundingMode the rounding mode to be used when setting the scale
@@ -772,7 +817,9 @@ public final class FnString {
     
     /**
      * <p>
-     * Converts a String into an Integer, using the default configuration.
+     * Converts a String into an Integer, using the default 
+     * configuration. The integer part of the input string must be between 
+     * {@link Integer#MIN_VALUE} and {@link Integer#MAX_VALUE}
      * </p>
      * 
      * @return the resulting Integer object
@@ -785,7 +832,9 @@ public final class FnString {
     /**
      * <p>
      * Converts a String into an Integer, using the specified locale for decimal
-     * point and thousands separator configuration.
+     * point and thousands separator configuration. The 
+     * integer part of the input string must be between 
+     * {@link Integer#MIN_VALUE} and {@link Integer#MAX_VALUE}
      * </p>
      * 
      * @param locale the locale defining the way in which the number was written
@@ -800,7 +849,9 @@ public final class FnString {
      * <p>
      * Converts a String into an Integer, using the specified locale for decimal
      * point and thousands separator configuration. Locale is specified as a String
-     * (for example: "en_US", "es_ES", etc.)
+     * (for example: "en_US", "es_ES", etc.). The 
+     * integer part of the input string must be between 
+     * {@link Integer#MIN_VALUE} and {@link Integer#MAX_VALUE}
      * </p>
      * 
      * @param locale the locale defining the way in which the number was written
@@ -815,7 +866,8 @@ public final class FnString {
      * <p>
      * Converts a String into an Integer, using the specified decimal point
      * configuration ({@link DecimalPoint}). The target String should contain no
-     * thousand separators.
+     * thousand separators. The integer part of the input string must be between 
+     * {@link Integer#MIN_VALUE} and {@link Integer#MAX_VALUE}
      * </p>
      * 
      * @param decimalPoint the decimal point being used by the String
@@ -845,7 +897,9 @@ public final class FnString {
      * <p>
      * Converts a String into an Integer, using the default configuration
      * for for decimal point and thousands separator. Rounding
-     * mode is used for removing the decimal part of the number. 
+     * mode is used for removing the decimal part of the number. The 
+     * integer part of the input string must be between 
+     * {@link Integer#MIN_VALUE} and {@link Integer#MAX_VALUE}
      * </p>
      * 
      * @param roundingMode the rounding mode to be used when setting the scale
@@ -861,7 +915,8 @@ public final class FnString {
      * Converts a String into an Integer, using the specified decimal point
      * configuration ({@link DecimalPoint}). Rounding mode is used for removing the 
      * decimal part of the number. The target String should contain no
-     * thousand separators.
+     * thousand separators. The integer part of the input string must be between 
+     * {@link Integer#MIN_VALUE} and {@link Integer#MAX_VALUE}
      * </p>
      * 
      * @param roundingMode the rounding mode to be used when setting the scale
@@ -877,7 +932,8 @@ public final class FnString {
      * <p>
      * Converts a String into an Integer, using the specified locale for determining
      * decimal point. Rounding mode is used for removing the 
-     * decimal part of the number.
+     * decimal part of the number. The integer part of the input string must be between 
+     * {@link Integer#MIN_VALUE} and {@link Integer#MAX_VALUE}
      * </p>
      * 
      * @param roundingMode the rounding mode to be used when setting the scale
@@ -894,7 +950,9 @@ public final class FnString {
      * Converts a String into an Integer, using the specified locale for determining
      * decimal point. Rounding mode is used for removing the 
      * decimal part of the number. Locale is specified as a String
-     * (for example: "en_US", "es_ES", etc.)
+     * (for example: "en_US", "es_ES", etc.). The 
+     * integer part of the input string must be between 
+     * {@link Integer#MIN_VALUE} and {@link Integer#MAX_VALUE}
      * </p>
      * 
      * @param roundingMode the rounding mode to be used when setting the scale
@@ -909,6 +967,8 @@ public final class FnString {
     /**
      * <p>
      * Converts a String into a Short, using the default configuration.
+     * The integer part of the input string must be between 
+     * {@link Short#MIN_VALUE} and {@link Short#MAX_VALUE}
      * </p>
      * 
      * @return the resulting Short object
@@ -921,7 +981,9 @@ public final class FnString {
     /**
      * <p>
      * Converts a String into a Short, using the specified locale for decimal
-     * point and thousands separator configuration.
+     * point and thousands separator configuration. The 
+     * integer part of the input string must be between 
+     * {@link Short#MIN_VALUE} and {@link Short#MAX_VALUE}
      * </p>
      * 
      * @param locale the locale defining the way in which the number was written
@@ -936,7 +998,9 @@ public final class FnString {
      * <p>
      * Converts a String into a Short, using the specified locale for decimal
      * point and thousands separator configuration. Locale is specified as a String
-     * (for example: "en_US", "es_ES", etc.)
+     * (for example: "en_US", "es_ES", etc.). The 
+     * integer part of the input string must be between 
+     * {@link Short#MIN_VALUE} and {@link Short#MAX_VALUE}
      * </p>
      * 
      * @param locale the locale defining the way in which the number was written
@@ -951,7 +1015,8 @@ public final class FnString {
      * <p>
      * Converts a String into a Short, using the specified decimal point
      * configuration ({@link DecimalPoint}). The target String should contain no
-     * thousand separators.
+     * thousand separators. The integer part of the input string must be between 
+     * {@link Short#MIN_VALUE} and {@link Short#MAX_VALUE}
      * </p>
      * 
      * @param decimalPoint the decimal point being used by the String
@@ -981,7 +1046,9 @@ public final class FnString {
      * <p>
      * Converts a String into a Short, using the default configuration
      * for for decimal point and thousands separator. Rounding
-     * mode is used for removing the decimal part of the number. 
+     * mode is used for removing the decimal part of the number. The 
+     * integer part of the input string must be between 
+     * {@link Short#MIN_VALUE} and {@link Short#MAX_VALUE}
      * </p>
      * 
      * @param roundingMode the rounding mode to be used when setting the scale
@@ -997,7 +1064,8 @@ public final class FnString {
      * Converts a String into a Short, using the specified decimal point
      * configuration ({@link DecimalPoint}). Rounding mode is used for removing the 
      * decimal part of the number. The target String should contain no
-     * thousand separators.
+     * thousand separators. The integer part of the input string must be between 
+     * {@link Short#MIN_VALUE} and {@link Short#MAX_VALUE}
      * </p>
      * 
      * @param roundingMode the rounding mode to be used when setting the scale
@@ -1013,7 +1081,8 @@ public final class FnString {
      * <p>
      * Converts a String into a Short, using the specified locale for determining
      * decimal point. Rounding mode is used for removing the 
-     * decimal part of the number.
+     * decimal part of the number. The integer part of the input string must be between 
+     * {@link Short#MIN_VALUE} and {@link Short#MAX_VALUE}
      * </p>
      * 
      * @param roundingMode the rounding mode to be used when setting the scale
@@ -1030,7 +1099,9 @@ public final class FnString {
      * Converts a String into a Short, using the specified locale for determining
      * decimal point. Rounding mode is used for removing the 
      * decimal part of the number. Locale is specified as a String
-     * (for example: "en_US", "es_ES", etc.)
+     * (for example: "en_US", "es_ES", etc.). The 
+     * integer part of the input string must be between 
+     * {@link Short#MIN_VALUE} and {@link Short#MAX_VALUE}
      * </p>
      * 
      * @param roundingMode the rounding mode to be used when setting the scale
@@ -1045,6 +1116,9 @@ public final class FnString {
     /**
      * <p>
      * Converts a String into a Byte, using the default configuration.
+     * Any fractional part of the input String will be removed. The 
+     * integer part of the input string must be between 
+     * {@link Byte#MIN_VALUE} and {@link Byte#MAX_VALUE}
      * </p>
      * 
      * @return the resulting Byte object
@@ -1057,7 +1131,9 @@ public final class FnString {
     /**
      * <p>
      * Converts a String into a Byte, using the specified locale for decimal
-     * point and thousands separator configuration.
+     * point and thousands separator configuration. The 
+     * integer part of the input string must be between 
+     * {@link Byte#MIN_VALUE} and {@link Byte#MAX_VALUE}
      * </p>
      * 
      * @param locale the locale defining the way in which the number was written
@@ -1072,7 +1148,9 @@ public final class FnString {
      * <p>
      * Converts a String into a Byte, using the specified locale for decimal
      * point and thousands separator configuration. Locale is specified as a String
-     * (for example: "en_US", "es_ES", etc.)
+     * (for example: "en_US", "es_ES", etc.). The 
+     * integer part of the input string must be between 
+     * {@link Byte#MIN_VALUE} and {@link Byte#MAX_VALUE}
      * </p>
      * 
      * @param locale the locale defining the way in which the number was written
@@ -1087,7 +1165,8 @@ public final class FnString {
      * <p>
      * Converts a String into a Byte, using the specified decimal point
      * configuration ({@link DecimalPoint}). The target String should contain no
-     * thousand separators.
+     * thousand separators. The integer part of the input string must be between 
+     * {@link Byte#MIN_VALUE} and {@link Byte#MAX_VALUE}
      * </p>
      * 
      * @param decimalPoint the decimal point being used by the String
@@ -1116,7 +1195,9 @@ public final class FnString {
      * <p>
      * Converts a String into a Byte, using the default configuration
      * for for decimal point and thousands separator. Rounding
-     * mode is used for removing the decimal part of the number. 
+     * mode is used for removing the decimal part of the number.
+     * The integer part of the input string must be between 
+     * {@link Byte#MIN_VALUE} and {@link Byte#MAX_VALUE} 
      * </p>
      * 
      * @param roundingMode the rounding mode to be used when setting the scale
@@ -1132,7 +1213,8 @@ public final class FnString {
      * Converts a String into a Byte, using the specified decimal point
      * configuration ({@link DecimalPoint}). Rounding mode is used for removing the 
      * decimal part of the number. The target String should contain no
-     * thousand separators.
+     * thousand separators. The integer part of the input string must be between 
+     * {@link Byte#MIN_VALUE} and {@link Byte#MAX_VALUE}
      * </p>
      * 
      * @param roundingMode the rounding mode to be used when setting the scale
@@ -1148,7 +1230,8 @@ public final class FnString {
      * <p>
      * Converts a String into a Byte, using the specified locale for determining
      * decimal point. Rounding mode is used for removing the 
-     * decimal part of the number.
+     * decimal part of the number. The integer part of the input string must be between 
+     * {@link Byte#MIN_VALUE} and {@link Byte#MAX_VALUE}
      * </p>
      * 
      * @param roundingMode the rounding mode to be used when setting the scale
@@ -1165,7 +1248,9 @@ public final class FnString {
      * Converts a String into a Byte, using the specified locale for determining
      * decimal point. Rounding mode is used for removing the 
      * decimal part of the number. Locale is specified as a String
-     * (for example: "en_US", "es_ES", etc.)
+     * (for example: "en_US", "es_ES", etc.). The 
+     * integer part of the input string must be between 
+     * {@link Byte#MIN_VALUE} and {@link Byte#MAX_VALUE}
      * </p>
      * 
      * @param roundingMode the rounding mode to be used when setting the scale
@@ -2327,6 +2412,7 @@ public final class FnString {
      * Returns true if the input {@link String} can be converted into a 
      * valid {@link Double}. It uses the default configuration from the JVM (en_US)
      * to check whether the string is valid or not.
+     * If this method returns false, {@link FnString#toDouble()} will throw an exception if called.
      * </p>
      * 
      * @return true if the input {@link String} represents a valid {@link Double}. 
@@ -2340,7 +2426,8 @@ public final class FnString {
     /**
      * <p>
      * Returns true if the input {@link String} can be converted into a 
-     * valid {@link Double} in the given {@link Locale}
+     * valid {@link Double} in the given {@link Locale}.
+     * If this method returns false, {@link FnString#toDouble(Locale)} will throw an exception if called.
      * </p>
      * 
      * @param locale the locale defining the way in which the number is written
@@ -2355,7 +2442,8 @@ public final class FnString {
     /**
      * <p>
      * Returns true if the input {@link String} can be converted into a 
-     * valid {@link Double} in the given {@link Locale} specified as a {@link String}
+     * valid {@link Double} in the given {@link Locale} specified as a {@link String}.
+     * If this method returns false, {@link FnString#toDouble(String)} will throw an exception if called.
      * </p>
      * 
      * @param locale the locale defining the way in which the number is written
@@ -2372,6 +2460,7 @@ public final class FnString {
      * Returns true if the input {@link String} can be converted into a 
      * valid {@link Double} using the specified decimal point
      * configuration ({@link DecimalPoint}). 
+     * If this method returns false, {@link FnString#toDouble(DecimalPoint)} will throw an exception if called.
      * </p>
      * 
      * @param decimalPoint the decimal point being used by the String
@@ -2387,6 +2476,7 @@ public final class FnString {
      * Returns true if the input {@link String} can be converted into a 
      * valid {@link Float}. It uses the default configuration from the JVM (en_US)
      * to check whether the string is valid or not.
+     * If this method returns false, {@link FnString#isFloat()} will throw an exception if called.
      * </p>
      * 
      * @return true if the input {@link String} represents a valid {@link Float}. 
@@ -2400,7 +2490,8 @@ public final class FnString {
     /**
      * <p>
      * Returns true if the input {@link String} can be converted into a 
-     * valid {@link Float} in the given {@link Locale}
+     * valid {@link Float} in the given {@link Locale}.
+     * If this method returns false, {@link FnString#isFloat(Locale)} will throw an exception if called.
      * </p>
      * 
      * @param locale the locale defining the way in which the number is written
@@ -2415,7 +2506,8 @@ public final class FnString {
     /**
      * <p>
      * Returns true if the input {@link String} can be converted into a 
-     * valid {@link Float} in the given {@link Locale} specified as a {@link String}
+     * valid {@link Float} in the given {@link Locale} specified as a {@link String}.
+     * If this method returns false, {@link FnString#isFloat(String)} will throw an exception if called.
      * </p>
      * 
      * @param locale the locale defining the way in which the number is written
@@ -2432,6 +2524,7 @@ public final class FnString {
      * Returns true if the input {@link String} can be converted into a 
      * valid {@link Float} using the specified decimal point
      * configuration ({@link DecimalPoint}). 
+     * If this method returns false, {@link FnString#isFloat(DecimalPoint)} will throw an exception if called.
      * </p>
      * 
      * @param decimalPoint the decimal point being used by the String
@@ -2447,6 +2540,7 @@ public final class FnString {
      * Returns true if the input {@link String} can be converted into a 
      * valid {@link Long}. It uses the default configuration from the JVM (en_US)
      * to check whether the string is valid or not.
+     * If this method returns false, {@link FnString#isLong()} will throw an exception if called.
      * </p>
      * 
      * @return true if the input {@link String} represents a valid {@link Long}. 
@@ -2460,7 +2554,8 @@ public final class FnString {
     /**
      * <p>
      * Returns true if the input {@link String} can be converted into a 
-     * valid {@link Long} in the given {@link Locale}
+     * valid {@link Long} in the given {@link Locale}.
+     * If this method returns false, {@link FnString#isLong(Locale)} will throw an exception if called.
      * </p>
      * 
      * @param locale the locale defining the way in which the number is written
@@ -2475,7 +2570,8 @@ public final class FnString {
     /**
      * <p>
      * Returns true if the input {@link String} can be converted into a 
-     * valid {@link Long} in the given {@link Locale} specified as a {@link String}
+     * valid {@link Long} in the given {@link Locale} specified as a {@link String}.
+     * If this method returns false, {@link FnString#isLong(String)} will throw an exception if called.
      * </p>
      * 
      * @param locale the locale defining the way in which the number is written
@@ -2492,6 +2588,7 @@ public final class FnString {
      * Returns true if the input {@link String} can be converted into a 
      * valid {@link Long} using the specified decimal point
      * configuration ({@link DecimalPoint}). 
+     * If this method returns false, {@link FnString#isLong(DecimalPoint)} will throw an exception if called.
      * </p>
      * 
      * @param decimalPoint the decimal point being used by the String
@@ -2506,7 +2603,8 @@ public final class FnString {
      * <p>
      * Returns true if the input {@link String} can be converted into a 
      * valid {@link Long} in the specified radix. It uses the default
-     * configuration to check the {@link String}
+     * configuration to check the {@link String}.
+     * If this method returns false, {@link FnString#isLong(int)} will throw an exception if called.
      * </p>
      * 
      * @param decimalPoint the decimal point being used by the String
@@ -2522,6 +2620,7 @@ public final class FnString {
      * Returns true if the input {@link String} can be converted into a 
      * valid {@link Integer}. It uses the default configuration from the JVM (en_US)
      * to check whether the string is valid or not.
+     * If this method returns false, {@link FnString#isInteger()} will throw an exception if called.
      * </p>
      * 
      * @return true if the input {@link String} represents a valid {@link Integer}. 
@@ -2535,7 +2634,8 @@ public final class FnString {
     /**
      * <p>
      * Returns true if the input {@link String} can be converted into a 
-     * valid {@link Integer} in the given {@link Locale}
+     * valid {@link Integer} in the given {@link Locale}.
+     * If this method returns false, {@link FnString#isInteger(Locale)} will throw an exception if called.
      * </p>
      * 
      * @param locale the locale defining the way in which the number is written
@@ -2550,7 +2650,8 @@ public final class FnString {
     /**
      * <p>
      * Returns true if the input {@link String} can be converted into a 
-     * valid {@link Integer} in the given {@link Locale} specified as a {@link String}
+     * valid {@link Integer} in the given {@link Locale} specified as a {@link String}.
+     * If this method returns false, {@link FnString#isInteger(String)} will throw an exception if called.
      * </p>
      * 
      * @param locale the locale defining the way in which the number is written
@@ -2567,6 +2668,7 @@ public final class FnString {
      * Returns true if the input {@link String} can be converted into a 
      * valid {@link Integer} using the specified decimal point
      * configuration ({@link DecimalPoint}). 
+     * If this method returns false, {@link FnString#isInteger(DecimalPoint)} will throw an exception if called.
      * </p>
      * 
      * @param decimalPoint the decimal point being used by the String
@@ -2581,7 +2683,8 @@ public final class FnString {
      * <p>
      * Returns true if the input {@link String} can be converted into a 
      * valid {@link Integer} in the specified radix. It uses the default
-     * configuration to check the {@link String}
+     * configuration to check the {@link String}.
+     * If this method returns false, {@link FnString#isInteger(int)} will throw an exception if called.
      * </p>
      * 
      * @param decimalPoint the decimal point being used by the String
@@ -2598,6 +2701,7 @@ public final class FnString {
      * Returns true if the input {@link String} can be converted into a 
      * valid {@link Short}. It uses the default configuration from the JVM (en_US)
      * to check whether the string is valid or not.
+     * If this method returns false, {@link FnString#isShort()} will throw an exception if called.
      * </p>
      * 
      * @return true if the input {@link String} represents a valid {@link Short}. 
@@ -2611,7 +2715,8 @@ public final class FnString {
     /**
      * <p>
      * Returns true if the input {@link String} can be converted into a 
-     * valid {@link Short} in the given {@link Locale}
+     * valid {@link Short} in the given {@link Locale}.
+     * If this method returns false, {@link FnString#isShort(Locale)} will throw an exception if called.
      * </p>
      * 
      * @param locale the locale defining the way in which the number is written
@@ -2626,7 +2731,8 @@ public final class FnString {
     /**
      * <p>
      * Returns true if the input {@link String} can be converted into a 
-     * valid {@link Short} in the given {@link Locale} specified as a {@link String}
+     * valid {@link Short} in the given {@link Locale} specified as a {@link String}.
+     * If this method returns false, {@link FnString#isShort(String)} will throw an exception if called.
      * </p>
      * 
      * @param locale the locale defining the way in which the number is written
@@ -2643,6 +2749,7 @@ public final class FnString {
      * Returns true if the input {@link String} can be converted into a 
      * valid {@link Short} using the specified decimal point
      * configuration ({@link DecimalPoint}). 
+     * If this method returns false, {@link FnString#isShort(DecimalPoint)} will throw an exception if called.
      * </p>
      * 
      * @param decimalPoint the decimal point being used by the String
@@ -2657,7 +2764,8 @@ public final class FnString {
      * <p>
      * Returns true if the input {@link String} can be converted into a 
      * valid {@link Short} in the specified radix. It uses the default
-     * configuration to check the {@link String}
+     * configuration to check the {@link String}.
+     * If this method returns false, {@link FnString#isShort(int)} will throw an exception if called.
      * </p>
      * 
      * @param decimalPoint the decimal point being used by the String
@@ -2673,6 +2781,7 @@ public final class FnString {
      * Returns true if the input {@link String} can be converted into a 
      * valid {@link Byte}. It uses the default configuration from the JVM (en_US)
      * to check whether the string is valid or not.
+     * If this method returns false, {@link FnString#toByte()} will throw an exception if called.
      * </p>
      * 
      * @return true if the input {@link String} represents a valid {@link Byte}. 
@@ -2686,7 +2795,8 @@ public final class FnString {
     /**
      * <p>
      * Returns true if the input {@link String} can be converted into a 
-     * valid {@link Byte} in the given {@link Locale}
+     * valid {@link Byte} in the given {@link Locale}.
+     * If this method returns false, {@link FnString#toByte(Locale)} will throw an exception if called.
      * </p>
      * 
      * @param locale the locale defining the way in which the number is written
@@ -2701,7 +2811,8 @@ public final class FnString {
     /**
      * <p>
      * Returns true if the input {@link String} can be converted into a 
-     * valid {@link Byte} in the given {@link Locale} specified as a {@link String}
+     * valid {@link Byte} in the given {@link Locale} specified as a {@link String}.
+     * If this method returns false, {@link FnString#toByte(String)} will throw an exception if called.
      * </p>
      * 
      * @param locale the locale defining the way in which the number is written
@@ -2718,6 +2829,7 @@ public final class FnString {
      * Returns true if the input {@link String} can be converted into a 
      * valid {@link Byte} using the specified decimal point
      * configuration ({@link DecimalPoint}). 
+     * If this method returns false, {@link FnString#toByte(DecimalPoint)} will throw an exception if called.
      * </p>
      * 
      * @param decimalPoint the decimal point being used by the String
@@ -2732,7 +2844,8 @@ public final class FnString {
      * <p>
      * Returns true if the input {@link String} can be converted into a 
      * valid {@link Byte} in the specified radix. It uses the default
-     * configuration to check the {@link String}
+     * configuration to check the {@link String}.
+     * If this method returns false, {@link FnString#toByte(int)} will throw an exception if called.
      * </p>
      * 
      * @param decimalPoint the decimal point being used by the String
