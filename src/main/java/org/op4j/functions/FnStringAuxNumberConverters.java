@@ -38,7 +38,7 @@ import org.op4j.exceptions.ExecutionException;
  * @since 1.0
  * 
  * @author Daniel Fern&aacute;ndez
- *
+ * @author Soraya S&aacute;nchez Labandeira
  */
 final class FnStringAuxNumberConverters {
 
@@ -74,7 +74,6 @@ final class FnStringAuxNumberConverters {
         
         private final void configureDefaultDecimalFormat() {
             this.defaultDecimalFormat.setParseBigDecimal(true);
-            // TODO Set max decimal digits ¿?
         }
         
         protected ToNumber(final Delegated delegated) {
