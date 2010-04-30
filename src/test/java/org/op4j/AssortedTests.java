@@ -1774,6 +1774,11 @@ public class AssortedTests extends TestCase {
                 .isByte(DecimalPoint.IS_COMMA)).get().booleanValue());
         
         number = String.valueOf(BigDecimal.valueOf(maxByte)
+                + ",9");
+        assertTrue(Op.on(number).exec(FnString
+                .isByte(DecimalPoint.IS_COMMA)).get().booleanValue());
+        
+        number = String.valueOf(BigDecimal.valueOf(maxByte)
                 .add(BigDecimal.valueOf(1)));
         assertFalse(Op.on(number).exec(FnString
                 .isByte()).get().booleanValue());
