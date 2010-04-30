@@ -543,6 +543,8 @@ final class FnStringAuxNumberConverters {
     
     static final class ToDouble extends ToDecimalNumber<Double> {
 
+        final static Double min = Double.valueOf(Double.MIN_VALUE);   
+        final static Double max = Double.valueOf(Double.MAX_VALUE);
         
         public ToDouble() {
             super();
@@ -578,6 +580,23 @@ final class FnStringAuxNumberConverters {
 
         @Override
         protected Double fromNumber(final Number number) {
+            Validate.isTrue(number instanceof BigDecimal || number instanceof BigInteger, 
+                "The param number should be either a BigDecimal or BigInteger");
+
+            if (number instanceof BigDecimal || number instanceof BigInteger) {
+                BigDecimal numberAsBigDecimal = null;
+                if (number instanceof BigDecimal) {
+                    numberAsBigDecimal = (BigDecimal) number;                                     
+                } else {
+                    numberAsBigDecimal = BigDecimal.valueOf(number.longValue());   
+                }
+                if (numberAsBigDecimal.compareTo(BigDecimal.valueOf(min.doubleValue())) < 0 
+                        || numberAsBigDecimal.compareTo(BigDecimal.valueOf(max.doubleValue())) > 0) {
+                    throw new ExecutionException("The number to be converted into Double is either lower than " + min
+                            + " or greater than " + max);
+                }
+            } 
+            
             return Double.valueOf(number.doubleValue());
         }
     }
@@ -586,7 +605,9 @@ final class FnStringAuxNumberConverters {
     
     static final class ToFloat extends ToDecimalNumber<Float> {
 
-        
+        final static Float min = Float.valueOf(Float.MIN_VALUE);   
+        final static Float max = Float.valueOf(Float.MAX_VALUE);
+                
         public ToFloat() {
             super();
         }
@@ -621,6 +642,23 @@ final class FnStringAuxNumberConverters {
 
         @Override
         protected Float fromNumber(final Number number) {
+            Validate.isTrue(number instanceof BigDecimal || number instanceof BigInteger, 
+                "The param number should be either a BigDecimal or BigInteger");
+
+            if (number instanceof BigDecimal || number instanceof BigInteger) {
+                BigDecimal numberAsBigDecimal = null;
+                if (number instanceof BigDecimal) {
+                    numberAsBigDecimal = (BigDecimal) number;                                     
+                } else {
+                    numberAsBigDecimal = BigDecimal.valueOf(number.longValue());   
+                }
+                if (numberAsBigDecimal.compareTo(BigDecimal.valueOf(min.floatValue())) < 0 
+                        || numberAsBigDecimal.compareTo(BigDecimal.valueOf(max.floatValue())) > 0) {
+                    throw new ExecutionException("The number to be converted into Float is either lower than " + min
+                            + " or greater than " + max);
+                }
+            } 
+            
             return Float.valueOf(number.floatValue());
         }
     }
@@ -694,6 +732,10 @@ final class FnStringAuxNumberConverters {
     
     static final class ToLong extends ToNonDecimalNumber<Long> {
         
+        final static Long min = Long.valueOf(Long.MIN_VALUE);   
+        final static Long max = Long.valueOf(Long.MAX_VALUE);
+        
+        
         public ToLong() {
             super();
         }
@@ -732,6 +774,23 @@ final class FnStringAuxNumberConverters {
 
         @Override
         protected Long fromNumber(final Number number) {
+            Validate.isTrue(number instanceof BigDecimal || number instanceof BigInteger, 
+                    "The param number should be either a BigDecimal or BigInteger");
+            
+            if (number instanceof BigDecimal || number instanceof BigInteger) {
+                BigInteger numberAsBigInteger = null;
+                if (number instanceof BigDecimal) {
+                    numberAsBigInteger = ((BigDecimal) number).toBigInteger();                    
+                } else {
+                    numberAsBigInteger = (BigInteger) number;
+                }
+                if (numberAsBigInteger.compareTo(BigInteger.valueOf(min.longValue())) < 0 
+                        || numberAsBigInteger.compareTo(BigInteger.valueOf(max.longValue())) > 0) {
+                    throw new ExecutionException("The number to be converted into Long is either lower than " + min
+                            + " or greater than " + max);
+                }
+            } 
+            
             return Long.valueOf(number.longValue());
         }
 
@@ -749,6 +808,9 @@ final class FnStringAuxNumberConverters {
     
     static final class ToInteger extends ToNonDecimalNumber<Integer> {
         
+        final static Integer min = Integer.valueOf(Integer.MIN_VALUE);   
+        final static Integer max = Integer.valueOf(Integer.MAX_VALUE);
+                
         public ToInteger() {
             super();
         }
@@ -787,6 +849,23 @@ final class FnStringAuxNumberConverters {
 
         @Override
         protected Integer fromNumber(final Number number) {
+            Validate.isTrue(number instanceof BigDecimal || number instanceof BigInteger, 
+                "The param number should be either a BigDecimal or BigInteger");
+    
+            if (number instanceof BigDecimal || number instanceof BigInteger) {
+                BigInteger numberAsBigInteger = null;
+                if (number instanceof BigDecimal) {
+                    numberAsBigInteger = ((BigDecimal) number).toBigInteger();                    
+                } else {
+                    numberAsBigInteger = (BigInteger) number;
+                }
+                if (numberAsBigInteger.compareTo(BigInteger.valueOf(min.intValue())) < 0 
+                        || numberAsBigInteger.compareTo(BigInteger.valueOf(max.intValue())) > 0) {
+                    throw new ExecutionException("The number to be converted into Integer is either lower than " + min
+                            + " or greater than " + max);
+                }
+            } 
+            
             return Integer.valueOf(number.intValue());
         }
 
@@ -803,6 +882,9 @@ final class FnStringAuxNumberConverters {
     
     
     static final class ToShort extends ToNonDecimalNumber<Short> {
+        
+        final static Short min = Short.valueOf(Short.MIN_VALUE);   
+        final static Short max = Short.valueOf(Short.MAX_VALUE);
         
         public ToShort() {
             super();
@@ -842,6 +924,23 @@ final class FnStringAuxNumberConverters {
 
         @Override
         protected Short fromNumber(final Number number) {
+            Validate.isTrue(number instanceof BigDecimal || number instanceof BigInteger, 
+                "The param number should be either a BigDecimal or BigInteger");
+    
+            if (number instanceof BigDecimal || number instanceof BigInteger) {
+                BigInteger numberAsBigInteger = null;
+                if (number instanceof BigDecimal) {
+                    numberAsBigInteger = ((BigDecimal) number).toBigInteger();                    
+                } else {
+                    numberAsBigInteger = (BigInteger) number;
+                }
+                if (numberAsBigInteger.compareTo(BigInteger.valueOf(min.intValue())) < 0 
+                        || numberAsBigInteger.compareTo(BigInteger.valueOf(max.intValue())) > 0) {
+                    throw new ExecutionException("The number to be converted into Short is either lower than " + min
+                            + " or greater than " + max);
+                }
+            } 
+            
             return Short.valueOf(number.shortValue());
         }
 
@@ -858,6 +957,9 @@ final class FnStringAuxNumberConverters {
     
     
     static final class ToByte extends ToNonDecimalNumber<Byte> {
+        
+        final static Byte min = Byte.valueOf(Byte.MIN_VALUE);   
+        final static Byte max = Byte.valueOf(Byte.MAX_VALUE);
         
         public ToByte() {
             super();
@@ -897,6 +999,23 @@ final class FnStringAuxNumberConverters {
 
         @Override
         protected Byte fromNumber(final Number number) {
+            Validate.isTrue(number instanceof BigDecimal || number instanceof BigInteger, 
+                "The param number should be either a BigDecimal or BigInteger");
+    
+            if (number instanceof BigDecimal || number instanceof BigInteger) {
+                BigInteger numberAsBigInteger = null;
+                if (number instanceof BigDecimal) {
+                    numberAsBigInteger = ((BigDecimal) number).toBigInteger();                    
+                } else {
+                    numberAsBigInteger = (BigInteger) number;
+                }
+                if (numberAsBigInteger.compareTo(BigInteger.valueOf(min.intValue())) < 0 
+                        || numberAsBigInteger.compareTo(BigInteger.valueOf(max.intValue())) > 0) {
+                    throw new ExecutionException("The number to be converted into Byte is either lower than " + min
+                            + " or greater than " + max);
+                }
+            } 
+            
             return Byte.valueOf(number.byteValue());
         }
 
