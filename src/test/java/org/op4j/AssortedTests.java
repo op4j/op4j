@@ -1534,9 +1534,9 @@ public class AssortedTests extends TestCase {
         assertEquals(Op.on("67.5").exec(FnString.toByte(Locale.ENGLISH)).get(),
                 Byte.valueOf(nf.parse("67.5").byteValue()));  
                 
-        assertTrue(Op.on("6997.89").exec(FnString.isByte(Locale.ENGLISH)).get().booleanValue());
-        assertEquals(Op.on("6997.89").exec(FnString.toByte(Locale.ENGLISH)).get(),
-                Byte.valueOf(nf.parse("6997.89").byteValue()));  
+        assertTrue(Op.on("6.9").exec(FnString.isByte(Locale.ENGLISH)).get().booleanValue());
+        assertEquals(Op.on("6.9").exec(FnString.toByte(Locale.ENGLISH)).get(),
+                Byte.valueOf(nf.parse("6.9").byteValue()));  
         
         assertFalse(Op.on("6.7,5").exec(FnString.isByte(Locale.ENGLISH)).get().booleanValue());  
         try {
@@ -1562,11 +1562,11 @@ public class AssortedTests extends TestCase {
             // Do nothing
         } 
         
-        assertTrue(Op.on("6.9.97,89").exec(FnString
+        assertTrue(Op.on("6.9").exec(FnString
                 .isByte(LocaleUtils.toLocale("es"))).get().booleanValue());
-        assertEquals(Op.on("6.9.97,89").exec(FnString
+        assertEquals(Op.on("6.9").exec(FnString
                 .toByte(LocaleUtils.toLocale("es"))).get(),
-                Byte.valueOf(nf.parse("6,9,97.89").byteValue()));  
+                Byte.valueOf(nf.parse("6,9").byteValue()));  
         
         assertFalse(Op.on("6,997.89").exec(FnString
                 .isByte(LocaleUtils.toLocale("es"))).get().booleanValue());
@@ -1578,17 +1578,17 @@ public class AssortedTests extends TestCase {
             // Do nothing
         } 
         
-        assertTrue(Op.on("6.997,89").exec(FnString
+        assertTrue(Op.on("6.9,89").exec(FnString
                 .isByte(LocaleUtils.toLocale("es"))).get().booleanValue());
-        assertEquals(Op.on("6.997,89").exec(FnString
+        assertEquals(Op.on("6.9,89").exec(FnString
                 .toByte(LocaleUtils.toLocale("es"))).get(),
-                Byte.valueOf(nf.parse("6,997.89").byteValue()));  
+                Byte.valueOf(nf.parse("6,9.89").byteValue()));  
         
-        assertTrue(Op.on("6.9.9.7,89").exec(FnString
+        assertTrue(Op.on("9.7,89").exec(FnString
                 .isByte(LocaleUtils.toLocale("es"))).get().booleanValue()); 
-        assertEquals(Op.on("6.9.9.7,89").exec(FnString
+        assertEquals(Op.on("9.7,89").exec(FnString
                 .toByte(LocaleUtils.toLocale("es"))).get(),
-                Byte.valueOf(nf.parse("6,9,9,7.89").byteValue()));
+                Byte.valueOf(nf.parse("9,7.89").byteValue()));
         
         assertTrue(Op.on("68").exec(FnString
                 .isByte(9)).get().booleanValue()); 
@@ -1599,7 +1599,193 @@ public class AssortedTests extends TestCase {
     
     @Test
     public void test66() throws Exception {
-        //TODO i.e Integer not bigger than max_int when calling isInteger
+        Double minDouble = Double.valueOf(Double.MIN_VALUE);
+        Double maxDouble = Double.valueOf(Double.MAX_VALUE);
+        
+        Float minFloat = Float.valueOf(Float.MIN_VALUE);
+        Float maxFloat = Float.valueOf(Float.MAX_VALUE);
+        
+        Long minLong = Long.valueOf(Long.MIN_VALUE);
+        Long maxLong = Long.valueOf(Long.MAX_VALUE);
+                
+        Integer minInteger = Integer.valueOf(Integer.MIN_VALUE);
+        Integer maxInteger = Integer.valueOf(Integer.MAX_VALUE);
+        
+        Short minShort = Short.valueOf(Short.MIN_VALUE);
+        Short maxShort = Short.valueOf(Short.MAX_VALUE);
+        
+        Byte minByte = Byte.valueOf(Byte.MIN_VALUE);
+        Byte maxByte = Byte.valueOf(Byte.MAX_VALUE);
+        
+        System.out.println(
+                "Byte -> " + minByte + " to " + maxByte + "\n" + 
+                "Short -> " + minShort + " to " + maxShort + "\n" + 
+                "Integer -> " + minInteger + " to " + maxInteger + "\n" + 
+                "Long -> " + minLong + " to " + maxLong + "\n" + 
+                "Float -> " + minFloat + " to " + maxFloat + "\n" + 
+                "Double -> " + minDouble + " to " + maxDouble);
+        
+        String number = String.valueOf(BigInteger.valueOf(maxInteger)
+                .add(BigInteger.valueOf(1)));
+        assertFalse(Op.on(number).exec(FnString
+                .isInteger()).get().booleanValue());
+        try {
+            Op.on(number).exec(FnString
+                    .toInteger()).get();
+            fail("Value was not expected to be converted into an Integer");
+        } catch (ExecutionException e) {
+            // Do nothing
+        } 
+        
+        number = String.valueOf(BigDecimal.valueOf(maxInteger)
+                .add(BigDecimal.valueOf(0.5)));
+        assertTrue(Op.on(number).exec(FnString
+                .isInteger()).get().booleanValue());
+        assertEquals(Op.on(number).exec(FnString
+                    .toInteger()).get(), maxInteger);
+
+        number = String.valueOf(BigDecimal.valueOf(maxLong)
+                .add(BigDecimal.valueOf(4.5)));
+        assertTrue(Op.on(number).exec(FnString
+                .isBigInteger()).get().booleanValue());
+        assertEquals(Op.on(number).exec(FnString
+                    .toBigInteger()).get(), BigDecimal.valueOf(maxLong).add(BigDecimal.valueOf(4.5)).toBigInteger());
+        assertTrue(Op.on(number).exec(FnString
+                .isBigDecimal()).get().booleanValue());
+        assertEquals(Op.on(number).exec(FnString
+                    .toBigDecimal()).get(), BigDecimal.valueOf(maxLong).add(BigDecimal.valueOf(4.5)));
+        assertFalse(Op.on(number).exec(FnString
+                .isLong()).get().booleanValue());
+        try {
+            Op.on(number).exec(FnString
+                    .toLong()).get();
+            fail("Value was not expected to be converted into an Integer");
+        } catch (ExecutionException e) {
+            // Do nothing
+        } 
+        
+        number = String.valueOf(BigDecimal.valueOf(minShort)
+                .add(BigDecimal.valueOf(-1)));
+        assertFalse(Op.on(number).exec(FnString
+                .isShort()).get().booleanValue());
+        assertTrue(Op.on(number).exec(FnString
+                .isLong()).get().booleanValue());
+        assertFalse(Op.on(number).exec(FnString
+                .isByte()).get().booleanValue());
+        
+        number = String.valueOf(maxShort);
+        assertTrue(Op.on(number).exec(FnString
+                .isShort()).get().booleanValue());
+        assertTrue(Op.on(number).exec(FnString
+                .isLong()).get().booleanValue());
+        assertFalse(Op.on(number).exec(FnString
+                .isByte()).get().booleanValue());
+       
+        number = String.valueOf(minByte);
+        assertTrue(Op.on(number).exec(FnString
+                .isShort()).get().booleanValue());
+        assertTrue(Op.on(number).exec(FnString
+                .isLong()).get().booleanValue());
+        assertTrue(Op.on(number).exec(FnString
+                .isByte()).get().booleanValue());
+       
+        number = String.valueOf(BigDecimal.valueOf(minDouble)
+                .subtract(BigDecimal.valueOf(1)));
+        assertTrue(Op.on(number).exec(FnString
+                .isShort()).get().booleanValue());
+        assertFalse(Op.on(number).exec(FnString
+                .isFloat()).get().booleanValue());
+        assertFalse(Op.on(number).exec(FnString
+                .isDouble()).get().booleanValue());
+       
+        number = String.valueOf(BigDecimal.valueOf(minFloat)
+                .subtract(BigDecimal.valueOf(1)));
+        assertTrue(Op.on(number).exec(FnString
+                .isShort()).get().booleanValue());
+        assertFalse(Op.on(number).exec(FnString
+                .isFloat()).get().booleanValue());
+        assertFalse(Op.on(number).exec(FnString
+                .isDouble()).get().booleanValue());
+       
+        number = String.valueOf(BigDecimal.valueOf(maxDouble)
+                .add(BigDecimal.valueOf(4.5)));
+        assertTrue(Op.on(number).exec(FnString
+                .isBigInteger()).get().booleanValue());
+        assertTrue(Op.on(number).exec(FnString
+                .isBigDecimal()).get().booleanValue());
+        assertFalse(Op.on(number).exec(FnString
+                .isLong()).get().booleanValue());
+        assertFalse(Op.on(number).exec(FnString
+                .isFloat()).get().booleanValue());
+        
+        number = String.valueOf(BigDecimal.valueOf(maxFloat)
+                .add(BigDecimal.valueOf(4.5)));
+        assertTrue(Op.on(number).exec(FnString
+                .isBigInteger()).get().booleanValue());
+        assertTrue(Op.on(number).exec(FnString
+                .isBigDecimal()).get().booleanValue());
+        assertTrue(Op.on(number).exec(FnString
+                .isDouble()).get().booleanValue());
+        assertFalse(Op.on(number).exec(FnString
+                .isLong()).get().booleanValue());
+        assertFalse(Op.on(number).exec(FnString
+                .isFloat()).get().booleanValue());
+        
+        number = String.valueOf(BigDecimal.valueOf(minLong)
+                .add(BigDecimal.valueOf(-1)));
+        assertFalse(Op.on(number).exec(FnString
+                .isShort()).get().booleanValue());
+        assertFalse(Op.on(number).exec(FnString
+                .isLong()).get().booleanValue());
+        assertFalse(Op.on(number).exec(FnString
+                .isByte()).get().booleanValue());
+        
+        number = String.valueOf(BigDecimal.valueOf(minInteger)
+                .subtract(BigDecimal.valueOf(1)));
+        assertFalse(Op.on(number).exec(FnString
+                .isShort()).get().booleanValue());
+        assertTrue(Op.on(number).exec(FnString
+                .isLong()).get().booleanValue());
+        assertFalse(Op.on(number).exec(FnString
+                .isByte()).get().booleanValue());
+        
+        number = String.valueOf(BigDecimal.valueOf(maxInteger)
+                .add(BigDecimal.valueOf(0.5)));
+        assertTrue(Op.on(number).exec(FnString
+                .isInteger()).get().booleanValue());
+        assertEquals(Op.on(number).exec(FnString
+                    .toInteger()).get(), maxInteger);
+        
+        number = String.valueOf(BigDecimal.valueOf(maxByte)
+                .add(BigDecimal.valueOf(0.5)));
+        assertTrue(Op.on(number).exec(FnString
+                .isInteger()).get().booleanValue());
+        assertTrue(Op.on(number).exec(FnString
+                .isByte()).get().booleanValue());
+        
+        number = String.valueOf(BigDecimal.valueOf(maxByte)
+                .add(BigDecimal.valueOf(1.5)));
+        assertFalse(Op.on(number).exec(FnString
+                .isByte()).get().booleanValue());
+        
+        number = String.valueOf(BigDecimal.valueOf(maxByte)
+                + ",4");
+        assertTrue(Op.on(number).exec(FnString
+                .isByte(DecimalPoint.IS_COMMA)).get().booleanValue());
+        
+        number = String.valueOf(BigDecimal.valueOf(maxByte)
+                .add(BigDecimal.valueOf(1)));
+        assertFalse(Op.on(number).exec(FnString
+                .isByte()).get().booleanValue());
+        
+        assertTrue(Op.on("4,5,4.4").exec(FnString
+                .isLong(Locale.UK)).get().booleanValue());
+        
+        assertTrue(Op.on("123").exec(FnString
+                .isByte(5)).get().booleanValue());
+        assertFalse(Op.on("5").exec(FnString
+                .isByte(5)).get().booleanValue());
+        
     }
         
 }
