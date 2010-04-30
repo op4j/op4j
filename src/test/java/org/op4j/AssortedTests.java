@@ -37,8 +37,10 @@ import org.op4j.functions.FnBoolean;
 import org.op4j.functions.FnDouble;
 import org.op4j.functions.FnFloat;
 import org.op4j.functions.FnInteger;
+import org.op4j.functions.FnList;
 import org.op4j.functions.FnLong;
 import org.op4j.functions.FnNumber;
+import org.op4j.functions.FnSet;
 import org.op4j.functions.FnShort;
 import org.op4j.functions.FnString;
 import org.op4j.functions.Function;
@@ -1793,5 +1795,23 @@ public class AssortedTests extends TestCase {
         
     }
         
+    @Test
+    public void test67() throws Exception {
+        String[] array = new String[] {"first", "second", "third"};
+        assertEquals(array.length, 
+                Op.on(array).exec(FnArray.ofString().count())
+                .get().intValue());
+        
+        List<Integer> list = Op.onListFor(Integer.valueOf(4)).get();
+        assertEquals(list.size(), 
+                Op.on(list).exec(FnList.ofInteger().count())
+                .get().intValue());
+        
+        Set<Calendar> set = Op.onSetFor(Calendar.getInstance(),
+                Calendar.getInstance()).get();
+        assertEquals(set.size(), 
+                Op.on(set).exec(FnSet.ofCalendar().count())
+                .get().intValue());        
+    }
 }
 
