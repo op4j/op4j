@@ -56,13 +56,6 @@ public class FnArrayOf<T> {
     protected final Type<T> type;
     
     
-    private static final Count COUNT = new Count();
-
-    
-    
-    
-
-
     public final Function<T[],T[]> sort() {
         return new Sort<T>();
     }
@@ -269,8 +262,8 @@ public class FnArrayOf<T> {
     
     
     
-    public final Function<Object[],Integer> count() {
-        return COUNT;
+    public final Function<T[],Integer> count() {
+        return new Count<T>();
     }
 
     
@@ -341,7 +334,7 @@ public class FnArrayOf<T> {
             return doSort(object, ctx);
         }
 
-        @SuppressWarnings("unchecked")
+        @SuppressWarnings({"unchecked", "unused"})
         private T[] doSort(final T[] object, final ExecCtx ctx) throws Exception {
 
             final List<?> list = new ArrayList<Object>(Arrays.asList(object));
@@ -1786,14 +1779,14 @@ public class FnArrayOf<T> {
         
     }
     
-    static final class Count extends AbstractNotNullFunction<Object[],Integer> {
+    static final class Count<T> extends AbstractNotNullFunction<T[],Integer> {
         
         public Count() {
             super();
         }
         
         @Override
-        protected Integer notNullExecute(final Object[] object, final ExecCtx ctx) throws Exception {
+        protected Integer notNullExecute(final T[] object, final ExecCtx ctx) throws Exception {
             return Integer.valueOf(object.length);
         }
         
