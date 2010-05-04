@@ -2856,6 +2856,47 @@ public final class FnString {
         return new IsByte(radix);
     }
     
+    /**
+     * <p>
+     * It checks whether the input {@link String} starts with the specified
+     * prefix or not. If the suffix is empty, starts with or is equal to 
+     * the input, it will return true.
+     * </p>
+     * 
+     * @param prefix the prefix to be search at the beginning of the input
+     * @return true if the input {@link String} starts with the specified prefix
+     */
+    public static final Function<String, Boolean> startsWith(final String prefix) {
+        return new StartsWith(prefix);
+    }
+    
+    /**
+     * <p>
+     * It checks whether the input substring after the given offset starts
+     * with the given prefix or not. 
+     * </p>
+     * 
+     * @param prefix the prefix to be search after the specified offset
+     * @param offset where to begin looking for the prefix
+     * @return
+     */
+    public static final Function<String, Boolean> startsWith(final String prefix, final int offset) {
+        return new StartsWith(prefix, offset);
+    }
+    
+    /**
+     * <p>
+     * Checkx whether the input {@link String} ends with the specified suffix or not.
+     * If the suffix is empty, ends with or is equal to the input, it will return true.
+     * </p>
+     * 
+     * @param suffix suffix to be search at the end of the input
+     * @return true if the input {@link String} ends with the specified suffix
+     */
+    public static final Function<String, Boolean> endsWith(final String suffix) {
+        return new EndsWith(suffix);
+    }
+    
     
 	/**
 	 * The String is returned in a way it can be used to fill in a CSV column as StringEscapeUtils does
@@ -4316,6 +4357,53 @@ public final class FnString {
                 }
             }   
             return Boolean.FALSE;
+        }
+    }
+    
+    static final class StartsWith extends AbstractNotNullFunction<String, Boolean> {
+        
+        final String prefix;
+        final int offset;
+        
+        public StartsWith(String prefix) {
+            super();    
+            this.prefix = prefix;
+            this.offset = 0;
+        }
+        
+        public StartsWith(String prefix, int offset) {
+            super();    
+            this.prefix = prefix;
+            this.offset = offset;
+        }
+        
+        @Override
+        public Boolean notNullExecute(String input, ExecCtx ctx) throws Exception {
+            
+            Validate.notNull(input, "input can't be null");
+            
+            return Boolean.valueOf(input
+                    .startsWith(this.prefix, 
+                            this.offset));            
+        }
+    }
+    
+    static final class EndsWith extends AbstractNotNullFunction<String, Boolean> {
+        
+        final String suffix;
+        
+        public EndsWith(String suffix) {
+            super();    
+            this.suffix = suffix;
+        }
+        
+        @Override
+        public Boolean notNullExecute(String input, ExecCtx ctx) throws Exception {
+            
+            Validate.notNull(input, "input can't be null");
+            
+            return Boolean.valueOf(input
+                    .endsWith(this.suffix));            
         }
     }
 }
