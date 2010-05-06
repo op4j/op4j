@@ -302,10 +302,10 @@ public final class FnBigInteger {
      * by calling the <tt>equals</tt> method on the target object.
      * </p>
      * 
-     * @param object the object to compare to the target
+     * @param object the {@link BigInteger} to compare to the target
      * @return true if both objects are equal, false if not.
      */
-    public static final Function<BigInteger,Boolean> eq(final Number object) {
+    public static final Function<BigInteger,Boolean> eq(final BigInteger object) {
         return (Function<BigInteger,Boolean>)((Function)FnObject.eq(object));
     }
     
@@ -331,10 +331,10 @@ public final class FnBigInteger {
      * by calling the <tt>equals</tt> method on the target object.
      * </p>
      * 
-     * @param object the object to compare to the target
+     * @param object the {@link BigInteger} to compare to the target
      * @return false if both objects are equal, true if not.
      */
-    public static final Function<BigInteger,Boolean> notEq(final Number object) {
+    public static final Function<BigInteger,Boolean> notEq(final BigInteger object) {
         return (Function<BigInteger,Boolean>)((Function)FnObject.notEq(object));
     }
     

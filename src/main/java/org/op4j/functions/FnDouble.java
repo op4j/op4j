@@ -839,10 +839,10 @@ public final class FnDouble {
      * by calling the <tt>equals</tt> method on the target object.
      * </p>
      * 
-     * @param object the object to compare to the target
+     * @param object the {@link Double} to compare to the target
      * @return true if both objects are equal, false if not.
      */
-    public static final Function<Double,Boolean> eq(final Number object) {
+    public static final Function<Double,Boolean> eq(final Double object) {
         return (Function<Double,Boolean>)((Function)FnObject.eq(object));
     }
     
@@ -897,10 +897,10 @@ public final class FnDouble {
      * by calling the <tt>equals</tt> method on the target object.
      * </p>
      * 
-     * @param object the object to compare to the target
+     * @param object the {@link Double} to compare to the target
      * @return false if both objects are equal, true if not.
      */
-    public static final Function<Double,Boolean> notEq(final Number object) {
+    public static final Function<Double,Boolean> notEq(final Double object) {
         return (Function<Double,Boolean>)((Function)FnObject.notEq(object));
     }
     
