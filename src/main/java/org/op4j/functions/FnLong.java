@@ -302,10 +302,10 @@ public final class FnLong {
      * by calling the <tt>equals</tt> method on the target object.
      * </p>
      * 
-     * @param object the object to compare to the target
+     * @param object the {@link Long} to compare to the target
      * @return true if both objects are equal, false if not.
      */
-    public static final Function<Long,Boolean> eq(final Number object) {
+    public static final Function<Long,Boolean> eq(final Long object) {
         return (Function<Long,Boolean>)((Function)FnObject.eq(object));
     }
     
@@ -360,10 +360,10 @@ public final class FnLong {
      * by calling the <tt>equals</tt> method on the target object.
      * </p>
      * 
-     * @param object the object to compare to the target
+     * @param object the {@link Long} to compare to the target
      * @return false if both objects are equal, true if not.
      */
-    public static final Function<Long,Boolean> notEq(final Number object) {
+    public static final Function<Long,Boolean> notEq(final Long object) {
         return (Function<Long,Boolean>)((Function)FnObject.notEq(object));
     }
     

@@ -305,10 +305,10 @@ public final class FnInteger {
      * by calling the <tt>equals</tt> method on the target object.
      * </p>
      * 
-     * @param object the object to compare to the target
+     * @param object the {@link Integer} to compare to the target
      * @return true if both objects are equal, false if not.
      */
-    public static final Function<Integer,Boolean> eq(final Number object) {
+    public static final Function<Integer,Boolean> eq(final Integer object) {
         return (Function<Integer,Boolean>)((Function)FnObject.eq(object));
     }
     
@@ -364,10 +364,10 @@ public final class FnInteger {
      * by calling the <tt>equals</tt> method on the target object.
      * </p>
      * 
-     * @param object the object to compare to the target
+     * @param object the {@link Integer} to compare to the target
      * @return false if both objects are equal, true if not.
      */
-    public static final Function<Integer,Boolean> notEq(final Number object) {
+    public static final Function<Integer,Boolean> notEq(final Integer object) {
         return (Function<Integer,Boolean>)((Function)FnObject.notEq(object));
     }
     
