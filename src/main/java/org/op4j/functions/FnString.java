@@ -1719,15 +1719,6 @@ public final class FnString {
     
     /**
      * <p>
-     * Returns whether the target object is null or not (true = yes).
-     * </p>
-     * 
-     * @return true if null, false if not
-     */
-    
-
-    /**
-     * <p>
      * Determines whether the target object is null or not.
      * </p>
      * 
@@ -1738,15 +1729,6 @@ public final class FnString {
     }
 
     
-    /**
-     * <p>
-     * Returns whether the target object is null or not (true = no).
-     * </p>
-     * 
-     * @return false if null, true if not
-     */
-    
-
     /**
      * <p>
      * Determines whether the target object is null or not.
@@ -1760,18 +1742,6 @@ public final class FnString {
     
     
     
-    
-    
-
-    /**
-     * <p>
-     * Returns whether the target object is less (using natural order, which
-     * is alphabetic for strings) than the specified object.
-     * </p>
-     * 
-     * @param object the value to compare the target with.
-     * @return true if the target is less, false if not.
-     */
     
 
     /**
@@ -1789,16 +1759,6 @@ public final class FnString {
     }
 
     
-    /**
-     * <p>
-     * Returns whether the target object is less or equal (using natural order, which
-     * is alphabetic for strings) to the specified object.
-     * </p>
-     * 
-     * @param object the value to compare the target with.
-     * @return true if the target is less or equal, false if not.
-     */
-    
 
     /**
      * <p>
@@ -1814,17 +1774,7 @@ public final class FnString {
         return FnObject.lessOrEqTo(object);
     }
     
-    
-    /**
-     * <p>
-     * Returns whether the target object is greater (using natural order, which
-     * is alphabetic for strings) than the specified object.
-     * </p>
-     * 
-     * @param object the value to compare the target with.
-     * @return true if the target is greater, false if not.
-     */
-    
+   
 
     /**
      * <p>
@@ -1840,16 +1790,6 @@ public final class FnString {
         return FnObject.greaterThan(object);
     }
     
-    
-    /**
-     * <p>
-     * Returns whether the target object is greater or equal (using natural order, which
-     * is alphabetic for strings) to the specified object.
-     * </p>
-     * 
-     * @param object the value to compare the target with.
-     * @return true if the target is greater or equal, false if not.
-     */
     
 
     /**
@@ -2895,6 +2835,36 @@ public final class FnString {
      */
     public static final Function<String, Boolean> endsWith(final String suffix) {
         return new EndsWith(suffix);
+    }
+    
+    /**
+     * <p>
+     * Returns the substring of input from start position (null if null 
+     * String input). It calls {@link StringUtils#substring(String, int)}
+     * </p>
+     * 
+     * @param start the position to start from, negative means count back from the 
+     * end of the String by this many characters
+     * @return the substring
+     */
+    public static final Function<String, String> substring(final int start) {
+        return new SubString(start);
+    }
+    
+    /**
+     * <p>
+     * Returns the substring of input from start position to end position (null if null 
+     * String input). It calls {@link StringUtils#substring(String, int, int)}
+     * </p>
+     * 
+     * @param start the position to start from, negative means count back from the 
+     * end of the String by this many characters
+     * @param end the position to end at (exclusive), negative means count back 
+     * from the end of the String by this many characters
+     * @return the substring
+     */
+    public static final Function<String, String> substring(final int start, final int end) {
+        return new SubString(start, end);
     }
     
     
@@ -4404,6 +4374,31 @@ public final class FnString {
             
             return Boolean.valueOf(input
                     .endsWith(this.suffix));            
+        }
+    }
+    
+    static final class SubString extends Function<String, String> {
+        
+        final int start;
+        final Integer end;
+        
+        public SubString(int start) {
+            super(); 
+            this.start = start;
+            this.end = null;
+        }
+        
+        public SubString(int start, int end) {
+            super(); 
+            this.start = start;
+            this.end = Integer.valueOf(end);
+        }
+        
+        public String execute(String input, ExecCtx ctx) throws Exception {           
+            if (this.end == null) {
+                return StringUtils.substring(input, this.start);
+            }            
+            return StringUtils.substring(input, this.start, this.end.intValue());                        
         }
     }
 }
