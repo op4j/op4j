@@ -2867,6 +2867,89 @@ public final class FnString {
         return new SubString(start, end);
     }
     
+    /**
+     * <p>
+     * Returns the substring before the first occurrence of the given separator. It calls 
+     * {@link StringUtils#substringBefore(String, String)}
+     * </p>
+     * 
+     * @param separator the {@link String} to search for (may be null)
+     * @return the substring before the first occurrence of the separator, null 
+     * if null String input
+     */
+    public static final Function<String, String> substringBefore(final String separator) {
+        return new SubStringBefore(separator);
+    }
+    
+    /**
+     * <p>
+     * Returns the substring before the last occurrence of the given separator. It calls 
+     * {@link StringUtils#substringBeforeLast(String, String)}
+     * </p>
+     * 
+     * @param separator the {@link String} to search for (may be null)
+     * @return the substring before the last occurrence of the separator, null 
+     * if null String input
+     */
+    public static final Function<String, String> substringBeforeLast(final String separator) {
+        return new SubStringBeforeLast(separator);
+    }
+    
+    /**
+     * <p>
+     * Returns the substring after the first occurrence of the given separator. It calls 
+     * {@link StringUtils#substringAfter(String, String)}
+     * </p>
+     * 
+     * @param separator the {@link String} to search for (may be null)
+     * @return the substring after the first occurrence of the separator, null 
+     * if null String input
+     */
+    public static final Function<String, String> substringAfter(final String separator) {
+        return new SubStringAfter(separator);
+    }
+    
+    /**
+     * <p>
+     * Returns the substring after the last occurrence of the given separator. It calls 
+     * {@link StringUtils#substringAfterLast(String, String)}
+     * </p>
+     * 
+     * @param separator the {@link String} to search for (may be null)
+     * @return the substring after the last occurrence of the separator, null 
+     * if null String input
+     */
+    public static final Function<String, String> substringAfterLast(final String separator) {
+        return new SubStringAfterLast(separator);
+    }
+    
+    /**
+     * <p>
+     * Returns the substring between tag and tag or null if there is no match. It calls 
+     * {@link StringUtils#substringBetween(String, String)}
+     * </p>
+     * 
+     * @param tag the String before and after the substring, may be null
+     * @return the substring, null if no match
+     */
+    public static final Function<String, String> substringBetween(final String tag) {
+        return new SubStringBetween(tag);
+    }
+    
+    /**
+     * <p>
+     * Returns the substring between open and close or null if there is no match. It calls 
+     * {@link StringUtils#substringBetween(String, String, String)}
+     * </p>
+     * 
+     * @param open the String before the substring, may be null
+     * @param close the String after the substring, may be null
+     * @return the substring, null if no match
+     */
+    public static final Function<String, String> substringBetween(final String open, final String close) {
+        return new SubStringBetween(open, close);
+    }
+    
     
 	/**
 	 * The String is returned in a way it can be used to fill in a CSV column as StringEscapeUtils does
@@ -4399,6 +4482,87 @@ public final class FnString {
                 return StringUtils.substring(input, this.start);
             }            
             return StringUtils.substring(input, this.start, this.end.intValue());                        
+        }
+    }
+    
+    static final class SubStringBefore extends Function<String, String> {
+        
+        final String separator;
+        
+        public SubStringBefore(String separator) {
+            super(); 
+            this.separator = separator;
+        }
+                
+        public String execute(String input, ExecCtx ctx) throws Exception {           
+            return StringUtils.substringBefore(input, this.separator);                    
+        }
+    }
+    
+    static final class SubStringBeforeLast extends Function<String, String> {
+        
+        final String separator;
+        
+        public SubStringBeforeLast(String separator) {
+            super(); 
+            this.separator = separator;
+        }
+                
+        public String execute(String input, ExecCtx ctx) throws Exception {           
+            return StringUtils.substringBeforeLast(input, this.separator);                    
+        }
+    }
+    
+    static final class SubStringAfter extends Function<String, String> {
+        
+        final String separator;
+        
+        public SubStringAfter(String separator) {
+            super(); 
+            this.separator = separator;
+        }
+                
+        public String execute(String input, ExecCtx ctx) throws Exception {           
+            return StringUtils.substringAfter(input, this.separator);                    
+        }
+    }
+    
+    static final class SubStringAfterLast extends Function<String, String> {
+        
+        final String separator;
+        
+        public SubStringAfterLast(String separator) {
+            super(); 
+            this.separator = separator;
+        }
+                
+        public String execute(String input, ExecCtx ctx) throws Exception {           
+            return StringUtils.substringAfterLast(input, this.separator);                    
+        }
+    }
+    
+    static final class SubStringBetween extends Function<String, String> {
+        
+        final String open;
+        final String close;
+        
+        public SubStringBetween(String tag) {
+            super(); 
+            this.open = tag;
+            this.close = null;
+        }
+        
+        public SubStringBetween(String open, String close) {
+            super(); 
+            this.open = open;
+            this.close = close;
+        }
+                
+        public String execute(String input, ExecCtx ctx) throws Exception { 
+            if (this.close == null) {
+                return StringUtils.substringBetween(input, this.open);     
+            }
+            return StringUtils.substringBetween(input, this.open, this.close);  
         }
     }
 }
