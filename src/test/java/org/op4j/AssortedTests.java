@@ -1813,5 +1813,24 @@ public class AssortedTests extends TestCase {
                 Op.on(set).exec(FnSet.ofCalendar().count())
                 .get().intValue());        
     }
+    
+    @Test
+    public void test68() throws Exception {
+        assertEquals("asd", 
+                Op.on("<>asd<>").exec(FnString.substringBetween("<>"))
+                .get());
+        
+        assertEquals("", 
+                Op.on("<>asd<>").exec(FnString.substringBefore("<>"))
+                .get());
+        
+        assertEquals("<>asd", 
+                Op.on("<>asd<>").exec(FnString.substringBeforeLast("<>"))
+                .get());
+        
+        assertEquals("as", 
+                Op.on("<>asd<>").exec(FnString.substringBetween(">", "d"))
+                .get());         
+    }
 }
 
