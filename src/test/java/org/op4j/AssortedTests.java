@@ -1832,5 +1832,63 @@ public class AssortedTests extends TestCase {
                 Op.on("<>asd<>").exec(FnString.substringBetween(">", "d"))
                 .get());         
     }
+
+
+    
+    @Test
+    public void test69() throws Exception {
+        
+        final String result =
+            "AAAAAaaaaa" +
+            "AEae" +
+            "CCCCcccc" +
+            "DDdd" +
+            "EEEEEeeeee" +
+            "GGGGgggg" +
+            "HHhh" +
+            "IIIIIIiiiiii" +
+            "IJij" +
+            "Jj" +
+            "Kkk" +
+            "LLLLLlllll" +
+            "NNNNnnnnn" + 
+            "OOOOOOoooooo" +
+            "OEoe" +
+            "RRRrrr" +
+            "SSSSssss" +
+            "TTTttt" +
+            "UUUUUUUUUUUUuuuuuuuuuuuu" + 
+            "Ww" + 
+            "YYy" +
+            "ZZZzzz";
+        
+        final String values = 
+            "\u0100\u0102\u0104\u01CD\u01FA\u0101\u0103\u0105\u01CE\u01FB" +
+            "\u01FC\u01FD" +
+            "\u0106\u0108\u010A\u010C\u0107\u0109\u010B\u010D" +
+            "\u010E\u0110\u010F\u0111" +
+            "\u0112\u0114\u0116\u0118\u011A\u0113\u0115\u0117\u0119\u011B" +
+            "\u011C\u011E\u0120\u0122\u011D\u011F\u0121\u0123" +
+            "\u0124\u0126\u0125\u0127" +
+            "\u0128\u012A\u012C\u012E\u0130\u01CF\u0129\u012B\u012D\u012F\u0131\u01D0" +
+            "\u0132\u0133" +
+            "\u0134\u0135" +
+            "\u0136\u0137\u0138" +
+            "\u0139\u013B\u013D\u013F\u0141\u013A\u013C\u013E\u0140\u0142" +
+            "\u0143\u0145\u0147\u014A\u0144\u0146\u0148\u0149\u014B" +
+            "\u014C\u014E\u0150\u01A0\u01D1\u01FE\u014D\u014F\u0151\u01A1\u01D2\u01FF" +
+            "\u0152\u0153" +
+            "\u0154\u0156\u0158\u0155\u0157\u0159" +
+            "\u015A\u015C\u015E\u0160\u015B\u015D\u015F\u0161" +
+            "\u0162\u0164\u0166\u0163\u0165\u0167" +
+            "\u0168\u016A\u016C\u016E\u0170\u0172\u01AF\u01D3\u01D5\u01D7\u01D9\u01DB\u0169\u016B\u016D\u016F\u0171\u0173\u01B0\u01D4\u01D6\u01D8\u01DA\u01DC" +
+            "\u0174\u0175" +
+            "\u0176\u0178\u0177" +
+            "\u0179\u017B\u017D\u017A\u017C\u017E";
+
+        assertEquals(result, FnString.asciify().execute(values));
+        
+    }
+
 }
 

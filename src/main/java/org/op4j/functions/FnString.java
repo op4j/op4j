@@ -2136,6 +2136,50 @@ public final class FnString {
      *   <li>&#221; / &#253;,&#255; = Y / y</li>
      *   <li>&#222; / &#254; = TH / th</li>
      *   <li>&#223; = "ss" if the preceding character is lower case, "SS" otherwise.</li>
+     *   <li>\u0100, \u0102, \u0104, \u01CD, \u01FA = A</li>
+     *   <li>\u0101, \u0103, \u0105, \u01CE, \u01FB = a</li>
+     *   <li>\u01FC = AE</li>
+     *   <li>\u01FD = ae</li>
+     *   <li>\u0106, \u0108, \u010A, \u010C = C</li>
+     *   <li>\u0107, \u0109, \u010B, \u010D = c</li>
+     *   <li>\u010E, \u0110 = D</li>
+     *   <li>\u010F, \u0111 = d</li>
+     *   <li>\u0112, \u0114, \u0116, \u0118, \u011A = E</li>
+     *   <li>\u0113, \u0115, \u0117, \u0119, \u011B = e</li>
+     *   <li>\u011C, \u011E, \u0120, \u0122 = G</li>
+     *   <li>\u011D, \u011F, \u0121, \u0123 = g</li>
+     *   <li>\u0124, \u0126 = H</li>
+     *   <li>\u0125, \u0127 = h</li>
+     *   <li>\u0128, \u012A, \u012C, \u012E, \u0130, \u01CF = I</li>
+     *   <li>\u0129, \u012B, \u012D, \u012F, \u0131, \u01D0 = i</li>
+     *   <li>\u0132 = IJ</li>
+     *   <li>\u0133 = ij</li>
+     *   <li>\u0134 = J</li>
+     *   <li>\u0135 = j</li>
+     *   <li>\u0136 = K</li>
+     *   <li>\u0137, \u0138 = k</li>
+     *   <li>\u0139, \u013B, \u013D, \u013F, \u0141 = L</li>
+     *   <li>\u013A, \u013C, \u013E, \u0140, \u0142 = l</li>
+     *   <li>\u0143, \u0145, \u0147, \u014A = N</li>
+     *   <li>\u0144, \u0146, \u0148, \u0149, \u014B = n</li>
+     *   <li>\u014C, \u014E, \u0150, \u01A0, \u01D1, \u01FE = O</li>
+     *   <li>\u014D, \u014F, \u0151, \u01A1, \u01D2, \u01FF = o</li>
+     *   <li>\u0152 = OE</li>
+     *   <li>\u0153 = oe</li>
+     *   <li>\u0154, \u0156, \u0158 = R</li>
+     *   <li>\u0155, \u0157, \u0159 = r</li>
+     *   <li>\u015A, \u015C, \u015E, \u0160 = S</li>
+     *   <li>\u015B, \u015D, \u015F, \u0161 = s</li>
+     *   <li>\u0162, \u0164, \u0166 = T</li>
+     *   <li>\u0163, \u0165, \u0167 = t</li>
+     *   <li>\u0168, \u016A, \u016C, \u016E, \u0170, \u0172, \u01AF, \u01D3, \u01D5, \u01D7, \u01D9, \u01DB = U</li>
+     *   <li>\u0169, \u016B, \u016D, \u016F, \u0171, \u0173, \u01B0, \u01D4, \u01D6, \u01D8, \u01DA, \u01DC = u</li>
+     *   <li>\u0174 = W</li>
+     *   <li>\u0175 = w</li>
+     *   <li>\u0176, \u0178 = Y</li>
+     *   <li>\u0177 = y</li>
+     *   <li>\u0179, \u017B, \u017D = Z</li>
+     *   <li>\u017A, \u017C, \u017E = z</li>
      * </ul>
      * <p>
      * Transformations for <tt>AsciifyMode.UMLAUT_E</tt> are the same as <tt>DEFAULT</tt>
@@ -3678,36 +3722,114 @@ public final class FnString {
         private final AsciifyMode mode;
         
         static {
+            
             final Map<String,String> replacements = new LinkedHashMap<String,String>();
+            
             replacements.put("\u00C0", "A");
             replacements.put("\u00C1", "A");
             replacements.put("\u00C2", "A");
             replacements.put("\u00C3", "A");
             replacements.put("\u00C4", "A");
             replacements.put("\u00C5", "A");
+            replacements.put("\u0100", "A");
+            replacements.put("\u0102", "A");
+            replacements.put("\u0104", "A");
+            replacements.put("\u01CD", "A");
+            replacements.put("\u01FA", "A");
             replacements.put("\u00C6", "AE");
+            replacements.put("\u01FC", "AE");
             replacements.put("\u00C7", "C");
+            replacements.put("\u0106", "C");
+            replacements.put("\u0108", "C");
+            replacements.put("\u010A", "C");
+            replacements.put("\u010C", "C");
+            replacements.put("\u00D0", "D");
+            replacements.put("\u010E", "D");
+            replacements.put("\u0110", "D");
             replacements.put("\u00C8", "E");
             replacements.put("\u00C9", "E");
             replacements.put("\u00CA", "E");
             replacements.put("\u00CB", "E");
+            replacements.put("\u0112", "E");
+            replacements.put("\u0114", "E");
+            replacements.put("\u0116", "E");
+            replacements.put("\u0118", "E");
+            replacements.put("\u011A", "E");
+            replacements.put("\u011C", "G");
+            replacements.put("\u011E", "G");
+            replacements.put("\u0120", "G");
+            replacements.put("\u0122", "G");
+            replacements.put("\u0124", "H");
+            replacements.put("\u0126", "H");
             replacements.put("\u00CC", "I");
             replacements.put("\u00CD", "I");
             replacements.put("\u00CE", "I");
             replacements.put("\u00CF", "I");
-            replacements.put("\u00D0", "D");
+            replacements.put("\u0128", "I");
+            replacements.put("\u012A", "I");
+            replacements.put("\u012C", "I");
+            replacements.put("\u012E", "I");
+            replacements.put("\u0130", "I");
+            replacements.put("\u01CF", "I");
+            replacements.put("\u0132", "IJ");
+            replacements.put("\u0134", "J");
+            replacements.put("\u0136", "K");
+            replacements.put("\u0139", "L");
+            replacements.put("\u013B", "L");
+            replacements.put("\u013D", "L");
+            replacements.put("\u013F", "L");
+            replacements.put("\u0141", "L");
             replacements.put("\u00D1", "N");
+            replacements.put("\u0143", "N");
+            replacements.put("\u0145", "N");
+            replacements.put("\u0147", "N");
+            replacements.put("\u014A", "N");
             replacements.put("\u00D2", "O");
             replacements.put("\u00D3", "O");
             replacements.put("\u00D4", "O");
             replacements.put("\u00D5", "O");
             replacements.put("\u00D6", "O");
             replacements.put("\u00D8", "O");
+            replacements.put("\u014C", "O");
+            replacements.put("\u014E", "O");
+            replacements.put("\u0150", "O");
+            replacements.put("\u01A0", "O");
+            replacements.put("\u01D1", "O");
+            replacements.put("\u01FE", "O");
+            replacements.put("\u0152", "OE");
+            replacements.put("\u0154", "R");
+            replacements.put("\u0156", "R");
+            replacements.put("\u0158", "R");
+            replacements.put("\u015A", "S");
+            replacements.put("\u015C", "S");
+            replacements.put("\u015E", "S");
+            replacements.put("\u0160", "S");
+            replacements.put("\u0162", "T");
+            replacements.put("\u0164", "T");
+            replacements.put("\u0166", "T");
             replacements.put("\u00D9", "U");
             replacements.put("\u00DA", "U");
             replacements.put("\u00DB", "U");
             replacements.put("\u00DC", "U");
+            replacements.put("\u0168", "U");
+            replacements.put("\u016A", "U");
+            replacements.put("\u016C", "U");
+            replacements.put("\u016E", "U");
+            replacements.put("\u0170", "U");
+            replacements.put("\u0172", "U");
+            replacements.put("\u01AF", "U");
+            replacements.put("\u01D3", "U");
+            replacements.put("\u01D5", "U");
+            replacements.put("\u01D7", "U");
+            replacements.put("\u01D9", "U");
+            replacements.put("\u01DB", "U");
+            replacements.put("\u0174", "W");
             replacements.put("\u00DD", "Y");
+            replacements.put("\u0176", "Y");
+            replacements.put("\u0178", "Y");
+            replacements.put("\u0179", "Z");
+            replacements.put("\u017B", "Z");
+            replacements.put("\u017D", "Z");
             replacements.put("\u00DE", "TH");
             replacements.put("\u00E0", "a");
             replacements.put("\u00E1", "a");
@@ -3715,31 +3837,108 @@ public final class FnString {
             replacements.put("\u00E3", "a");
             replacements.put("\u00E4", "a");
             replacements.put("\u00E5", "a");
+            replacements.put("\u0101", "a");
+            replacements.put("\u0103", "a");
+            replacements.put("\u0105", "a");
+            replacements.put("\u01CE", "a");
+            replacements.put("\u01FB", "a");
             replacements.put("\u00E6", "ae");
+            replacements.put("\u01FD", "ae");
             replacements.put("\u00E7", "c");
+            replacements.put("\u0107", "c");
+            replacements.put("\u0109", "c");
+            replacements.put("\u010B", "c");
+            replacements.put("\u010D", "c");
+            replacements.put("\u00F0", "d");
+            replacements.put("\u010F", "d");
+            replacements.put("\u0111", "d");
             replacements.put("\u00E8", "e");
             replacements.put("\u00E9", "e");
             replacements.put("\u00EA", "e");
             replacements.put("\u00EB", "e");
+            replacements.put("\u0113", "e");
+            replacements.put("\u0115", "e");
+            replacements.put("\u0117", "e");
+            replacements.put("\u0119", "e");
+            replacements.put("\u011B", "e");
+            replacements.put("\u011D", "g");
+            replacements.put("\u011F", "g");
+            replacements.put("\u0121", "g");
+            replacements.put("\u0123", "g");
+            replacements.put("\u0125", "h");
+            replacements.put("\u0127", "h");
             replacements.put("\u00EC", "i");
             replacements.put("\u00ED", "i");
             replacements.put("\u00EE", "i");
             replacements.put("\u00EF", "i");
-            replacements.put("\u00F0", "d");
+            replacements.put("\u0129", "i");
+            replacements.put("\u012B", "i");
+            replacements.put("\u012D", "i");
+            replacements.put("\u012F", "i");
+            replacements.put("\u0131", "i");
+            replacements.put("\u01D0", "i");
+            replacements.put("\u0133", "ij");
+            replacements.put("\u0135", "j");
+            replacements.put("\u0137", "k");
+            replacements.put("\u0138", "k");
+            replacements.put("\u013A", "l");
+            replacements.put("\u013C", "l");
+            replacements.put("\u013E", "l");
+            replacements.put("\u0140", "l");
+            replacements.put("\u0142", "l");
             replacements.put("\u00F1", "n");
+            replacements.put("\u0144", "n");
+            replacements.put("\u0146", "n");
+            replacements.put("\u0148", "n");
+            replacements.put("\u0149", "n");
+            replacements.put("\u014B", "n");
             replacements.put("\u00F2", "o");
             replacements.put("\u00F3", "o");
             replacements.put("\u00F4", "o");
             replacements.put("\u00F5", "o");
             replacements.put("\u00F6", "o");
             replacements.put("\u00F8", "o");
+            replacements.put("\u014D", "o");
+            replacements.put("\u014F", "o");
+            replacements.put("\u0151", "o");
+            replacements.put("\u01A1", "o");
+            replacements.put("\u01D2", "o");
+            replacements.put("\u01FF", "o");
+            replacements.put("\u0153", "oe");
+            replacements.put("\u0155", "r");
+            replacements.put("\u0157", "r");
+            replacements.put("\u0159", "r");
+            replacements.put("\u015B", "s");
+            replacements.put("\u015D", "s");
+            replacements.put("\u015F", "s");
+            replacements.put("\u0161", "s");
+            replacements.put("\u0163", "t");
+            replacements.put("\u0165", "t");
+            replacements.put("\u0167", "t");
             replacements.put("\u00F9", "u");
             replacements.put("\u00FA", "u");
             replacements.put("\u00FB", "u");
             replacements.put("\u00FC", "u");
+            replacements.put("\u0169", "u");
+            replacements.put("\u016B", "u");
+            replacements.put("\u016D", "u");
+            replacements.put("\u016F", "u");
+            replacements.put("\u0171", "u");
+            replacements.put("\u0173", "u");
+            replacements.put("\u01B0", "u");
+            replacements.put("\u01D4", "u");
+            replacements.put("\u01D6", "u");
+            replacements.put("\u01D8", "u");
+            replacements.put("\u01DA", "u");
+            replacements.put("\u01DC", "u");
+            replacements.put("\u0175", "w");
             replacements.put("\u00FD", "y");
             replacements.put("\u00FE", "th");
             replacements.put("\u00FF", "y");
+            replacements.put("\u0177", "y");
+            replacements.put("\u017A", "z");
+            replacements.put("\u017C", "z");
+            replacements.put("\u017E", "z");
             defaultSearchList = replacements.keySet().toArray(new String[replacements.size()]);
             defaultReplacementList = replacements.values().toArray(new String[replacements.size()]);
             
