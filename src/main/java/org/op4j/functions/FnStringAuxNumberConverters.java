@@ -195,14 +195,16 @@ final class FnStringAuxNumberConverters {
             /*
              * Java's standard decimal point for valueOf operations is point,
              * so the decimal comma will have to be replaced by a point.
+             * Besides this, the points will be removed from the input string 
+             * as they have to be ignored
              */
-            final int lastPos = original.lastIndexOf(",");
+            String originalWithoutPoints = original.replace(".", "");
+            final int lastPos = originalWithoutPoints.lastIndexOf(",");
             if (lastPos == -1) {
-                // This is to avoid that things like "12.34" are valid if decimal is comma
-                return original + ".0";
+                return originalWithoutPoints;
             }
-            return original.substring(0, lastPos) + "." +
-                    (lastPos + 1 < original.length()? original.substring(lastPos + 1) : "");
+            return originalWithoutPoints.substring(0, lastPos) + "." +
+                    (lastPos + 1 < originalWithoutPoints.length()? originalWithoutPoints.substring(lastPos + 1) : "");
             
         }
 
