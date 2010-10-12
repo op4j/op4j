@@ -20,6 +20,7 @@ import java.util.Set;
 import junit.framework.TestCase;
 
 import org.apache.commons.lang.LocaleUtils;
+import org.apache.commons.lang.RandomStringUtils;
 import org.apache.commons.lang.StringUtils;
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
@@ -1888,6 +1889,23 @@ public class AssortedTests extends TestCase {
 
         assertEquals(result, FnString.asciify().execute(values));
         
+    }
+
+    @Test
+    public void test70() throws Exception {
+        String input = RandomStringUtils.random(13);
+        assertEquals(StringUtils.reverse(input), 
+                Op.on(input).exec(FnString.reverse())
+                .get());
+        
+        assertTrue( 
+                Op.on("").exec(FnString.isEmpty())
+                .get());
+        
+        assertFalse( 
+                Op.on("  ").exec(FnString.isEmpty())
+                .get());
+                 
     }
 
 }

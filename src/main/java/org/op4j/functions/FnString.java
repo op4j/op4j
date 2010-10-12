@@ -114,7 +114,11 @@ public final class FnString {
     private static final Function<String, Boolean> IS_SHORT = new IsShort();
     private static final Function<String, Boolean> IS_BYTE = new IsByte();
     
-	
+    private static final Function<String, Boolean> IS_EMPTY = new IsEmpty();
+    private static final Function<String, Boolean> IS_BLANK = new IsBlank();
+    
+    private static final Function<String, String> REVERSE = new Reverse();
+    
 	private FnString() {
 		super();           
 	}
@@ -2962,6 +2966,43 @@ public final class FnString {
         return new SubStringBetween(open, close);
     }
     
+    /**
+     * <p>
+     * Returns whether the target {@link String} is empty or not. It calls 
+     * {@link StringUtils#isEmpty(String)}. The string is empty if it is "" 
+     * or null
+     * </p>
+     * 
+     * @return whether the String is empty or not
+     */
+    public static final Function<String, Boolean> isEmpty() {
+        return IS_EMPTY;
+    }
+    
+    /**
+     * <p>
+     * Returns whether the target {@link String} is blank or not. It calls 
+     * {@link StringUtils#isBlank(String)}. The string is blank if it is
+     * whitespace, empty ("") or null.
+     * </p>
+     * 
+     * @return whether the String is blank or not
+     */
+    public static final Function<String, Boolean> isBlank() {
+        return IS_BLANK;
+    }
+    
+    /**
+     * <p>
+     * It reverses the input {@link String}
+     * </p>
+     * 
+     * @return a {@link String} equals to the input string reversed
+     */
+    public static final Function<String, String> reverse() {
+        return REVERSE;
+    }
+    
     
 	/**
 	 * The String is returned in a way it can be used to fill in a CSV column as StringEscapeUtils does
@@ -4730,6 +4771,39 @@ public final class FnString {
                 return StringUtils.substringBetween(input, this.open);     
             }
             return StringUtils.substringBetween(input, this.open, this.close);  
+        }
+    }
+    
+    static final class IsEmpty extends Function<String, Boolean> {
+        
+        public IsEmpty() {
+            super();
+        }
+        
+        public Boolean execute(String input, ExecCtx ctx) throws Exception { 
+            return Boolean.valueOf(StringUtils.isEmpty(input));
+        }
+    }
+    
+    static final class IsBlank extends Function<String, Boolean> {
+        
+        public IsBlank() {
+            super();
+        }
+        
+        public Boolean execute(String input, ExecCtx ctx) throws Exception { 
+            return Boolean.valueOf(StringUtils.isBlank(input));
+        }
+    }
+    
+    static final class Reverse extends Function<String, String> {
+        
+        public Reverse() {
+            super();
+        }
+        
+        public String execute(String input, ExecCtx ctx) throws Exception { 
+            return StringUtils.reverse(input);
         }
     }
 }
