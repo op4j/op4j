@@ -1905,8 +1905,31 @@ public class AssortedTests extends TestCase {
         assertFalse( 
                 Op.on("  ").exec(FnString.isEmpty())
                 .get());
-                 
+        
     }
 
+    @Test
+    public void test71() throws Exception {
+        String input = "08/23/2010";
+        assertTrue(Op.on(input).exec(FnString.isCalendar("MM/dd/yyyy", Locale.ENGLISH))
+                .get());
+        Op.on(input).exec(FnString.toCalendar("MM/dd/yyyy", Locale.ENGLISH))
+            .get();
+        
+        input = "23/08/2010";
+        assertTrue(Op.on(input).exec(FnString.isCalendar("MM/dd/yyyy", Locale.ENGLISH))
+                .get());
+        Op.on(input).exec(FnString.toCalendar("MM/dd/yyyy", Locale.ENGLISH))
+            .get();
+        
+        input = "Ago/23/2010";
+        assertFalse(Op.on(input).exec(FnString.isCalendar("MMM/dd/yyyy", Locale.ENGLISH))
+                .get());
+        
+        input = "Aug/23/2010";
+        assertTrue(Op.on(input).exec(FnString.isCalendar("MMM/dd/yyyy", Locale.ENGLISH))
+                .get());
+        
+    }
 }
 
