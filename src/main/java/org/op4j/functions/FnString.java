@@ -1579,7 +1579,65 @@ public final class FnString {
 	public static final Function<String,String> strip() {
         return STRIP_STRING_FUNC;
     }
-	
+
+		
+	/**
+     * <p>
+     * Checks whether the target String can be converted into a Calendar based on the
+     * input parameters or not. If it returns true, {@link FnString#toCalendar(String)}
+     * can be called safely.
+     * </p>
+     * <p>
+     * Pattern format is that of <tt>java.text.SimpleDateFormat</tt>.
+     * </p>
+     * 
+     * @param pattern the pattern to be used
+     * @return true if the target {@link String} represents a {@link Calendar},
+     * false otherwise
+     */
+    public static final Function<String,Boolean> isCalendar(final String pattern) {
+        return new IsCalendar(pattern);
+    }
+
+    
+    /**
+     * <p>
+     * Checks whether the target {@link String} represents a {@link Calendar} or not.
+     * If it returns true, {@link FnString#toCalendar(String, Locale)} can be called
+     * safely.
+     * </p>
+     * <p>
+     * Pattern format is that of <tt>java.text.SimpleDateFormat</tt>.
+     * </p>
+     * 
+     * @param pattern the pattern to be used.
+     * @param locale the locale which will be used for parsing month names
+     * @return true if the target {@link String} represents a {@link Calendar},
+     * false otherwise
+     */
+    public static final Function<String,Boolean> isCalendar(final String pattern, final Locale locale) {
+        return new IsCalendar(pattern, locale);
+    }
+    
+    
+    /**
+     * <p>
+     * Returns true if the target {@link String} can be converted into a {@link Calendar}
+     * based on the input parameters. If it returns true, the function
+     * {@link ToCalendar#ToCalendar(String, String)} can be called safely.
+     * </p>
+     * <p>
+     * Pattern format is that of <tt>java.text.SimpleDateFormat</tt>.
+     * </p>
+     * 
+     * @param pattern the pattern to be used (ex: "en_US", "es_ES", etc.)
+     * @param locale the locale which will be used for parsing month names
+     * @return true if it can be converted, false otherwise
+     */
+    public static final Function<String,Boolean> isCalendar(final String pattern, final String locale) {
+        return new IsCalendar(pattern, locale);
+    }
+    
 	
 	/**
 	 * <p>
@@ -3339,8 +3397,54 @@ public final class FnString {
         
     }
     
-    
-    
+    static final class IsCalendar extends Function<String,Boolean>  {
+
+        private String pattern = null;
+        private Locale locale = null;
+        
+        IsCalendar(final String pattern) {
+            super();
+            Validate.notNull(pattern, "A pattern must be specified");
+            if (StringUtils.contains(pattern, "MMM")) {
+                throw new IllegalArgumentException("The use of MMM or MMMM as part of the date pattern requires a Locale");
+            }
+            if (StringUtils.contains(pattern, "EEE")) {
+                throw new IllegalArgumentException("The use of EEE or EEEE as part of the date pattern requires a Locale");
+            }
+            this.pattern = pattern;
+        }
+        
+        IsCalendar(final String pattern, final Locale locale) {
+            super();
+            Validate.notNull(pattern, "A pattern must be specified");
+            Validate.notNull(locale, "A locale must be specified");
+            this.pattern = pattern;
+            this.locale = locale;
+        }
+        
+        IsCalendar(final String pattern, final String locale) {
+            super();
+            Validate.notNull(pattern, "A pattern must be specified");
+            Validate.notNull(locale, "A locale must be specified");
+            this.pattern = pattern;
+            this.locale = LocaleUtils.toLocale(locale);
+        }
+
+
+        public Boolean execute(final String object, final ExecCtx ctx) throws Exception {
+            try {
+                if (this.locale != null) {
+                    Op.on(object).exec(FnString.toCalendar(this.pattern, this.locale)).get();
+                } else {
+                    Op.on(object).exec(FnString.toCalendar(this.pattern)).get();
+                }
+                return Boolean.TRUE;
+            } catch (ExecutionException e) {
+                return Boolean.FALSE;
+            }
+        }
+        
+    }
     
     
     
