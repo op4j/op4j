@@ -120,13 +120,13 @@ public final class Fn {
      * a target object of type Object[].
      * </p>
      * <p>
-     * This is equivalent to <tt>Fn.on(Types.ARRAY_OF_OBJECT)</tt>
+     * This is equivalent to <tt>Fn.onArrayOf(Types.OBJECT)</tt>
      * </p>
      * 
      * @return an operator, ready for chaining
      */
     public static Level0ArrayOperator<Object[],Object> onArrayOfObject() {
-        return on(Types.ARRAY_OF_OBJECT);
+        return onArrayOf(Types.OBJECT);
     }
 
    
@@ -136,13 +136,13 @@ public final class Fn {
      * a target object of type List&lt;Object&gt;.
      * </p>
      * <p>
-     * This is equivalent to <tt>Fn.on(Types.LIST_OF_OBJECT)</tt>
+     * This is equivalent to <tt>Fn.onListOf(Types.OBJECT)</tt>
      * </p>
      * 
      * @return an operator, ready for chaining
      */
     public static Level0ListOperator<List<Object>,Object> onListOfObject() {
-        return on(Types.LIST_OF_OBJECT);
+        return onListOf(Types.OBJECT);
     }
 
 
@@ -152,13 +152,13 @@ public final class Fn {
      * a target object of type Set&lt;Object&gt;.
      * </p>
      * <p>
-     * This is equivalent to <tt>Fn.on(Types.SET_OF_OBJECT)</tt>
+     * This is equivalent to <tt>Fn.onSetOf(Types.OBJECT)</tt>
      * </p>
      * 
      * @return an operator, ready for chaining
      */
     public static Level0SetOperator<Set<Object>,Object> onSetOfObject() {
-        return on(Types.SET_OF_OBJECT);
+        return onSetOf(Types.OBJECT);
     }
 
     
@@ -184,13 +184,13 @@ public final class Fn {
      * a target object of type BigInteger[].
      * </p>
      * <p>
-     * This is equivalent to <tt>Fn.on(Types.ARRAY_OF_BIG_INTEGER)</tt>
+     * This is equivalent to <tt>Fn.onArrayOf(Types.BIG_INTEGER)</tt>
      * </p>
      * 
      * @return an operator, ready for chaining
      */
     public static Level0ArrayOperator<BigInteger[],BigInteger> onArrayOfBigInteger() {
-        return on(Types.ARRAY_OF_BIG_INTEGER);
+        return onArrayOf(Types.BIG_INTEGER);
     }
 
     
@@ -200,13 +200,13 @@ public final class Fn {
      * a target object of type List&lt;BigInteger&gt;.
      * </p>
      * <p>
-     * This is equivalent to <tt>Fn.on(Types.LIST_OF_BIG_INTEGER)</tt>
+     * This is equivalent to <tt>Fn.onListOf(Types.BIG_INTEGER)</tt>
      * </p>
      * 
      * @return an operator, ready for chaining
      */
     public static Level0ListOperator<List<BigInteger>,BigInteger> onListOfBigInteger() {
-        return on(Types.LIST_OF_BIG_INTEGER);
+        return onListOf(Types.BIG_INTEGER);
     }
 
     
@@ -216,13 +216,13 @@ public final class Fn {
      * a target object of type Set&lt;BigInteger&gt;.
      * </p>
      * <p>
-     * This is equivalent to <tt>Fn.on(Types.SET_OF_BIG_INTEGER)</tt>
+     * This is equivalent to <tt>Fn.onSetOf(Types.BIG_INTEGER)</tt>
      * </p>
      * 
      * @return an operator, ready for chaining
      */
     public static Level0SetOperator<Set<BigInteger>,BigInteger> onSetOfBigInteger() {
-        return on(Types.SET_OF_BIG_INTEGER);
+        return onSetOf(Types.BIG_INTEGER);
     }
 
     
@@ -249,13 +249,13 @@ public final class Fn {
      * a target object of type  BigDecimal[].
      * </p>
      * <p>
-     * This is equivalent to <tt>Fn.on(Types.ARRAY_OF_BIG_DECIMAL)</tt>
+     * This is equivalent to <tt>Fn.onArrayOf(Types.BIG_DECIMAL)</tt>
      * </p>
      * 
      * @return an operator, ready for chaining
      */
     public static Level0ArrayOperator<BigDecimal[],BigDecimal> onArrayOfBigDecimal() {
-        return on(Types.ARRAY_OF_BIG_DECIMAL);
+        return onArrayOf(Types.BIG_DECIMAL);
     }
 
     
@@ -265,13 +265,13 @@ public final class Fn {
      * a target object of type List&lt;BigDecimal&gt;.
      * </p>
      * <p>
-     * This is equivalent to <tt>Fn.on(Types.LIST_OF_BIG_DECIMAL)</tt>
+     * This is equivalent to <tt>Fn.onListOf(Types.BIG_DECIMAL)</tt>
      * </p>
      * 
      * @return an operator, ready for chaining
      */
     public static Level0ListOperator<List<BigDecimal>,BigDecimal> onListOfBigDecimal() {
-        return on(Types.LIST_OF_BIG_DECIMAL);
+        return onListOf(Types.BIG_DECIMAL);
     }
 
     
@@ -281,13 +281,13 @@ public final class Fn {
      * a target object of type Set&lt;BigDecimal&gt;.
      * </p>
      * <p>
-     * This is equivalent to <tt>Fn.on(Types.SET_OF_BIG_DECIMAL)</tt>
+     * This is equivalent to <tt>Fn.onSetOf(Types.BIG_DECIMAL)</tt>
      * </p>
      * 
      * @return an operator, ready for chaining
      */
     public static Level0SetOperator<Set<BigDecimal>,BigDecimal> onSetOfBigDecimal() {
-        return on(Types.SET_OF_BIG_DECIMAL);
+        return onSetOf(Types.BIG_DECIMAL);
     }
 
     
@@ -313,13 +313,13 @@ public final class Fn {
      * a target object of type Boolean[].
      * </p>
      * <p>
-     * This is equivalent to <tt>Fn.on(Types.ARRAY_OF_BOOLEAN)</tt>
+     * This is equivalent to <tt>Fn.onArrayOf(Types.BOOLEAN)</tt>
      * </p>
      * 
      * @return an operator, ready for chaining
      */
     public static Level0ArrayOperator<Boolean[],Boolean> onArrayOfBoolean() {
-        return on(Types.ARRAY_OF_BOOLEAN);
+        return onArrayOf(Types.BOOLEAN);
     }
 
     
@@ -329,13 +329,13 @@ public final class Fn {
      * a target object of type List&lt;Boolean&gt;.
      * </p>
      * <p>
-     * This is equivalent to <tt>Fn.on(Types.LIST_OF_BOOLEAN)</tt>
+     * This is equivalent to <tt>Fn.onListOf(Types.BOOLEAN)</tt>
      * </p>
      * 
      * @return an operator, ready for chaining
      */
     public static Level0ListOperator<List<Boolean>,Boolean> onListOfBoolean() {
-        return on(Types.LIST_OF_BOOLEAN);
+        return onListOf(Types.BOOLEAN);
     }
 
     
@@ -345,13 +345,13 @@ public final class Fn {
      * a target object of type Set&lt;Boolean&gt;.
      * </p>
      * <p>
-     * This is equivalent to <tt>Fn.on(Types.SET_OF_BOOLEAN)</tt>
+     * This is equivalent to <tt>Fn.onSetOf(Types.BOOLEAN)</tt>
      * </p>
      * 
      * @return an operator, ready for chaining
      */
     public static Level0SetOperator<Set<Boolean>,Boolean> onSetOfBoolean() {
-        return on(Types.SET_OF_BOOLEAN);
+        return onSetOf(Types.BOOLEAN);
     }
 
     
@@ -377,13 +377,13 @@ public final class Fn {
      * a target object of type Byte[].
      * </p>
      * <p>
-     * This is equivalent to <tt>Fn.on(Types.ARRAY_OF_BYTE)</tt>
+     * This is equivalent to <tt>Fn.onArrayOf(Types.BYTE)</tt>
      * </p>
      * 
      * @return an operator, ready for chaining
      */
     public static Level0ArrayOperator<Byte[],Byte> onArrayOfByte() {
-        return on(Types.ARRAY_OF_BYTE);
+        return onArrayOf(Types.BYTE);
     }
 
     
@@ -393,13 +393,13 @@ public final class Fn {
      * a target object of type List&lt;Byte&gt;.
      * </p>
      * <p>
-     * This is equivalent to <tt>Fn.on(Types.LIST_OF_BYTE)</tt>
+     * This is equivalent to <tt>Fn.onListOf(Types.BYTE)</tt>
      * </p>
      * 
      * @return an operator, ready for chaining
      */
     public static Level0ListOperator<List<Byte>,Byte> onListOfByte() {
-        return on(Types.LIST_OF_BYTE);
+        return onListOf(Types.BYTE);
     }
 
     
@@ -409,13 +409,13 @@ public final class Fn {
      * a target object of type Set&lt;Byte&gt;.
      * </p>
      * <p>
-     * This is equivalent to <tt>Fn.on(Types.SET_OF_BYTE)</tt>
+     * This is equivalent to <tt>Fn.onSetOf(Types.BYTE)</tt>
      * </p>
      * 
      * @return an operator, ready for chaining
      */
     public static Level0SetOperator<Set<Byte>,Byte> onSetOfByte() {
-        return on(Types.SET_OF_BYTE);
+        return onSetOf(Types.BYTE);
     }
 
     
@@ -442,13 +442,13 @@ public final class Fn {
      * a target object of type Character[].
      * </p>
      * <p>
-     * This is equivalent to <tt>Fn.on(Types.ARRAY_OF_CHARACTER)</tt>
+     * This is equivalent to <tt>Fn.onArrayOf(Types.CHARACTER)</tt>
      * </p>
      * 
      * @return an operator, ready for chaining
      */
     public static Level0ArrayOperator<Character[],Character> onArrayOfCharacter() {
-        return on(Types.ARRAY_OF_CHARACTER);
+        return onArrayOf(Types.CHARACTER);
     }
 
     
@@ -458,13 +458,13 @@ public final class Fn {
      * a target object of type List&lt;Character&gt;.
      * </p>
      * <p>
-     * This is equivalent to <tt>Fn.on(Types.LIST_OF_CHARACTER)</tt>
+     * This is equivalent to <tt>Fn.onListOf(Types.CHARACTER)</tt>
      * </p>
      * 
      * @return an operator, ready for chaining
      */
     public static Level0ListOperator<List<Character>,Character> onListOfCharacter() {
-        return on(Types.LIST_OF_CHARACTER);
+        return onListOf(Types.CHARACTER);
     }
 
     
@@ -474,13 +474,13 @@ public final class Fn {
      * a target object of type Set&lt;Character&gt;.
      * </p>
      * <p>
-     * This is equivalent to <tt>Fn.on(Types.SET_OF_CHARACTER)</tt>
+     * This is equivalent to <tt>Fn.onSetOf(Types.CHARACTER)</tt>
      * </p>
      * 
      * @return an operator, ready for chaining
      */
     public static Level0SetOperator<Set<Character>,Character> onSetOfCharacter() {
-        return on(Types.SET_OF_CHARACTER);
+        return onSetOf(Types.CHARACTER);
     }
 
     
@@ -507,13 +507,13 @@ public final class Fn {
      * a target object of type Calendar[].
      * </p>
      * <p>
-     * This is equivalent to <tt>Fn.on(Types.ARRAY_OF_CALENDAR)</tt>
+     * This is equivalent to <tt>Fn.onArrayOf(Types.CALENDAR)</tt>
      * </p>
      * 
      * @return an operator, ready for chaining
      */
     public static Level0ArrayOperator<Calendar[],Calendar> onArrayOfCalendar() {
-        return on(Types.ARRAY_OF_CALENDAR);
+        return onArrayOf(Types.CALENDAR);
     }
 
     
@@ -523,13 +523,13 @@ public final class Fn {
      * a target object of type List&lt;Calendar&gt;.
      * </p>
      * <p>
-     * This is equivalent to <tt>Fn.on(Types.LIST_OF_CALENDAR)</tt>
+     * This is equivalent to <tt>Fn.onListOf(Types.CALENDAR)</tt>
      * </p>
      * 
      * @return an operator, ready for chaining
      */
     public static Level0ListOperator<List<Calendar>,Calendar> onListOfCalendar() {
-        return on(Types.LIST_OF_CALENDAR);
+        return onListOf(Types.CALENDAR);
     }
 
     
@@ -539,13 +539,13 @@ public final class Fn {
      * a target object of type Set&lt;Calendar&gt;.
      * </p>
      * <p>
-     * This is equivalent to <tt>Fn.on(Types.SET_OF_CALENDAR)</tt>
+     * This is equivalent to <tt>Fn.onSetOf(Types.CALENDAR)</tt>
      * </p>
      * 
      * @return an operator, ready for chaining
      */
     public static Level0SetOperator<Set<Calendar>,Calendar> onSetOfCalendar() {
-        return on(Types.SET_OF_CALENDAR);
+        return onSetOf(Types.CALENDAR);
     }
 
     
@@ -572,13 +572,13 @@ public final class Fn {
      * a target object of type Date[].
      * </p>
      * <p>
-     * This is equivalent to <tt>Fn.on(Types.ARRAY_OF_DATE)</tt>
+     * This is equivalent to <tt>Fn.onArrayOf(Types.DATE)</tt>
      * </p>
      * 
      * @return an operator, ready for chaining
      */
     public static Level0ArrayOperator<Date[],Date> onArrayOfDate() {
-        return on(Types.ARRAY_OF_DATE);
+        return onArrayOf(Types.DATE);
     }
 
     
@@ -588,13 +588,13 @@ public final class Fn {
      * a target object of type List&lt;Date&gt;.
      * </p>
      * <p>
-     * This is equivalent to <tt>Fn.on(Types.LIST_OF_DATE)</tt>
+     * This is equivalent to <tt>Fn.onListOf(Types.DATE)</tt>
      * </p>
      * 
      * @return an operator, ready for chaining
      */
     public static Level0ListOperator<List<Date>,Date> onListOfDate() {
-        return on(Types.LIST_OF_DATE);
+        return onListOf(Types.DATE);
     }
 
     
@@ -604,13 +604,13 @@ public final class Fn {
      * a target object of type Set&lt;Date&gt;.
      * </p>
      * <p>
-     * This is equivalent to <tt>Fn.on(Types.SET_OF_DATE)</tt>
+     * This is equivalent to <tt>Fn.onSetOf(Types.DATE)</tt>
      * </p>
      * 
      * @return an operator, ready for chaining
      */
     public static Level0SetOperator<Set<Date>,Date> onSetOfDate() {
-        return on(Types.SET_OF_DATE);
+        return onSetOf(Types.DATE);
     }
 
     
@@ -637,13 +637,13 @@ public final class Fn {
      * a target object of type Double[].
      * </p>
      * <p>
-     * This is equivalent to <tt>Fn.on(Types.ARRAY_OF_DOUBLE)</tt>
+     * This is equivalent to <tt>Fn.onArrayOf(Types.DOUBLE)</tt>
      * </p>
      * 
      * @return an operator, ready for chaining
      */
     public static Level0ArrayOperator<Double[],Double> onArrayOfDouble() {
-        return on(Types.ARRAY_OF_DOUBLE);
+        return onArrayOf(Types.DOUBLE);
     }
 
     
@@ -653,13 +653,13 @@ public final class Fn {
      * a target object of type List&lt;Double&gt;.
      * </p>
      * <p>
-     * This is equivalent to <tt>Fn.on(Types.LIST_OF_DOUBLE)</tt>
+     * This is equivalent to <tt>Fn.onListOf(Types.DOUBLE)</tt>
      * </p>
      * 
      * @return an operator, ready for chaining
      */
     public static Level0ListOperator<List<Double>,Double> onListOfDouble() {
-        return on(Types.LIST_OF_DOUBLE);
+        return onListOf(Types.DOUBLE);
     }
 
     
@@ -669,13 +669,13 @@ public final class Fn {
      * a target object of type Set&lt;Double&gt;.
      * </p>
      * <p>
-     * This is equivalent to <tt>Fn.on(Types.SET_OF_DOUBLE)</tt>
+     * This is equivalent to <tt>Fn.onSetOf(Types.DOUBLE)</tt>
      * </p>
      * 
      * @return an operator, ready for chaining
      */
     public static Level0SetOperator<Set<Double>,Double> onSetOfDouble() {
-        return on(Types.SET_OF_DOUBLE);
+        return onSetOf(Types.DOUBLE);
     }
 
 
@@ -702,13 +702,13 @@ public final class Fn {
      * a target object of type Float[].
      * </p>
      * <p>
-     * This is equivalent to <tt>Fn.on(Types.ARRAY_OF_FLOAT)</tt>
+     * This is equivalent to <tt>Fn.onArrayOf(Types.FLOAT)</tt>
      * </p>
      * 
      * @return an operator, ready for chaining
      */
     public static Level0ArrayOperator<Float[],Float> onArrayOfFloat() {
-        return on(Types.ARRAY_OF_FLOAT);
+        return onArrayOf(Types.FLOAT);
     }
 
     
@@ -718,13 +718,13 @@ public final class Fn {
      * a target object of type List&lt;Float&gt;.
      * </p>
      * <p>
-     * This is equivalent to <tt>Fn.on(Types.LIST_OF_FLOAT)</tt>
+     * This is equivalent to <tt>Fn.onListOf(Types.FLOAT)</tt>
      * </p>
      * 
      * @return an operator, ready for chaining
      */
     public static Level0ListOperator<List<Float>,Float> onListOfFloat() {
-        return on(Types.LIST_OF_FLOAT);
+        return onListOf(Types.FLOAT);
     }
 
     
@@ -734,13 +734,13 @@ public final class Fn {
      * a target object of type Set&lt;Float&gt;.
      * </p>
      * <p>
-     * This is equivalent to <tt>Fn.on(Types.SET_OF_FLOAT)</tt>
+     * This is equivalent to <tt>Fn.onSetOf(Types.FLOAT)</tt>
      * </p>
      * 
      * @return an operator, ready for chaining
      */
     public static Level0SetOperator<Set<Float>,Float> onSetOfFloat() {
-        return on(Types.SET_OF_FLOAT);
+        return onSetOf(Types.FLOAT);
     }
 
     
@@ -767,13 +767,13 @@ public final class Fn {
      * a target object of type Integer[].
      * </p>
      * <p>
-     * This is equivalent to <tt>Fn.on(Types.ARRAY_OF_INTEGER)</tt>
+     * This is equivalent to <tt>Fn.onArrayOf(Types.INTEGER)</tt>
      * </p>
      * 
      * @return an operator, ready for chaining
      */
     public static Level0ArrayOperator<Integer[],Integer> onArrayOfInteger() {
-        return on(Types.ARRAY_OF_INTEGER);
+        return onArrayOf(Types.INTEGER);
     }
 
     
@@ -783,13 +783,13 @@ public final class Fn {
      * a target object of type List&lt;Integer&gt;.
      * </p>
      * <p>
-     * This is equivalent to <tt>Fn.on(Types.LIST_OF_INTEGER)</tt>
+     * This is equivalent to <tt>Fn.onListOf(Types.INTEGER)</tt>
      * </p>
      * 
      * @return an operator, ready for chaining
      */
     public static Level0ListOperator<List<Integer>,Integer> onListOfInteger() {
-        return on(Types.LIST_OF_INTEGER);
+        return onListOf(Types.INTEGER);
     }
 
     
@@ -799,13 +799,13 @@ public final class Fn {
      * a target object of type Set&lt;Integer&gt;.
      * </p>
      * <p>
-     * This is equivalent to <tt>Fn.on(Types.SET_OF_INTEGER)</tt>
+     * This is equivalent to <tt>Fn.onSetOf(Types.INTEGER)</tt>
      * </p>
      * 
      * @return an operator, ready for chaining
      */
     public static Level0SetOperator<Set<Integer>,Integer> onSetOfInteger() {
-        return on(Types.SET_OF_INTEGER);
+        return onSetOf(Types.INTEGER);
     }
 
     
@@ -832,13 +832,13 @@ public final class Fn {
      * a target object of type Long[].
      * </p>
      * <p>
-     * This is equivalent to <tt>Fn.on(Types.ARRAY_OF_LONG)</tt>
+     * This is equivalent to <tt>Fn.onArrayOf(Types.LONG)</tt>
      * </p>
      * 
      * @return an operator, ready for chaining
      */
     public static Level0ArrayOperator<Long[],Long> onArrayOfLong() {
-        return on(Types.ARRAY_OF_LONG);
+        return onArrayOf(Types.LONG);
     }
 
 
@@ -848,13 +848,13 @@ public final class Fn {
      * a target object of type List&lt;Long&gt;.
      * </p>
      * <p>
-     * This is equivalent to <tt>Fn.on(Types.LIST_OF_LONG)</tt>
+     * This is equivalent to <tt>Fn.onListOf(Types.LONG)</tt>
      * </p>
      * 
      * @return an operator, ready for chaining
      */
     public static Level0ListOperator<List<Long>,Long> onListOfLong() {
-        return on(Types.LIST_OF_LONG);
+        return onListOf(Types.LONG);
     }
 
     
@@ -864,13 +864,13 @@ public final class Fn {
      * a target object of type Set&lt;Long&gt;.
      * </p>
      * <p>
-     * This is equivalent to <tt>Fn.on(Types.SET_OF_LONG)</tt>
+     * This is equivalent to <tt>Fn.onSetOf(Types.LONG)</tt>
      * </p>
      * 
      * @return an operator, ready for chaining
      */
     public static Level0SetOperator<Set<Long>,Long> onSetOfLong() {
-        return on(Types.SET_OF_LONG);
+        return onSetOf(Types.LONG);
     }
 
     
@@ -897,13 +897,13 @@ public final class Fn {
      * a target object of type Short[].
      * </p>
      * <p>
-     * This is equivalent to <tt>Fn.on(Types.ARRAY_OF_SHORT)</tt>
+     * This is equivalent to <tt>Fn.onArrayOf(Types.SHORT)</tt>
      * </p>
      * 
      * @return an operator, ready for chaining
      */
     public static Level0ArrayOperator<Short[],Short> onArrayOfShort() {
-        return on(Types.ARRAY_OF_SHORT);
+        return onArrayOf(Types.SHORT);
     }
 
 
@@ -913,13 +913,13 @@ public final class Fn {
      * a target object of type List&lt;Short&gt;.
      * </p>
      * <p>
-     * This is equivalent to <tt>Fn.on(Types.LIST_OF_SHORT)</tt>
+     * This is equivalent to <tt>Fn.onListOf(Types.SHORT)</tt>
      * </p>
      * 
      * @return an operator, ready for chaining
      */
     public static Level0ListOperator<List<Short>,Short> onListOfShort() {
-        return on(Types.LIST_OF_SHORT);
+        return onListOf(Types.SHORT);
     }
 
     
@@ -929,13 +929,13 @@ public final class Fn {
      * a target object of type Set&lt;Short&gt;.
      * </p>
      * <p>
-     * This is equivalent to <tt>Fn.on(Types.SET_OF_SHORT)</tt>
+     * This is equivalent to <tt>Fn.onSetOf(Types.SHORT)</tt>
      * </p>
      * 
      * @return an operator, ready for chaining
      */
     public static Level0SetOperator<Set<Short>,Short> onSetOfShort() {
-        return on(Types.SET_OF_SHORT);
+        return onSetOf(Types.SHORT);
     }
 
     
@@ -962,13 +962,13 @@ public final class Fn {
      * a target object of type String[].
      * </p>
      * <p>
-     * This is equivalent to <tt>Fn.on(Types.ARRAY_OF_STRING)</tt>
+     * This is equivalent to <tt>Fn.onArrayOf(Types.STRING)</tt>
      * </p>
      * 
      * @return an operator, ready for chaining
      */
     public static Level0ArrayOperator<String[],String> onArrayOfString() {
-        return on(Types.ARRAY_OF_STRING);
+        return onArrayOf(Types.STRING);
     }
 
     
@@ -978,13 +978,13 @@ public final class Fn {
      * a target object of type List&lt;String&gt;.
      * </p>
      * <p>
-     * This is equivalent to <tt>Fn.on(Types.LIST_OF_STRING)</tt>
+     * This is equivalent to <tt>Fn.onListOf(Types.STRING)</tt>
      * </p>
      * 
      * @return an operator, ready for chaining
      */
     public static Level0ListOperator<List<String>,String> onListOfString() {
-        return on(Types.LIST_OF_STRING);
+        return onListOf(Types.STRING);
     }
 
     
@@ -994,13 +994,13 @@ public final class Fn {
      * a target object of type Set&lt;String&gt;.
      * </p>
      * <p>
-     * This is equivalent to <tt>Fn.on(Types.SET_OF_STRING)</tt>
+     * This is equivalent to <tt>Fn.onSetOf(Types.STRING)</tt>
      * </p>
      * 
      * @return an operator, ready for chaining
      */
     public static Level0SetOperator<Set<String>,String> onSetOfString() {
-        return on(Types.SET_OF_STRING);
+        return onSetOf(Types.STRING);
     }
 
     

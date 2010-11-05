@@ -334,7 +334,7 @@ public class FnArrayOf<T> {
             return doSort(object, ctx);
         }
 
-        @SuppressWarnings({"unchecked", "unused"})
+        @SuppressWarnings("unchecked")
         private T[] doSort(final T[] object, final ExecCtx ctx) throws Exception {
 
             final List<?> list = new ArrayList<Object>(Arrays.asList(object));
