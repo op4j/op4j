@@ -21,6 +21,8 @@ package org.op4j.functions;
 
 import org.javatuples.Decade;
 import org.javatuples.Ennead;
+import org.javatuples.KeyValue;
+import org.javatuples.LabelValue;
 import org.javatuples.Octet;
 import org.javatuples.Pair;
 import org.javatuples.Quartet;
@@ -58,6 +60,24 @@ public final class FnTuple {
             final Function<? super X,A> value0Function,
             final Function<? super X,B> value1Function) {
         return new ToPair<X,A,B>(
+                value0Function, value1Function);
+    }
+
+    
+    
+    public static final <X,A,B> Function<X,KeyValue<A,B>> keyValueWith(
+            final Function<? super X,A> value0Function,
+            final Function<? super X,B> value1Function) {
+        return new ToKeyValue<X,A,B>(
+                value0Function, value1Function);
+    }
+
+    
+    
+    public static final <X,A,B> Function<X,LabelValue<A,B>> labelValueWith(
+            final Function<? super X,A> value0Function,
+            final Function<? super X,B> value1Function) {
+        return new ToLabelValue<X,A,B>(
                 value0Function, value1Function);
     }
 
@@ -260,7 +280,67 @@ public final class FnTuple {
     }
     
     
+    
 
+    
+    
+    static final class ToKeyValue<X,A,B> extends Function<X,KeyValue<A,B>> {
+        
+        private final IFunction<? super X,A> value0Function;
+        private final IFunction<? super X,B> value1Function;
+        
+        
+        ToKeyValue(
+                final Function<? super X,A> value0Function,
+                final Function<? super X,B> value1Function) {
+            
+            super();
+            
+            this.value0Function = value0Function;
+            this.value1Function = value1Function;
+            
+        }
+        
+
+        public KeyValue<A,B> execute(final X input, final ExecCtx ctx) throws Exception {
+            return KeyValue.with(
+                    this.value0Function.execute(input, ctx), 
+                    this.value1Function.execute(input, ctx)); 
+        }       
+        
+    }
+    
+
+    
+
+    
+    
+    static final class ToLabelValue<X,A,B> extends Function<X,LabelValue<A,B>> {
+        
+        private final IFunction<? super X,A> value0Function;
+        private final IFunction<? super X,B> value1Function;
+        
+        
+        ToLabelValue(
+                final Function<? super X,A> value0Function,
+                final Function<? super X,B> value1Function) {
+            
+            super();
+            
+            this.value0Function = value0Function;
+            this.value1Function = value1Function;
+            
+        }
+        
+
+        public LabelValue<A,B> execute(final X input, final ExecCtx ctx) throws Exception {
+            return LabelValue.with(
+                    this.value0Function.execute(input, ctx), 
+                    this.value1Function.execute(input, ctx)); 
+        }       
+        
+    }
+    
     
 
     
