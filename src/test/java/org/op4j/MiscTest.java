@@ -41,6 +41,7 @@ import java.util.Set;
 
 import org.apache.commons.lang.time.StopWatch;
 import org.javaruntype.type.Types;
+import org.javatuples.Pair;
 import org.junit.Test;
 import org.op4j.functions.Call;
 import org.op4j.functions.DecimalPoint;
@@ -60,7 +61,9 @@ import org.op4j.functions.FnObject;
 import org.op4j.functions.FnReduce;
 import org.op4j.functions.FnSet;
 import org.op4j.functions.FnString;
+import org.op4j.functions.FnTuple;
 import org.op4j.functions.Function;
+import org.op4j.functions.Get;
 import org.op4j.functions.IFunction;
 import org.op4j.functions.Reductor;
 import org.op4j.util.ValuePair;
@@ -778,6 +781,12 @@ watch.start();
         System.out.println(Op.on("LO E ÇÀ IÑÆ NÜß ÞOR! añeçáíéóú").exec(FnString.asciify()).get());
         System.out.println(Op.on("ßß ßß a ßß nuß NUß nußß NUßß ßß").exec(FnString.asciify()).get());
         System.out.println(Op.on("ß").exec(FnString.asciify()).get());
+        
+        
+        
+        Pair<Integer,Integer> p = 
+            Op.on(dt).exec(FnTuple.pairWith(Get.attrOfInteger("year"),Get.attrOfInteger("month"))).get();
+        System.out.println(p);
         
     }
     
