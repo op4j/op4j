@@ -67,6 +67,22 @@ public final class Call<T,R> extends Function<T,R> {
         return new Call<Object,Object>(Types.OBJECT, methodName, VarArgsUtil.asOptionalObjectArray(Object.class,optionalParameters));
     }
 
+
+    /**
+     * <p>
+     * Abbreviation for {{@link #methodForObject(String, Object...)}.
+     * </p>
+     * 
+     * @since 1.1
+     * 
+     * @param methodName the name of the method
+     * @param optionalParameters the (optional) parameters of the method. 
+     * @return the result of the method execution
+     */
+    public static Function<Object,Object> obj(final String methodName, final Object... optionalParameters) {
+        return methodForObject(methodName, optionalParameters);
+    }
+    
     
     /**
      * <p>
@@ -81,6 +97,23 @@ public final class Call<T,R> extends Function<T,R> {
      */
     public static <R> Function<Object,R> methodFor(final Type<R> resultType, final String methodName, final Object... optionalParameters) {
         return new Call<Object,R>(resultType, methodName, VarArgsUtil.asOptionalObjectArray(Object.class,optionalParameters));
+    }
+
+
+    /**
+     * <p>
+     * Abbreviation for {{@link #methodFor(Type, String, Object...)}.
+     * </p>
+     * 
+     * @since 1.1
+     * 
+     * @param resultType the type of the result
+     * @param methodName the name of the method
+     * @param optionalParameters the (optional) parameters of the method. 
+     * @return the result of the method execution
+     */
+    public static <R> Function<Object,R> obj(final Type<R> resultType, final String methodName, final Object... optionalParameters) {
+        return methodFor(resultType, methodName, optionalParameters);
     }
 
 
@@ -99,6 +132,22 @@ public final class Call<T,R> extends Function<T,R> {
         return new Call<Object,BigInteger>(Types.BIG_INTEGER, methodName, VarArgsUtil.asOptionalObjectArray(Object.class,optionalParameters));
     }
 
+
+    /**
+     * <p>
+     * Abbreviation for {{@link #methodForBigInteger(String, Object...)}.
+     * </p>
+     * 
+     * @since 1.1
+     * 
+     * @param methodName the name of the method
+     * @param optionalParameters the (optional) parameters of the method. 
+     * @return the result of the method execution
+     */
+    public static Function<Object,BigInteger> bigInteger(final String methodName, final Object... optionalParameters) {
+        return methodForBigInteger(methodName, optionalParameters);
+    }
+
     
     /**
      * <p>
@@ -112,6 +161,22 @@ public final class Call<T,R> extends Function<T,R> {
      */
     public static Function<Object,BigDecimal> methodForBigDecimal(final String methodName, final Object... optionalParameters) {
         return new Call<Object,BigDecimal>(Types.BIG_DECIMAL, methodName, VarArgsUtil.asOptionalObjectArray(Object.class,optionalParameters));
+    }
+
+
+    /**
+     * <p>
+     * Abbreviation for {{@link #methodForBigDecimal(String, Object...)}.
+     * </p>
+     * 
+     * @since 1.1
+     * 
+     * @param methodName the name of the method
+     * @param optionalParameters the (optional) parameters of the method. 
+     * @return the result of the method execution
+     */
+    public static Function<Object,BigDecimal> bigDecimal(final String methodName, final Object... optionalParameters) {
+        return methodForBigDecimal(methodName, optionalParameters);
     }
 
     
@@ -128,6 +193,22 @@ public final class Call<T,R> extends Function<T,R> {
     public static Function<Object,Boolean> methodForBoolean(final String methodName, final Object... optionalParameters) {
         return new Call<Object,Boolean>(Types.BOOLEAN, methodName, VarArgsUtil.asOptionalObjectArray(Object.class,optionalParameters));
     }
+
+
+    /**
+     * <p>
+     * Abbreviation for {{@link #methodForBoolean(String, Object...)}.
+     * </p>
+     * 
+     * @since 1.1
+     * 
+     * @param methodName the name of the method
+     * @param optionalParameters the (optional) parameters of the method. 
+     * @return the result of the method execution
+     */
+    public static Function<Object,Boolean> bool(final String methodName, final Object... optionalParameters) {
+        return methodForBoolean(methodName, optionalParameters);
+    }
     
     
     /**
@@ -142,6 +223,22 @@ public final class Call<T,R> extends Function<T,R> {
      */
     public static Function<Object,Byte> methodForByte(final String methodName, final Object... optionalParameters) {
         return new Call<Object,Byte>(Types.BYTE, methodName, VarArgsUtil.asOptionalObjectArray(Object.class,optionalParameters));
+    }
+
+
+    /**
+     * <p>
+     * Abbreviation for {{@link #methodForByte(String, Object...)}.
+     * </p>
+     * 
+     * @since 1.1
+     * 
+     * @param methodName the name of the method
+     * @param optionalParameters the (optional) parameters of the method. 
+     * @return the result of the method execution
+     */
+    public static Function<Object,Byte> b(final String methodName, final Object... optionalParameters) {
+        return methodForByte(methodName, optionalParameters);
     }
     
     
@@ -158,6 +255,22 @@ public final class Call<T,R> extends Function<T,R> {
     public static Function<Object,Character> methodForCharacter(final String methodName, final Object... optionalParameters) {
         return new Call<Object,Character>(Types.CHARACTER, methodName, VarArgsUtil.asOptionalObjectArray(Object.class,optionalParameters));
     }
+
+
+    /**
+     * <p>
+     * Abbreviation for {{@link #methodForCharacter(String, Object...)}.
+     * </p>
+     * 
+     * @since 1.1
+     * 
+     * @param methodName the name of the method
+     * @param optionalParameters the (optional) parameters of the method. 
+     * @return the result of the method execution
+     */
+    public static Function<Object,Character> c(final String methodName, final Object... optionalParameters) {
+        return methodForCharacter(methodName, optionalParameters);
+    }
     
 
     /**
@@ -172,6 +285,22 @@ public final class Call<T,R> extends Function<T,R> {
      */
     public static Function<Object,Calendar> methodForCalendar(final String methodName, final Object... optionalParameters) {
         return new Call<Object,Calendar>(Types.CALENDAR, methodName, VarArgsUtil.asOptionalObjectArray(Object.class,optionalParameters));
+    }
+
+
+    /**
+     * <p>
+     * Abbreviation for {{@link #methodForCalendar(String, Object...)}.
+     * </p>
+     * 
+     * @since 1.1
+     * 
+     * @param methodName the name of the method
+     * @param optionalParameters the (optional) parameters of the method. 
+     * @return the result of the method execution
+     */
+    public static Function<Object,Calendar> calendar(final String methodName, final Object... optionalParameters) {
+        return methodForCalendar(methodName, optionalParameters);
     }
     
     
@@ -188,6 +317,22 @@ public final class Call<T,R> extends Function<T,R> {
     public static Function<Object,Date> methodForDate(final String methodName, final Object... optionalParameters) {
         return new Call<Object,Date>(Types.DATE, methodName, VarArgsUtil.asOptionalObjectArray(Object.class,optionalParameters));
     }
+
+
+    /**
+     * <p>
+     * Abbreviation for {{@link #methodForDate(String, Object...)}.
+     * </p>
+     * 
+     * @since 1.1
+     * 
+     * @param methodName the name of the method
+     * @param optionalParameters the (optional) parameters of the method. 
+     * @return the result of the method execution
+     */
+    public static Function<Object,Date> date(final String methodName, final Object... optionalParameters) {
+        return methodForDate(methodName, optionalParameters);
+    }
     
     
     /**
@@ -202,6 +347,22 @@ public final class Call<T,R> extends Function<T,R> {
      */
     public static Function<Object,Double> methodForDouble(final String methodName, final Object... optionalParameters) {
         return new Call<Object,Double>(Types.DOUBLE, methodName, VarArgsUtil.asOptionalObjectArray(Object.class,optionalParameters));
+    }
+
+
+    /**
+     * <p>
+     * Abbreviation for {{@link #methodForDouble(String, Object...)}.
+     * </p>
+     * 
+     * @since 1.1
+     * 
+     * @param methodName the name of the method
+     * @param optionalParameters the (optional) parameters of the method. 
+     * @return the result of the method execution
+     */
+    public static Function<Object,Double> d(final String methodName, final Object... optionalParameters) {
+        return methodForDouble(methodName, optionalParameters);
     }
     
     
@@ -218,6 +379,22 @@ public final class Call<T,R> extends Function<T,R> {
     public static Function<Object,Float> methodForFloat(final String methodName, final Object... optionalParameters) {
         return new Call<Object,Float>(Types.FLOAT, methodName, VarArgsUtil.asOptionalObjectArray(Object.class,optionalParameters));
     }
+
+
+    /**
+     * <p>
+     * Abbreviation for {{@link #methodForFloat(String, Object...)}.
+     * </p>
+     * 
+     * @since 1.1
+     * 
+     * @param methodName the name of the method
+     * @param optionalParameters the (optional) parameters of the method. 
+     * @return the result of the method execution
+     */
+    public static Function<Object,Float> f(final String methodName, final Object... optionalParameters) {
+        return methodForFloat(methodName, optionalParameters);
+    }
     
     
     /**
@@ -232,6 +409,22 @@ public final class Call<T,R> extends Function<T,R> {
      */
     public static Function<Object,Integer> methodForInteger(final String methodName, final Object... optionalParameters) {
         return new Call<Object,Integer>(Types.INTEGER, methodName, VarArgsUtil.asOptionalObjectArray(Object.class,optionalParameters));
+    }
+
+
+    /**
+     * <p>
+     * Abbreviation for {{@link #methodForInteger(String, Object...)}.
+     * </p>
+     * 
+     * @since 1.1
+     * 
+     * @param methodName the name of the method
+     * @param optionalParameters the (optional) parameters of the method. 
+     * @return the result of the method execution
+     */
+    public static Function<Object,Integer> i(final String methodName, final Object... optionalParameters) {
+        return methodForInteger(methodName, optionalParameters);
     }
     
     
@@ -248,6 +441,22 @@ public final class Call<T,R> extends Function<T,R> {
     public static Function<Object,Long> methodForLong(final String methodName, final Object... optionalParameters) {
         return new Call<Object,Long>(Types.LONG, methodName, VarArgsUtil.asOptionalObjectArray(Object.class,optionalParameters));
     }
+
+
+    /**
+     * <p>
+     * Abbreviation for {{@link #methodForLong(String, Object...)}.
+     * </p>
+     * 
+     * @since 1.1
+     * 
+     * @param methodName the name of the method
+     * @param optionalParameters the (optional) parameters of the method. 
+     * @return the result of the method execution
+     */
+    public static Function<Object,Long> l(final String methodName, final Object... optionalParameters) {
+        return methodForLong(methodName, optionalParameters);
+    }
     
     
     /**
@@ -263,6 +472,22 @@ public final class Call<T,R> extends Function<T,R> {
     public static Function<Object,Short> methodForShort(final String methodName, final Object... optionalParameters) {
         return new Call<Object,Short>(Types.SHORT, methodName, VarArgsUtil.asOptionalObjectArray(Object.class,optionalParameters));
     }
+
+
+    /**
+     * <p>
+     * Abbreviation for {{@link #methodForShort(String, Object...)}.
+     * </p>
+     * 
+     * @since 1.1
+     * 
+     * @param methodName the name of the method
+     * @param optionalParameters the (optional) parameters of the method. 
+     * @return the result of the method execution
+     */
+    public static Function<Object,Short> shr(final String methodName, final Object... optionalParameters) {
+        return methodForShort(methodName, optionalParameters);
+    }
     
     
     /**
@@ -277,6 +502,22 @@ public final class Call<T,R> extends Function<T,R> {
      */
     public static Function<Object,String> methodForString(final String methodName, final Object... optionalParameters) {
         return new Call<Object,String>(Types.STRING, methodName, VarArgsUtil.asOptionalObjectArray(Object.class,optionalParameters));
+    }
+
+
+    /**
+     * <p>
+     * Abbreviation for {{@link #methodForString(String, Object...)}.
+     * </p>
+     * 
+     * @since 1.1
+     * 
+     * @param methodName the name of the method
+     * @param optionalParameters the (optional) parameters of the method. 
+     * @return the result of the method execution
+     */
+    public static Function<Object,String> s(final String methodName, final Object... optionalParameters) {
+        return methodForString(methodName, optionalParameters);
     }
     
     
@@ -294,6 +535,22 @@ public final class Call<T,R> extends Function<T,R> {
         return new Call<Object,List<String>>(Types.LIST_OF_STRING, methodName, VarArgsUtil.asOptionalObjectArray(Object.class,optionalParameters));
     }
 
+
+    /**
+     * <p>
+     * Abbreviation for {{@link #methodForListOfString(String, Object...)}.
+     * </p>
+     * 
+     * @since 1.1
+     * 
+     * @param methodName the name of the method
+     * @param optionalParameters the (optional) parameters of the method. 
+     * @return the result of the method execution
+     */
+    public static Function<Object,List<String>> listOfString(final String methodName, final Object... optionalParameters) {
+        return methodForListOfString(methodName, optionalParameters);
+    }
+
     
     /**
      * <p>
@@ -309,6 +566,22 @@ public final class Call<T,R> extends Function<T,R> {
         return new Call<Object,Set<String>>(Types.SET_OF_STRING, methodName, VarArgsUtil.asOptionalObjectArray(Object.class,optionalParameters));
     }
 
+
+    /**
+     * <p>
+     * Abbreviation for {{@link #methodForSetOfString(String, Object...)}.
+     * </p>
+     * 
+     * @since 1.1
+     * 
+     * @param methodName the name of the method
+     * @param optionalParameters the (optional) parameters of the method. 
+     * @return the result of the method execution
+     */
+    public static Function<Object,Set<String>> setOfString(final String methodName, final Object... optionalParameters) {
+        return methodForSetOfString(methodName, optionalParameters);
+    }
+
     
     /**
      * <p>
@@ -322,6 +595,22 @@ public final class Call<T,R> extends Function<T,R> {
      */
     public static Function<Object,String[]> methodForArrayOfString(final String methodName, final Object... optionalParameters) {
         return new Call<Object,String[]>(Types.ARRAY_OF_STRING, methodName, VarArgsUtil.asOptionalObjectArray(Object.class,optionalParameters));
+    }
+
+
+    /**
+     * <p>
+     * Abbreviation for {{@link #methodForArrayOfString(String, Object...)}.
+     * </p>
+     * 
+     * @since 1.1
+     * 
+     * @param methodName the name of the method
+     * @param optionalParameters the (optional) parameters of the method. 
+     * @return the result of the method execution
+     */
+    public static Function<Object,String[]> arrayOfString(final String methodName, final Object... optionalParameters) {
+        return methodForArrayOfString(methodName, optionalParameters);
     }
     
 
@@ -340,6 +629,22 @@ public final class Call<T,R> extends Function<T,R> {
         return new Call<Object,List<R>>(Types.listOf(resultType), methodName, VarArgsUtil.asOptionalObjectArray(Object.class,optionalParameters));
     }
 
+
+    /**
+     * <p>
+     * Abbreviation for {{@link #methodForListOf(Type, String, Object...)}.
+     * </p>
+     * 
+     * @since 1.1
+     * 
+     * @param methodName the name of the method
+     * @param optionalParameters the (optional) parameters of the method. 
+     * @return the result of the method execution
+     */
+    public static <R> Function<Object,List<R>> listOf(final Type<R> resultType, final String methodName, final Object... optionalParameters) {
+        return methodForListOf(resultType, methodName, optionalParameters);
+    }
+
     
     /**
      * <p>
@@ -354,6 +659,22 @@ public final class Call<T,R> extends Function<T,R> {
      */
     public static <R> Function<Object,Set<R>> methodForSetOf(final Type<R> resultType, final String methodName, final Object... optionalParameters) {
         return new Call<Object,Set<R>>(Types.setOf(resultType), methodName, VarArgsUtil.asOptionalObjectArray(Object.class,optionalParameters));
+    }
+
+
+    /**
+     * <p>
+     * Abbreviation for {{@link #methodForSetOf(Type, String, Object...)}.
+     * </p>
+     * 
+     * @since 1.1
+     * 
+     * @param methodName the name of the method
+     * @param optionalParameters the (optional) parameters of the method. 
+     * @return the result of the method execution
+     */
+    public static <R> Function<Object,Set<R>> setOf(final Type<R> resultType, final String methodName, final Object... optionalParameters) {
+        return methodForSetOf(resultType, methodName, optionalParameters);
     }
     
     
@@ -370,6 +691,22 @@ public final class Call<T,R> extends Function<T,R> {
      */
     public static <R> Function<Object,R[]> methodForArrayOf(final Type<R> resultType, final String methodName, final Object... optionalParameters) {
         return new Call<Object,R[]>(Types.arrayOf(resultType), methodName, VarArgsUtil.asOptionalObjectArray(Object.class,optionalParameters));
+    }
+
+
+    /**
+     * <p>
+     * Abbreviation for {{@link #methodForArrayOf(Type, String, Object...)}.
+     * </p>
+     * 
+     * @since 1.1
+     * 
+     * @param methodName the name of the method
+     * @param optionalParameters the (optional) parameters of the method. 
+     * @return the result of the method execution
+     */
+    public static <R> Function<Object,R[]> arrayOf(final Type<R> resultType, final String methodName, final Object... optionalParameters) {
+        return methodForArrayOf(resultType, methodName, optionalParameters);
     }
     
     

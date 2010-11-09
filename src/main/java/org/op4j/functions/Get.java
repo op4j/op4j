@@ -65,6 +65,21 @@ public final class Get<T,R> extends Function<T,R> {
     public static Function<Object,Object> attrOfObject(final String attributeName) {
         return new Get<Object,Object>(Types.OBJECT, attributeName);
     }
+    
+    
+    /**
+     * <p>
+     * Abbreviation for {{@link #attrOfObject(String)}.
+     * </p>
+     * 
+     * @since 1.1
+     * 
+     * @param attributeName the name of the attribute
+     * @return the result of the method execution
+     */
+    public static Function<Object,Object> obj(final String attributeName) {
+        return attrOfObject(attributeName);
+    }
 
     
     /**
@@ -85,6 +100,22 @@ public final class Get<T,R> extends Function<T,R> {
         return new Get<Object,R>(resultType, attributeName);
     }
 
+    
+    /**
+     * <p>
+     * Abbreviation for {{@link #attrOf(Type, String)}.
+     * </p>
+     * 
+     * @since 1.1
+     *
+     * @param resultType the type of the attribute
+     * @param attributeName the name of the attribute
+     * @return the result of the method execution
+     */
+    public static <R> Function<Object,R> obj(final Type<R> resultType, final String attributeName) {
+        return attrOf(resultType, attributeName);
+    }
+
 
     
     /**
@@ -99,6 +130,22 @@ public final class Get<T,R> extends Function<T,R> {
      */
     public static Function<Object,BigInteger> attrOfBigInteger(final String attributeName) {
         return new Get<Object,BigInteger>(Types.BIG_INTEGER, attributeName);
+    }
+
+
+    
+    /**
+     * <p>
+     * Abbreviation for {{@link #attrOfBigInteger(String)}.
+     * </p>
+     * 
+     * @since 1.1
+     * 
+     * @param attributeName the name of the attribute
+     * @return the result of the method execution
+     */
+    public static Function<Object,BigInteger> bigInteger(final String attributeName) {
+        return attrOfBigInteger(attributeName);
     }
     
 
@@ -119,6 +166,21 @@ public final class Get<T,R> extends Function<T,R> {
 
     /**
      * <p>
+     * Abbreviation for {{@link #attrOfBigDecimal(String)}.
+     * </p>
+     * 
+     * @since 1.1
+     * 
+     * @param attributeName the name of the attribute
+     * @return the result of the method execution
+     */
+    public static Function<Object,BigDecimal> bigDecimal(final String attributeName) {
+        return attrOfBigDecimal(attributeName);
+    }
+    
+
+    /**
+     * <p>
      * Executes a getter (<tt>getX()</tt>) on the target object which returns Boolean.
      * If the specified attribute is, for example, "<tt>name</tt>", the called method
      * will be "<tt>getName()</tt>".
@@ -129,6 +191,21 @@ public final class Get<T,R> extends Function<T,R> {
      */
     public static Function<Object,Boolean> attrOfBoolean(final String attributeName) {
         return new Get<Object,Boolean>(Types.BOOLEAN, attributeName);
+    }
+    
+
+    /**
+     * <p>
+     * Abbreviation for {{@link #attrOfBoolean(String)}.
+     * </p>
+     * 
+     * @since 1.1
+     * 
+     * @param attributeName the name of the attribute
+     * @return the result of the method execution
+     */
+    public static Function<Object,Boolean> bool(final String attributeName) {
+        return attrOfBoolean(attributeName);
     }
     
     
@@ -149,6 +226,21 @@ public final class Get<T,R> extends Function<T,R> {
     
     /**
      * <p>
+     * Abbreviation for {{@link #attrOfByte(String)}.
+     * </p>
+     * 
+     * @since 1.1
+     * 
+     * @param attributeName the name of the attribute
+     * @return the result of the method execution
+     */
+    public static Function<Object,Byte> b(final String attributeName) {
+        return attrOfByte(attributeName);
+    }
+    
+    
+    /**
+     * <p>
      * Executes a getter (<tt>getX()</tt>) on the target object which returns Character.
      * If the specified attribute is, for example, "<tt>name</tt>", the called method
      * will be "<tt>getName()</tt>".
@@ -159,6 +251,21 @@ public final class Get<T,R> extends Function<T,R> {
      */
     public static Function<Object,Character> attrOfCharacter(final String attributeName) {
         return new Get<Object,Character>(Types.CHARACTER, attributeName);
+    }
+    
+    
+    /**
+     * <p>
+     * Abbreviation for {{@link #attrOfCharacter(String)}.
+     * </p>
+     * 
+     * @since 1.1
+     * 
+     * @param attributeName the name of the attribute
+     * @return the result of the method execution
+     */
+    public static Function<Object,Character> c(final String attributeName) {
+        return attrOfCharacter(attributeName);
     }
     
 
@@ -174,6 +281,21 @@ public final class Get<T,R> extends Function<T,R> {
      */
     public static Function<Object,Calendar> attrOfCalendar(final String attributeName) {
         return new Get<Object,Calendar>(Types.CALENDAR, attributeName);
+    }
+    
+
+    /**
+     * <p>
+     * Abbreviation for {{@link #attrOfCalendar(String)}.
+     * </p>
+     * 
+     * @since 1.1
+     * 
+     * @param attributeName the name of the attribute
+     * @return the result of the method execution
+     */
+    public static Function<Object,Calendar> calendar(final String attributeName) {
+        return attrOfCalendar(attributeName);
     }
     
     
@@ -194,6 +316,21 @@ public final class Get<T,R> extends Function<T,R> {
     
     /**
      * <p>
+     * Abbreviation for {{@link #attrOfDate(String)}.
+     * </p>
+     * 
+     * @since 1.1
+     * 
+     * @param attributeName the name of the attribute
+     * @return the result of the method execution
+     */
+    public static Function<Object,Date> date(final String attributeName) {
+        return attrOfDate(attributeName);
+    }
+    
+    
+    /**
+     * <p>
      * Executes a getter (<tt>getX()</tt>) on the target object which returns Double.
      * If the specified attribute is, for example, "<tt>name</tt>", the called method
      * will be "<tt>getName()</tt>".
@@ -204,6 +341,21 @@ public final class Get<T,R> extends Function<T,R> {
      */
     public static Function<Object,Double> attrOfDouble(final String attributeName) {
         return new Get<Object,Double>(Types.DOUBLE, attributeName);
+    }
+    
+    
+    /**
+     * <p>
+     * Abbreviation for {{@link #attrOfDouble(String)}.
+     * </p>
+     * 
+     * @since 1.1
+     * 
+     * @param attributeName the name of the attribute
+     * @return the result of the method execution
+     */
+    public static Function<Object,Double> d(final String attributeName) {
+        return attrOfDouble(attributeName);
     }
     
     
@@ -224,6 +376,21 @@ public final class Get<T,R> extends Function<T,R> {
     
     /**
      * <p>
+     * Abbreviation for {{@link #attrOfFloat(String)}.
+     * </p>
+     * 
+     * @since 1.1
+     * 
+     * @param attributeName the name of the attribute
+     * @return the result of the method execution
+     */
+    public static Function<Object,Float> f(final String attributeName) {
+        return attrOfFloat(attributeName);
+    }
+    
+    
+    /**
+     * <p>
      * Executes a getter (<tt>getX()</tt>) on the target object which returns Integer.
      * If the specified attribute is, for example, "<tt>name</tt>", the called method
      * will be "<tt>getName()</tt>".
@@ -234,6 +401,21 @@ public final class Get<T,R> extends Function<T,R> {
      */
     public static Function<Object,Integer> attrOfInteger(final String attributeName) {
         return new Get<Object,Integer>(Types.INTEGER, attributeName);
+    }
+    
+    
+    /**
+     * <p>
+     * Abbreviation for {{@link #attrOfInteger(String)}.
+     * </p>
+     * 
+     * @since 1.1
+     * 
+     * @param attributeName the name of the attribute
+     * @return the result of the method execution
+     */
+    public static Function<Object,Integer> i(final String attributeName) {
+        return attrOfInteger(attributeName);
     }
     
     
@@ -254,6 +436,21 @@ public final class Get<T,R> extends Function<T,R> {
     
     /**
      * <p>
+     * Abbreviation for {{@link #attrOfLong(String)}.
+     * </p>
+     * 
+     * @since 1.1
+     * 
+     * @param attributeName the name of the attribute
+     * @return the result of the method execution
+     */
+    public static Function<Object,Long> l(final String attributeName) {
+        return attrOfLong(attributeName);
+    }
+    
+    
+    /**
+     * <p>
      * Executes a getter (<tt>getX()</tt>) on the target object which returns Short.
      * If the specified attribute is, for example, "<tt>name</tt>", the called method
      * will be "<tt>getName()</tt>".
@@ -264,6 +461,21 @@ public final class Get<T,R> extends Function<T,R> {
      */
     public static Function<Object,Short> attrOfShort(final String attributeName) {
         return new Get<Object,Short>(Types.SHORT, attributeName);
+    }
+    
+    
+    /**
+     * <p>
+     * Abbreviation for {{@link #attrOfShort(String)}.
+     * </p>
+     * 
+     * @since 1.1
+     * 
+     * @param attributeName the name of the attribute
+     * @return the result of the method execution
+     */
+    public static Function<Object,Short> shr(final String attributeName) {
+        return attrOfShort(attributeName);
     }
     
     
@@ -281,6 +493,21 @@ public final class Get<T,R> extends Function<T,R> {
         return new Get<Object,String>(Types.STRING, attributeName);
     }
     
+    
+    /**
+     * <p>
+     * Abbreviation for {{@link #attrOfString(String)}.
+     * </p>
+     * 
+     * @since 1.1
+     * 
+     * @param attributeName the name of the attribute
+     * @return the result of the method execution
+     */
+    public static Function<Object,String> s(final String attributeName) {
+        return attrOfString(attributeName);
+    }
+    
 
     /**
      * <p>
@@ -294,6 +521,21 @@ public final class Get<T,R> extends Function<T,R> {
      */
     public static Function<Object,List<String>> attrOfListOfString(final String attributeName) {
         return new Get<Object,List<String>>(Types.LIST_OF_STRING, attributeName);
+    }
+    
+
+    /**
+     * <p>
+     * Abbreviation for {{@link #attrOfListOfString(String)}.
+     * </p>
+     * 
+     * @since 1.1
+     * 
+     * @param attributeName the name of the attribute
+     * @return the result of the method execution
+     */
+    public static Function<Object,List<String>> listOfString(final String attributeName) {
+        return attrOfListOfString(attributeName);
     }
 
     
@@ -309,6 +551,21 @@ public final class Get<T,R> extends Function<T,R> {
      */
     public static Function<Object,Set<String>> attrOfSetOfString(final String attributeName) {
         return new Get<Object,Set<String>>(Types.SET_OF_STRING, attributeName);
+    }
+    
+
+    /**
+     * <p>
+     * Abbreviation for {{@link #attrOfSetOfString(String)}.
+     * </p>
+     * 
+     * @since 1.1
+     * 
+     * @param attributeName the name of the attribute
+     * @return the result of the method execution
+     */
+    public static Function<Object,Set<String>> setOfString(final String attributeName) {
+        return attrOfSetOfString(attributeName);
     }
 
     
@@ -329,6 +586,21 @@ public final class Get<T,R> extends Function<T,R> {
 
     /**
      * <p>
+     * Abbreviation for {{@link #attrOfArrayOfString(String)}.
+     * </p>
+     * 
+     * @since 1.1
+     * 
+     * @param attributeName the name of the attribute
+     * @return the result of the method execution
+     */
+    public static Function<Object,String[]> arrayOfString(final String attributeName) {
+        return attrOfArrayOfString(attributeName);
+    }
+    
+
+    /**
+     * <p>
      * Executes a getter (<tt>getX()</tt>) on the target object which returns List&lt;R&gt;,
      * being <tt>R</tt> the specified type.
      * </p>
@@ -344,6 +616,22 @@ public final class Get<T,R> extends Function<T,R> {
     public static <R> Function<Object,List<R>> attrOfListOf(final Type<R> resultType, final String attributeName) {
         return new Get<Object,List<R>>(Types.listOf(resultType), attributeName);
     }
+    
+
+    /**
+     * <p>
+     * Abbreviation for {{@link #attrOfListOf(Type, String)}.
+     * </p>
+     * 
+     * @since 1.1
+     * 
+     * @param attributeName the name of the attribute
+     * @return the result of the method execution
+     */
+    public static <R> Function<Object,List<R>> listOf(final Type<R> resultType, final String attributeName) {
+        return attrOfListOf(resultType, attributeName);
+    }
+    
     
     /**
      * <p>
@@ -366,6 +654,21 @@ public final class Get<T,R> extends Function<T,R> {
 
     /**
      * <p>
+     * Abbreviation for {{@link #attrOfSetOf(Type, String)}.
+     * </p>
+     * 
+     * @since 1.1
+     * 
+     * @param attributeName the name of the attribute
+     * @return the result of the method execution
+     */
+    public static <R> Function<Object,Set<R>> setOf(final Type<R> resultType, final String attributeName) {
+        return attrOfSetOf(resultType, attributeName);
+    }
+    
+
+    /**
+     * <p>
      * Executes a getter (<tt>getX()</tt>) on the target object which returns R[],
      * being <tt>R</tt> the specified type.
      * </p>
@@ -380,6 +683,21 @@ public final class Get<T,R> extends Function<T,R> {
      */
     public static <R> Function<Object,R[]> attrOfArrayOf(final Type<R> resultType, final String attributeName) {
         return new Get<Object,R[]>(Types.arrayOf(resultType), attributeName);
+    }
+    
+
+    /**
+     * <p>
+     * Abbreviation for {{@link #attrOfArrayOf(Type, String)}.
+     * </p>
+     * 
+     * @since 1.1
+     * 
+     * @param attributeName the name of the attribute
+     * @return the result of the method execution
+     */
+    public static <R> Function<Object,R[]> arrayOf(final Type<R> resultType, final String attributeName) {
+        return attrOfArrayOf(resultType, attributeName);
     }
     
     
