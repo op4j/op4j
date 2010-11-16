@@ -439,7 +439,10 @@ public final class FnLong {
      * 
      * @param object the object to compare to the target
      * @return true if target is less than the specified object, false if not
+     * 
+     * @deprecated use {@link FnNumber} or {@link FnObject} instead. This class will be removed in version 1.2
      */
+    @Deprecated
     public static final Function<Long,Boolean> lessThan(final float object) {
         return (Function<Long,Boolean>)((Function)FnObject.lessThan(object));
     }    
@@ -454,7 +457,10 @@ public final class FnLong {
      * 
      * @param object the object to compare to the target
      * @return true if target is less than the specified object, false if not
+     * 
+     * @deprecated use {@link FnNumber} or {@link FnObject} instead. This class will be removed in version 1.2
      */
+    @Deprecated
     public static final Function<Long,Boolean> lessThan(final double object) {
         return (Function<Long,Boolean>)((Function)FnObject.lessThan(object));
     }    
@@ -469,7 +475,10 @@ public final class FnLong {
      * 
      * @param object the object to compare to the target
      * @return true if target is less than the specified object, false if not
+     * 
+     * @deprecated use {@link FnNumber} or {@link FnObject} instead. This class will be removed in version 1.2
      */
+    @Deprecated
     public static final Function<Long,Boolean> lessThan(final byte object) {
         return (Function<Long,Boolean>)((Function)FnObject.lessThan(object));
     }    
@@ -484,7 +493,10 @@ public final class FnLong {
      * 
      * @param object the object to compare to the target
      * @return true if target is less than the specified object, false if not
+     * 
+     * @deprecated use {@link FnNumber} or {@link FnObject} instead. This class will be removed in version 1.2
      */
+    @Deprecated
     public static final Function<Long,Boolean> lessThan(final short object) {
         return (Function<Long,Boolean>)((Function)FnObject.lessThan(object));
     }
@@ -499,7 +511,10 @@ public final class FnLong {
      * 
      * @param object the object to compare to the target
      * @return true if target is less than the specified object, false if not
+     * 
+     * @deprecated use {@link FnNumber} or {@link FnObject} instead. This class will be removed in version 1.2
      */
+    @Deprecated
     public static final Function<Long,Boolean> lessThan(final int object) {
         return (Function<Long,Boolean>)((Function)FnObject.lessThan(object));
     }   
@@ -544,7 +559,10 @@ public final class FnLong {
      * 
      * @param object the object to compare to the target
      * @return true if target is less or equal to the specified object, false if not
+     * 
+     * @deprecated use {@link FnNumber} or {@link FnObject} instead. This class will be removed in version 1.2
      */
+    @Deprecated
     public static final Function<Long,Boolean> lessOrEqTo(final float object) {
         return (Function<Long,Boolean>)((Function)FnObject.lessOrEqTo(object));
     }    
@@ -559,7 +577,10 @@ public final class FnLong {
      * 
      * @param object the object to compare to the target
      * @return true if target is less or equal to the specified object, false if not
+     * 
+     * @deprecated use {@link FnNumber} or {@link FnObject} instead. This class will be removed in version 1.2
      */
+    @Deprecated
     public static final Function<Long,Boolean> lessOrEqTo(final double object) {
         return (Function<Long,Boolean>)((Function)FnObject.lessOrEqTo(object));
     }    
@@ -574,7 +595,10 @@ public final class FnLong {
      * 
      * @param object the object to compare to the target
      * @return true if target is less or equal to the specified object, false if not
+     * 
+     * @deprecated use {@link FnNumber} or {@link FnObject} instead. This class will be removed in version 1.2
      */
+    @Deprecated
     public static final Function<Long,Boolean> lessOrEqTo(final byte object) {
         return (Function<Long,Boolean>)((Function)FnObject.lessOrEqTo(object));
     }
@@ -589,7 +613,10 @@ public final class FnLong {
      * 
      * @param object the object to compare to the target
      * @return true if target is less or equal to the specified object, false if not
+     * 
+     * @deprecated use {@link FnNumber} or {@link FnObject} instead. This class will be removed in version 1.2
      */
+    @Deprecated
     public static final Function<Long,Boolean> lessOrEqTo(final short object) {
         return (Function<Long,Boolean>)((Function)FnObject.lessOrEqTo(object));
     }    
@@ -604,7 +631,10 @@ public final class FnLong {
      * 
      * @param object the object to compare to the target
      * @return true if target is less or equal to the specified object, false if not
+     * 
+     * @deprecated use {@link FnNumber} or {@link FnObject} instead. This class will be removed in version 1.2
      */
+    @Deprecated
     public static final Function<Long,Boolean> lessOrEqTo(final int object) {
         return (Function<Long,Boolean>)((Function)FnObject.lessOrEqTo(object));
     }    
@@ -649,7 +679,10 @@ public final class FnLong {
      * 
      * @param object the object to compare to the target
      * @return true if target is greater than the specified object, false if not
+     * 
+     * @deprecated use {@link FnNumber} or {@link FnObject} instead. This class will be removed in version 1.2
      */
+    @Deprecated
     public static final Function<Long,Boolean> greaterThan(final float object) {    
         return (Function<Long,Boolean>)((Function)FnObject.greaterThan(object));
     }
@@ -664,7 +697,10 @@ public final class FnLong {
      * 
      * @param object the object to compare to the target
      * @return true if target is greater than the specified object, false if not
+     * 
+     * @deprecated use {@link FnNumber} or {@link FnObject} instead. This class will be removed in version 1.2
      */
+    @Deprecated
     public static final Function<Long,Boolean> greaterThan(final double object) {    
         return (Function<Long,Boolean>)((Function)FnObject.greaterThan(object));
     }
@@ -679,7 +715,10 @@ public final class FnLong {
      * 
      * @param object the object to compare to the target
      * @return true if target is greater than the specified object, false if not
+     * 
+     * @deprecated use {@link FnNumber} or {@link FnObject} instead. This class will be removed in version 1.2
      */
+    @Deprecated
     public static final Function<Long,Boolean> greaterThan(final byte object) {    
         return (Function<Long,Boolean>)((Function)FnObject.greaterThan(object));
     }
@@ -694,7 +733,10 @@ public final class FnLong {
      * 
      * @param object the object to compare to the target
      * @return true if target is greater than the specified object, false if not
+     * 
+     * @deprecated use {@link FnNumber} or {@link FnObject} instead. This class will be removed in version 1.2
      */
+    @Deprecated
     public static final Function<Long,Boolean> greaterThan(final short object) {    
         return (Function<Long,Boolean>)((Function)FnObject.greaterThan(object));
     }
@@ -709,7 +751,10 @@ public final class FnLong {
      * 
      * @param object the object to compare to the target
      * @return true if target is greater than the specified object, false if not
+     * 
+     * @deprecated use {@link FnNumber} or {@link FnObject} instead. This class will be removed in version 1.2
      */
+    @Deprecated
     public static final Function<Long,Boolean> greaterThan(final int object) {    
         return (Function<Long,Boolean>)((Function)FnObject.greaterThan(object));
     }
@@ -754,7 +799,10 @@ public final class FnLong {
      * 
      * @param object the object to compare to the target
      * @return true if target is greater or equal to the specified object, false if not
+     * 
+     * @deprecated use {@link FnNumber} or {@link FnObject} instead. This class will be removed in version 1.2
      */
+    @Deprecated
     public static final Function<Long,Boolean> greaterOrEqTo(final float object) {
         return (Function<Long,Boolean>)((Function)FnObject.greaterOrEqTo(object));
     }
@@ -769,7 +817,10 @@ public final class FnLong {
      * 
      * @param object the object to compare to the target
      * @return true if target is greater or equal to the specified object, false if not
+     * 
+     * @deprecated use {@link FnNumber} or {@link FnObject} instead. This class will be removed in version 1.2
      */
+    @Deprecated
     public static final Function<Long,Boolean> greaterOrEqTo(final double object) {
         return (Function<Long,Boolean>)((Function)FnObject.greaterOrEqTo(object));
     }
@@ -784,7 +835,10 @@ public final class FnLong {
      * 
      * @param object the object to compare to the target
      * @return true if target is greater or equal to the specified object, false if not
+     * 
+     * @deprecated use {@link FnNumber} or {@link FnObject} instead. This class will be removed in version 1.2
      */
+    @Deprecated
     public static final Function<Long,Boolean> greaterOrEqTo(final byte object) {
         return (Function<Long,Boolean>)((Function)FnObject.greaterOrEqTo(object));
     }
@@ -799,7 +853,10 @@ public final class FnLong {
      * 
      * @param object the object to compare to the target
      * @return true if target is greater or equal to the specified object, false if not
+     * 
+     * @deprecated use {@link FnNumber} or {@link FnObject} instead. This class will be removed in version 1.2
      */
+    @Deprecated
     public static final Function<Long,Boolean> greaterOrEqTo(final short object) {
         return (Function<Long,Boolean>)((Function)FnObject.greaterOrEqTo(object));
     }
@@ -814,7 +871,10 @@ public final class FnLong {
      * 
      * @param object the object to compare to the target
      * @return true if target is greater or equal to the specified object, false if not
+     * 
+     * @deprecated use {@link FnNumber} or {@link FnObject} instead. This class will be removed in version 1.2
      */
+    @Deprecated
     public static final Function<Long,Boolean> greaterOrEqTo(final int object) {
         return (Function<Long,Boolean>)((Function)FnObject.greaterOrEqTo(object));
     }
