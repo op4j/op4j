@@ -2929,23 +2929,6 @@ public final class FnNumber {
     }
     
 
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-
     /**
      * <p>
      * Determines whether the target object is null or not.
@@ -2970,13 +2953,127 @@ public final class FnNumber {
         return (Function<Number,Boolean>)((Function)FnObject.isNotNull());
     }
     
+       
     
-    
-    
+    /**
+     * <p>
+     * Determines whether the target object is between min and max
+     * in value, this is, whether 
+     * <tt>target.compareTo(min) >= 0 && target.compareTo(max) <= 0</tt>. 
+     * The target and the specified min and max have to implement {@link Comparable}.
+     * </p>
+     * 
+     * @param min the minimum value of the target
+     * @param max the maximum value of the target
+     * @return true if the target is between min and max (or it's equal to any of them)
+     */
+    public static final Function<Number,Boolean> between(final Number min, final Number max) {
+        return (Function<Number,Boolean>)((Function)FnObject.between(min, max));
+    }
     
 
-	
-	
+    /**
+     * <p>
+     * Determines whether the target object is between min and max
+     * in value, this is, whether 
+     * <tt>target.compareTo(min) >= 0 && target.compareTo(max) <= 0</tt>. 
+     * The target and the specified min and max have to implement {@link Comparable}.
+     * </p>
+     * 
+     * @param min the minimum value of the target
+     * @param max the maximum value of the target
+     * @return true if the target is between min and max (or it's equal to any of them)
+     */
+    public static final Function<Number,Boolean> between(final int min, final int max) {
+        return (Function<Number,Boolean>)((Function)FnObject.between(min, max));
+    }
+    
+
+    /**
+     * <p>
+     * Determines whether the target object is between min and max
+     * in value, this is, whether 
+     * <tt>target.compareTo(min) >= 0 && target.compareTo(max) <= 0</tt>. 
+     * The target and the specified min and max have to implement {@link Comparable}.
+     * </p>
+     * 
+     * @param min the minimum value of the target
+     * @param max the maximum value of the target
+     * @return true if the target is between min and max (or it's equal to any of them)
+     */
+    public static final Function<Number,Boolean> between(final short min, final short max) {
+        return (Function<Number,Boolean>)((Function)FnObject.between(min, max));
+    }
+
+    
+    /**
+     * <p>
+     * Determines whether the target object is between min and max
+     * in value, this is, whether 
+     * <tt>target.compareTo(min) >= 0 && target.compareTo(max) <= 0</tt>. 
+     * The target and the specified min and max have to implement {@link Comparable}.
+     * </p>
+     * 
+     * @param min the minimum value of the target
+     * @param max the maximum value of the target
+     * @return true if the target is between min and max (or it's equal to any of them)
+     */
+    public static final Function<Number,Boolean> between(final byte min, final byte max) {
+        return (Function<Number,Boolean>)((Function)FnObject.between(min, max));
+    }
+    
+
+    /**
+     * <p>
+     * Determines whether the target object is between min and max
+     * in value, this is, whether 
+     * <tt>target.compareTo(min) >= 0 && target.compareTo(max) <= 0</tt>. 
+     * The target and the specified min and max have to implement {@link Comparable}.
+     * </p>
+     * 
+     * @param min the minimum value of the target
+     * @param max the maximum value of the target
+     * @return true if the target is between min and max (or it's equal to any of them)
+     */
+    public static final Function<Number,Boolean> between(final long min, final long max) {
+        return (Function<Number,Boolean>)((Function)FnObject.between(min, max));
+    }
+
+    
+    /**
+     * <p>
+     * Determines whether the target object is between min and max
+     * in value, this is, whether 
+     * <tt>target.compareTo(min) >= 0 && target.compareTo(max) <= 0</tt>. 
+     * The target and the specified min and max have to implement {@link Comparable}.
+     * </p>
+     * 
+     * @param min the minimum value of the target
+     * @param max the maximum value of the target
+     * @return true if the target is between min and max (or it's equal to any of them)
+     */
+    public static final Function<Number,Boolean> between(final double min, final double max) {
+        return (Function<Number,Boolean>)((Function)FnObject.between(min, max));
+    }
+
+    
+    /**
+     * <p>
+     * Determines whether the target object is between min and max
+     * in value, this is, whether 
+     * <tt>target.compareTo(min) >= 0 && target.compareTo(max) <= 0</tt>. 
+     * The target and the specified min and max have to implement {@link Comparable}.
+     * </p>
+     * 
+     * @param min the minimum value of the target
+     * @param max the maximum value of the target
+     * @return true if the target is between min and max (or it's equal to any of them)
+     */
+    public static final Function<Number,Boolean> between(final float min, final float max) {
+        return (Function<Number,Boolean>)((Function)FnObject.between(min, max));
+    }
+    
+    
     
     private static abstract class ToNumber<X extends Number> extends AbstractNullAsNullFunction<Number,X> {
 

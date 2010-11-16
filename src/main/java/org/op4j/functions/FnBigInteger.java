@@ -2047,7 +2047,21 @@ public final class FnBigInteger {
     }	
 	
 	
-	
+	/**
+     * <p>
+     * Determines whether the target object is between min and max
+     * in value, this is, whether 
+     * <tt>target.compareTo(min) >= 0 && target.compareTo(max) <= 0</tt>. 
+     * The target and the specified min and max have to implement {@link Comparable}.
+     * </p>
+     * 
+     * @param min the minimum value of the target
+     * @param max the maximum value of the target
+     * @return true if the target is between min and max (or it's equal to any of them)
+     */
+    public static final Function<BigInteger,Boolean> between(final Number min, final Number max) {
+        return (Function<BigInteger,Boolean>)((Function)FnObject.between(min, max));
+    }
 	
 	
 	
