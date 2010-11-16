@@ -2178,13 +2178,125 @@ public final class FnObject {
     }
 
     
+    /**
+     * <p>
+     * Determines whether the target object is between min and max
+     * in value, this is, whether 
+     * <tt>target.compareTo(min) >= 0 && target.compareTo(max) <= 0</tt>. 
+     * The target and the specified min and max have to implement {@link Comparable}.
+     * </p>
+     * 
+     * @param min the minimum value of the target
+     * @param max the maximum value of the target
+     * @return true if the target is between min and max (or it's equal to any of them)
+     */
+    public static final Function<Object,Boolean> between(final Object min, final Object max) {
+        return new Between(min, max);
+    }
     
+
+    /**
+     * <p>
+     * Determines whether the target object is between min and max
+     * in value, this is, whether 
+     * <tt>target.compareTo(min) >= 0 && target.compareTo(max) <= 0</tt>. 
+     * The target and the specified min and max have to implement {@link Comparable}.
+     * </p>
+     * 
+     * @param min the minimum value of the target
+     * @param max the maximum value of the target
+     * @return true if the target is between min and max (or it's equal to any of them)
+     */
+    public static final Function<Object,Boolean> between(final float min, final float max) {
+        return new Between(Float.valueOf(min), Float.valueOf(max));
+    }
     
+
+    /**
+     * <p>
+     * Determines whether the target object is between min and max
+     * in value, this is, whether 
+     * <tt>target.compareTo(min) >= 0 && target.compareTo(max) <= 0</tt>. 
+     * The target and the specified min and max have to implement {@link Comparable}.
+     * </p>
+     * 
+     * @param min the minimum value of the target
+     * @param max the maximum value of the target
+     * @return true if the target is between min and max (or it's equal to any of them)
+     */
+    public static final Function<Object,Boolean> between(final int min, final int max) {
+        return new Between(Integer.valueOf(min), Integer.valueOf(max));
+    }
+
     
+    /**
+     * <p>
+     * Determines whether the target object is between min and max
+     * in value, this is, whether 
+     * <tt>target.compareTo(min) >= 0 && target.compareTo(max) <= 0</tt>. 
+     * The target and the specified min and max have to implement {@link Comparable}.
+     * </p>
+     * 
+     * @param min the minimum value of the target
+     * @param max the maximum value of the target
+     * @return true if the target is between min and max (or it's equal to any of them)
+     */
+    public static final Function<Object,Boolean> between(final byte min, final byte max) {
+        return new Between(Byte.valueOf(min), Byte.valueOf(max));
+    }
     
+
+    /**
+     * <p>
+     * Determines whether the target object is between min and max
+     * in value, this is, whether 
+     * <tt>target.compareTo(min) >= 0 && target.compareTo(max) <= 0</tt>. 
+     * The target and the specified min and max have to implement {@link Comparable}.
+     * </p>
+     * 
+     * @param min the minimum value of the target
+     * @param max the maximum value of the target
+     * @return true if the target is between min and max (or it's equal to any of them)
+     */
+    public static final Function<Object,Boolean> between(final double min, final double max) {
+        return new Between(Double.valueOf(min), Double.valueOf(max));
+    }
+
     
+    /**
+     * <p>
+     * Determines whether the target object is between min and max
+     * in value, this is, whether 
+     * <tt>target.compareTo(min) >= 0 && target.compareTo(max) <= 0</tt>. 
+     * The target and the specified min and max have to implement {@link Comparable}.
+     * </p>
+     * 
+     * @param min the minimum value of the target
+     * @param max the maximum value of the target
+     * @return true if the target is between min and max (or it's equal to any of them)
+     */
+    public static final Function<Object,Boolean> between(final long min, final long max) {
+        return new Between(Long.valueOf(min), Long.valueOf(max));
+    }
+
     
+    /**
+     * <p>
+     * Determines whether the target object is between min and max
+     * in value, this is, whether 
+     * <tt>target.compareTo(min) >= 0 && target.compareTo(max) <= 0</tt>. 
+     * The target and the specified min and max have to implement {@link Comparable}.
+     * </p>
+     * 
+     * @param min the minimum value of the target
+     * @param max the maximum value of the target
+     * @return true if the target is between min and max (or it's equal to any of them)
+     */
+    public static final Function<Object,Boolean> between(final short min, final short max) {
+        return new Between(Short.valueOf(min), Short.valueOf(max));
+    }
     
+         
     
     @SuppressWarnings("unchecked")
     protected static final Comparable prepareComparable(Comparable comp) {
@@ -2561,5 +2673,31 @@ public final class FnObject {
     }
     
     
-    
+    static final class Between extends AbstractNotNullFunction<Object,Boolean> {
+
+        private final Object min;
+        private final Object max;
+        
+        Between(final Object min, final Object max) {
+            super();
+            Validate.notNull(min, "minimum can't be null");
+            Validate.notNull(min, "maximum can't be null");
+            this.min = min;
+            this.max = max;
+        }
+
+        @Override
+        @SuppressWarnings("unchecked")
+        public Boolean notNullExecute(final Object input, final ExecCtx ctx) throws Exception {
+            if (!(input instanceof Comparable<?>)) {
+                throw new ExecutionException(
+                        "Target object is not comparable: " + input.getClass());
+            }
+            Comparable inputC = prepareComparable((Comparable<?>) input);
+            Comparable minC = prepareComparable((Comparable) this.min);
+            Comparable maxC = prepareComparable((Comparable) this.max);
+            return Boolean.valueOf((inputC.compareTo(minC) >= 0) && (inputC.compareTo(maxC) <= 0));
+        }
+        
+    }
 }
