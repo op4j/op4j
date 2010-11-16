@@ -915,7 +915,10 @@ public final class FnBigDecimal {
      * 
      * @param object the object to compare to the target
      * @return true if target is less than the specified object, false if not
+     * 
+     * @deprecated use {@link FnNumber} or {@link FnObject} instead. This class will be removed in version 1.2
      */
+    @Deprecated
     public static final Function<BigDecimal,Boolean> lessThan(final float object) {
         return (Function<BigDecimal,Boolean>)((Function)FnObject.lessThan(object));
     }    
@@ -930,7 +933,10 @@ public final class FnBigDecimal {
      * 
      * @param object the object to compare to the target
      * @return true if target is less than the specified object, false if not
+     * 
+     * @deprecated use {@link FnNumber} or {@link FnObject} instead. This class will be removed in version 1.2
      */
+    @Deprecated
     public static final Function<BigDecimal,Boolean> lessThan(final double object) {
         return (Function<BigDecimal,Boolean>)((Function)FnObject.lessThan(object));
     }    
@@ -945,7 +951,10 @@ public final class FnBigDecimal {
      * 
      * @param object the object to compare to the target
      * @return true if target is less than the specified object, false if not
+     * 
+     * @deprecated use {@link FnNumber} or {@link FnObject} instead. This class will be removed in version 1.2
      */
+    @Deprecated
     public static final Function<BigDecimal,Boolean> lessThan(final byte object) {
         return (Function<BigDecimal,Boolean>)((Function)FnObject.lessThan(object));
     }    
@@ -960,7 +969,10 @@ public final class FnBigDecimal {
      * 
      * @param object the object to compare to the target
      * @return true if target is less than the specified object, false if not
+     * 
+     * @deprecated use {@link FnNumber} or {@link FnObject} instead. This class will be removed in version 1.2
      */
+    @Deprecated
     public static final Function<BigDecimal,Boolean> lessThan(final short object) {
         return (Function<BigDecimal,Boolean>)((Function)FnObject.lessThan(object));
     }
@@ -975,7 +987,10 @@ public final class FnBigDecimal {
      * 
      * @param object the object to compare to the target
      * @return true if target is less than the specified object, false if not
+     * 
+     * @deprecated use {@link FnNumber} or {@link FnObject} instead. This class will be removed in version 1.2
      */
+    @Deprecated
     public static final Function<BigDecimal,Boolean> lessThan(final int object) {
         return (Function<BigDecimal,Boolean>)((Function)FnObject.lessThan(object));
     }   
@@ -990,7 +1005,10 @@ public final class FnBigDecimal {
      * 
      * @param object the object to compare to the target
      * @return true if target is less than the specified object, false if not
+     * 
+     * @deprecated use {@link FnNumber} or {@link FnObject} instead. This class will be removed in version 1.2
      */
+    @Deprecated
     public static final Function<BigDecimal,Boolean> lessThan(final long object) {
         return (Function<BigDecimal,Boolean>)((Function)FnObject.lessThan(object));
     }    
@@ -1020,7 +1038,10 @@ public final class FnBigDecimal {
      * 
      * @param object the object to compare to the target
      * @return true if target is less or equal to the specified object, false if not
+     * 
+     * @deprecated use {@link FnNumber} or {@link FnObject} instead. This class will be removed in version 1.2
      */
+    @Deprecated
     public static final Function<BigDecimal,Boolean> lessOrEqTo(final float object) {
         return (Function<BigDecimal,Boolean>)((Function)FnObject.lessOrEqTo(object));
     }    
@@ -1035,7 +1056,10 @@ public final class FnBigDecimal {
      * 
      * @param object the object to compare to the target
      * @return true if target is less or equal to the specified object, false if not
+     * 
+     * @deprecated use {@link FnNumber} or {@link FnObject} instead. This class will be removed in version 1.2
      */
+    @Deprecated
     public static final Function<BigDecimal,Boolean> lessOrEqTo(final double object) {
         return (Function<BigDecimal,Boolean>)((Function)FnObject.lessOrEqTo(object));
     }    
@@ -1050,7 +1074,10 @@ public final class FnBigDecimal {
      * 
      * @param object the object to compare to the target
      * @return true if target is less or equal to the specified object, false if not
+     * 
+     * @deprecated use {@link FnNumber} or {@link FnObject} instead. This class will be removed in version 1.2
      */
+    @Deprecated
     public static final Function<BigDecimal,Boolean> lessOrEqTo(final byte object) {
         return (Function<BigDecimal,Boolean>)((Function)FnObject.lessOrEqTo(object));
     }
@@ -1065,7 +1092,10 @@ public final class FnBigDecimal {
      * 
      * @param object the object to compare to the target
      * @return true if target is less or equal to the specified object, false if not
+     * 
+     * @deprecated use {@link FnNumber} or {@link FnObject} instead. This class will be removed in version 1.2
      */
+    @Deprecated
     public static final Function<BigDecimal,Boolean> lessOrEqTo(final short object) {
         return (Function<BigDecimal,Boolean>)((Function)FnObject.lessOrEqTo(object));
     }    
@@ -1080,7 +1110,10 @@ public final class FnBigDecimal {
      * 
      * @param object the object to compare to the target
      * @return true if target is less or equal to the specified object, false if not
+     * 
+     * @deprecated use {@link FnNumber} or {@link FnObject} instead. This class will be removed in version 1.2
      */
+    @Deprecated
     public static final Function<BigDecimal,Boolean> lessOrEqTo(final int object) {
         return (Function<BigDecimal,Boolean>)((Function)FnObject.lessOrEqTo(object));
     }    
@@ -1095,7 +1128,10 @@ public final class FnBigDecimal {
      * 
      * @param object the object to compare to the target
      * @return true if target is less or equal to the specified object, false if not
+     * 
+     * @deprecated use {@link FnNumber} or {@link FnObject} instead. This class will be removed in version 1.2
      */
+    @Deprecated
     public static final Function<BigDecimal,Boolean> lessOrEqTo(final long object) {
         return (Function<BigDecimal,Boolean>)((Function)FnObject.lessOrEqTo(object));
     }
@@ -1125,7 +1161,10 @@ public final class FnBigDecimal {
      * 
      * @param object the object to compare to the target
      * @return true if target is greater than the specified object, false if not
+     * 
+     * @deprecated use {@link FnNumber} or {@link FnObject} instead. This class will be removed in version 1.2
      */
+    @Deprecated
     public static final Function<BigDecimal,Boolean> greaterThan(final float object) {    
         return (Function<BigDecimal,Boolean>)((Function)FnObject.greaterThan(object));
     }
@@ -1140,7 +1179,10 @@ public final class FnBigDecimal {
      * 
      * @param object the object to compare to the target
      * @return true if target is greater than the specified object, false if not
+     * 
+     * @deprecated use {@link FnNumber} or {@link FnObject} instead. This class will be removed in version 1.2
      */
+    @Deprecated
     public static final Function<BigDecimal,Boolean> greaterThan(final double object) {    
         return (Function<BigDecimal,Boolean>)((Function)FnObject.greaterThan(object));
     }
@@ -1155,7 +1197,10 @@ public final class FnBigDecimal {
      * 
      * @param object the object to compare to the target
      * @return true if target is greater than the specified object, false if not
+     * 
+     * @deprecated use {@link FnNumber} or {@link FnObject} instead. This class will be removed in version 1.2
      */
+    @Deprecated
     public static final Function<BigDecimal,Boolean> greaterThan(final byte object) {    
         return (Function<BigDecimal,Boolean>)((Function)FnObject.greaterThan(object));
     }
@@ -1170,7 +1215,10 @@ public final class FnBigDecimal {
      * 
      * @param object the object to compare to the target
      * @return true if target is greater than the specified object, false if not
+     * 
+     * @deprecated use {@link FnNumber} or {@link FnObject} instead. This class will be removed in version 1.2
      */
+    @Deprecated
     public static final Function<BigDecimal,Boolean> greaterThan(final short object) {    
         return (Function<BigDecimal,Boolean>)((Function)FnObject.greaterThan(object));
     }
@@ -1185,7 +1233,10 @@ public final class FnBigDecimal {
      * 
      * @param object the object to compare to the target
      * @return true if target is greater than the specified object, false if not
+     * 
+     * @deprecated use {@link FnNumber} or {@link FnObject} instead. This class will be removed in version 1.2
      */
+    @Deprecated
     public static final Function<BigDecimal,Boolean> greaterThan(final int object) {    
         return (Function<BigDecimal,Boolean>)((Function)FnObject.greaterThan(object));
     }
@@ -1200,7 +1251,10 @@ public final class FnBigDecimal {
      * 
      * @param object the object to compare to the target
      * @return true if target is greater than the specified object, false if not
+     * 
+     * @deprecated use {@link FnNumber} or {@link FnObject} instead. This class will be removed in version 1.2
      */
+    @Deprecated
     public static final Function<BigDecimal,Boolean> greaterThan(final long object) {    
         return (Function<BigDecimal,Boolean>)((Function)FnObject.greaterThan(object));
     }    
@@ -1230,7 +1284,10 @@ public final class FnBigDecimal {
      * 
      * @param object the object to compare to the target
      * @return true if target is greater or equal to the specified object, false if not
+     * 
+     * @deprecated use {@link FnNumber} or {@link FnObject} instead. This class will be removed in version 1.2
      */
+    @Deprecated
     public static final Function<BigDecimal,Boolean> greaterOrEqTo(final float object) {
         return (Function<BigDecimal,Boolean>)((Function)FnObject.greaterOrEqTo(object));
     }
@@ -1245,7 +1302,10 @@ public final class FnBigDecimal {
      * 
      * @param object the object to compare to the target
      * @return true if target is greater or equal to the specified object, false if not
+     * 
+     * @deprecated use {@link FnNumber} or {@link FnObject} instead. This class will be removed in version 1.2
      */
+    @Deprecated
     public static final Function<BigDecimal,Boolean> greaterOrEqTo(final double object) {
         return (Function<BigDecimal,Boolean>)((Function)FnObject.greaterOrEqTo(object));
     }
@@ -1260,7 +1320,10 @@ public final class FnBigDecimal {
      * 
      * @param object the object to compare to the target
      * @return true if target is greater or equal to the specified object, false if not
+     * 
+     * @deprecated use {@link FnNumber} or {@link FnObject} instead. This class will be removed in version 1.2
      */
+    @Deprecated
     public static final Function<BigDecimal,Boolean> greaterOrEqTo(final byte object) {
         return (Function<BigDecimal,Boolean>)((Function)FnObject.greaterOrEqTo(object));
     }
@@ -1275,7 +1338,10 @@ public final class FnBigDecimal {
      * 
      * @param object the object to compare to the target
      * @return true if target is greater or equal to the specified object, false if not
+     * 
+     * @deprecated use {@link FnNumber} or {@link FnObject} instead. This class will be removed in version 1.2
      */
+    @Deprecated
     public static final Function<BigDecimal,Boolean> greaterOrEqTo(final short object) {
         return (Function<BigDecimal,Boolean>)((Function)FnObject.greaterOrEqTo(object));
     }
@@ -1290,7 +1356,10 @@ public final class FnBigDecimal {
      * 
      * @param object the object to compare to the target
      * @return true if target is greater or equal to the specified object, false if not
+     * 
+     * @deprecated use {@link FnNumber} or {@link FnObject} instead. This class will be removed in version 1.2
      */
+    @Deprecated
     public static final Function<BigDecimal,Boolean> greaterOrEqTo(final int object) {
         return (Function<BigDecimal,Boolean>)((Function)FnObject.greaterOrEqTo(object));
     }
@@ -1305,7 +1374,10 @@ public final class FnBigDecimal {
      * 
      * @param object the object to compare to the target
      * @return true if target is greater or equal to the specified object, false if not
+     * 
+     * @deprecated use {@link FnNumber} or {@link FnObject} instead. This class will be removed in version 1.2
      */
+    @Deprecated
     public static final Function<BigDecimal,Boolean> greaterOrEqTo(final long object) {
         return (Function<BigDecimal,Boolean>)((Function)FnObject.greaterOrEqTo(object));
     }
@@ -1769,6 +1841,7 @@ public final class FnBigDecimal {
      * 
      * @param object the object to compare to the target
      * @return true if function result is greater or equal to the specified object, false if not
+     * 
      */
     public static final Function<BigDecimal,Boolean> greaterOrEqToBy(final IFunction<BigDecimal,?> by, final byte object) {
         return (Function<BigDecimal,Boolean>)((Function)FnObject.greaterOrEqToBy(by, object));
