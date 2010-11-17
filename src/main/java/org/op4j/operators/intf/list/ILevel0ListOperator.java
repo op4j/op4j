@@ -180,7 +180,17 @@ public interface ILevel0ListOperator<I,T>
     public <X> ILevel0ListOperator<I,X> castToListOf(final Type<X> type);
 
     
+    /**
+     * @see org.op4j.operators.qualities.ReducibleOperator#reduce(org.op4j.functions.IFunction)
+     * @deprecated This method will be removed in version 1.2 
+     */
+    @Deprecated
     public ILevel0GenericUniqOperator<I,T> reduce(final IFunction<? extends ValuePair<? super T,? super T>, ? extends T> reductor);
+    /**
+     * @see org.op4j.operators.qualities.ReducibleOperator#reduce(org.op4j.functions.IFunction, java.lang.Object)
+     * @deprecated This method will be removed in version 1.2 
+     */
+    @Deprecated
     public <X> ILevel0GenericUniqOperator<I,X> reduce(final IFunction<? extends ValuePair<? super X,? super T>,X> reductor, final X initialValue);
     
     

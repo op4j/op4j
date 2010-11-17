@@ -7,6 +7,10 @@ import java.math.RoundingMode;
 
 import org.apache.commons.lang.Validate;
 
+/**
+ * @deprecated This class will be removed in version 1.2 
+ */
+@Deprecated
 final class FnReduceOnNumber<T extends Number> {
     
 

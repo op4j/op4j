@@ -785,7 +785,7 @@ watch.start();
         
         
         Pair<Integer,Integer> p = 
-            Op.on(dt).exec(FnTuple.pairWith(Get.i("year"),Get.i("month"))).get();
+            Op.on(dt).exec(FnTuple.pairWith(Call.i("getYear"),Get.i("month"))).get();
         System.out.println(p);
         
     }

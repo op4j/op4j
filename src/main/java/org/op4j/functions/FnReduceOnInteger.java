@@ -7,6 +7,10 @@ import java.math.RoundingMode;
 import org.javaruntype.type.Types;
 import org.op4j.util.ValuePair;
 
+/**
+ * @deprecated This class will be removed in version 1.2 
+ */
+@Deprecated
 public final class FnReduceOnInteger extends FnReduceOn<Integer> {
 
     private static final Function<ValuePair<Number,Number>,Integer> SUM = new Sum();

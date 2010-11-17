@@ -35,8 +35,11 @@ import org.op4j.util.ValuePair;
  * @since 1.0
  * 
  * @author Daniel Fern&aacute;ndez
+ * 
+ * @deprecated This class will be removed in version 1.2 
  *
  */
+@Deprecated
 public abstract class Reductor<A,B,R extends A> extends AbstractNotNullFunction<ValuePair<A,B>,R>{
 
     

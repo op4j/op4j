@@ -238,10 +238,24 @@ public class FnSetOf<T> {
     }
 
     
+    /**
+     * @param function
+     * @return
+     * @deprecated This method will be removed in version 1.2 
+     */
+    @Deprecated
     public final Function<Set<T>,T> reduce(final IFunction<? extends ValuePair<? super T,? super T>, ? extends T> function) {
         return new Reduce<T>(function);
     }
     
+    /**
+     * @param <R>
+     * @param function
+     * @param initialValue
+     * @return
+     * @deprecated This method will be removed in version 1.2 
+     */
+    @Deprecated
     public final <R> Function<Set<T>,R> reduce(final IFunction<? extends ValuePair<? super R,? super T>,R> function, final R initialValue) {
         return new ReduceInitialValue<T,R>(function, initialValue);
     }
@@ -1165,6 +1179,10 @@ public class FnSetOf<T> {
     
     
     
+    /**
+     * @deprecated This class will be removed in version 1.2 
+     */
+    @Deprecated
     static final class Reduce<T> extends AbstractNotNullFunction<Set<T>,T> {
         
         /*
@@ -1206,6 +1224,10 @@ public class FnSetOf<T> {
     
     
     
+    /**
+     * @deprecated This class will be removed in version 1.2 
+     */
+    @Deprecated
     static final class ReduceInitialValue<T,R> extends AbstractNotNullFunction<Set<T>,R> {
         
         private final IFunction<? extends ValuePair<? super R,? super T>,R> function;

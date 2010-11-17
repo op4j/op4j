@@ -238,12 +238,24 @@ public class FnArrayOf<T> {
     }
     
 
-    
+    /**
+     * @param function
+     * @return
+     * @deprecated This method will be removed in version 1.2 
+     */
+    @Deprecated
     public final Function<T[],T> reduce(final IFunction<? extends ValuePair<? super T,? super T>, ? extends T> function) {
         return new Reduce<T>(function);
     }
 
-    
+    /**
+     * @param <R>
+     * @param function
+     * @param initialValue
+     * @return
+     * @deprecated This method will be removed in version 1.2 
+     */
+    @Deprecated
     public final <R> Function<T[],R> reduce(final IFunction<? extends ValuePair<? super R,? super T>,R> function, final R initialValue) {
         return new ReduceInitialValue<T,R>(function, initialValue);
     }
@@ -334,7 +346,7 @@ public class FnArrayOf<T> {
             return doSort(object, ctx);
         }
 
-        @SuppressWarnings("unchecked")
+        @SuppressWarnings({ "unchecked" })
         private T[] doSort(final T[] object, final ExecCtx ctx) throws Exception {
 
             final List<?> list = new ArrayList<Object>(Arrays.asList(object));
@@ -423,7 +435,7 @@ public class FnArrayOf<T> {
                 return this.comparator;
             }
 
-            @SuppressWarnings("unchecked")
+            @SuppressWarnings({ "unchecked" })
             public int compareTo(OrderableElement<T> o) {
                 if (this.comparator == null) {
                     throw new NullPointerException("Cannot sort null elements");
@@ -1494,6 +1506,10 @@ public class FnArrayOf<T> {
     
     
     
+    /**
+     * @deprecated This class will be removed in version 1.2 
+     */
+    @Deprecated
     static final class Reduce<T> extends AbstractNotNullFunction<T[],T> {
         
         /*
@@ -1512,7 +1528,7 @@ public class FnArrayOf<T> {
 
         
         @Override
-        @SuppressWarnings("unchecked")
+        @SuppressWarnings({ "unchecked" })
         public T notNullExecute(final T[] input, final ExecCtx ctx) throws Exception {
             if (input.length == 0) {
                 throw new ExecutionException("Cannot reduce: array contains no elements");
@@ -1534,6 +1550,10 @@ public class FnArrayOf<T> {
     
     
     
+    /**
+     * @deprecated This class will be removed in version 1.2 
+     */
+    @Deprecated
     static final class ReduceInitialValue<T,R> extends AbstractNotNullFunction<T[],R> {
         
         private final IFunction<? extends ValuePair<? super R,? super T>,R> function;
@@ -1549,7 +1569,7 @@ public class FnArrayOf<T> {
 
         
         @Override
-        @SuppressWarnings("unchecked")
+        @SuppressWarnings({ "unchecked" })
         public R notNullExecute(final T[] input, final ExecCtx ctx) throws Exception {
             if (input.length == 0) {
                 return this.initialValue;

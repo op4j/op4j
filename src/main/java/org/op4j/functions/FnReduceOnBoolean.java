@@ -3,6 +3,10 @@ package org.op4j.functions;
 import org.javaruntype.type.Types;
 import org.op4j.util.ValuePair;
 
+/**
+ * @deprecated This class will be removed in version 1.2 
+ */
+@Deprecated
 public final class FnReduceOnBoolean extends FnReduceOn<Boolean> {
 
     private static final Function<ValuePair<Boolean,Boolean>,Boolean> AND = new And();

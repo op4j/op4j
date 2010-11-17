@@ -195,7 +195,7 @@ public final class FnMapOf<K,V> {
         }
         
 
-        @SuppressWarnings("unchecked")
+        @SuppressWarnings({ "unchecked" })
         private Map<K, V> doSort(final Map<K, V> object, final ExecCtx ctx) throws Exception {
             final List<?> keys = new ArrayList<Object>(object.keySet());
             Collections.sort((List<Comparable>)keys);
@@ -290,7 +290,7 @@ public final class FnMapOf<K,V> {
                 return this.comparator;
             }
 
-            @SuppressWarnings("unchecked")
+            @SuppressWarnings({ "unchecked" })
             public int compareTo(OrderableElement<T> o) {
                 if (this.comparator == null) {
                     throw new NullPointerException("Cannot sort null elements");

@@ -240,10 +240,25 @@ public class FnListOf<T> {
     
 
     
+    /**
+     * @param function
+     * @return
+     * @deprecated This method will be removed in version 1.2 
+     */
+    @Deprecated
     public final Function<List<T>,T> reduce(final IFunction<? extends ValuePair<? super T,? super T>, ? extends T> function) {
         return new Reduce<T>(function);
     }
     
+    
+    /**
+     * @param <R>
+     * @param function
+     * @param initialValue
+     * @return
+     * @deprecated This method will be removed in version 1.2 
+     */
+    @Deprecated
     public final <R> Function<List<T>,R> reduce(final IFunction<? extends ValuePair<? super R,? super T>,R> function, final R initialValue) {
         return new ReduceInitialValue<T,R>(function, initialValue);
     }
@@ -1187,6 +1202,10 @@ public class FnListOf<T> {
     
     
     
+    /**
+     * @deprecated This class will be removed in version 1.2 
+     */
+    @Deprecated
     static final class Reduce<T> extends AbstractNotNullFunction<List<T>,T> {
         
         /*
@@ -1205,7 +1224,7 @@ public class FnListOf<T> {
 
         
         @Override
-        @SuppressWarnings("unchecked")
+        @SuppressWarnings({ "unchecked" })
         public T notNullExecute(final List<T> input, final ExecCtx ctx) throws Exception {
             if (input.size() == 0) {
                 throw new ExecutionException("Cannot reduce: array contains no elements");
@@ -1227,6 +1246,10 @@ public class FnListOf<T> {
     
     
     
+    /**
+     * @deprecated This class will be removed in version 1.2 
+     */
+    @Deprecated
     static final class ReduceInitialValue<T,R> extends AbstractNotNullFunction<List<T>,R> {
         
         private final IFunction<? extends ValuePair<? super R,? super T>,R> function;
@@ -1242,7 +1265,7 @@ public class FnListOf<T> {
 
         
         @Override
-        @SuppressWarnings("unchecked")
+        @SuppressWarnings({ "unchecked" })
         public R notNullExecute(final List<T> input, final ExecCtx ctx) throws Exception {
             if (input.size() == 0) {
                 return this.initialValue;

@@ -8,6 +8,10 @@ import java.math.RoundingMode;
 import org.javaruntype.type.Types;
 import org.op4j.util.ValuePair;
 
+/**
+ * @deprecated This class will be removed in version 1.2 
+ */
+@Deprecated
 public final class FnReduceOnBigInteger extends FnReduceOn<BigInteger> {
 
     private static final Function<ValuePair<Number,Number>,BigInteger> SUM = new Sum();

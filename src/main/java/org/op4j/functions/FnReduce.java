@@ -32,7 +32,10 @@ import org.javaruntype.type.Types;
  * 
  * @author Daniel Fern&aacute;ndez
  * 
+ * @deprecated This class will be removed in version 1.2 
+ * 
  */
+@Deprecated
 public final class FnReduce {
 
     

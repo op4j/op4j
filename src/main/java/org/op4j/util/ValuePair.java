@@ -23,6 +23,10 @@ import org.javaruntype.type.Type;
 import org.javaruntype.type.TypeParameters;
 import org.javaruntype.type.Types;
 
+/**
+ * @deprecated This class will be removed in version 1.2 
+ */
+@Deprecated
 public final class ValuePair<L,R> {
 
     @SuppressWarnings("unchecked")

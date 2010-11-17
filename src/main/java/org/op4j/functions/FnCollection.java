@@ -61,7 +61,7 @@ class FnCollection {
             return doSort(object, ctx);
         }
 
-        @SuppressWarnings("unchecked")
+        @SuppressWarnings({ "unchecked" })
         private X doSort(final X object, final ExecCtx ctx) throws Exception {
 
             final List<?> list = new ArrayList<Object>(object);
@@ -160,7 +160,7 @@ class FnCollection {
                 return this.comparator;
             }
 
-            @SuppressWarnings("unchecked")
+            @SuppressWarnings({ "unchecked" })
             public int compareTo(OrderableElement<T> o) {
                 if (this.comparator == null) {
                     throw new NullPointerException("Cannot sort null elements");

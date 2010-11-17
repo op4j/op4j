@@ -4,6 +4,10 @@ import org.javaruntype.type.Type;
 import org.op4j.exceptions.ExecutionException;
 import org.op4j.util.ValuePair;
 
+/**
+ * @deprecated This class will be removed in version 1.2 
+ */
+@Deprecated
 public class FnReduceOn<T> {
 
     

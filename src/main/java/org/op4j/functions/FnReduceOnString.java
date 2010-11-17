@@ -3,6 +3,10 @@ package org.op4j.functions;
 import org.javaruntype.type.Types;
 import org.op4j.util.ValuePair;
 
+/**
+ * @deprecated This class will be removed in version 1.2 
+ */
+@Deprecated
 public final class FnReduceOnString extends FnReduceOn<String> {
 
     private static final Function<ValuePair<String,String>,String> JOIN = new Join();
