@@ -1044,7 +1044,11 @@ public final class Fn {
      * 
      * @param type the type to be used
      * @return an operator, ready for chaining
+     * @deprecated This method will be removed in version 1.2 in order to be
+     *             compliant with http://bugs.sun.com/bugdatabase/view_bug.do?bug_id=6182950 
+     *             Use "onArrayOf(...)" instead. 
      */
+    @Deprecated
     public static <T> Level0ArrayOperator<T[],T> on(final Type<T[]> type) {
         return onArrayOf(Types.arrayComponentOf(type));
     }
@@ -1058,7 +1062,11 @@ public final class Fn {
      * 
      * @param type the type to be used
      * @return an operator, ready for chaining
+     * @deprecated This method will be removed in version 1.2 in order to be
+     *             compliant with http://bugs.sun.com/bugdatabase/view_bug.do?bug_id=6182950 
+     *             Use "onListOf(...)" instead. 
      */
+    @Deprecated
     public static <T> Level0ListOperator<List<T>,T> on(final Type<List<T>> type) {
         return onListOf(Types.listComponentOf(type));
     }
@@ -1072,7 +1080,11 @@ public final class Fn {
      * 
      * @param type the type to be used
      * @return an operator, ready for chaining
+     * @deprecated This method will be removed in version 1.2 in order to be
+     *             compliant with http://bugs.sun.com/bugdatabase/view_bug.do?bug_id=6182950 
+     *             Use "onMapOf(...)" instead. 
      */
+    @Deprecated
     public static <K,V> Level0MapOperator<Map<K,V>,K,V> on(final Type<Map<K,V>> type) {
         return onMapOf(Types.mapKeyComponentOf(type), Types.mapValueComponentOf(type));
     }
@@ -1086,7 +1098,11 @@ public final class Fn {
      * 
      * @param type the type to be used
      * @return an operator, ready for chaining
+     * @deprecated This method will be removed in version 1.2 in order to be
+     *             compliant with http://bugs.sun.com/bugdatabase/view_bug.do?bug_id=6182950
+     *             Use "onSetOf(...)" instead. 
      */
+    @Deprecated
     public static <T> Level0SetOperator<Set<T>,T> on(final Type<Set<T>> type) {
         return onSetOf(Types.setComponentOf(type));
     }
