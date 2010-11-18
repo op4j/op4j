@@ -49,6 +49,7 @@ import org.op4j.util.VarArgsUtil;
  * @author Daniel Fern&aacute;ndez
  * 
  */
+@SuppressWarnings("deprecation")
 public class FnArrayOf<T> {
 
     

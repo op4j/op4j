@@ -36,6 +36,7 @@ import org.op4j.util.ValuePair;
  * @deprecated This class will be removed in version 1.2 
  *
  */
+@Deprecated
 public interface ReducibleOperator<I,T> {
     
     public ILevel0GenericUniqOperator<I,T> reduce(final IFunction<? extends ValuePair<? super T,? super T>, ? extends T> reductor);

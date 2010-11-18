@@ -58,6 +58,7 @@ import org.op4j.util.ValuePair;
  * @author Daniel Fern&aacute;ndez
  *
  */
+@SuppressWarnings("deprecation")
 public final class Fn {
     
 
@@ -1018,7 +1019,9 @@ public final class Fn {
      * @param leftType type of the left part of the value pair
      * @param rightType type of the right part of the value pair
      * @return an operator, ready for chaining
+     * @deprecated This method will be removed in version 1.2 
      */
+    @Deprecated
     @SuppressWarnings("unchecked")
     public static <L,R> Level0GenericUniqOperator<ValuePair<L,R>,ValuePair<L,R>> onValuePairOf(final Type<L> leftType, final Type<R> rightType) {
         return on((Type<ValuePair<L,R>>)(Type<?>)Types.forClass(ValuePair.class, TypeParameters.forType(leftType), TypeParameters.forType(rightType)));

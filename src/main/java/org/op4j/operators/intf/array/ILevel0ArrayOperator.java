@@ -55,6 +55,7 @@ import org.op4j.util.ValuePair;
  * @author Daniel Fern&aacute;ndez
  *
  */
+@SuppressWarnings("deprecation")
 public interface ILevel0ArrayOperator<I,T>
         extends UniqOperator<T[]>,
                 NavigableCollectionOperator<T>,

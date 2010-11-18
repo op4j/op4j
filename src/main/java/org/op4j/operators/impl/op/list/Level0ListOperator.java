@@ -48,6 +48,7 @@ import org.op4j.util.ValuePair;
  * @author Daniel Fern&aacute;ndez
  *
  */
+@SuppressWarnings("deprecation")
 public final class Level0ListOperator<I,T> extends AbstractOperator
         implements UniqOpOperator<I,List<T>>, ILevel0ListOperator<I,T>  {
 

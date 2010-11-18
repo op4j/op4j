@@ -47,6 +47,7 @@ import org.op4j.util.ValuePair;
  * @author Daniel Fern&aacute;ndez
  * 
  */
+@SuppressWarnings("deprecation")
 public final class Level0ArrayOperator<I,T> 
         extends AbstractOperator 
         implements UniqFnOperator<I,T[]>, ILevel0ArrayOperator<I,T> {
