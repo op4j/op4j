@@ -231,10 +231,18 @@ public class FnListOf<T> {
     
     
     
+    /**
+     * @deprecated This class will be removed in version 1.2 
+     */
+    @Deprecated
     public final Function<T,List<T>> unfold(final IFunction<? super T,? extends T> function, final IFunction<? super T,Boolean> whileCondition) {
         return new Unfold<T>(function, whileCondition);
     }
     
+    /**
+     * @deprecated This class will be removed in version 1.2 
+     */
+    @Deprecated
     public final Function<T,List<T>> unfold(final IFunction<? super T,? extends T> function) {
         return new Unfold<T>(function, null);
     }
@@ -1138,6 +1146,10 @@ public class FnListOf<T> {
     
     
     
+    /**
+     * @deprecated This class will be removed in version 1.2 
+     */
+    @Deprecated
     static final class Unfold<T> extends AbstractNotNullFunction<T,List<T>> {
         
         private final IFunction<? super T,? extends T> function;

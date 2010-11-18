@@ -230,10 +230,18 @@ public class FnArrayOf<T> {
     
     
     
+    /**
+     * @deprecated This class will be removed in version 1.2 
+     */
+    @Deprecated
     public final Function<T,T[]> unfold(final IFunction<? super T,? extends T> function, final IFunction<? super T,Boolean> whileCondition) {
         return new Unfold<T>(function, whileCondition, this.type);
     }
     
+    /**
+     * @deprecated This class will be removed in version 1.2 
+     */
+    @Deprecated
     public final Function<T,T[]> unfold(final IFunction<? super T,? extends T> function) {
         return new Unfold<T>(function, null, this.type);
     }
@@ -1441,6 +1449,10 @@ public class FnArrayOf<T> {
     
     
     
+    /**
+     * @deprecated This class will be removed in version 1.2 
+     */
+    @Deprecated
     static final class Unfold<T> extends AbstractNotNullFunction<T,T[]> {
         
         private final IFunction<? super T,? extends T> function;

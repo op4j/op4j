@@ -230,10 +230,18 @@ public class FnSetOf<T> {
     
     
     
+    /**
+     * @deprecated This class will be removed in version 1.2 
+     */
+    @Deprecated
     public final Function<T,Set<T>> unfold(final IFunction<? super T,? extends T> function, final IFunction<? super T,Boolean> whileCondition) {
         return new Unfold<T>(function, whileCondition);
     }
     
+    /**
+     * @deprecated This class will be removed in version 1.2 
+     */
+    @Deprecated
     public final Function<T,Set<T>> unfold(final IFunction<? super T,? extends T> function) {
         return new Unfold<T>(function, null);
     }
@@ -1115,6 +1123,10 @@ public class FnSetOf<T> {
     
     
     
+    /**
+     * @deprecated This class will be removed in version 1.2 
+     */
+    @Deprecated
     static final class Unfold<T> extends AbstractNotNullFunction<T,Set<T>> {
         
         private final IFunction<? super T,? extends T> function;
