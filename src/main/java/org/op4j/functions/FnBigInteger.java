@@ -61,7 +61,8 @@ public final class FnBigInteger {
 	}
 
 	
-	// From FnNumber
+	
+	
 	/**
      * <p>
      * It returns the {@link String} representation of the input number
