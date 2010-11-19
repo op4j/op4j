@@ -2761,7 +2761,7 @@ public final class FnFloat {
      * <p>
      * Determines whether the target object is between min and max
      * in value, this is, whether 
-     * <tt>target.compareTo(min) &gt;= 0 && target.compareTo(max) &lt;= 0</tt>. 
+     * <tt>target.compareTo(min) &gt;= 0 &amp;&amp; target.compareTo(max) &lt;= 0</tt>. 
      * The target and the specified min and max have to implement {@link Comparable}.
      * </p>
      * 
@@ -2777,7 +2777,7 @@ public final class FnFloat {
      * <p>
      * Determines whether the target object is between min and max
      * in value, this is, whether 
-     * <tt>target.compareTo(min) &gt;= 0 && target.compareTo(max) &lt;= 0</tt>. 
+     * <tt>target.compareTo(min) &gt;= 0 &amp;&amp; target.compareTo(max) &lt;= 0</tt>. 
      * The target and the specified min and max have to implement {@link Comparable}.
      * </p>
      * 
