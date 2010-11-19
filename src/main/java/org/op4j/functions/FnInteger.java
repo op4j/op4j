@@ -780,7 +780,7 @@ public final class FnInteger {
     /**
      * <p>
      * Determines whether the target object is greater or equal to the specified object
-     * in value, this is, whether <tt>target.compareTo(object) >= 0</tt>. Both
+     * in value, this is, whether <tt>target.compareTo(object) &gt;= 0</tt>. Both
      * the target and the specified object have to implement {@link Comparable}.
      * </p>
      * 
@@ -795,7 +795,7 @@ public final class FnInteger {
     /**
      * <p>
      * Determines whether the target object is greater or equal to the specified object
-     * in value, this is, whether <tt>target.compareTo(object) >= 0</tt>. Both
+     * in value, this is, whether <tt>target.compareTo(object) &gt;= 0</tt>. Both
      * the target and the specified object have to implement {@link Comparable}.
      * </p>
      * 
@@ -813,7 +813,7 @@ public final class FnInteger {
     /**
      * <p>
      * Determines whether the target object is greater or equal to the specified object
-     * in value, this is, whether <tt>target.compareTo(object) >= 0</tt>. Both
+     * in value, this is, whether <tt>target.compareTo(object) &gt;= 0</tt>. Both
      * the target and the specified object have to implement {@link Comparable}.
      * </p>
      * 
@@ -831,7 +831,7 @@ public final class FnInteger {
     /**
      * <p>
      * Determines whether the target object is greater or equal to the specified object
-     * in value, this is, whether <tt>target.compareTo(object) >= 0</tt>. Both
+     * in value, this is, whether <tt>target.compareTo(object) &gt;= 0</tt>. Both
      * the target and the specified object have to implement {@link Comparable}.
      * </p>
      * 
@@ -849,7 +849,7 @@ public final class FnInteger {
     /**
      * <p>
      * Determines whether the target object is greater or equal to the specified object
-     * in value, this is, whether <tt>target.compareTo(object) >= 0</tt>. Both
+     * in value, this is, whether <tt>target.compareTo(object) &gt;= 0</tt>. Both
      * the target and the specified object have to implement {@link Comparable}.
      * </p>
      * 
@@ -867,7 +867,7 @@ public final class FnInteger {
     /**
      * <p>
      * Determines whether the target object is greater or equal to the specified object
-     * in value, this is, whether <tt>target.compareTo(object) >= 0</tt>. Both
+     * in value, this is, whether <tt>target.compareTo(object) &gt;= 0</tt>. Both
      * the target and the specified object have to implement {@link Comparable}.
      * </p>
      * 
@@ -882,7 +882,7 @@ public final class FnInteger {
     /**
      * <p>
      * Determines whether the target object is greater or equal to the specified object
-     * in value, this is, whether <tt>target.compareTo(object) >= 0</tt>. Both
+     * in value, this is, whether <tt>target.compareTo(object) &gt;= 0</tt>. Both
      * the target and the specified object have to implement {@link Comparable}.
      * </p>
      * 
@@ -906,7 +906,26 @@ public final class FnInteger {
      * 
      * @param object the object to compare to the target
      * @return true if both objects are equal, false if not.
+     * 
+     * @since 1.1
      */
+    public static final Function<Integer,Boolean> eqBy(final IFunction<Integer,?> by, final Object object) {
+        return (Function<Integer,Boolean>)((Function)FnObject.eqBy(by, object));
+    }
+    
+    /**
+     * <p>
+     * Determines whether the result of executing the specified function 
+     * on the target object and the specified object parameter are equal
+     * by calling the <tt>equals</tt> method.
+     * </p>
+     * 
+     * @param object the object to compare to the target
+     * @return true if both objects are equal, false if not.
+     * 
+     * @deprecated use {@link FnNumber} or {@link FnObject} instead. This class will be removed in version 1.2
+     */
+    @Deprecated
     public static final Function<Integer,Boolean> eqBy(final IFunction<Integer,?> by, final Number object) {
         return (Function<Integer,Boolean>)((Function)FnObject.eqBy(by, object));
     }
@@ -921,13 +940,15 @@ public final class FnInteger {
      * 
      * @param object the object to compare to the target
      * @return true if both objects are equal, false if not.
+     * 
+     * @deprecated use {@link FnNumber} or {@link FnObject} instead. This class will be removed in version 1.2
      */
+    @Deprecated
     public static final Function<Integer,Boolean> eqBy(final IFunction<Integer,?> by, final int object) {
         return (Function<Integer,Boolean>)((Function)FnObject.eqBy(by, object));
     }
     
     
-
     /**
      * <p>
      * Determines whether the result of executing the specified function
@@ -939,7 +960,28 @@ public final class FnInteger {
      * 
      * @param object the object to compare to the target
      * @return true if both objects are equal according to "compareTo", false if not.
+     * 
+     * @since 1.1
      */
+    public static final Function<Integer,Boolean> eqValueBy(final IFunction<Integer,?> by, final Object object) {
+        return (Function<Integer,Boolean>)((Function)FnObject.eqValueBy(by, object));
+    }
+    
+    /**
+     * <p>
+     * Determines whether the result of executing the specified function
+     * on the target object and the specified object parameter are equal
+     * in value, this is, whether <tt>functionResult.compareTo(object) == 0</tt>. 
+     * Both the function result and the specified object have to implement 
+     * {@link Comparable}.
+     * </p>
+     * 
+     * @param object the object to compare to the target
+     * @return true if both objects are equal according to "compareTo", false if not.
+     * 
+     * @deprecated use {@link FnNumber} or {@link FnObject} instead. This class will be removed in version 1.2
+     */
+    @Deprecated
     public static final Function<Integer,Boolean> eqValueBy(final IFunction<Integer,?> by, final Number object) {
         return (Function<Integer,Boolean>)((Function)FnObject.eqValueBy(by, object));
     }
@@ -956,13 +998,29 @@ public final class FnInteger {
      * 
      * @param object the object to compare to the target
      * @return true if both objects are equal according to "compareTo", false if not.
+     * 
+     * @deprecated use {@link FnNumber} or {@link FnObject} instead. This class will be removed in version 1.2
      */
+    @Deprecated
     public static final Function<Integer,Boolean> eqValueBy(final IFunction<Integer,?> by, final int object) {
         return (Function<Integer,Boolean>)((Function)FnObject.eqValueBy(by, object));
     }
     
     
-    
+    /**
+     * <p>
+     * Determines whether the result of executing the specified function 
+     * on the target object and the specified object parameter are NOT equal
+     * by calling the <tt>equals</tt> method.
+     * </p>
+     * 
+     * @param object the object to compare to the target
+     * @return false if both objects are equal, true if not.
+     * @since 1.1
+     */
+    public static final Function<Integer,Boolean> notEqBy(final IFunction<Integer,?> by, final Object object) {
+        return (Function<Integer,Boolean>)((Function)FnObject.notEqBy(by, object));
+    }
 
     /**
      * <p>
@@ -973,7 +1031,9 @@ public final class FnInteger {
      * 
      * @param object the object to compare to the target
      * @return false if both objects are equal, true if not.
+     * @deprecated use {@link FnNumber} or {@link FnObject} instead. This class will be removed in version 1.2
      */
+    @Deprecated
     public static final Function<Integer,Boolean> notEqBy(final IFunction<Integer,?> by, final Number object) {
         return (Function<Integer,Boolean>)((Function)FnObject.notEqBy(by, object));
     }
@@ -988,11 +1048,30 @@ public final class FnInteger {
      * 
      * @param object the object to compare to the target
      * @return false if both objects are equal, true if not.
+     * @deprecated use {@link FnNumber} or {@link FnObject} instead. This class will be removed in version 1.2
      */
+    @Deprecated
     public static final Function<Integer,Boolean> notEqBy(final IFunction<Integer,?> by, final int object) {
         return (Function<Integer,Boolean>)((Function)FnObject.notEqBy(by, object));
     }
     
+  
+    /**
+     * <p>
+     * Determines whether the result of executing the specified function
+     * on the target object and the specified object parameter are NOT equal
+     * in value, this is, whether <tt>functionResult.compareTo(object) != 0</tt>. 
+     * Both the function result and the specified object have to implement 
+     * {@link Comparable}.
+     * </p>
+     * 
+     * @param object the object to compare to the target
+     * @return false if both objects are equal according to "compareTo", true if not.
+     * @since 1.1
+     */
+    public static final Function<Integer,Boolean> notEqValueBy(final IFunction<Integer,?> by, final Object object) {
+        return (Function<Integer,Boolean>)((Function)FnObject.notEqValueBy(by, object));
+    }
     
 
     /**
@@ -1006,7 +1085,9 @@ public final class FnInteger {
      * 
      * @param object the object to compare to the target
      * @return false if both objects are equal according to "compareTo", true if not.
+     * @deprecated use {@link FnNumber} or {@link FnObject} instead. This class will be removed in version 1.2
      */
+    @Deprecated
     public static final Function<Integer,Boolean> notEqValueBy(final IFunction<Integer,?> by, final Number object) {
         return (Function<Integer,Boolean>)((Function)FnObject.notEqValueBy(by, object));
     }
@@ -1023,13 +1104,29 @@ public final class FnInteger {
      * 
      * @param object the object to compare to the target
      * @return false if both objects are equal according to "compareTo", true if not.
+     * @deprecated use {@link FnNumber} or {@link FnObject} instead. This class will be removed in version 1.2
      */
+    @Deprecated
     public static final Function<Integer,Boolean> notEqValueBy(final IFunction<Integer,?> by, final int object) {
         return (Function<Integer,Boolean>)((Function)FnObject.notEqValueBy(by, object));
     }
     
     
-    
+    /**
+     * <p>
+     * Determines whether the result of executing the specified function
+     * on the target object is less than the specified object parameter
+     * in value, this is, whether <tt>functionResult.compareTo(object) &lt; 0</tt>. Both
+     * the target and the specified object have to implement {@link Comparable}.
+     * </p>
+     * 
+     * @param object the object to compare to the target
+     * @return true if function result is less than the specified object, false if not
+     * @since 1.1
+     */
+    public static final Function<Integer,Boolean> lessThanBy(final IFunction<Integer,?> by, final Object object) {
+        return (Function<Integer,Boolean>)((Function)FnObject.lessThanBy(by, object));
+    }
 
     /**
      * <p>
@@ -1041,7 +1138,9 @@ public final class FnInteger {
      * 
      * @param object the object to compare to the target
      * @return true if function result is less than the specified object, false if not
+     * @deprecated use {@link FnNumber} or {@link FnObject} instead. This class will be removed in version 1.2
      */
+    @Deprecated
     public static final Function<Integer,Boolean> lessThanBy(final IFunction<Integer,?> by, final Number object) {
         return (Function<Integer,Boolean>)((Function)FnObject.lessThanBy(by, object));
     }
@@ -1057,7 +1156,9 @@ public final class FnInteger {
      * 
      * @param object the object to compare to the target
      * @return true if function result is less than the specified object, false if not
+     * @deprecated use {@link FnNumber} or {@link FnObject} instead. This class will be removed in version 1.2
      */
+    @Deprecated
     public static final Function<Integer,Boolean> lessThanBy(final IFunction<Integer,?> by, final float object) {
         return (Function<Integer,Boolean>)((Function)FnObject.lessThanBy(by, object));
     }
@@ -1073,7 +1174,9 @@ public final class FnInteger {
      * 
      * @param object the object to compare to the target
      * @return true if function result is less than the specified object, false if not
+     * @deprecated use {@link FnNumber} or {@link FnObject} instead. This class will be removed in version 1.2
      */
+    @Deprecated
     public static final Function<Integer,Boolean> lessThanBy(final IFunction<Integer,?> by, final double object) {
         return (Function<Integer,Boolean>)((Function)FnObject.lessThanBy(by, object));
     }
@@ -1089,7 +1192,9 @@ public final class FnInteger {
      * 
      * @param object the object to compare to the target
      * @return true if function result is less than the specified object, false if not
+     * @deprecated use {@link FnNumber} or {@link FnObject} instead. This class will be removed in version 1.2
      */
+    @Deprecated
     public static final Function<Integer,Boolean> lessThanBy(final IFunction<Integer,?> by, final byte object) {
         return (Function<Integer,Boolean>)((Function)FnObject.lessThanBy(by, object));
     }
@@ -1105,7 +1210,9 @@ public final class FnInteger {
      * 
      * @param object the object to compare to the target
      * @return true if function result is less than the specified object, false if not
+     * @deprecated use {@link FnNumber} or {@link FnObject} instead. This class will be removed in version 1.2
      */
+    @Deprecated
     public static final Function<Integer,Boolean> lessThanBy(final IFunction<Integer,?> by, final short object) {
         return (Function<Integer,Boolean>)((Function)FnObject.lessThanBy(by, object));
     }
@@ -1121,7 +1228,9 @@ public final class FnInteger {
      * 
      * @param object the object to compare to the target
      * @return true if function result is less than the specified object, false if not
+     * @deprecated use {@link FnNumber} or {@link FnObject} instead. This class will be removed in version 1.2
      */
+    @Deprecated
     public static final Function<Integer,Boolean> lessThanBy(final IFunction<Integer,?> by, final int object) {
         return (Function<Integer,Boolean>)((Function)FnObject.lessThanBy(by, object));
     }
@@ -1137,12 +1246,13 @@ public final class FnInteger {
      * 
      * @param object the object to compare to the target
      * @return true if function result is less than the specified object, false if not
+     * @deprecated use {@link FnNumber} or {@link FnObject} instead. This class will be removed in version 1.2
      */
+    @Deprecated
     public static final Function<Integer,Boolean> lessThanBy(final IFunction<Integer,?> by, final long object) {
         return (Function<Integer,Boolean>)((Function)FnObject.lessThanBy(by, object));
     }
     
-
     /**
      * <p>
      * Determines whether the result of executing the specified function
@@ -1153,7 +1263,25 @@ public final class FnInteger {
      * 
      * @param object the object to compare to the target
      * @return true if function result is less or equal to the specified object, false if not
+     * @since 1.1
      */
+    public static final Function<Integer,Boolean> lessOrEqToBy(final IFunction<Integer,?> by, final Object object) {
+        return (Function<Integer,Boolean>)((Function)FnObject.lessOrEqToBy(by, object));
+    }
+    
+    /**
+     * <p>
+     * Determines whether the result of executing the specified function
+     * on the target object is less or equal to the specified object parameter
+     * in value, this is, whether <tt>functionResult.compareTo(object) &lt;= 0</tt>. Both
+     * the target and the specified object have to implement {@link Comparable}.
+     * </p>
+     * 
+     * @param object the object to compare to the target
+     * @return true if function result is less or equal to the specified object, false if not
+     * @deprecated use {@link FnNumber} or {@link FnObject} instead. This class will be removed in version 1.2
+     */
+    @Deprecated
     public static final Function<Integer,Boolean> lessOrEqToBy(final IFunction<Integer,?> by, final Number object) {
         return (Function<Integer,Boolean>)((Function)FnObject.lessOrEqToBy(by, object));
     }
@@ -1169,7 +1297,9 @@ public final class FnInteger {
      * 
      * @param object the object to compare to the target
      * @return true if function result is less or equal to the specified object, false if not
+     * @deprecated use {@link FnNumber} or {@link FnObject} instead. This class will be removed in version 1.2
      */
+    @Deprecated
     public static final Function<Integer,Boolean> lessOrEqToBy(final IFunction<Integer,?> by, final float object) {
         return (Function<Integer,Boolean>)((Function)FnObject.lessOrEqToBy(by, object));
     }
@@ -1185,7 +1315,9 @@ public final class FnInteger {
      * 
      * @param object the object to compare to the target
      * @return true if function result is less or equal to the specified object, false if not
+     * @deprecated use {@link FnNumber} or {@link FnObject} instead. This class will be removed in version 1.2
      */
+    @Deprecated
     public static final Function<Integer,Boolean> lessOrEqToBy(final IFunction<Integer,?> by, final double object) {
         return (Function<Integer,Boolean>)((Function)FnObject.lessOrEqToBy(by, object));
     }
@@ -1201,7 +1333,9 @@ public final class FnInteger {
      * 
      * @param object the object to compare to the target
      * @return true if function result is less or equal to the specified object, false if not
+     * @deprecated use {@link FnNumber} or {@link FnObject} instead. This class will be removed in version 1.2
      */
+    @Deprecated
     public static final Function<Integer,Boolean> lessOrEqToBy(final IFunction<Integer,?> by, final byte object) {
         return (Function<Integer,Boolean>)((Function)FnObject.lessOrEqToBy(by, object));
     }
@@ -1217,7 +1351,9 @@ public final class FnInteger {
      * 
      * @param object the object to compare to the target
      * @return true if function result is less or equal to the specified object, false if not
+     * @deprecated use {@link FnNumber} or {@link FnObject} instead. This class will be removed in version 1.2
      */
+    @Deprecated
     public static final Function<Integer,Boolean> lessOrEqToBy(final IFunction<Integer,?> by, final short object) {
         return (Function<Integer,Boolean>)((Function)FnObject.lessOrEqToBy(by, object));
     }
@@ -1233,7 +1369,9 @@ public final class FnInteger {
      * 
      * @param object the object to compare to the target
      * @return true if function result is less or equal to the specified object, false if not
+     * @deprecated use {@link FnNumber} or {@link FnObject} instead. This class will be removed in version 1.2
      */
+    @Deprecated
     public static final Function<Integer,Boolean> lessOrEqToBy(final IFunction<Integer,?> by, final int object) {
         return (Function<Integer,Boolean>)((Function)FnObject.lessOrEqToBy(by, object));
     }
@@ -1249,7 +1387,9 @@ public final class FnInteger {
      * 
      * @param object the object to compare to the target
      * @return true if function result is less or equal to the specified object, false if not
+     * @deprecated use {@link FnNumber} or {@link FnObject} instead. This class will be removed in version 1.2
      */
+    @Deprecated
     public static final Function<Integer,Boolean> lessOrEqToBy(final IFunction<Integer,?> by, final long object) {
         return (Function<Integer,Boolean>)((Function)FnObject.lessOrEqToBy(by, object));
     }
@@ -1265,7 +1405,25 @@ public final class FnInteger {
      * 
      * @param object the object to compare to the target
      * @return true if function result is greater than the specified object, false if not
+     * @since 1.1
      */
+    public static final Function<Integer,Boolean> greaterThanBy(final IFunction<Integer,?> by, final Object object) {
+        return (Function<Integer,Boolean>)((Function)FnObject.greaterThanBy(by, object));
+    }
+    
+    /**
+     * <p>
+     * Determines whether the result of executing the specified function
+     * on the target object is greater than the specified object parameter
+     * in value, this is, whether <tt>functionResult.compareTo(object) > 0</tt>. Both
+     * the target and the specified object have to implement {@link Comparable}.
+     * </p>
+     * 
+     * @param object the object to compare to the target
+     * @return true if function result is greater than the specified object, false if not
+     * @deprecated use {@link FnNumber} or {@link FnObject} instead. This class will be removed in version 1.2
+     */
+    @Deprecated
     public static final Function<Integer,Boolean> greaterThanBy(final IFunction<Integer,?> by, final Number object) {
         return (Function<Integer,Boolean>)((Function)FnObject.greaterThanBy(by, object));
     }
@@ -1281,7 +1439,10 @@ public final class FnInteger {
      * 
      * @param object the object to compare to the target
      * @return true if function result is greater than the specified object, false if not
+     * 
+     * @deprecated use {@link FnNumber} or {@link FnObject} instead. This class will be removed in version 1.2
      */
+    @Deprecated
     public static final Function<Integer,Boolean> greaterThanBy(final IFunction<Integer,?> by, final float object) {
         return (Function<Integer,Boolean>)((Function)FnObject.greaterThanBy(by, object));
     }
@@ -1297,7 +1458,10 @@ public final class FnInteger {
      * 
      * @param object the object to compare to the target
      * @return true if function result is greater than the specified object, false if not
+     * 
+     * @deprecated use {@link FnNumber} or {@link FnObject} instead. This class will be removed in version 1.2
      */
+    @Deprecated
     public static final Function<Integer,Boolean> greaterThanBy(final IFunction<Integer,?> by, final double object) {
         return (Function<Integer,Boolean>)((Function)FnObject.greaterThanBy(by, object));
     }
@@ -1313,7 +1477,10 @@ public final class FnInteger {
      * 
      * @param object the object to compare to the target
      * @return true if function result is greater than the specified object, false if not
+     * 
+     * @deprecated use {@link FnNumber} or {@link FnObject} instead. This class will be removed in version 1.2
      */
+    @Deprecated
     public static final Function<Integer,Boolean> greaterThanBy(final IFunction<Integer,?> by, final byte object) {
         return (Function<Integer,Boolean>)((Function)FnObject.greaterThanBy(by, object));
     }
@@ -1329,7 +1496,9 @@ public final class FnInteger {
      * 
      * @param object the object to compare to the target
      * @return true if function result is greater than the specified object, false if not
+     * @deprecated use {@link FnNumber} or {@link FnObject} instead. This class will be removed in version 1.2
      */
+    @Deprecated
     public static final Function<Integer,Boolean> greaterThanBy(final IFunction<Integer,?> by, final short object) {
         return (Function<Integer,Boolean>)((Function)FnObject.greaterThanBy(by, object));
     }
@@ -1345,7 +1514,10 @@ public final class FnInteger {
      * 
      * @param object the object to compare to the target
      * @return true if function result is greater than the specified object, false if not
+     * 
+     * @deprecated use {@link FnNumber} or {@link FnObject} instead. This class will be removed in version 1.2
      */
+    @Deprecated
     public static final Function<Integer,Boolean> greaterThanBy(final IFunction<Integer,?> by, final int object) {
         return (Function<Integer,Boolean>)((Function)FnObject.greaterThanBy(by, object));
     }
@@ -1361,23 +1533,45 @@ public final class FnInteger {
      * 
      * @param object the object to compare to the target
      * @return true if function result is greater than the specified object, false if not
+     * 
+     * @deprecated use {@link FnNumber} or {@link FnObject} instead. This class will be removed in version 1.2
      */
+    @Deprecated
     public static final Function<Integer,Boolean> greaterThanBy(final IFunction<Integer,?> by, final long object) {
         return (Function<Integer,Boolean>)((Function)FnObject.greaterThanBy(by, object));
     }
     
-
     /**
      * <p>
      * Determines whether the result of executing the specified function
      * on the target object is greater or equal to the specified object parameter
-     * in value, this is, whether <tt>functionResult.compareTo(object) >= 0</tt>. Both
+     * in value, this is, whether <tt>functionResult.compareTo(object) &gt;= 0</tt>. Both
      * the target and the specified object have to implement {@link Comparable}.
      * </p>
      * 
      * @param object the object to compare to the target
      * @return true if function result is greater or equal to the specified object, false if not
+     * 
+     * @since 1.1
      */
+    public static final Function<Integer,Boolean> greaterOrEqToBy(final IFunction<Integer,?> by, final Object object) {
+        return (Function<Integer,Boolean>)((Function)FnObject.greaterOrEqToBy(by, object));
+    }
+    
+    /**
+     * <p>
+     * Determines whether the result of executing the specified function
+     * on the target object is greater or equal to the specified object parameter
+     * in value, this is, whether <tt>functionResult.compareTo(object) &gt;= 0</tt>. Both
+     * the target and the specified object have to implement {@link Comparable}.
+     * </p>
+     * 
+     * @param object the object to compare to the target
+     * @return true if function result is greater or equal to the specified object, false if not
+     * 
+     * @deprecated use {@link FnNumber} or {@link FnObject} instead. This class will be removed in version 1.2
+     */
+    @Deprecated
     public static final Function<Integer,Boolean> greaterOrEqToBy(final IFunction<Integer,?> by, final Number object) {
         return (Function<Integer,Boolean>)((Function)FnObject.greaterOrEqToBy(by, object));
     }    
@@ -1387,13 +1581,16 @@ public final class FnInteger {
      * <p>
      * Determines whether the result of executing the specified function
      * on the target object is greater or equal to the specified object parameter
-     * in value, this is, whether <tt>functionResult.compareTo(object) >= 0</tt>. Both
+     * in value, this is, whether <tt>functionResult.compareTo(object) &gt;= 0</tt>. Both
      * the target and the specified object have to implement {@link Comparable}.
      * </p>
      * 
      * @param object the object to compare to the target
      * @return true if function result is greater or equal to the specified object, false if not
+     * 
+     * @deprecated use {@link FnNumber} or {@link FnObject} instead. This class will be removed in version 1.2
      */
+    @Deprecated
     public static final Function<Integer,Boolean> greaterOrEqToBy(final IFunction<Integer,?> by, final float object) {
         return (Function<Integer,Boolean>)((Function)FnObject.greaterOrEqToBy(by, object));
     }    
@@ -1403,13 +1600,16 @@ public final class FnInteger {
      * <p>
      * Determines whether the result of executing the specified function
      * on the target object is greater or equal to the specified object parameter
-     * in value, this is, whether <tt>functionResult.compareTo(object) >= 0</tt>. Both
+     * in value, this is, whether <tt>functionResult.compareTo(object) &gt;= 0</tt>. Both
      * the target and the specified object have to implement {@link Comparable}.
      * </p>
      * 
      * @param object the object to compare to the target
      * @return true if function result is greater or equal to the specified object, false if not
+     * 
+     * @deprecated use {@link FnNumber} or {@link FnObject} instead. This class will be removed in version 1.2
      */
+    @Deprecated
     public static final Function<Integer,Boolean> greaterOrEqToBy(final IFunction<Integer,?> by, final double object) {
         return (Function<Integer,Boolean>)((Function)FnObject.greaterOrEqToBy(by, object));
     }    
@@ -1419,13 +1619,16 @@ public final class FnInteger {
      * <p>
      * Determines whether the result of executing the specified function
      * on the target object is greater or equal to the specified object parameter
-     * in value, this is, whether <tt>functionResult.compareTo(object) >= 0</tt>. Both
+     * in value, this is, whether <tt>functionResult.compareTo(object) &gt;= 0</tt>. Both
      * the target and the specified object have to implement {@link Comparable}.
      * </p>
      * 
      * @param object the object to compare to the target
      * @return true if function result is greater or equal to the specified object, false if not
+     * 
+     * @deprecated use {@link FnNumber} or {@link FnObject} instead. This class will be removed in version 1.2
      */
+    @Deprecated
     public static final Function<Integer,Boolean> greaterOrEqToBy(final IFunction<Integer,?> by, final byte object) {
         return (Function<Integer,Boolean>)((Function)FnObject.greaterOrEqToBy(by, object));
     }    
@@ -1435,13 +1638,16 @@ public final class FnInteger {
      * <p>
      * Determines whether the result of executing the specified function
      * on the target object is greater or equal to the specified object parameter
-     * in value, this is, whether <tt>functionResult.compareTo(object) >= 0</tt>. Both
+     * in value, this is, whether <tt>functionResult.compareTo(object) &gt;= 0</tt>. Both
      * the target and the specified object have to implement {@link Comparable}.
      * </p>
      * 
      * @param object the object to compare to the target
      * @return true if function result is greater or equal to the specified object, false if not
+     * 
+     * @deprecated use {@link FnNumber} or {@link FnObject} instead. This class will be removed in version 1.2
      */
+    @Deprecated
     public static final Function<Integer,Boolean> greaterOrEqToBy(final IFunction<Integer,?> by, final short object) {
         return (Function<Integer,Boolean>)((Function)FnObject.greaterOrEqToBy(by, object));
     }    
@@ -1451,13 +1657,16 @@ public final class FnInteger {
      * <p>
      * Determines whether the result of executing the specified function
      * on the target object is greater or equal to the specified object parameter
-     * in value, this is, whether <tt>functionResult.compareTo(object) >= 0</tt>. Both
+     * in value, this is, whether <tt>functionResult.compareTo(object) &gt;= 0</tt>. Both
      * the target and the specified object have to implement {@link Comparable}.
      * </p>
      * 
      * @param object the object to compare to the target
      * @return true if function result is greater or equal to the specified object, false if not
+     * 
+     * @deprecated use {@link FnNumber} or {@link FnObject} instead. This class will be removed in version 1.2
      */
+    @Deprecated
     public static final Function<Integer,Boolean> greaterOrEqToBy(final IFunction<Integer,?> by, final int object) {
         return (Function<Integer,Boolean>)((Function)FnObject.greaterOrEqToBy(by, object));
     }    
@@ -1467,13 +1676,16 @@ public final class FnInteger {
      * <p>
      * Determines whether the result of executing the specified function
      * on the target object is greater or equal to the specified object parameter
-     * in value, this is, whether <tt>functionResult.compareTo(object) >= 0</tt>. Both
+     * in value, this is, whether <tt>functionResult.compareTo(object) &gt;= 0</tt>. Both
      * the target and the specified object have to implement {@link Comparable}.
      * </p>
      * 
      * @param object the object to compare to the target
      * @return true if function result is greater or equal to the specified object, false if not
+     * 
+     * @deprecated use {@link FnNumber} or {@link FnObject} instead. This class will be removed in version 1.2
      */
+    @Deprecated
     public static final Function<Integer,Boolean> greaterOrEqToBy(final IFunction<Integer,?> by, final long object) {
         return (Function<Integer,Boolean>)((Function)FnObject.greaterOrEqToBy(by, object));
     }
@@ -2659,7 +2871,7 @@ public final class FnInteger {
      * <p>
      * Determines whether the target object is between min and max
      * in value, this is, whether 
-     * <tt>target.compareTo(min) >= 0 && target.compareTo(max) <= 0</tt>. 
+     * <tt>target.compareTo(min) &gt;= 0 && target.compareTo(max) &lt;= 0</tt>. 
      * The target and the specified min and max have to implement {@link Comparable}.
      * </p>
      * 
@@ -2675,7 +2887,7 @@ public final class FnInteger {
      * <p>
      * Determines whether the target object is between min and max
      * in value, this is, whether 
-     * <tt>target.compareTo(min) >= 0 && target.compareTo(max) <= 0</tt>. 
+     * <tt>target.compareTo(min) &gt;= 0 && target.compareTo(max) &lt;= 0</tt>. 
      * The target and the specified min and max have to implement {@link Comparable}.
      * </p>
      * 
