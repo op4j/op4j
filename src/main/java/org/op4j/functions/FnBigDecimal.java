@@ -60,7 +60,18 @@ public final class FnBigDecimal {
 		super();           
 	}
 
-	// From FnNumber
+	/**
+	 * <p>
+     * It rounds the input number with the given scale and {@link RoundingMode}. The input
+     * number will be converted into a {@link BigDecimal} with the given scale and
+     * roundingMode
+     * </p>
+     * 
+	 * @param scale the scale
+	 * @param roundingMode the {@link RoundingMode}
+	 * @return the {@link BigDecimal} representation of the input rounded based on
+	 * the given parameters
+	 */
 	public static final Function<BigDecimal,BigDecimal> roundBigDecimal(final int scale, final RoundingMode roundingMode) {
         return FnNumber.roundBigDecimal(scale, roundingMode);
 	}
