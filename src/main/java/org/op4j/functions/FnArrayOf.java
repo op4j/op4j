@@ -55,12 +55,20 @@ public class FnArrayOf<T> {
     
     
     protected final Type<T> type;
+
     
-    
+    protected FnArrayOf(final Type<T> type) {
+        super();
+        this.type = type;
+    }
+
+
+
     public final Function<T[],T[]> sort() {
         return new Sort<T>();
     }
 
+    
     public final Function<T[],T[]> sort(final Comparator<? super T> comparator) {
         return new SortByComparator<T>(comparator);
     }
@@ -322,12 +330,6 @@ public class FnArrayOf<T> {
     
     
     
-    
-    protected FnArrayOf(final Type<T> type) {
-        super();
-        this.type = type;
-    }
-
     
     
     
