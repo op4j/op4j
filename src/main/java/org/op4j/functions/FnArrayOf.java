@@ -57,6 +57,13 @@ public class FnArrayOf<T> {
     protected final Type<T> type;
     
     
+    /**
+     * <p>
+     * It sorts the input array
+     * </p>
+     * 
+     * @return
+     */
     public final Function<T[],T[]> sort() {
         return new Sort<T>();
     }
