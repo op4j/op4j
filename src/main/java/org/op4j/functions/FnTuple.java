@@ -19,6 +19,10 @@
  */
 package org.op4j.functions;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
 import org.javatuples.Decade;
 import org.javatuples.Ennead;
 import org.javatuples.KeyValue;
@@ -30,7 +34,9 @@ import org.javatuples.Quintet;
 import org.javatuples.Septet;
 import org.javatuples.Sextet;
 import org.javatuples.Triplet;
+import org.javatuples.Tuple;
 import org.javatuples.Unit;
+import org.op4j.util.VarArgsUtil;
 
 /**
  * 
@@ -40,7 +46,7 @@ import org.javatuples.Unit;
  *
  */
 public final class FnTuple {
-
+    
 	
 	private FnTuple() {
 		super();           
@@ -219,13 +225,53 @@ public final class FnTuple {
                 value8Function, value9Function);
     }
     
-
+    
+    
+    public static final <X extends Tuple> Function<X,Object[]> toArray() {
+        return new ToArray<X>();
+    }
+    
+    
+    
+    public static final <X extends Tuple> Function<X,List<Object>> toList() {
+        return new ToList<X>();
+    }
+    
+    
+    
+    public static final <X extends Tuple> Function<X,Integer> getSize() {
+        return new Size<X>();
+    }
+    
+    
+    
+    public static final <X extends Tuple> Function<X,Boolean> contains(final Object value) {
+        return new Contains<X>(value);
+    }
+    
+    
+    
+    public static final <X extends Tuple> Function<X,Boolean> containsAll(final Collection<?> collection) {
+        return new ContainsAll<X>(collection);
+    }
+    
+    
+    
+    public static final <X extends Tuple> Function<X,Boolean> containsAll(final Object... values) {
+        return new ContainsAll<X>(values);
+    }
+    
+    
+    
+    
+    
+    
     
     
 
     
     
-    static final class ToUnit<X,A> extends Function<X,Unit<A>> {
+    static final class ToUnit<X,A> extends AbstractNotNullFunction<X,Unit<A>> {
         
         private final IFunction<? super X,A> value0Function;
         
@@ -240,7 +286,8 @@ public final class FnTuple {
         }
         
 
-        public Unit<A> execute(final X input, final ExecCtx ctx) throws Exception {
+        @Override
+        public Unit<A> notNullExecute(final X input, final ExecCtx ctx) throws Exception {
             return Unit.with(
                     this.value0Function.execute(input, ctx)); 
         }       
@@ -253,7 +300,7 @@ public final class FnTuple {
 
     
     
-    static final class ToPair<X,A,B> extends Function<X,Pair<A,B>> {
+    static final class ToPair<X,A,B> extends AbstractNotNullFunction<X,Pair<A,B>> {
         
         private final IFunction<? super X,A> value0Function;
         private final IFunction<? super X,B> value1Function;
@@ -271,7 +318,8 @@ public final class FnTuple {
         }
         
 
-        public Pair<A,B> execute(final X input, final ExecCtx ctx) throws Exception {
+        @Override
+        public Pair<A,B> notNullExecute(final X input, final ExecCtx ctx) throws Exception {
             return Pair.with(
                     this.value0Function.execute(input, ctx), 
                     this.value1Function.execute(input, ctx)); 
@@ -284,7 +332,7 @@ public final class FnTuple {
 
     
     
-    static final class ToKeyValue<X,A,B> extends Function<X,KeyValue<A,B>> {
+    static final class ToKeyValue<X,A,B> extends AbstractNotNullFunction<X,KeyValue<A,B>> {
         
         private final IFunction<? super X,A> value0Function;
         private final IFunction<? super X,B> value1Function;
@@ -302,7 +350,8 @@ public final class FnTuple {
         }
         
 
-        public KeyValue<A,B> execute(final X input, final ExecCtx ctx) throws Exception {
+        @Override
+        public KeyValue<A,B> notNullExecute(final X input, final ExecCtx ctx) throws Exception {
             return KeyValue.with(
                     this.value0Function.execute(input, ctx), 
                     this.value1Function.execute(input, ctx)); 
@@ -315,7 +364,7 @@ public final class FnTuple {
 
     
     
-    static final class ToLabelValue<X,A,B> extends Function<X,LabelValue<A,B>> {
+    static final class ToLabelValue<X,A,B> extends AbstractNotNullFunction<X,LabelValue<A,B>> {
         
         private final IFunction<? super X,A> value0Function;
         private final IFunction<? super X,B> value1Function;
@@ -333,7 +382,8 @@ public final class FnTuple {
         }
         
 
-        public LabelValue<A,B> execute(final X input, final ExecCtx ctx) throws Exception {
+        @Override
+        public LabelValue<A,B> notNullExecute(final X input, final ExecCtx ctx) throws Exception {
             return LabelValue.with(
                     this.value0Function.execute(input, ctx), 
                     this.value1Function.execute(input, ctx)); 
@@ -345,7 +395,7 @@ public final class FnTuple {
 
     
     
-    static final class ToTriplet<X,A,B,C> extends Function<X,Triplet<A,B,C>> {
+    static final class ToTriplet<X,A,B,C> extends AbstractNotNullFunction<X,Triplet<A,B,C>> {
         
         private final IFunction<? super X,A> value0Function;
         private final IFunction<? super X,B> value1Function;
@@ -366,7 +416,8 @@ public final class FnTuple {
         }
         
 
-        public Triplet<A,B,C> execute(final X input, final ExecCtx ctx) throws Exception {
+        @Override
+        public Triplet<A,B,C> notNullExecute(final X input, final ExecCtx ctx) throws Exception {
             return Triplet.with(
                     this.value0Function.execute(input, ctx), 
                     this.value1Function.execute(input, ctx), 
@@ -379,7 +430,7 @@ public final class FnTuple {
 
     
     
-    static final class ToQuartet<X,A,B,C,D> extends Function<X,Quartet<A,B,C,D>> {
+    static final class ToQuartet<X,A,B,C,D> extends AbstractNotNullFunction<X,Quartet<A,B,C,D>> {
         
         private final IFunction<? super X,A> value0Function;
         private final IFunction<? super X,B> value1Function;
@@ -403,7 +454,8 @@ public final class FnTuple {
         }
         
 
-        public Quartet<A,B,C,D> execute(final X input, final ExecCtx ctx) throws Exception {
+        @Override
+        public Quartet<A,B,C,D> notNullExecute(final X input, final ExecCtx ctx) throws Exception {
             return Quartet.with(
                     this.value0Function.execute(input, ctx), 
                     this.value1Function.execute(input, ctx), 
@@ -418,7 +470,7 @@ public final class FnTuple {
 
     
     
-    static final class ToQuintet<X,A,B,C,D,E> extends Function<X,Quintet<A,B,C,D,E>> {
+    static final class ToQuintet<X,A,B,C,D,E> extends AbstractNotNullFunction<X,Quintet<A,B,C,D,E>> {
         
         private final IFunction<? super X,A> value0Function;
         private final IFunction<? super X,B> value1Function;
@@ -445,7 +497,8 @@ public final class FnTuple {
         }
         
 
-        public Quintet<A,B,C,D,E> execute(final X input, final ExecCtx ctx) throws Exception {
+        @Override
+        public Quintet<A,B,C,D,E> notNullExecute(final X input, final ExecCtx ctx) throws Exception {
             return Quintet.with(
                     this.value0Function.execute(input, ctx), 
                     this.value1Function.execute(input, ctx), 
@@ -460,7 +513,7 @@ public final class FnTuple {
 
     
     
-    static final class ToSextet<X,A,B,C,D,E,F> extends Function<X,Sextet<A,B,C,D,E,F>> {
+    static final class ToSextet<X,A,B,C,D,E,F> extends AbstractNotNullFunction<X,Sextet<A,B,C,D,E,F>> {
         
         private final IFunction<? super X,A> value0Function;
         private final IFunction<? super X,B> value1Function;
@@ -490,7 +543,8 @@ public final class FnTuple {
         }
         
 
-        public Sextet<A,B,C,D,E,F> execute(final X input, final ExecCtx ctx) throws Exception {
+        @Override
+        public Sextet<A,B,C,D,E,F> notNullExecute(final X input, final ExecCtx ctx) throws Exception {
             return Sextet.with(
                     this.value0Function.execute(input, ctx), 
                     this.value1Function.execute(input, ctx), 
@@ -508,7 +562,7 @@ public final class FnTuple {
 
     
     
-    static final class ToSeptet<X,A,B,C,D,E,F,G> extends Function<X,Septet<A,B,C,D,E,F,G>> {
+    static final class ToSeptet<X,A,B,C,D,E,F,G> extends AbstractNotNullFunction<X,Septet<A,B,C,D,E,F,G>> {
         
         private final IFunction<? super X,A> value0Function;
         private final IFunction<? super X,B> value1Function;
@@ -541,7 +595,8 @@ public final class FnTuple {
         }
         
 
-        public Septet<A,B,C,D,E,F,G> execute(final X input, final ExecCtx ctx) throws Exception {
+        @Override
+        public Septet<A,B,C,D,E,F,G> notNullExecute(final X input, final ExecCtx ctx) throws Exception {
             return Septet.with(
                     this.value0Function.execute(input, ctx), 
                     this.value1Function.execute(input, ctx), 
@@ -562,7 +617,7 @@ public final class FnTuple {
 
     
     
-    static final class ToOctet<X,A,B,C,D,E,F,G,H> extends Function<X,Octet<A,B,C,D,E,F,G,H>> {
+    static final class ToOctet<X,A,B,C,D,E,F,G,H> extends AbstractNotNullFunction<X,Octet<A,B,C,D,E,F,G,H>> {
         
         private final IFunction<? super X,A> value0Function;
         private final IFunction<? super X,B> value1Function;
@@ -598,7 +653,8 @@ public final class FnTuple {
         }
         
 
-        public Octet<A,B,C,D,E,F,G,H> execute(final X input, final ExecCtx ctx) throws Exception {
+        @Override
+        public Octet<A,B,C,D,E,F,G,H> notNullExecute(final X input, final ExecCtx ctx) throws Exception {
             return Octet.with(
                     this.value0Function.execute(input, ctx), 
                     this.value1Function.execute(input, ctx), 
@@ -619,7 +675,7 @@ public final class FnTuple {
     
     
     
-	static final class ToEnnead<X,A,B,C,D,E,F,G,H,I> extends Function<X,Ennead<A,B,C,D,E,F,G,H,I>> {
+	static final class ToEnnead<X,A,B,C,D,E,F,G,H,I> extends AbstractNotNullFunction<X,Ennead<A,B,C,D,E,F,G,H,I>> {
 		
 	    private final IFunction<? super X,A> value0Function;
         private final IFunction<? super X,B> value1Function;
@@ -658,7 +714,8 @@ public final class FnTuple {
 		}
 	    
 
-		public Ennead<A,B,C,D,E,F,G,H,I> execute(final X input, final ExecCtx ctx) throws Exception {
+        @Override
+		public Ennead<A,B,C,D,E,F,G,H,I> notNullExecute(final X input, final ExecCtx ctx) throws Exception {
 			return Ennead.with(
 			        this.value0Function.execute(input, ctx), 
                     this.value1Function.execute(input, ctx), 
@@ -677,7 +734,7 @@ public final class FnTuple {
     
     
     
-    static final class ToDecade<X,A,B,C,D,E,F,G,H,I,J> extends Function<X,Decade<A,B,C,D,E,F,G,H,I,J>> {
+    static final class ToDecade<X,A,B,C,D,E,F,G,H,I,J> extends AbstractNotNullFunction<X,Decade<A,B,C,D,E,F,G,H,I,J>> {
         
         private final IFunction<? super X,A> value0Function;
         private final IFunction<? super X,B> value1Function;
@@ -719,7 +776,8 @@ public final class FnTuple {
         }
         
 
-        public Decade<A,B,C,D,E,F,G,H,I,J> execute(final X input, final ExecCtx ctx) throws Exception {
+        @Override
+        public Decade<A,B,C,D,E,F,G,H,I,J> notNullExecute(final X input, final ExecCtx ctx) throws Exception {
             return Decade.with(
                     this.value0Function.execute(input, ctx), 
                     this.value1Function.execute(input, ctx), 
@@ -731,6 +789,107 @@ public final class FnTuple {
                     this.value7Function.execute(input, ctx), 
                     this.value8Function.execute(input, ctx), 
                     this.value9Function.execute(input, ctx));
+        }       
+        
+    }
+    
+    
+    
+    
+    
+    static final class ToArray<X extends Tuple> extends AbstractNotNullFunction<X,Object[]> {
+        
+        ToArray() {
+            super();
+        }
+        
+
+        @Override
+        public Object[] notNullExecute(final Tuple input, final ExecCtx ctx) throws Exception {
+            return input.toArray();
+        }       
+        
+    }
+    
+    
+    
+    
+    
+    static final class ToList<X extends Tuple> extends AbstractNotNullFunction<X,List<Object>> {
+        
+        ToList() {
+            super();
+        }
+        
+
+        @Override
+        public List<Object> notNullExecute(final Tuple input, final ExecCtx ctx) throws Exception {
+            return input.toList();
+        }       
+        
+    }
+    
+    
+    
+    
+    
+    static final class Size<X extends Tuple> extends AbstractNotNullFunction<X,Integer> {
+        
+        Size() {
+            super();
+        }
+        
+
+        @Override
+        public Integer notNullExecute(final Tuple input, final ExecCtx ctx) throws Exception {
+            return Integer.valueOf(input.getSize());
+        }       
+        
+    }
+    
+    
+    
+    
+    
+    static final class Contains<X extends Tuple> extends AbstractNotNullFunction<X,Boolean> {
+        
+        private final Object contained;
+        
+        Contains(final Object contained) {
+            super();
+            this.contained = contained;
+        }
+        
+
+        @Override
+        public Boolean notNullExecute(final Tuple input, final ExecCtx ctx) throws Exception {
+            return Boolean.valueOf(input.contains(this.contained));
+        }       
+        
+    }
+    
+    
+    
+    
+    
+    static final class ContainsAll<X extends Tuple> extends AbstractNotNullFunction<X,Boolean> {
+        
+        private final List<Object> contained;
+        
+        ContainsAll(final Collection<?> contained) {
+            super();
+            this.contained = new ArrayList<Object>(contained);
+        }
+        
+        ContainsAll(final Object... contained) {
+            super();
+            this.contained = VarArgsUtil.asRequiredObjectList(contained);
+        }
+        
+
+        @Override
+        public Boolean notNullExecute(final Tuple input, final ExecCtx ctx) throws Exception {
+            return Boolean.valueOf(input.containsAll(this.contained));
         }       
         
     }
