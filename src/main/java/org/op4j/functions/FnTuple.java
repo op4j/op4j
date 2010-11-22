@@ -47,6 +47,9 @@ import org.javatuples.valueintf.IValue6;
 import org.javatuples.valueintf.IValue7;
 import org.javatuples.valueintf.IValue8;
 import org.javatuples.valueintf.IValue9;
+import org.javatuples.valueintf.IValueKey;
+import org.javatuples.valueintf.IValueLabel;
+import org.javatuples.valueintf.IValueValue;
 import org.op4j.util.VarArgsUtil;
 
 /**
@@ -330,6 +333,24 @@ public final class FnTuple {
     
     public static final <Y,X extends IValue9<Y>> Function<X,Y> getValue9Of(final Type<Y> type) {
         return new GetValue9<Y,X>();
+    }
+    
+    
+    
+    public static final <Y,X extends IValueKey<Y>> Function<X,Y> getKeyOf(final Type<Y> type) {
+        return new GetKey<Y,X>();
+    }
+    
+    
+    
+    public static final <Y,X extends IValueValue<Y>> Function<X,Y> getValueOf(final Type<Y> type) {
+        return new GetValue<Y,X>();
+    }
+    
+    
+    
+    public static final <Y,X extends IValueLabel<Y>> Function<X,Y> getLabelOf(final Type<Y> type) {
+        return new GetLabel<Y,X>();
     }
     
     
@@ -1141,6 +1162,60 @@ public final class FnTuple {
         @Override
         public Y notNullExecute(final X input, final ExecCtx ctx) throws Exception {
             return input.getValue9();
+        }       
+        
+    }
+    
+
+
+    
+    
+    static final class GetKey<Y,X extends IValueKey<Y>> extends AbstractNotNullFunction<X,Y> {
+        
+        GetKey() {
+            super();
+        }
+        
+
+        @Override
+        public Y notNullExecute(final X input, final ExecCtx ctx) throws Exception {
+            return input.getKey();
+        }       
+        
+    }
+    
+
+
+    
+    
+    static final class GetValue<Y,X extends IValueValue<Y>> extends AbstractNotNullFunction<X,Y> {
+        
+        GetValue() {
+            super();
+        }
+        
+
+        @Override
+        public Y notNullExecute(final X input, final ExecCtx ctx) throws Exception {
+            return input.getValue();
+        }       
+        
+    }
+    
+
+
+    
+    
+    static final class GetLabel<Y,X extends IValueLabel<Y>> extends AbstractNotNullFunction<X,Y> {
+        
+        GetLabel() {
+            super();
+        }
+        
+
+        @Override
+        public Y notNullExecute(final X input, final ExecCtx ctx) throws Exception {
+            return input.getLabel();
         }       
         
     }
