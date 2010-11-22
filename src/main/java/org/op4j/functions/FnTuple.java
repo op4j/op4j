@@ -23,6 +23,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import org.javaruntype.type.Type;
 import org.javatuples.Decade;
 import org.javatuples.Ennead;
 import org.javatuples.KeyValue;
@@ -36,6 +37,16 @@ import org.javatuples.Sextet;
 import org.javatuples.Triplet;
 import org.javatuples.Tuple;
 import org.javatuples.Unit;
+import org.javatuples.valueintf.IValue0;
+import org.javatuples.valueintf.IValue1;
+import org.javatuples.valueintf.IValue2;
+import org.javatuples.valueintf.IValue3;
+import org.javatuples.valueintf.IValue4;
+import org.javatuples.valueintf.IValue5;
+import org.javatuples.valueintf.IValue6;
+import org.javatuples.valueintf.IValue7;
+import org.javatuples.valueintf.IValue8;
+import org.javatuples.valueintf.IValue9;
 import org.op4j.util.VarArgsUtil;
 
 /**
@@ -259,6 +270,66 @@ public final class FnTuple {
     
     public static final <X extends Tuple> Function<X,Boolean> containsAll(final Object... values) {
         return new ContainsAll<X>(values);
+    }
+    
+    
+    
+    public static final <Y,X extends IValue0<Y>> Function<X,Y> getValue0Of(final Type<Y> type) {
+        return new GetValue0<Y,X>();
+    }
+    
+    
+    
+    public static final <Y,X extends IValue1<Y>> Function<X,Y> getValue1Of(final Type<Y> type) {
+        return new GetValue1<Y,X>();
+    }
+    
+    
+    
+    public static final <Y,X extends IValue2<Y>> Function<X,Y> getValue2Of(final Type<Y> type) {
+        return new GetValue2<Y,X>();
+    }
+    
+    
+    
+    public static final <Y,X extends IValue3<Y>> Function<X,Y> getValue3Of(final Type<Y> type) {
+        return new GetValue3<Y,X>();
+    }
+    
+    
+    
+    public static final <Y,X extends IValue4<Y>> Function<X,Y> getValue4Of(final Type<Y> type) {
+        return new GetValue4<Y,X>();
+    }
+    
+    
+    
+    public static final <Y,X extends IValue5<Y>> Function<X,Y> getValue5Of(final Type<Y> type) {
+        return new GetValue5<Y,X>();
+    }
+    
+    
+    
+    public static final <Y,X extends IValue6<Y>> Function<X,Y> getValue6Of(final Type<Y> type) {
+        return new GetValue6<Y,X>();
+    }
+    
+    
+    
+    public static final <Y,X extends IValue7<Y>> Function<X,Y> getValue7Of(final Type<Y> type) {
+        return new GetValue7<Y,X>();
+    }
+    
+    
+    
+    public static final <Y,X extends IValue8<Y>> Function<X,Y> getValue8Of(final Type<Y> type) {
+        return new GetValue8<Y,X>();
+    }
+    
+    
+    
+    public static final <Y,X extends IValue9<Y>> Function<X,Y> getValue9Of(final Type<Y> type) {
+        return new GetValue9<Y,X>();
     }
     
     
@@ -890,6 +961,186 @@ public final class FnTuple {
         @Override
         public Boolean notNullExecute(final Tuple input, final ExecCtx ctx) throws Exception {
             return Boolean.valueOf(input.containsAll(this.contained));
+        }       
+        
+    }
+    
+
+
+    
+    
+    static final class GetValue0<Y,X extends IValue0<Y>> extends AbstractNotNullFunction<X,Y> {
+        
+        GetValue0() {
+            super();
+        }
+        
+
+        @Override
+        public Y notNullExecute(final X input, final ExecCtx ctx) throws Exception {
+            return input.getValue0();
+        }       
+        
+    }
+    
+
+
+    
+    
+    static final class GetValue1<Y,X extends IValue1<Y>> extends AbstractNotNullFunction<X,Y> {
+        
+        GetValue1() {
+            super();
+        }
+        
+
+        @Override
+        public Y notNullExecute(final X input, final ExecCtx ctx) throws Exception {
+            return input.getValue1();
+        }       
+        
+    }
+    
+
+
+    
+    
+    static final class GetValue2<Y,X extends IValue2<Y>> extends AbstractNotNullFunction<X,Y> {
+        
+        GetValue2() {
+            super();
+        }
+        
+
+        @Override
+        public Y notNullExecute(final X input, final ExecCtx ctx) throws Exception {
+            return input.getValue2();
+        }       
+        
+    }
+    
+
+
+    
+    
+    static final class GetValue3<Y,X extends IValue3<Y>> extends AbstractNotNullFunction<X,Y> {
+        
+        GetValue3() {
+            super();
+        }
+        
+
+        @Override
+        public Y notNullExecute(final X input, final ExecCtx ctx) throws Exception {
+            return input.getValue3();
+        }       
+        
+    }
+    
+
+
+    
+    
+    static final class GetValue4<Y,X extends IValue4<Y>> extends AbstractNotNullFunction<X,Y> {
+        
+        GetValue4() {
+            super();
+        }
+        
+
+        @Override
+        public Y notNullExecute(final X input, final ExecCtx ctx) throws Exception {
+            return input.getValue4();
+        }       
+        
+    }
+    
+
+
+    
+    
+    static final class GetValue5<Y,X extends IValue5<Y>> extends AbstractNotNullFunction<X,Y> {
+        
+        GetValue5() {
+            super();
+        }
+        
+
+        @Override
+        public Y notNullExecute(final X input, final ExecCtx ctx) throws Exception {
+            return input.getValue5();
+        }       
+        
+    }
+    
+
+
+    
+    
+    static final class GetValue6<Y,X extends IValue6<Y>> extends AbstractNotNullFunction<X,Y> {
+        
+        GetValue6() {
+            super();
+        }
+        
+
+        @Override
+        public Y notNullExecute(final X input, final ExecCtx ctx) throws Exception {
+            return input.getValue6();
+        }       
+        
+    }
+    
+
+
+    
+    
+    static final class GetValue7<Y,X extends IValue7<Y>> extends AbstractNotNullFunction<X,Y> {
+        
+        GetValue7() {
+            super();
+        }
+        
+
+        @Override
+        public Y notNullExecute(final X input, final ExecCtx ctx) throws Exception {
+            return input.getValue7();
+        }       
+        
+    }
+    
+
+
+    
+    
+    static final class GetValue8<Y,X extends IValue8<Y>> extends AbstractNotNullFunction<X,Y> {
+        
+        GetValue8() {
+            super();
+        }
+        
+
+        @Override
+        public Y notNullExecute(final X input, final ExecCtx ctx) throws Exception {
+            return input.getValue8();
+        }       
+        
+    }
+    
+
+
+    
+    
+    static final class GetValue9<Y,X extends IValue9<Y>> extends AbstractNotNullFunction<X,Y> {
+        
+        GetValue9() {
+            super();
+        }
+        
+
+        @Override
+        public Y notNullExecute(final X input, final ExecCtx ctx) throws Exception {
+            return input.getValue9();
         }       
         
     }

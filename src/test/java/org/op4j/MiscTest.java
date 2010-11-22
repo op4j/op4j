@@ -788,6 +788,10 @@ watch.start();
             Op.on(dt).exec(FnTuple.pairWith(Call.i("getYear"),Get.i("month"))).get();
         System.out.println(p);
         
+        Integer i10 = 
+            Op.on(dt).exec(FnTuple.pairWith(Call.i("getYear"),Get.i("month"))).exec(FnTuple.getValue1Of(Types.INTEGER)).get();
+        System.out.println(i10);
+        
     }
     
     
