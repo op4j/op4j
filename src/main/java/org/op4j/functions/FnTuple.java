@@ -54,7 +54,7 @@ import org.op4j.util.VarArgsUtil;
 
 /**
  * 
- * @since 1.0
+ * @since 1.1
  * 
  * @author Daniel Fern&aacute;ndez
  *
