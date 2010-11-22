@@ -61,6 +61,14 @@
   </distributionManagement>
 
 
+  <repositories>
+    <repository>
+      <id>sonatype-nexus-snapshots</id>
+      <name>Sonatype Nexus Snapshots</name>
+      <url>http://oss.sonatype.org/content/repositories/snapshots</url>
+    </repository>
+  </repositories>
+
 
   <build>
     
@@ -169,7 +177,7 @@
     <dependency>
         <groupId>org.javatuples</groupId>
         <artifactId>javatuples</artifactId>
-        <version>1.1-SNAPSHOT</version>
+        <version>1.1-20101122.191314-1</version>
         <scope>compile</scope>
     </dependency>
 
