@@ -1,3 +1,36 @@
+
+1.1
+===
+
+- Update javaRuntype version to 1.2
+- Remove reduce and unfold method references
+- Deprecate unfold functions
+- Deprecate on(...) methods in Fn
+- Deprecate FnReduce and all reduce methods
+- Add between to FnObject, FnInteger, FnX functions
+- Create shorter versions of Call and Get function methods.
+- Add isCalendar function to FnString
+- Add isEmpty and reverse to FnString
+- Improve conversion from String into Number
+- Add characters \u0100 to \u017E and \u01A0 to \u01FF to FnString.asciify()
+- New FnString functions: "startsWith", "endsWith" and "substring"
+- count() function in FnArray, List or Set receives Object input
+- Add functions to FnString to allow determining whether a String is numeric, a valid number, etc.
+- Fix conversions into number removing new BigInteger(string)
+- Fix module operations in FnLong, FnBigInteger, ...
+- Throw exception in conversions from String into Number if the whole input String is not convertable
+- Throw exception in conversions using SimpleDateFormat if the whole input String is not convertable
+- RemoveAllFalse implementation counter intuitive
+- Check whether remainder in FnBigDecimal should be added to other FnX classes
+
+
+
+1.0
+===
+
+(Same as 1.0-beta3)
+
+
 1.0-beta3
 =========
 
