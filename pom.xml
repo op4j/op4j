@@ -170,14 +170,14 @@
     <dependency>
         <groupId>org.javaruntype</groupId>
         <artifactId>javaruntype</artifactId>
-        <version>1.1</version>
+        <version>1.2</version>
         <scope>compile</scope>
     </dependency>
 
     <dependency>
         <groupId>org.javatuples</groupId>
         <artifactId>javatuples</artifactId>
-        <version>1.1-20101122.191314-1</version>
+        <version>1.1</version>
         <scope>compile</scope>
     </dependency>
 
