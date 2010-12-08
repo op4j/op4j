@@ -23,6 +23,8 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.math.RoundingMode;
 import java.nio.charset.Charset;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.text.ParseException;
 import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
@@ -113,6 +115,12 @@ public final class FnString {
     private static final Function<String, Boolean> IS_INTEGER = new IsInteger();
     private static final Function<String, Boolean> IS_SHORT = new IsShort();
     private static final Function<String, Boolean> IS_BYTE = new IsByte();
+    
+    private static final Function<String, Boolean> IS_VALID_BIG_INTEGER = new IsValidBigInteger();
+    private static final Function<String, Boolean> IS_VALID_LONG = new IsValidLong();
+    private static final Function<String, Boolean> IS_VALID_INTEGER = new IsValidInteger();
+    private static final Function<String, Boolean> IS_VALID_SHORT = new IsValidShort();
+    private static final Function<String, Boolean> IS_VALID_BYTE = new IsValidByte();
     
     private static final Function<String, Boolean> IS_EMPTY = new IsEmpty();
     private static final Function<String, Boolean> IS_BLANK = new IsBlank();
@@ -2349,6 +2357,74 @@ public final class FnString {
     /**
      * <p>
      * Returns true if the input {@link String} can be converted into a 
+     * valid {@link BigDecimal}. It uses the default configuration from the JVM (en_US)
+     * to check whether the string is valid or not. That is, if it represents either 
+     * a decimal or non decimal number. This function is the same 
+     * as {@link FnString#isBigDecimal()}.
+     * </p>
+     * 
+     * @return true if the input {@link String} represents a valid {@link BigDecimal}. 
+     * Otherwise, false
+     */
+    public static final Function<String,Boolean> isValidBigDecimal() {
+        return IS_BIG_DECIMAL;
+    }
+    
+    
+    /**
+     * <p>
+     * Returns true if the input {@link String} can be converted into a 
+     * valid {@link BigDecimal} in the given {@link Locale}. That is, if it 
+     * represents either a decimal or non decimal number. This function is the same 
+     * as {@link FnString#isBigDecimal()}
+     * </p>
+     * 
+     * @param locale the locale defining the way in which the number is written
+     * @return true if the input {@link String} represents a valid {@link BigDecimal}. 
+     * Otherwise, false
+     */
+    public static final Function<String,Boolean> isValidBigDecimal(final Locale locale) {
+        return new IsBigDecimal(locale);
+    }
+
+    
+    /**
+     * <p>
+     * Returns true if the input {@link String} can be converted into a 
+     * valid {@link BigDecimal} in the given {@link Locale} specified as a {@link String}.
+     * That is, if it represents either a decimal or non decimal number. This 
+     * function is the same as {@link FnString#isBigDecimal()}
+     * </p>
+     * 
+     * @param locale the locale defining the way in which the number is written
+     * @return true if the input {@link String} represents a valid {@link BigDecimal}. 
+     * Otherwise, false
+     */
+    public static final Function<String,Boolean> isValidBigDecimal(final String locale) {
+        return new IsBigDecimal(locale);
+    }
+
+    
+    /**
+     * <p>
+     * Returns true if the input {@link String} can be converted into a 
+     * valid {@link BigDecimal} using the specified decimal point
+     * configuration ({@link DecimalPoint}). That is, if it represents either 
+     * a decimal or non decimal number. This function is the same 
+     * as {@link FnString#isBigDecimal()}.
+     * </p>
+     * 
+     * @param decimalPoint the decimal point being used by the String
+     * @return true if the input {@link String} represents a valid {@link BigDecimal}. 
+     * Otherwise, false
+     */
+    public static final Function<String,Boolean> isValidBigDecimal(final DecimalPoint decimalPoint) {
+        return new IsBigDecimal(decimalPoint);
+    }
+
+    /**
+     * <p>
+     * Returns true if the input {@link String} can be converted into a 
      * valid {@link BigInteger}. It uses the default configuration from the JVM (en_US)
      * to check whether the string is valid or not.
      * </p>
@@ -2420,7 +2496,70 @@ public final class FnString {
     public static final Function<String,Boolean> isBigInteger(final int radix) {
         return new IsBigInteger(radix);
     }
-        
+
+    /**
+     * <p>
+     * Returns true if the input {@link String} can be converted into a 
+     * valid {@link BigInteger}. That is, if it represents a non decimal number. It uses 
+     * the default configuration from the JVM (en_US)
+     * to check whether the string is valid or not.
+     * </p>
+     * 
+     * @return true if the input {@link String} represents a valid {@link BigInteger}. 
+     * Otherwise, false
+     */
+    public static final Function<String,Boolean> isValidBigInteger() {
+        return IS_VALID_BIG_INTEGER;
+    }
+    
+    
+    /**
+     * <p>
+     * Returns true if the input {@link String} can be converted into a 
+     * valid {@link BigInteger} in the given {@link Locale}.That is, if
+     *  it represents a non decimal number.
+     * </p>
+     * 
+     * @param locale the locale defining the way in which the number is written
+     * @return true if the input {@link String} represents a valid {@link BigInteger}. 
+     * Otherwise, false
+     */
+    public static final Function<String,Boolean> isValidBigInteger(final Locale locale) {
+        return new IsValidBigInteger(locale);
+    }
+
+    
+    /**
+     * <p>
+     * Returns true if the input {@link String} can be converted into a 
+     * valid {@link BigInteger} in the given {@link Locale} specified as a {@link String}.
+     * That is, if it represents a non decimal number.
+     * </p>
+     * 
+     * @param locale the locale defining the way in which the number is written
+     * @return true if the input {@link String} represents a valid {@link BigInteger}. 
+     * Otherwise, false
+     */
+    public static final Function<String,Boolean> isValidBigInteger(final String locale) {
+        return new IsValidBigInteger(locale);
+    }
+
+    /**
+     * <p>
+     * Returns true if the input {@link String} can be converted into a 
+     * valid {@link BigInteger} in the specified radix. It uses the default
+     * configuration to check the {@link String}. That is, if it 
+     * represents a non decimal number.
+     * </p>
+     * 
+     * @param decimalPoint the decimal point being used by the String
+     * @return true if the input {@link String} represents a valid {@link BigInteger}. 
+     * Otherwise, false
+     */
+    public static final Function<String,Boolean> isValidBigInteger(final int radix) {
+        return new IsValidBigInteger(radix);
+    }
+
     /**
      * <p>
      * Returns true if the input {@link String} can be converted into a 
@@ -2484,7 +2623,79 @@ public final class FnString {
     public static final Function<String,Boolean> isDouble(final DecimalPoint decimalPoint) {
         return new IsDouble(decimalPoint);
     }
+
+    /**
+     * <p>
+     * Returns true if the input {@link String} can be converted into a 
+     * valid {@link Double}. It uses the default configuration from the JVM (en_US)
+     * to check whether the string is valid or not.
+     * That is, if it represents either a decimal or non decimal number that fits 
+     * in a {@link Double} number. This function is the same 
+     * as {@link FnString#isDouble()}
+     * </p>
+     * 
+     * @return true if the input {@link String} represents a valid {@link Double}. 
+     * Otherwise, false
+     */
+    public static final Function<String,Boolean> isValidDouble() {
+        return IS_DOUBLE;
+    }
     
+    
+    /**
+     * <p>
+     * Returns true if the input {@link String} can be converted into a 
+     * valid {@link Double} in the given {@link Locale}.
+     * That is, if it represents either a decimal or non decimal number that fits 
+     * in a {@link Double} number. This function is the same 
+     * as {@link FnString#isDouble()}
+     * </p>
+     * 
+     * @param locale the locale defining the way in which the number is written
+     * @return true if the input {@link String} represents a valid {@link Double}. 
+     * Otherwise, false
+     */
+    public static final Function<String,Boolean> isValidDouble(final Locale locale) {
+        return new IsDouble(locale);
+    }
+
+    
+    /**
+     * <p>
+     * Returns true if the input {@link String} can be converted into a 
+     * valid {@link Double} in the given {@link Locale} specified as a {@link String}.
+     * That is, if it represents either a decimal or non decimal number that fits 
+     * in a {@link Double} number. This function is the same 
+     * as {@link FnString#isDouble()}
+     * </p>
+     * 
+     * @param locale the locale defining the way in which the number is written
+     * @return true if the input {@link String} represents a valid {@link Double}. 
+     * Otherwise, false
+     */
+    public static final Function<String,Boolean> isValidDouble(final String locale) {
+        return new IsDouble(locale);
+    }
+
+    
+    /**
+     * <p>
+     * Returns true if the input {@link String} can be converted into a 
+     * valid {@link Double} using the specified decimal point
+     * configuration ({@link DecimalPoint}). 
+     * That is, if it represents either a decimal or non decimal number that fits 
+     * in a {@link Double} number. This function is the same 
+     * as {@link FnString#isDouble()}
+     * </p>
+     * 
+     * @param decimalPoint the decimal point being used by the String
+     * @return true if the input {@link String} represents a valid {@link Double}. 
+     * Otherwise, false
+     */
+    public static final Function<String,Boolean> isValidDouble(final DecimalPoint decimalPoint) {
+        return new IsDouble(decimalPoint);
+    }
+
     /**
      * <p>
      * Returns true if the input {@link String} can be converted into a 
@@ -2548,7 +2759,78 @@ public final class FnString {
     public static final Function<String,Boolean> isFloat(final DecimalPoint decimalPoint) {
         return new IsFloat(decimalPoint);
     }
+
+    /**
+     * <p>
+     * Returns true if the input {@link String} can be converted into a 
+     * valid {@link Float}. It uses the default configuration from the JVM (en_US)
+     * to check whether the string is valid or not.
+     * That is, if it represents either a decimal or non decimal number that fits 
+     * in a {@link Float} number. This function is the same 
+     * as {@link FnString#isFloat()}
+     * </p>
+     * 
+     * @return true if the input {@link String} represents a valid {@link Float}. 
+     * Otherwise, false
+     */
+    public static final Function<String,Boolean> isValidFloat() {
+        return IS_FLOAT;
+    }
     
+    
+    /**
+     * <p>
+     * Returns true if the input {@link String} can be converted into a 
+     * valid {@link Float} in the given {@link Locale}.
+     * That is, if it represents either a decimal or non decimal number that 
+     * fits in a {@link Float} number. This function is the 
+     * same as {@link FnString#isFloat()}
+     * </p>
+     * 
+     * @param locale the locale defining the way in which the number is written
+     * @return true if the input {@link String} represents a valid {@link Float}. 
+     * Otherwise, false
+     */
+    public static final Function<String,Boolean> isValidFloat(final Locale locale) {
+        return new IsFloat(locale);
+    }
+
+    
+    /**
+     * <p>
+     * Returns true if the input {@link String} can be converted into a 
+     * valid {@link Float} in the given {@link Locale} specified as a {@link String}.
+     * That is, if it represents either a decimal or non decimal number 
+     * that fits in a {@link Float} number. 
+     * This function is the same as {@link FnString#isFloat()}
+     * </p>
+     * 
+     * @param locale the locale defining the way in which the number is written
+     * @return true if the input {@link String} represents a valid {@link Float}. 
+     * Otherwise, false
+     */
+    public static final Function<String,Boolean> isValidFloat(final String locale) {
+        return new IsFloat(locale);
+    }
+
+    
+    /**
+     * <p>
+     * Returns true if the input {@link String} can be converted into a 
+     * valid {@link Float} using the specified decimal point
+     * configuration ({@link DecimalPoint}). That is, if it represents either a 
+     * decimal or non decimal number that fits in a {@link Float} number. 
+     * This function is the same as {@link FnString#isFloat()}.
+     * </p>
+     * 
+     * @param decimalPoint the decimal point being used by the String
+     * @return true if the input {@link String} represents a valid {@link Float}. 
+     * Otherwise, false
+     */
+    public static final Function<String,Boolean> isValidFloat(final DecimalPoint decimalPoint) {
+        return new IsFloat(decimalPoint);
+    }
+
     /**
      * <p>
      * Returns true if the input {@link String} can be converted into a 
@@ -2631,6 +2913,69 @@ public final class FnString {
     
     /**
      * <p>
+     * Returns true if the input {@link String} represents an {@link Long},
+     * that is, it it represents a non decimal number between
+     * {@link Long#MIN_VALUE} and {@link Long#MAX_VALUE}. 
+     * </p>
+     * 
+     * @return true if the input {@link String} represents a valid {@link Long}. 
+     * Otherwise, false
+     */
+    public static final Function<String,Boolean> isValidLong() {
+        return IS_VALID_LONG;
+    }
+    
+    
+    /**
+     * <p>
+     * Returns true if the input {@link String} represents an {@link Long},
+     * that is, it it represents a non decimal number between
+     * {@link Long#MIN_VALUE} and {@link Long#MAX_VALUE}. 
+     * </p>
+     * 
+     * @param locale the locale defining the way in which the number is written
+     * @return true if the input {@link String} represents a valid {@link Long}. 
+     * Otherwise, false
+     */
+    public static final Function<String,Boolean> isValidLong(final Locale locale) {
+        return new IsValidLong(locale);
+    }
+
+    
+    /**
+     * <p>
+     * Returns true if the input {@link String} represents an {@link Long},
+     * that is, it it represents a non decimal number between
+     * {@link Long#MIN_VALUE} and {@link Long#MAX_VALUE}. 
+     * </p>
+     *  
+     * @param locale the locale defining the way in which the number is written
+     * @return true if the input {@link String} represents a valid {@link Long}. 
+     * Otherwise, false
+     */
+    public static final Function<String,Boolean> isValidLong(final String locale) {
+        return new IsValidLong(locale);
+    }
+
+    
+    /**
+     * <p>
+     * Returns true if the input {@link String} represents an {@link Long},
+     * that is, it it represents a non decimal number between
+     * {@link Long#MIN_VALUE} and {@link Long#MAX_VALUE}. It uses the default
+     * configuration to check the {@link String}.
+     * </p>
+     * 
+     * @param radix the radix being used by the String
+     * @return true if the input {@link String} represents a valid {@link Long}. 
+     * Otherwise, false
+     */
+    public static final Function<String,Boolean> isValidLong(final int radix) {
+        return new IsValidLong(radix);
+    }
+
+    /**
+     * <p>
      * Returns true if the input {@link String} can be converted into a 
      * valid {@link Integer}. It uses the default configuration from the JVM (en_US)
      * to check whether the string is valid or not.
@@ -2701,7 +3046,7 @@ public final class FnString {
      * If this method returns false, {@link FnString#isInteger(int)} will throw an exception if called.
      * </p>
      * 
-     * @param decimalPoint the decimal point being used by the String
+     * @param radix the radix being used by the String
      * @return true if the input {@link String} represents a valid {@link Integer}. 
      * Otherwise, false
      */
@@ -2709,7 +3054,70 @@ public final class FnString {
         return new IsInteger(radix);
     }
     
+    /**
+     * <p>
+     * Returns true if the input {@link String} represents an {@link Integer},
+     * that is, it it represents a non decimal number between
+     * {@link Integer#MIN_VALUE} and {@link Integer#MAX_VALUE}. 
+     * </p>
+     * 
+     * @return true if the input {@link String} represents a valid {@link Integer}. 
+     * Otherwise, false
+     */
+    public static final Function<String,Boolean> isValidInteger() {
+        return IS_VALID_INTEGER;
+    }
     
+    
+    /**
+     * <p>
+     * Returns true if the input {@link String} represents an {@link Integer},
+     * that is, it it represents a non decimal number between
+     * {@link Integer#MIN_VALUE} and {@link Integer#MAX_VALUE}. 
+     * </p>
+     * 
+     * @param locale the locale defining the way in which the number is written
+     * @return true if the input {@link String} represents a valid {@link Integer}. 
+     * Otherwise, false
+     */
+    public static final Function<String,Boolean> isValidInteger(final Locale locale) {
+        return new IsValidInteger(locale);
+    }
+
+    
+    /**
+     * <p>
+     * Returns true if the input {@link String} represents an {@link Integer},
+     * that is, it it represents a non decimal number between
+     * {@link Integer#MIN_VALUE} and {@link Integer#MAX_VALUE}. 
+     * </p>
+     *  
+     * @param locale the locale defining the way in which the number is written
+     * @return true if the input {@link String} represents a valid {@link Integer}. 
+     * Otherwise, false
+     */
+    public static final Function<String,Boolean> isValidInteger(final String locale) {
+        return new IsValidInteger(locale);
+    }
+
+    
+    /**
+     * <p>
+     * Returns true if the input {@link String} represents an {@link Integer},
+     * that is, it it represents a non decimal number between
+     * {@link Integer#MIN_VALUE} and {@link Integer#MAX_VALUE}. It uses the default
+     * configuration to check the {@link String}.
+     * </p>
+     * 
+     * @param radix the radix being used by the String
+     * @return true if the input {@link String} represents a valid {@link Integer}. 
+     * Otherwise, false
+     */
+    public static final Function<String,Boolean> isValidInteger(final int radix) {
+        return new IsValidInteger(radix);
+    }
+
+
     /**
      * <p>
      * Returns true if the input {@link String} can be converted into a 
@@ -2792,6 +3200,70 @@ public final class FnString {
     
     /**
      * <p>
+     * Returns true if the input {@link String} represents a {@link Short},
+     * that is, it it represents a non decimal number between
+     * {@link Short#MIN_VALUE} and {@link Short#MAX_VALUE}. 
+     * </p>
+     * 
+     * @return true if the input {@link String} represents a valid {@link Short}. 
+     * Otherwise, false
+     */
+    public static final Function<String,Boolean> isValidShort() {
+        return IS_VALID_SHORT;
+    }
+    
+    
+    /**
+     * <p>
+     * Returns true if the input {@link String} represents a {@link Short},
+     * that is, it it represents a non decimal number between
+     * {@link Short#MIN_VALUE} and {@link Short#MAX_VALUE}. 
+     * </p>
+     * 
+     * @param locale the locale defining the way in which the number is written
+     * @return true if the input {@link String} represents a valid {@link Short}. 
+     * Otherwise, false
+     */
+    public static final Function<String,Boolean> isValidShort(final Locale locale) {
+        return new IsValidShort(locale);
+    }
+
+    
+    /**
+     * <p>
+     * Returns true if the input {@link String} represents a {@link Short},
+     * that is, it it represents a non decimal number between
+     * {@link Short#MIN_VALUE} and {@link Short#MAX_VALUE}. 
+     * </p>
+     *  
+     * @param locale the locale defining the way in which the number is written
+     * @return true if the input {@link String} represents a valid {@link Short}. 
+     * Otherwise, false
+     */
+    public static final Function<String,Boolean> isValidShort(final String locale) {
+        return new IsValidShort(locale);
+    }
+
+    
+    /**
+     * <p>
+     * Returns true if the input {@link String} represents a {@link Short},
+     * that is, it it represents a non decimal number between
+     * {@link Short#MIN_VALUE} and {@link Short#MAX_VALUE}. It uses the default
+     * configuration to check the {@link String}.
+     * </p>
+     * 
+     * @param radix the radix being used by the String
+     * @return true if the input {@link String} represents a valid {@link Short}. 
+     * Otherwise, false
+     */
+    public static final Function<String,Boolean> isValidShort(final int radix) {
+        return new IsValidShort(radix);
+    }
+
+    
+    /**
+     * <p>
      * Returns true if the input {@link String} can be converted into a 
      * valid {@link Byte}. It uses the default configuration from the JVM (en_US)
      * to check whether the string is valid or not.
@@ -2869,7 +3341,70 @@ public final class FnString {
     public static final Function<String,Boolean> isByte(final int radix) {
         return new IsByte(radix);
     }
+
+    /**
+     * <p>
+     * Returns true if the input {@link String} represents a {@link Byte},
+     * that is, it it represents a non decimal number between
+     * {@link Byte#MIN_VALUE} and {@link Byte#MAX_VALUE}. 
+     * </p>
+     * 
+     * @return true if the input {@link String} represents a valid {@link Byte}. 
+     * Otherwise, false
+     */
+    public static final Function<String,Boolean> isValidByte() {
+        return IS_VALID_BYTE;
+    }
     
+    
+    /**
+     * <p>
+     * Returns true if the input {@link String} represents a {@link Byte},
+     * that is, it it represents a non decimal number between
+     * {@link Byte#MIN_VALUE} and {@link Byte#MAX_VALUE}. 
+     * </p>
+     * 
+     * @param locale the locale defining the way in which the number is written
+     * @return true if the input {@link String} represents a valid {@link Byte}. 
+     * Otherwise, false
+     */
+    public static final Function<String,Boolean> isValidByte(final Locale locale) {
+        return new IsValidByte(locale);
+    }
+
+    
+    /**
+     * <p>
+     * Returns true if the input {@link String} represents a {@link Byte},
+     * that is, it it represents a non decimal number between
+     * {@link Byte#MIN_VALUE} and {@link Byte#MAX_VALUE}. 
+     * </p>
+     *  
+     * @param locale the locale defining the way in which the number is written
+     * @return true if the input {@link String} represents a valid {@link Byte}. 
+     * Otherwise, false
+     */
+    public static final Function<String,Boolean> isValidByte(final String locale) {
+        return new IsValidByte(locale);
+    }
+
+    
+    /**
+     * <p>
+     * Returns true if the input {@link String} represents a {@link Byte},
+     * that is, it it represents a non decimal number between
+     * {@link Byte#MIN_VALUE} and {@link Byte#MAX_VALUE}. It uses the default
+     * configuration to check the {@link String}.
+     * </p>
+     * 
+     * @param radix the radix being used by the String
+     * @return true if the input {@link String} represents a valid {@link Byte}. 
+     * Otherwise, false
+     */
+    public static final Function<String,Boolean> isValidByte(final int radix) {
+        return new IsValidByte(radix);
+    }
+
     /**
      * <p>
      * It checks whether the input {@link String} starts with the specified
@@ -4297,6 +4832,65 @@ public final class FnString {
         }
     }
     
+    static final class IsValidBigInteger extends Function<String,Boolean> {
+        
+        final Locale locale;
+        final Integer radix;
+        
+        public IsValidBigInteger() {
+            super();
+            this.locale = null;
+            this.radix = null;
+        }
+        
+        public IsValidBigInteger(Locale locale) {
+            super();
+            this.locale = locale;
+            this.radix = null;
+        }
+        
+        public IsValidBigInteger(String locale) {
+            super();
+            this.locale = LocaleUtils.toLocale(locale);
+            this.radix = null;
+        }
+        
+        public IsValidBigInteger(int radix) {
+            super();
+            this.locale = null;
+            this.radix = Integer.valueOf(radix);
+        }
+        
+        public Boolean execute(String input, ExecCtx ctx) throws Exception {
+            if (this.locale == null && this.radix != null) {
+                    try {
+                        Op.on(input).exec(FnString.toBigInteger(this.radix.intValue())).get();
+                        return Boolean.TRUE;
+                    } catch (ExecutionException e) {
+                        return Boolean.FALSE;
+                    } 
+            }
+            
+            if (this.radix == null) {
+                DecimalFormat notDecimalFormat = (DecimalFormat) NumberFormat
+                    .getInstance(this.locale == null ? Locale.US : this.locale);
+                notDecimalFormat.setParseIntegerOnly(true);
+                notDecimalFormat.setParseBigDecimal(true);
+                //It uses ParsePosition to make sure the whole 
+                //string has been converted into a number
+                ParsePosition pp = new ParsePosition(0);
+                @SuppressWarnings("unused")
+                Number number = notDecimalFormat.parse(input, pp);
+                if (pp.getIndex() != input.length()) {
+                    return Boolean.FALSE;
+                }
+                return Boolean.TRUE;
+            }
+            
+            return Boolean.FALSE;
+        }
+    }
+
     static final class IsDouble extends Function<String,Boolean> {
         
         final Locale locale;
@@ -4491,6 +5085,77 @@ public final class FnString {
         }
     }
     
+    static final class IsValidLong extends Function<String,Boolean> {
+        
+        final Locale locale;
+        final Integer radix;
+        final static BigDecimal min = BigDecimal.valueOf(Long.MIN_VALUE);
+        final static BigDecimal max = BigDecimal.valueOf(Long.MAX_VALUE);
+        
+        public IsValidLong() {
+            super();
+            this.locale = null;
+            this.radix = null;
+        }
+        
+        public IsValidLong(Locale locale) {
+            super();
+            this.locale = locale;
+            this.radix = null;
+        }
+        
+        public IsValidLong(String locale) {
+            super();
+            this.locale = LocaleUtils.toLocale(locale);
+            this.radix = null;
+        }
+        
+        public IsValidLong(int radix) {
+            super();
+            this.locale = null;
+            this.radix = Integer.valueOf(radix);
+        }
+        
+        public Boolean execute(String input, ExecCtx ctx) throws Exception {
+            if (this.locale == null && this.radix != null) {
+                    try {
+                        Op.on(input).exec(FnString.toLong(this.radix.intValue())).get();
+                        return Boolean.TRUE;
+                    } catch (ExecutionException e) {
+                        return Boolean.FALSE;
+                    } 
+            }
+            
+            if (this.radix == null) {
+                DecimalFormat notDecimalFormat = (DecimalFormat) NumberFormat
+                    .getInstance(this.locale == null ? Locale.US : this.locale);
+                notDecimalFormat.setParseIntegerOnly(true);
+                notDecimalFormat.setParseBigDecimal(true);
+                //It uses ParsePosition to make sure the whole 
+                //string has been converted into a number
+                ParsePosition pp = new ParsePosition(0);
+                Number number = notDecimalFormat.parse(input, pp);
+                BigDecimal bigDecimal = null;
+                if (number instanceof BigDecimal) {
+                    bigDecimal = (BigDecimal) number;
+                } else if (number instanceof BigInteger) {
+                    bigDecimal = new BigDecimal((BigInteger) number);
+                } else {
+                    bigDecimal = new BigDecimal(number.doubleValue());
+                }
+                if (bigDecimal.compareTo(min) < 0 || bigDecimal.compareTo(max) > 0) {
+                    return Boolean.FALSE;
+                }
+                if (pp.getIndex() != input.length()) {
+                    return Boolean.FALSE;
+                }
+                return Boolean.TRUE;
+            }
+            
+            return Boolean.FALSE;
+        }
+    }
+    
     static final class IsInteger extends Function<String,Boolean> {
         
         final Locale locale;
@@ -4569,6 +5234,77 @@ public final class FnString {
         }
     }
     
+    static final class IsValidInteger extends Function<String,Boolean> {
+        
+        final Locale locale;
+        final Integer radix;
+        final static BigDecimal min = BigDecimal.valueOf((double)Integer.MIN_VALUE);
+        final static BigDecimal max = BigDecimal.valueOf((double)Integer.MAX_VALUE);
+        
+        public IsValidInteger() {
+            super();
+            this.locale = null;
+            this.radix = null;
+        }
+        
+        public IsValidInteger(Locale locale) {
+            super();
+            this.locale = locale;
+            this.radix = null;
+        }
+        
+        public IsValidInteger(String locale) {
+            super();
+            this.locale = LocaleUtils.toLocale(locale);
+            this.radix = null;
+        }
+        
+        public IsValidInteger(int radix) {
+            super();
+            this.locale = null;
+            this.radix = Integer.valueOf(radix);
+        }
+        
+        public Boolean execute(String input, ExecCtx ctx) throws Exception {
+            if (this.locale == null && this.radix != null) {
+                    try {
+                        Op.on(input).exec(FnString.toInteger(this.radix.intValue())).get();
+                        return Boolean.TRUE;
+                    } catch (ExecutionException e) {
+                        return Boolean.FALSE;
+                    } 
+            }
+            
+            if (this.radix == null) {
+                DecimalFormat notDecimalFormat = (DecimalFormat) NumberFormat
+                    .getInstance(this.locale == null ? Locale.US : this.locale);
+                notDecimalFormat.setParseIntegerOnly(true);
+                notDecimalFormat.setParseBigDecimal(true);
+                //It uses ParsePosition to make sure the whole 
+                //string has been converted into a number
+                ParsePosition pp = new ParsePosition(0);
+                Number number = notDecimalFormat.parse(input, pp);
+                BigDecimal bigDecimal = null;
+                if (number instanceof BigDecimal) {
+                    bigDecimal = (BigDecimal) number;
+                } else if (number instanceof BigInteger) {
+                    bigDecimal = new BigDecimal((BigInteger) number);
+                } else {
+                    bigDecimal = new BigDecimal(number.doubleValue());
+                }
+                if (bigDecimal.compareTo(min) < 0 || bigDecimal.compareTo(max) > 0) {
+                    return Boolean.FALSE;
+                }
+                if (pp.getIndex() != input.length()) {
+                    return Boolean.FALSE;
+                }
+                return Boolean.TRUE;
+            }
+            
+            return Boolean.FALSE;
+        }
+    }
+
     static final class IsShort extends Function<String,Boolean> {
         
         final Locale locale;
@@ -4643,6 +5379,77 @@ public final class FnString {
                     return Boolean.FALSE;
                 }
             }   
+            return Boolean.FALSE;
+        }
+    }
+
+    static final class IsValidShort extends Function<String,Boolean> {
+        
+        final Locale locale;
+        final Integer radix;
+        final static BigDecimal min = BigDecimal.valueOf((double)Short.MIN_VALUE);
+        final static BigDecimal max = BigDecimal.valueOf((double)Short.MAX_VALUE);
+        
+        public IsValidShort() {
+            super();
+            this.locale = null;
+            this.radix = null;
+        }
+        
+        public IsValidShort(Locale locale) {
+            super();
+            this.locale = locale;
+            this.radix = null;
+        }
+        
+        public IsValidShort(String locale) {
+            super();
+            this.locale = LocaleUtils.toLocale(locale);
+            this.radix = null;
+        }
+        
+        public IsValidShort(int radix) {
+            super();
+            this.locale = null;
+            this.radix = Integer.valueOf(radix);
+        }
+        
+        public Boolean execute(String input, ExecCtx ctx) throws Exception {
+            if (this.locale == null && this.radix != null) {
+                    try {
+                        Op.on(input).exec(FnString.toShort(this.radix.intValue())).get();
+                        return Boolean.TRUE;
+                    } catch (ExecutionException e) {
+                        return Boolean.FALSE;
+                    } 
+            }
+            
+            if (this.radix == null) {
+                DecimalFormat notDecimalFormat = (DecimalFormat) NumberFormat
+                    .getInstance(this.locale == null ? Locale.US : this.locale);
+                notDecimalFormat.setParseIntegerOnly(true);
+                notDecimalFormat.setParseBigDecimal(true);
+                //It uses ParsePosition to make sure the whole 
+                //string has been converted into a number
+                ParsePosition pp = new ParsePosition(0);
+                Number number = notDecimalFormat.parse(input, pp);
+                BigDecimal bigDecimal = null;
+                if (number instanceof BigDecimal) {
+                    bigDecimal = (BigDecimal) number;
+                } else if (number instanceof BigInteger) {
+                    bigDecimal = new BigDecimal((BigInteger) number);
+                } else {
+                    bigDecimal = new BigDecimal(number.doubleValue());
+                }
+                if (bigDecimal.compareTo(min) < 0 || bigDecimal.compareTo(max) > 0) {
+                    return Boolean.FALSE;
+                }
+                if (pp.getIndex() != input.length()) {
+                    return Boolean.FALSE;
+                }
+                return Boolean.TRUE;
+            }
+            
             return Boolean.FALSE;
         }
     }
@@ -4721,6 +5528,77 @@ public final class FnString {
                     return Boolean.FALSE;
                 }
             }   
+            return Boolean.FALSE;
+        }
+    }
+    
+    static final class IsValidByte extends Function<String,Boolean> {
+        
+        final Locale locale;
+        final Integer radix;
+        final static BigDecimal min = BigDecimal.valueOf((double)Byte.MIN_VALUE);
+        final static BigDecimal max = BigDecimal.valueOf((double)Byte.MAX_VALUE);
+        
+        public IsValidByte() {
+            super();
+            this.locale = null;
+            this.radix = null;
+        }
+        
+        public IsValidByte(Locale locale) {
+            super();
+            this.locale = locale;
+            this.radix = null;
+        }
+        
+        public IsValidByte(String locale) {
+            super();
+            this.locale = LocaleUtils.toLocale(locale);
+            this.radix = null;
+        }
+        
+        public IsValidByte(int radix) {
+            super();
+            this.locale = null;
+            this.radix = Integer.valueOf(radix);
+        }
+        
+        public Boolean execute(String input, ExecCtx ctx) throws Exception {
+            if (this.locale == null && this.radix != null) {
+                    try {
+                        Op.on(input).exec(FnString.toByte(this.radix.intValue())).get();
+                        return Boolean.TRUE;
+                    } catch (ExecutionException e) {
+                        return Boolean.FALSE;
+                    } 
+            }
+            
+            if (this.radix == null) {
+                DecimalFormat notDecimalFormat = (DecimalFormat) NumberFormat
+                    .getInstance(this.locale == null ? Locale.US : this.locale);
+                notDecimalFormat.setParseIntegerOnly(true);
+                notDecimalFormat.setParseBigDecimal(true);
+                //It uses ParsePosition to make sure the whole 
+                //string has been converted into a number
+                ParsePosition pp = new ParsePosition(0);
+                Number number = notDecimalFormat.parse(input, pp);
+                BigDecimal bigDecimal = null;
+                if (number instanceof BigDecimal) {
+                    bigDecimal = (BigDecimal) number;
+                } else if (number instanceof BigInteger) {
+                    bigDecimal = new BigDecimal((BigInteger) number);
+                } else {
+                    bigDecimal = new BigDecimal(number.doubleValue());
+                }
+                if (bigDecimal.compareTo(min) < 0 || bigDecimal.compareTo(max) > 0) {
+                    return Boolean.FALSE;
+                }
+                if (pp.getIndex() != input.length()) {
+                    return Boolean.FALSE;
+                }
+                return Boolean.TRUE;
+            }
+            
             return Boolean.FALSE;
         }
     }
