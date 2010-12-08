@@ -107,14 +107,14 @@ public final class FnString {
     private static final Function<String, Boolean> IS_NUMERIC = new IsNumeric();
     private static final Function<String, Boolean> IS_NUMERIC_SPACE = new IsNumeric(true);
     
-    private static final Function<String, Boolean> IS_BIG_DECIMAL = new IsBigDecimal();
-    private static final Function<String, Boolean> IS_BIG_INTEGER = new IsBigInteger();
-    private static final Function<String, Boolean> IS_DOUBLE = new IsDouble();
-    private static final Function<String, Boolean> IS_FLOAT = new IsFloat();
-    private static final Function<String, Boolean> IS_LONG = new IsLong();
-    private static final Function<String, Boolean> IS_INTEGER = new IsInteger();
-    private static final Function<String, Boolean> IS_SHORT = new IsShort();
-    private static final Function<String, Boolean> IS_BYTE = new IsByte();
+    private static final Function<String, Boolean> CAN_BE_BIG_DECIMAL = new CanBeBigDecimal();
+    private static final Function<String, Boolean> CAN_BE_BIG_INTEGER = new CanBeBigInteger();
+    private static final Function<String, Boolean> CAN_BE_DOUBLE = new CanBeDouble();
+    private static final Function<String, Boolean> CAN_BE_FLOAT = new CanBeFloat();
+    private static final Function<String, Boolean> CAN_BE_LONG = new CanBeLong();
+    private static final Function<String, Boolean> CAN_BE_INTEGER = new CanBeInteger();
+    private static final Function<String, Boolean> CAN_BE_SHORT = new CanBeShort();
+    private static final Function<String, Boolean> CAN_BE_BYTE = new CanBeByte();
     
     private static final Function<String, Boolean> IS_VALID_BIG_INTEGER = new IsValidBigInteger();
     private static final Function<String, Boolean> IS_VALID_LONG = new IsValidLong();
@@ -2283,17 +2283,7 @@ public final class FnString {
         return IS_NUMERIC_SPACE;
     }
 	
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
     /**
      * <p>
      * Returns true if the input {@link String} can be converted into a 
@@ -2303,9 +2293,11 @@ public final class FnString {
      * 
      * @return true if the input {@link String} represents a valid {@link BigDecimal}. 
      * Otherwise, false
+     * 
+     * @since 1.2
      */
-    public static final Function<String,Boolean> isBigDecimal() {
-        return IS_BIG_DECIMAL;
+    public static final Function<String,Boolean> canBeBigDecimal() {
+        return CAN_BE_BIG_DECIMAL;
     }
     
     
@@ -2318,9 +2310,11 @@ public final class FnString {
      * @param locale the locale defining the way in which the number is written
      * @return true if the input {@link String} represents a valid {@link BigDecimal}. 
      * Otherwise, false
+     * 
+     * @since 1.2
      */
-    public static final Function<String,Boolean> isBigDecimal(final Locale locale) {
-        return new IsBigDecimal(locale);
+    public static final Function<String,Boolean> canBeBigDecimal(final Locale locale) {
+        return new CanBeBigDecimal(locale);
     }
 
     
@@ -2333,9 +2327,11 @@ public final class FnString {
      * @param locale the locale defining the way in which the number is written
      * @return true if the input {@link String} represents a valid {@link BigDecimal}. 
      * Otherwise, false
+     * 
+     * @since 1.2
      */
-    public static final Function<String,Boolean> isBigDecimal(final String locale) {
-        return new IsBigDecimal(locale);
+    public static final Function<String,Boolean> canBeBigDecimal(final String locale) {
+        return new CanBeBigDecimal(locale);
     }
 
     
@@ -2349,9 +2345,88 @@ public final class FnString {
      * @param decimalPoint the decimal point being used by the String
      * @return true if the input {@link String} represents a valid {@link BigDecimal}. 
      * Otherwise, false
+     * 
+     * @since 1.2
      */
+    public static final Function<String,Boolean> canBeBigDecimal(final DecimalPoint decimalPoint) {
+        return new CanBeBigDecimal(decimalPoint);
+    }
+
+    
+    /**
+     * <p>
+     * Returns true if the input {@link String} can be converted into a 
+     * valid {@link BigDecimal}. It uses the default configuration from the JVM (en_US)
+     * to check whether the string is valid or not.
+     * </p>
+     * 
+     * @return true if the input {@link String} represents a valid {@link BigDecimal}. 
+     * Otherwise, false
+     * 
+     * @deprecated use {@link FnString#canBeBigDecimal()} instead. This method will
+     * be removed in version 1.3
+     */
+    @Deprecated
+    public static final Function<String,Boolean> isBigDecimal() {
+        return CAN_BE_BIG_DECIMAL;
+    }
+    
+    
+    /**
+     * <p>
+     * Returns true if the input {@link String} can be converted into a 
+     * valid {@link BigDecimal} in the given {@link Locale}
+     * </p>
+     * 
+     * @param locale the locale defining the way in which the number is written
+     * @return true if the input {@link String} represents a valid {@link BigDecimal}. 
+     * Otherwise, false
+     * 
+     * @deprecated use {@link FnString#canBeBigDecimal(Locale)} instead. This method will
+     * be removed in version 1.3
+     */
+    @Deprecated
+    public static final Function<String,Boolean> isBigDecimal(final Locale locale) {
+        return new CanBeBigDecimal(locale);
+    }
+
+    
+    /**
+     * <p>
+     * Returns true if the input {@link String} can be converted into a 
+     * valid {@link BigDecimal} in the given {@link Locale} specified as a {@link String}
+     * </p>
+     * 
+     * @param locale the locale defining the way in which the number is written
+     * @return true if the input {@link String} represents a valid {@link BigDecimal}. 
+     * Otherwise, false
+     * 
+     * @deprecated use {@link FnString#canBeBigDecimal(String)} instead. This method will
+     * be removed in version 1.3
+     */
+    @Deprecated
+    public static final Function<String,Boolean> isBigDecimal(final String locale) {
+        return new CanBeBigDecimal(locale);
+    }
+
+    
+    /**
+     * <p>
+     * Returns true if the input {@link String} can be converted into a 
+     * valid {@link BigDecimal} using the specified decimal point
+     * configuration ({@link DecimalPoint}). 
+     * </p>
+     * 
+     * @param decimalPoint the decimal point being used by the String
+     * @return true if the input {@link String} represents a valid {@link BigDecimal}. 
+     * Otherwise, false
+     * 
+     * @deprecated use {@link FnString#canBeBigDecimal(DecimalPoint)} instead. This method will
+     * be removed in version 1.3
+     */
+    @Deprecated
     public static final Function<String,Boolean> isBigDecimal(final DecimalPoint decimalPoint) {
-        return new IsBigDecimal(decimalPoint);
+        return new CanBeBigDecimal(decimalPoint);
     }
 
     /**
@@ -2360,14 +2435,16 @@ public final class FnString {
      * valid {@link BigDecimal}. It uses the default configuration from the JVM (en_US)
      * to check whether the string is valid or not. That is, if it represents either 
      * a decimal or non decimal number. This function is the same 
-     * as {@link FnString#isBigDecimal()}.
+     * as {@link FnString#canBeBigDecimal()}.
      * </p>
      * 
      * @return true if the input {@link String} represents a valid {@link BigDecimal}. 
      * Otherwise, false
+     * 
+     * @since 1.2
      */
     public static final Function<String,Boolean> isValidBigDecimal() {
-        return IS_BIG_DECIMAL;
+        return CAN_BE_BIG_DECIMAL;
     }
     
     
@@ -2376,15 +2453,17 @@ public final class FnString {
      * Returns true if the input {@link String} can be converted into a 
      * valid {@link BigDecimal} in the given {@link Locale}. That is, if it 
      * represents either a decimal or non decimal number. This function is the same 
-     * as {@link FnString#isBigDecimal()}
+     * as {@link FnString#canBeBigDecimal(Locale)}
      * </p>
      * 
      * @param locale the locale defining the way in which the number is written
      * @return true if the input {@link String} represents a valid {@link BigDecimal}. 
      * Otherwise, false
+     * 
+     * @since 1.2
      */
     public static final Function<String,Boolean> isValidBigDecimal(final Locale locale) {
-        return new IsBigDecimal(locale);
+        return new CanBeBigDecimal(locale);
     }
 
     
@@ -2393,15 +2472,17 @@ public final class FnString {
      * Returns true if the input {@link String} can be converted into a 
      * valid {@link BigDecimal} in the given {@link Locale} specified as a {@link String}.
      * That is, if it represents either a decimal or non decimal number. This 
-     * function is the same as {@link FnString#isBigDecimal()}
+     * function is the same as {@link FnString#canBeBigDecimal(String)}
      * </p>
      * 
      * @param locale the locale defining the way in which the number is written
      * @return true if the input {@link String} represents a valid {@link BigDecimal}. 
      * Otherwise, false
+     * 
+     * @since 1.2
      */
     public static final Function<String,Boolean> isValidBigDecimal(final String locale) {
-        return new IsBigDecimal(locale);
+        return new CanBeBigDecimal(locale);
     }
 
     
@@ -2411,15 +2492,17 @@ public final class FnString {
      * valid {@link BigDecimal} using the specified decimal point
      * configuration ({@link DecimalPoint}). That is, if it represents either 
      * a decimal or non decimal number. This function is the same 
-     * as {@link FnString#isBigDecimal()}.
+     * as {@link FnString#canBeBigDecimal(DecimalPoint)}.
      * </p>
      * 
      * @param decimalPoint the decimal point being used by the String
      * @return true if the input {@link String} represents a valid {@link BigDecimal}. 
      * Otherwise, false
+     * 
+     * @since 1.2
      */
     public static final Function<String,Boolean> isValidBigDecimal(final DecimalPoint decimalPoint) {
-        return new IsBigDecimal(decimalPoint);
+        return new CanBeBigDecimal(decimalPoint);
     }
 
     /**
@@ -2431,9 +2514,11 @@ public final class FnString {
      * 
      * @return true if the input {@link String} represents a valid {@link BigInteger}. 
      * Otherwise, false
+     * 
+     * @since 1.2
      */
-    public static final Function<String,Boolean> isBigInteger() {
-        return IS_BIG_INTEGER;
+    public static final Function<String,Boolean> canBeBigInteger() {
+        return CAN_BE_BIG_INTEGER;
     }
     
     
@@ -2446,9 +2531,11 @@ public final class FnString {
      * @param locale the locale defining the way in which the number is written
      * @return true if the input {@link String} represents a valid {@link BigInteger}. 
      * Otherwise, false
+     * 
+     * @since 1.2
      */
-    public static final Function<String,Boolean> isBigInteger(final Locale locale) {
-        return new IsBigInteger(locale);
+    public static final Function<String,Boolean> canBeBigInteger(final Locale locale) {
+        return new CanBeBigInteger(locale);
     }
 
     
@@ -2461,9 +2548,11 @@ public final class FnString {
      * @param locale the locale defining the way in which the number is written
      * @return true if the input {@link String} represents a valid {@link BigInteger}. 
      * Otherwise, false
+     * 
+     * @since 1.2
      */
-    public static final Function<String,Boolean> isBigInteger(final String locale) {
-        return new IsBigInteger(locale);
+    public static final Function<String,Boolean> canBeBigInteger(final String locale) {
+        return new CanBeBigInteger(locale);
     }
 
     
@@ -2477,9 +2566,11 @@ public final class FnString {
      * @param decimalPoint the decimal point being used by the String
      * @return true if the input {@link String} represents a valid {@link BigInteger}. 
      * Otherwise, false
+     * 
+     * @since 1.2
      */
-    public static final Function<String,Boolean> isBigInteger(final DecimalPoint decimalPoint) {
-        return new IsBigInteger(decimalPoint);
+    public static final Function<String,Boolean> canBeBigInteger(final DecimalPoint decimalPoint) {
+        return new CanBeBigInteger(decimalPoint);
     }
     
     /**
@@ -2489,12 +2580,110 @@ public final class FnString {
      * configuration to check the {@link String}
      * </p>
      * 
+     * @param radix the radix being used by the String
+     * @return true if the input {@link String} represents a valid {@link BigInteger}. 
+     * Otherwise, false
+     * 
+     * @since 1.2
+     */
+    public static final Function<String,Boolean> canBeBigInteger(final int radix) {
+        return new CanBeBigInteger(radix);
+    }
+
+    
+    /**
+     * <p>
+     * Returns true if the input {@link String} can be converted into a 
+     * valid {@link BigInteger}. It uses the default configuration from the JVM (en_US)
+     * to check whether the string is valid or not.
+     * </p>
+     * 
+     * @return true if the input {@link String} represents a valid {@link BigInteger}. 
+     * Otherwise, false
+     * 
+     * @deprecated use {@link FnString#canBeBigInteger()} instead. This method will be 
+     * removed in version 1.3
+     */
+    @Deprecated
+    public static final Function<String,Boolean> isBigInteger() {
+        return CAN_BE_BIG_INTEGER;
+    }
+    
+    
+    /**
+     * <p>
+     * Returns true if the input {@link String} can be converted into a 
+     * valid {@link BigInteger} in the given {@link Locale}
+     * </p>
+     * 
+     * @param locale the locale defining the way in which the number is written
+     * @return true if the input {@link String} represents a valid {@link BigInteger}. 
+     * Otherwise, false
+     * 
+     * @deprecated use {@link FnString#canBeBigInteger(Locale)} instead. This method will be 
+     * removed in version 1.3
+     */
+    @Deprecated
+    public static final Function<String,Boolean> isBigInteger(final Locale locale) {
+        return new CanBeBigInteger(locale);
+    }
+
+    
+    /**
+     * <p>
+     * Returns true if the input {@link String} can be converted into a 
+     * valid {@link BigInteger} in the given {@link Locale} specified as a {@link String}
+     * </p>
+     * 
+     * @param locale the locale defining the way in which the number is written
+     * @return true if the input {@link String} represents a valid {@link BigInteger}. 
+     * Otherwise, false
+     * 
+     * @deprecated use {@link FnString#canBeBigInteger(String)} instead. This method will be 
+     * removed in version 1.3
+     */
+    @Deprecated
+    public static final Function<String,Boolean> isBigInteger(final String locale) {
+        return new CanBeBigInteger(locale);
+    }
+
+    
+    /**
+     * <p>
+     * Returns true if the input {@link String} can be converted into a 
+     * valid {@link BigInteger} using the specified decimal point
+     * configuration ({@link DecimalPoint}). 
+     * </p>
+     * 
      * @param decimalPoint the decimal point being used by the String
      * @return true if the input {@link String} represents a valid {@link BigInteger}. 
      * Otherwise, false
+     * 
+     * @deprecated use {@link FnString#canBeBigInteger(DecimalPoint)} instead. This method will be 
+     * removed in version 1.3
      */
+    @Deprecated
+    public static final Function<String,Boolean> isBigInteger(final DecimalPoint decimalPoint) {
+        return new CanBeBigInteger(decimalPoint);
+    }
+    
+    /**
+     * <p>
+     * Returns true if the input {@link String} can be converted into a 
+     * valid {@link BigInteger} in the specified radix. It uses the default
+     * configuration to check the {@link String}
+     * </p>
+     * 
+     * @param radix the radix being used by the String
+     * @return true if the input {@link String} represents a valid {@link BigInteger}. 
+     * Otherwise, false
+     * 
+     * @deprecated use {@link FnString#canBeBigInteger(int)} instead. This method will be 
+     * removed in version 1.3
+     */
+    @Deprecated
     public static final Function<String,Boolean> isBigInteger(final int radix) {
-        return new IsBigInteger(radix);
+        return new CanBeBigInteger(radix);
     }
 
     /**
@@ -2507,6 +2696,8 @@ public final class FnString {
      * 
      * @return true if the input {@link String} represents a valid {@link BigInteger}. 
      * Otherwise, false
+     * 
+     * @since 1.2
      */
     public static final Function<String,Boolean> isValidBigInteger() {
         return IS_VALID_BIG_INTEGER;
@@ -2523,6 +2714,8 @@ public final class FnString {
      * @param locale the locale defining the way in which the number is written
      * @return true if the input {@link String} represents a valid {@link BigInteger}. 
      * Otherwise, false
+     * 
+     * @since 1.2
      */
     public static final Function<String,Boolean> isValidBigInteger(final Locale locale) {
         return new IsValidBigInteger(locale);
@@ -2539,6 +2732,8 @@ public final class FnString {
      * @param locale the locale defining the way in which the number is written
      * @return true if the input {@link String} represents a valid {@link BigInteger}. 
      * Otherwise, false
+     * 
+     * @since 1.2
      */
     public static final Function<String,Boolean> isValidBigInteger(final String locale) {
         return new IsValidBigInteger(locale);
@@ -2552,9 +2747,11 @@ public final class FnString {
      * represents a non decimal number.
      * </p>
      * 
-     * @param decimalPoint the decimal point being used by the String
+     * @param radix the radix being used by the String
      * @return true if the input {@link String} represents a valid {@link BigInteger}. 
      * Otherwise, false
+     * 
+     * @since 1.2
      */
     public static final Function<String,Boolean> isValidBigInteger(final int radix) {
         return new IsValidBigInteger(radix);
@@ -2570,9 +2767,11 @@ public final class FnString {
      * 
      * @return true if the input {@link String} represents a valid {@link Double}. 
      * Otherwise, false
+     * 
+     * @since 1.2
      */
-    public static final Function<String,Boolean> isDouble() {
-        return IS_DOUBLE;
+    public static final Function<String,Boolean> canBeDouble() {
+        return CAN_BE_DOUBLE;
     }
     
     
@@ -2586,9 +2785,11 @@ public final class FnString {
      * @param locale the locale defining the way in which the number is written
      * @return true if the input {@link String} represents a valid {@link Double}. 
      * Otherwise, false
+     * 
+     * @since 1.2
      */
-    public static final Function<String,Boolean> isDouble(final Locale locale) {
-        return new IsDouble(locale);
+    public static final Function<String,Boolean> canBeDouble(final Locale locale) {
+        return new CanBeDouble(locale);
     }
 
     
@@ -2602,9 +2803,11 @@ public final class FnString {
      * @param locale the locale defining the way in which the number is written
      * @return true if the input {@link String} represents a valid {@link Double}. 
      * Otherwise, false
+     * 
+     * @since 1.2
      */
-    public static final Function<String,Boolean> isDouble(final String locale) {
-        return new IsDouble(locale);
+    public static final Function<String,Boolean> canBeDouble(final String locale) {
+        return new CanBeDouble(locale);
     }
 
     
@@ -2619,9 +2822,91 @@ public final class FnString {
      * @param decimalPoint the decimal point being used by the String
      * @return true if the input {@link String} represents a valid {@link Double}. 
      * Otherwise, false
+     * 
+     * @since 1.2
      */
+    public static final Function<String,Boolean> canBeDouble(final DecimalPoint decimalPoint) {
+        return new CanBeDouble(decimalPoint);
+    }
+    
+    /**
+     * <p>
+     * Returns true if the input {@link String} can be converted into a 
+     * valid {@link Double}. It uses the default configuration from the JVM (en_US)
+     * to check whether the string is valid or not.
+     * If this method returns false, {@link FnString#toDouble()} will throw an exception if called.
+     * </p>
+     * 
+     * @return true if the input {@link String} represents a valid {@link Double}. 
+     * Otherwise, false
+     * 
+     * @deprecated use {@link FnString#canBeDouble()} instead. This method will be removed
+     * in version 1.3
+     */
+    @Deprecated
+    public static final Function<String,Boolean> isDouble() {
+        return CAN_BE_DOUBLE;
+    }
+    
+    
+    /**
+     * <p>
+     * Returns true if the input {@link String} can be converted into a 
+     * valid {@link Double} in the given {@link Locale}.
+     * If this method returns false, {@link FnString#toDouble(Locale)} will throw an exception if called.
+     * </p>
+     * 
+     * @param locale the locale defining the way in which the number is written
+     * @return true if the input {@link String} represents a valid {@link Double}. 
+     * Otherwise, false
+     * 
+     * @deprecated use {@link FnString#canBeDouble(Locale)} instead. This method will be removed
+     * in version 1.3
+     */
+    @Deprecated
+    public static final Function<String,Boolean> isDouble(final Locale locale) {
+        return new CanBeDouble(locale);
+    }
+
+    
+    /**
+     * <p>
+     * Returns true if the input {@link String} can be converted into a 
+     * valid {@link Double} in the given {@link Locale} specified as a {@link String}.
+     * If this method returns false, {@link FnString#toDouble(String)} will throw an exception if called.
+     * </p>
+     * 
+     * @param locale the locale defining the way in which the number is written
+     * @return true if the input {@link String} represents a valid {@link Double}. 
+     * Otherwise, false
+     * 
+     * @deprecated use {@link FnString#canBeDouble(String)} instead. This method will be removed
+     * in version 1.3
+     */
+    @Deprecated
+    public static final Function<String,Boolean> isDouble(final String locale) {
+        return new CanBeDouble(locale);
+    }
+
+    
+    /**
+     * <p>
+     * Returns true if the input {@link String} can be converted into a 
+     * valid {@link Double} using the specified decimal point
+     * configuration ({@link DecimalPoint}). 
+     * If this method returns false, {@link FnString#toDouble(DecimalPoint)} will throw an exception if called.
+     * </p>
+     * 
+     * @param decimalPoint the decimal point being used by the String
+     * @return true if the input {@link String} represents a valid {@link Double}. 
+     * Otherwise, false
+     * 
+     * @deprecated use {@link FnString#canBeDouble(DecimalPoint)} instead. This method will be removed
+     * in version 1.3
+     */
+    @Deprecated
     public static final Function<String,Boolean> isDouble(final DecimalPoint decimalPoint) {
-        return new IsDouble(decimalPoint);
+        return new CanBeDouble(decimalPoint);
     }
 
     /**
@@ -2631,14 +2916,16 @@ public final class FnString {
      * to check whether the string is valid or not.
      * That is, if it represents either a decimal or non decimal number that fits 
      * in a {@link Double} number. This function is the same 
-     * as {@link FnString#isDouble()}
+     * as {@link FnString#canBeDouble()}
      * </p>
      * 
      * @return true if the input {@link String} represents a valid {@link Double}. 
      * Otherwise, false
+     * 
+     * @since 1.2
      */
     public static final Function<String,Boolean> isValidDouble() {
-        return IS_DOUBLE;
+        return CAN_BE_DOUBLE;
     }
     
     
@@ -2648,15 +2935,17 @@ public final class FnString {
      * valid {@link Double} in the given {@link Locale}.
      * That is, if it represents either a decimal or non decimal number that fits 
      * in a {@link Double} number. This function is the same 
-     * as {@link FnString#isDouble()}
+     * as {@link FnString#canBeDouble(Locale)}
      * </p>
      * 
      * @param locale the locale defining the way in which the number is written
      * @return true if the input {@link String} represents a valid {@link Double}. 
      * Otherwise, false
+     * 
+     * @since 1.2
      */
     public static final Function<String,Boolean> isValidDouble(final Locale locale) {
-        return new IsDouble(locale);
+        return new CanBeDouble(locale);
     }
 
     
@@ -2666,15 +2955,17 @@ public final class FnString {
      * valid {@link Double} in the given {@link Locale} specified as a {@link String}.
      * That is, if it represents either a decimal or non decimal number that fits 
      * in a {@link Double} number. This function is the same 
-     * as {@link FnString#isDouble()}
+     * as {@link FnString#canBeDouble(String)}
      * </p>
      * 
      * @param locale the locale defining the way in which the number is written
      * @return true if the input {@link String} represents a valid {@link Double}. 
      * Otherwise, false
+     * 
+     * @since 1.2
      */
     public static final Function<String,Boolean> isValidDouble(final String locale) {
-        return new IsDouble(locale);
+        return new CanBeDouble(locale);
     }
 
     
@@ -2685,15 +2976,17 @@ public final class FnString {
      * configuration ({@link DecimalPoint}). 
      * That is, if it represents either a decimal or non decimal number that fits 
      * in a {@link Double} number. This function is the same 
-     * as {@link FnString#isDouble()}
+     * as {@link FnString#canBeDouble(DecimalPoint)}
      * </p>
      * 
      * @param decimalPoint the decimal point being used by the String
      * @return true if the input {@link String} represents a valid {@link Double}. 
      * Otherwise, false
+     * 
+     * @since 1.2
      */
     public static final Function<String,Boolean> isValidDouble(final DecimalPoint decimalPoint) {
-        return new IsDouble(decimalPoint);
+        return new CanBeDouble(decimalPoint);
     }
 
     /**
@@ -2701,14 +2994,16 @@ public final class FnString {
      * Returns true if the input {@link String} can be converted into a 
      * valid {@link Float}. It uses the default configuration from the JVM (en_US)
      * to check whether the string is valid or not.
-     * If this method returns false, {@link FnString#isFloat()} will throw an exception if called.
+     * If this method returns false, {@link FnString#toFloat()} will throw an exception if called.
      * </p>
      * 
      * @return true if the input {@link String} represents a valid {@link Float}. 
      * Otherwise, false
+     * 
+     * @since 1.2
      */
-    public static final Function<String,Boolean> isFloat() {
-        return IS_FLOAT;
+    public static final Function<String,Boolean> canBeFloat() {
+        return CAN_BE_FLOAT;
     }
     
     
@@ -2716,15 +3011,17 @@ public final class FnString {
      * <p>
      * Returns true if the input {@link String} can be converted into a 
      * valid {@link Float} in the given {@link Locale}.
-     * If this method returns false, {@link FnString#isFloat(Locale)} will throw an exception if called.
+     * If this method returns false, {@link FnString#toFloat(Locale)} will throw an exception if called.
      * </p>
      * 
      * @param locale the locale defining the way in which the number is written
      * @return true if the input {@link String} represents a valid {@link Float}. 
      * Otherwise, false
+     * 
+     * @since 1.2
      */
-    public static final Function<String,Boolean> isFloat(final Locale locale) {
-        return new IsFloat(locale);
+    public static final Function<String,Boolean> canBeFloat(final Locale locale) {
+        return new CanBeFloat(locale);
     }
 
     
@@ -2732,15 +3029,17 @@ public final class FnString {
      * <p>
      * Returns true if the input {@link String} can be converted into a 
      * valid {@link Float} in the given {@link Locale} specified as a {@link String}.
-     * If this method returns false, {@link FnString#isFloat(String)} will throw an exception if called.
+     * If this method returns false, {@link FnString#toFloat(String)} will throw an exception if called.
      * </p>
      * 
      * @param locale the locale defining the way in which the number is written
      * @return true if the input {@link String} represents a valid {@link Float}. 
      * Otherwise, false
+     * 
+     * @since 1.2
      */
-    public static final Function<String,Boolean> isFloat(final String locale) {
-        return new IsFloat(locale);
+    public static final Function<String,Boolean> canBeFloat(final String locale) {
+        return new CanBeFloat(locale);
     }
 
     
@@ -2749,15 +3048,97 @@ public final class FnString {
      * Returns true if the input {@link String} can be converted into a 
      * valid {@link Float} using the specified decimal point
      * configuration ({@link DecimalPoint}). 
-     * If this method returns false, {@link FnString#isFloat(DecimalPoint)} will throw an exception if called.
+     * If this method returns false, {@link FnString#toFloat(DecimalPoint)} will throw an exception if called.
      * </p>
      * 
      * @param decimalPoint the decimal point being used by the String
      * @return true if the input {@link String} represents a valid {@link Float}. 
      * Otherwise, false
+     * 
+     * @since 1.2
      */
+    public static final Function<String,Boolean> canBeFloat(final DecimalPoint decimalPoint) {
+        return new CanBeFloat(decimalPoint);
+    }
+
+    /**
+     * <p>
+     * Returns true if the input {@link String} can be converted into a 
+     * valid {@link Float}. It uses the default configuration from the JVM (en_US)
+     * to check whether the string is valid or not.
+     * If this method returns false, {@link FnString#toFloat()} will throw an exception if called.
+     * </p>
+     * 
+     * @return true if the input {@link String} represents a valid {@link Float}. 
+     * Otherwise, false
+     * 
+     * @deprecated use {@link FnString#canBeFloat()} instead. This method will be removed in
+     * version 1.3
+     */
+    @Deprecated
+    public static final Function<String,Boolean> isFloat() {
+        return CAN_BE_FLOAT;
+    }
+    
+    
+    /**
+     * <p>
+     * Returns true if the input {@link String} can be converted into a 
+     * valid {@link Float} in the given {@link Locale}.
+     * If this method returns false, {@link FnString#toFloat(Locale)} will throw an exception if called.
+     * </p>
+     * 
+     * @param locale the locale defining the way in which the number is written
+     * @return true if the input {@link String} represents a valid {@link Float}. 
+     * Otherwise, false
+     * 
+     * @deprecated use {@link FnString#canBeFloat(Locale)} instead. This method will be removed in
+     * version 1.3
+     */
+    @Deprecated
+    public static final Function<String,Boolean> isFloat(final Locale locale) {
+        return new CanBeFloat(locale);
+    }
+
+    
+    /**
+     * <p>
+     * Returns true if the input {@link String} can be converted into a 
+     * valid {@link Float} in the given {@link Locale} specified as a {@link String}.
+     * If this method returns false, {@link FnString#toFloat(String)} will throw an exception if called.
+     * </p>
+     * 
+     * @param locale the locale defining the way in which the number is written
+     * @return true if the input {@link String} represents a valid {@link Float}. 
+     * Otherwise, false
+     * 
+     * @deprecated use {@link FnString#canBeFloat(String)} instead. This method will be removed in
+     * version 1.3
+     */
+    @Deprecated
+    public static final Function<String,Boolean> isFloat(final String locale) {
+        return new CanBeFloat(locale);
+    }
+
+    
+    /**
+     * <p>
+     * Returns true if the input {@link String} can be converted into a 
+     * valid {@link Float} using the specified decimal point
+     * configuration ({@link DecimalPoint}). 
+     * If this method returns false, {@link FnString#toFloat(DecimalPoint)} will throw an exception if called.
+     * </p>
+     * 
+     * @param decimalPoint the decimal point being used by the String
+     * @return true if the input {@link String} represents a valid {@link Float}. 
+     * Otherwise, false
+     * 
+     * @deprecated use {@link FnString#canBeFloat(DecimalPoint)} instead. This method will be removed in
+     * version 1.3
+     */
+    @Deprecated
     public static final Function<String,Boolean> isFloat(final DecimalPoint decimalPoint) {
-        return new IsFloat(decimalPoint);
+        return new CanBeFloat(decimalPoint);
     }
 
     /**
@@ -2767,14 +3148,16 @@ public final class FnString {
      * to check whether the string is valid or not.
      * That is, if it represents either a decimal or non decimal number that fits 
      * in a {@link Float} number. This function is the same 
-     * as {@link FnString#isFloat()}
+     * as {@link FnString#canBeFloat()}
      * </p>
      * 
      * @return true if the input {@link String} represents a valid {@link Float}. 
      * Otherwise, false
+     * 
+     * @since 1.2
      */
     public static final Function<String,Boolean> isValidFloat() {
-        return IS_FLOAT;
+        return CAN_BE_FLOAT;
     }
     
     
@@ -2784,15 +3167,17 @@ public final class FnString {
      * valid {@link Float} in the given {@link Locale}.
      * That is, if it represents either a decimal or non decimal number that 
      * fits in a {@link Float} number. This function is the 
-     * same as {@link FnString#isFloat()}
+     * same as {@link FnString#canBeFloat(Locale)}
      * </p>
      * 
      * @param locale the locale defining the way in which the number is written
      * @return true if the input {@link String} represents a valid {@link Float}. 
      * Otherwise, false
+     * 
+     * @since 1.2
      */
     public static final Function<String,Boolean> isValidFloat(final Locale locale) {
-        return new IsFloat(locale);
+        return new CanBeFloat(locale);
     }
 
     
@@ -2802,15 +3187,17 @@ public final class FnString {
      * valid {@link Float} in the given {@link Locale} specified as a {@link String}.
      * That is, if it represents either a decimal or non decimal number 
      * that fits in a {@link Float} number. 
-     * This function is the same as {@link FnString#isFloat()}
+     * This function is the same as {@link FnString#canBeFloat(String)}
      * </p>
      * 
      * @param locale the locale defining the way in which the number is written
      * @return true if the input {@link String} represents a valid {@link Float}. 
      * Otherwise, false
+     * 
+     * @since 1.2
      */
     public static final Function<String,Boolean> isValidFloat(final String locale) {
-        return new IsFloat(locale);
+        return new CanBeFloat(locale);
     }
 
     
@@ -2820,15 +3207,17 @@ public final class FnString {
      * valid {@link Float} using the specified decimal point
      * configuration ({@link DecimalPoint}). That is, if it represents either a 
      * decimal or non decimal number that fits in a {@link Float} number. 
-     * This function is the same as {@link FnString#isFloat()}.
+     * This function is the same as {@link FnString#canBeFloat(DecimalPoint)}.
      * </p>
      * 
      * @param decimalPoint the decimal point being used by the String
      * @return true if the input {@link String} represents a valid {@link Float}. 
      * Otherwise, false
+     * 
+     * @since 1.2
      */
     public static final Function<String,Boolean> isValidFloat(final DecimalPoint decimalPoint) {
-        return new IsFloat(decimalPoint);
+        return new CanBeFloat(decimalPoint);
     }
 
     /**
@@ -2836,14 +3225,16 @@ public final class FnString {
      * Returns true if the input {@link String} can be converted into a 
      * valid {@link Long}. It uses the default configuration from the JVM (en_US)
      * to check whether the string is valid or not.
-     * If this method returns false, {@link FnString#isLong()} will throw an exception if called.
+     * If this method returns false, {@link FnString#toLong()} will throw an exception if called.
      * </p>
      * 
      * @return true if the input {@link String} represents a valid {@link Long}. 
      * Otherwise, false
+     * 
+     * @since 1.2
      */
-    public static final Function<String,Boolean> isLong() {
-        return IS_LONG;
+    public static final Function<String,Boolean> canBeLong() {
+        return CAN_BE_LONG;
     }
     
     
@@ -2851,15 +3242,17 @@ public final class FnString {
      * <p>
      * Returns true if the input {@link String} can be converted into a 
      * valid {@link Long} in the given {@link Locale}.
-     * If this method returns false, {@link FnString#isLong(Locale)} will throw an exception if called.
+     * If this method returns false, {@link FnString#toLong(Locale)} will throw an exception if called.
      * </p>
      * 
      * @param locale the locale defining the way in which the number is written
      * @return true if the input {@link String} represents a valid {@link Long}. 
      * Otherwise, false
+     * 
+     * @since 1.2
      */
-    public static final Function<String,Boolean> isLong(final Locale locale) {
-        return new IsLong(locale);
+    public static final Function<String,Boolean> canBeLong(final Locale locale) {
+        return new CanBeLong(locale);
     }
 
     
@@ -2867,15 +3260,17 @@ public final class FnString {
      * <p>
      * Returns true if the input {@link String} can be converted into a 
      * valid {@link Long} in the given {@link Locale} specified as a {@link String}.
-     * If this method returns false, {@link FnString#isLong(String)} will throw an exception if called.
+     * If this method returns false, {@link FnString#toLong(String)} will throw an exception if called.
      * </p>
      * 
      * @param locale the locale defining the way in which the number is written
      * @return true if the input {@link String} represents a valid {@link Long}. 
      * Otherwise, false
+     * 
+     * @since 1.2
      */
-    public static final Function<String,Boolean> isLong(final String locale) {
-        return new IsLong(locale);
+    public static final Function<String,Boolean> canBeLong(final String locale) {
+        return new CanBeLong(locale);
     }
 
     
@@ -2884,15 +3279,17 @@ public final class FnString {
      * Returns true if the input {@link String} can be converted into a 
      * valid {@link Long} using the specified decimal point
      * configuration ({@link DecimalPoint}). 
-     * If this method returns false, {@link FnString#isLong(DecimalPoint)} will throw an exception if called.
+     * If this method returns false, {@link FnString#toLong(DecimalPoint)} will throw an exception if called.
      * </p>
      * 
      * @param decimalPoint the decimal point being used by the String
      * @return true if the input {@link String} represents a valid {@link Long}. 
      * Otherwise, false
+     * 
+     * @since 1.2
      */
-    public static final Function<String,Boolean> isLong(final DecimalPoint decimalPoint) {
-        return new IsLong(decimalPoint);
+    public static final Function<String,Boolean> canBeLong(final DecimalPoint decimalPoint) {
+        return new CanBeLong(decimalPoint);
     }
     
     /**
@@ -2900,15 +3297,117 @@ public final class FnString {
      * Returns true if the input {@link String} can be converted into a 
      * valid {@link Long} in the specified radix. It uses the default
      * configuration to check the {@link String}.
-     * If this method returns false, {@link FnString#isLong(int)} will throw an exception if called.
+     * If this method returns false, {@link FnString#toLong(int)} will throw an exception if called.
+     * </p>
+     * 
+     * @param radix the radix being used by the String
+     * @return true if the input {@link String} represents a valid {@link Long}. 
+     * Otherwise, false
+     * 
+     * @since 1.2
+     */
+    public static final Function<String,Boolean> canBeLong(final int radix) {
+        return new CanBeLong(radix);
+    }
+    
+    /**
+     * <p>
+     * Returns true if the input {@link String} can be converted into a 
+     * valid {@link Long}. It uses the default configuration from the JVM (en_US)
+     * to check whether the string is valid or not.
+     * If this method returns false, {@link FnString#toLong()} will throw an exception if called.
+     * </p>
+     * 
+     * @return true if the input {@link String} represents a valid {@link Long}. 
+     * Otherwise, false
+     * 
+     * @deprecated use {@link FnString#canBeLong()} instead. This method will be removed in 
+     * version 1.3
+     */
+    @Deprecated
+    public static final Function<String,Boolean> isLong() {
+        return CAN_BE_LONG;
+    }
+    
+    
+    /**
+     * <p>
+     * Returns true if the input {@link String} can be converted into a 
+     * valid {@link Long} in the given {@link Locale}.
+     * If this method returns false, {@link FnString#toLong(Locale)} will throw an exception if called.
+     * </p>
+     * 
+     * @param locale the locale defining the way in which the number is written
+     * @return true if the input {@link String} represents a valid {@link Long}. 
+     * Otherwise, false
+     * 
+     * @deprecated use {@link FnString#canBeLong(Locale)} instead. This method will be removed in 
+     * version 1.3
+     */
+    @Deprecated
+    public static final Function<String,Boolean> isLong(final Locale locale) {
+        return new CanBeLong(locale);
+    }
+
+    
+    /**
+     * <p>
+     * Returns true if the input {@link String} can be converted into a 
+     * valid {@link Long} in the given {@link Locale} specified as a {@link String}.
+     * If this method returns false, {@link FnString#toLong(String)} will throw an exception if called.
+     * </p>
+     * 
+     * @param locale the locale defining the way in which the number is written
+     * @return true if the input {@link String} represents a valid {@link Long}. 
+     * Otherwise, false
+     * 
+     * @deprecated use {@link FnString#canBeLong(String)} instead. This method will be removed in 
+     * version 1.3
+     */
+    @Deprecated
+    public static final Function<String,Boolean> isLong(final String locale) {
+        return new CanBeLong(locale);
+    }
+
+    
+    /**
+     * <p>
+     * Returns true if the input {@link String} can be converted into a 
+     * valid {@link Long} using the specified decimal point
+     * configuration ({@link DecimalPoint}). 
+     * If this method returns false, {@link FnString#toLong(DecimalPoint)} will throw an exception if called.
      * </p>
      * 
      * @param decimalPoint the decimal point being used by the String
      * @return true if the input {@link String} represents a valid {@link Long}. 
      * Otherwise, false
+     * 
+     * @deprecated use {@link FnString#canBeLong(DecimalPoint)} instead. This method will be removed in 
+     * version 1.3
      */
+    @Deprecated
+    public static final Function<String,Boolean> isLong(final DecimalPoint decimalPoint) {
+        return new CanBeLong(decimalPoint);
+    }
+    
+    /**
+     * <p>
+     * Returns true if the input {@link String} can be converted into a 
+     * valid {@link Long} in the specified radix. It uses the default
+     * configuration to check the {@link String}.
+     * If this method returns false, {@link FnString#toLong(int)} will throw an exception if called.
+     * </p>
+     * 
+     * @param radixthe radix being used by the String
+     * @return true if the input {@link String} represents a valid {@link Long}. 
+     * Otherwise, false
+     * 
+     * @deprecated use {@link FnString#canBeLong(int)} instead. This method will be removed in 
+     * version 1.3
+     */
+    @Deprecated
     public static final Function<String,Boolean> isLong(final int radix) {
-        return new IsLong(radix);
+        return new CanBeLong(radix);
     }
     
     /**
@@ -2920,6 +3419,8 @@ public final class FnString {
      * 
      * @return true if the input {@link String} represents a valid {@link Long}. 
      * Otherwise, false
+     * 
+     * @since 1.2
      */
     public static final Function<String,Boolean> isValidLong() {
         return IS_VALID_LONG;
@@ -2936,6 +3437,8 @@ public final class FnString {
      * @param locale the locale defining the way in which the number is written
      * @return true if the input {@link String} represents a valid {@link Long}. 
      * Otherwise, false
+     * 
+     * @since 1.2
      */
     public static final Function<String,Boolean> isValidLong(final Locale locale) {
         return new IsValidLong(locale);
@@ -2952,6 +3455,8 @@ public final class FnString {
      * @param locale the locale defining the way in which the number is written
      * @return true if the input {@link String} represents a valid {@link Long}. 
      * Otherwise, false
+     * 
+     * @since 1.2
      */
     public static final Function<String,Boolean> isValidLong(final String locale) {
         return new IsValidLong(locale);
@@ -2969,6 +3474,8 @@ public final class FnString {
      * @param radix the radix being used by the String
      * @return true if the input {@link String} represents a valid {@link Long}. 
      * Otherwise, false
+     * 
+     * @since 1.2
      */
     public static final Function<String,Boolean> isValidLong(final int radix) {
         return new IsValidLong(radix);
@@ -2979,14 +3486,16 @@ public final class FnString {
      * Returns true if the input {@link String} can be converted into a 
      * valid {@link Integer}. It uses the default configuration from the JVM (en_US)
      * to check whether the string is valid or not.
-     * If this method returns false, {@link FnString#isInteger()} will throw an exception if called.
+     * If this method returns false, {@link FnString#toInteger()} will throw an exception if called.
      * </p>
      * 
      * @return true if the input {@link String} represents a valid {@link Integer}. 
      * Otherwise, false
+     * 
+     * @since 1.2
      */
-    public static final Function<String,Boolean> isInteger() {
-        return IS_INTEGER;
+    public static final Function<String,Boolean> canBeInteger() {
+        return CAN_BE_INTEGER;
     }
     
     
@@ -2994,15 +3503,17 @@ public final class FnString {
      * <p>
      * Returns true if the input {@link String} can be converted into a 
      * valid {@link Integer} in the given {@link Locale}.
-     * If this method returns false, {@link FnString#isInteger(Locale)} will throw an exception if called.
+     * If this method returns false, {@link FnString#toInteger(Locale)} will throw an exception if called.
      * </p>
      * 
      * @param locale the locale defining the way in which the number is written
      * @return true if the input {@link String} represents a valid {@link Integer}. 
      * Otherwise, false
+     * 
+     * @since 1.2
      */
-    public static final Function<String,Boolean> isInteger(final Locale locale) {
-        return new IsInteger(locale);
+    public static final Function<String,Boolean> canBeInteger(final Locale locale) {
+        return new CanBeInteger(locale);
     }
 
     
@@ -3010,15 +3521,17 @@ public final class FnString {
      * <p>
      * Returns true if the input {@link String} can be converted into a 
      * valid {@link Integer} in the given {@link Locale} specified as a {@link String}.
-     * If this method returns false, {@link FnString#isInteger(String)} will throw an exception if called.
+     * If this method returns false, {@link FnString#toInteger(String)} will throw an exception if called.
      * </p>
      * 
      * @param locale the locale defining the way in which the number is written
      * @return true if the input {@link String} represents a valid {@link Integer}. 
      * Otherwise, false
+     * 
+     * @since 1.2
      */
-    public static final Function<String,Boolean> isInteger(final String locale) {
-        return new IsInteger(locale);
+    public static final Function<String,Boolean> canBeInteger(final String locale) {
+        return new CanBeInteger(locale);
     }
 
     
@@ -3027,15 +3540,17 @@ public final class FnString {
      * Returns true if the input {@link String} can be converted into a 
      * valid {@link Integer} using the specified decimal point
      * configuration ({@link DecimalPoint}). 
-     * If this method returns false, {@link FnString#isInteger(DecimalPoint)} will throw an exception if called.
+     * If this method returns false, {@link FnString#toInteger(DecimalPoint)} will throw an exception if called.
      * </p>
      * 
      * @param decimalPoint the decimal point being used by the String
      * @return true if the input {@link String} represents a valid {@link Integer}. 
      * Otherwise, false
+     * 
+     * @since 1.2
      */
-    public static final Function<String,Boolean> isInteger(final DecimalPoint decimalPoint) {
-        return new IsInteger(decimalPoint);
+    public static final Function<String,Boolean> canBeInteger(final DecimalPoint decimalPoint) {
+        return new CanBeInteger(decimalPoint);
     }
     
     /**
@@ -3043,15 +3558,117 @@ public final class FnString {
      * Returns true if the input {@link String} can be converted into a 
      * valid {@link Integer} in the specified radix. It uses the default
      * configuration to check the {@link String}.
-     * If this method returns false, {@link FnString#isInteger(int)} will throw an exception if called.
+     * If this method returns false, {@link FnString#toInteger(int)} will throw an exception if called.
      * </p>
      * 
      * @param radix the radix being used by the String
      * @return true if the input {@link String} represents a valid {@link Integer}. 
      * Otherwise, false
+     * 
+     * @since 1.2
      */
+    public static final Function<String,Boolean> canBeInteger(final int radix) {
+        return new CanBeInteger(radix);
+    }
+
+    /**
+     * <p>
+     * Returns true if the input {@link String} can be converted into a 
+     * valid {@link Integer}. It uses the default configuration from the JVM (en_US)
+     * to check whether the string is valid or not.
+     * If this method returns false, {@link FnString#toInteger()} will throw an exception if called.
+     * </p>
+     * 
+     * @return true if the input {@link String} represents a valid {@link Integer}. 
+     * Otherwise, false
+     * 
+     * @deprecated use {@link FnString#canBeInteger()} instead. This method will be
+     * removed in version 1.3
+     */
+    @Deprecated
+    public static final Function<String,Boolean> isInteger() {
+        return CAN_BE_INTEGER;
+    }
+    
+    
+    /**
+     * <p>
+     * Returns true if the input {@link String} can be converted into a 
+     * valid {@link Integer} in the given {@link Locale}.
+     * If this method returns false, {@link FnString#toInteger(Locale)} will throw an exception if called.
+     * </p>
+     * 
+     * @param locale the locale defining the way in which the number is written
+     * @return true if the input {@link String} represents a valid {@link Integer}. 
+     * Otherwise, false
+     * 
+     * @deprecated use {@link FnString#canBeInteger(Locale)} instead. This method will be
+     * removed in version 1.3
+     */
+    @Deprecated
+    public static final Function<String,Boolean> isInteger(final Locale locale) {
+        return new CanBeInteger(locale);
+    }
+
+    
+    /**
+     * <p>
+     * Returns true if the input {@link String} can be converted into a 
+     * valid {@link Integer} in the given {@link Locale} specified as a {@link String}.
+     * If this method returns false, {@link FnString#toInteger(String)} will throw an exception if called.
+     * </p>
+     * 
+     * @param locale the locale defining the way in which the number is written
+     * @return true if the input {@link String} represents a valid {@link Integer}. 
+     * Otherwise, false
+     * 
+     * @deprecated use {@link FnString#canBeInteger(String)} instead. This method will be
+     * removed in version 1.3
+     */
+    @Deprecated
+    public static final Function<String,Boolean> isInteger(final String locale) {
+        return new CanBeInteger(locale);
+    }
+
+    
+    /**
+     * <p>
+     * Returns true if the input {@link String} can be converted into a 
+     * valid {@link Integer} using the specified decimal point
+     * configuration ({@link DecimalPoint}). 
+     * If this method returns false, {@link FnString#toInteger(DecimalPoint)} will throw an exception if called.
+     * </p>
+     * 
+     * @param decimalPoint the decimal point being used by the String
+     * @return true if the input {@link String} represents a valid {@link Integer}. 
+     * Otherwise, false
+     * 
+     * @deprecated use {@link FnString#canBeInteger(DecimalPoint)} instead. This method will be
+     * removed in version 1.3
+     */
+    @Deprecated
+    public static final Function<String,Boolean> isInteger(final DecimalPoint decimalPoint) {
+        return new CanBeInteger(decimalPoint);
+    }
+    
+    /**
+     * <p>
+     * Returns true if the input {@link String} can be converted into a 
+     * valid {@link Integer} in the specified radix. It uses the default
+     * configuration to check the {@link String}.
+     * If this method returns false, {@link FnString#toInteger(int)} will throw an exception if called.
+     * </p>
+     * 
+     * @param radix the radix being used by the String
+     * @return true if the input {@link String} represents a valid {@link Integer}. 
+     * Otherwise, false
+     * 
+     * @deprecated use {@link FnString#canBeInteger(int)} instead. This method will be
+     * removed in version 1.3
+     */
+    @Deprecated
     public static final Function<String,Boolean> isInteger(final int radix) {
-        return new IsInteger(radix);
+        return new CanBeInteger(radix);
     }
     
     /**
@@ -3063,6 +3680,8 @@ public final class FnString {
      * 
      * @return true if the input {@link String} represents a valid {@link Integer}. 
      * Otherwise, false
+     * 
+     * @since 1.2
      */
     public static final Function<String,Boolean> isValidInteger() {
         return IS_VALID_INTEGER;
@@ -3079,6 +3698,8 @@ public final class FnString {
      * @param locale the locale defining the way in which the number is written
      * @return true if the input {@link String} represents a valid {@link Integer}. 
      * Otherwise, false
+     * 
+     * @since 1.2
      */
     public static final Function<String,Boolean> isValidInteger(final Locale locale) {
         return new IsValidInteger(locale);
@@ -3095,6 +3716,8 @@ public final class FnString {
      * @param locale the locale defining the way in which the number is written
      * @return true if the input {@link String} represents a valid {@link Integer}. 
      * Otherwise, false
+     * 
+     * @since 1.2
      */
     public static final Function<String,Boolean> isValidInteger(final String locale) {
         return new IsValidInteger(locale);
@@ -3112,25 +3735,28 @@ public final class FnString {
      * @param radix the radix being used by the String
      * @return true if the input {@link String} represents a valid {@link Integer}. 
      * Otherwise, false
+     * 
+     * @since 1.2
      */
     public static final Function<String,Boolean> isValidInteger(final int radix) {
         return new IsValidInteger(radix);
     }
-
 
     /**
      * <p>
      * Returns true if the input {@link String} can be converted into a 
      * valid {@link Short}. It uses the default configuration from the JVM (en_US)
      * to check whether the string is valid or not.
-     * If this method returns false, {@link FnString#isShort()} will throw an exception if called.
+     * If this method returns false, {@link FnString#toShort()} will throw an exception if called.
      * </p>
      * 
      * @return true if the input {@link String} represents a valid {@link Short}. 
      * Otherwise, false
+     * 
+     * @since 1.2
      */
-    public static final Function<String,Boolean> isShort() {
-        return IS_SHORT;
+    public static final Function<String,Boolean> canBeShort() {
+        return CAN_BE_SHORT;
     }
     
     
@@ -3138,15 +3764,17 @@ public final class FnString {
      * <p>
      * Returns true if the input {@link String} can be converted into a 
      * valid {@link Short} in the given {@link Locale}.
-     * If this method returns false, {@link FnString#isShort(Locale)} will throw an exception if called.
+     * If this method returns false, {@link FnString#toShort(Locale)} will throw an exception if called.
      * </p>
      * 
      * @param locale the locale defining the way in which the number is written
      * @return true if the input {@link String} represents a valid {@link Short}. 
      * Otherwise, false
+     * 
+     * @since 1.2
      */
-    public static final Function<String,Boolean> isShort(final Locale locale) {
-        return new IsShort(locale);
+    public static final Function<String,Boolean> canBeShort(final Locale locale) {
+        return new CanBeShort(locale);
     }
 
     
@@ -3154,15 +3782,17 @@ public final class FnString {
      * <p>
      * Returns true if the input {@link String} can be converted into a 
      * valid {@link Short} in the given {@link Locale} specified as a {@link String}.
-     * If this method returns false, {@link FnString#isShort(String)} will throw an exception if called.
+     * If this method returns false, {@link FnString#toShort(String)} will throw an exception if called.
      * </p>
      * 
      * @param locale the locale defining the way in which the number is written
      * @return true if the input {@link String} represents a valid {@link Short}. 
      * Otherwise, false
+     * 
+     * @since 1.2
      */
-    public static final Function<String,Boolean> isShort(final String locale) {
-        return new IsShort(locale);
+    public static final Function<String,Boolean> canBeShort(final String locale) {
+        return new CanBeShort(locale);
     }
 
     
@@ -3171,15 +3801,17 @@ public final class FnString {
      * Returns true if the input {@link String} can be converted into a 
      * valid {@link Short} using the specified decimal point
      * configuration ({@link DecimalPoint}). 
-     * If this method returns false, {@link FnString#isShort(DecimalPoint)} will throw an exception if called.
+     * If this method returns false, {@link FnString#toShort(DecimalPoint)} will throw an exception if called.
      * </p>
      * 
      * @param decimalPoint the decimal point being used by the String
      * @return true if the input {@link String} represents a valid {@link Short}. 
      * Otherwise, false
+     * 
+     * @since 1.2
      */
-    public static final Function<String,Boolean> isShort(final DecimalPoint decimalPoint) {
-        return new IsShort(decimalPoint);
+    public static final Function<String,Boolean> canBeShort(final DecimalPoint decimalPoint) {
+        return new CanBeShort(decimalPoint);
     }
     
     /**
@@ -3187,15 +3819,118 @@ public final class FnString {
      * Returns true if the input {@link String} can be converted into a 
      * valid {@link Short} in the specified radix. It uses the default
      * configuration to check the {@link String}.
-     * If this method returns false, {@link FnString#isShort(int)} will throw an exception if called.
+     * If this method returns false, {@link FnString#toShort(int)} will throw an exception if called.
+     * </p>
+     * 
+     * @param radix the radix being used by the String
+     * @return true if the input {@link String} represents a valid {@link Short}. 
+     * Otherwise, false
+     * 
+     * @since 1.2
+     */
+    public static final Function<String,Boolean> canBeShort(final int radix) {
+        return new CanBeShort(radix);
+    }
+    
+    
+    /**
+     * <p>
+     * Returns true if the input {@link String} can be converted into a 
+     * valid {@link Short}. It uses the default configuration from the JVM (en_US)
+     * to check whether the string is valid or not.
+     * If this method returns false, {@link FnString#toShort()} will throw an exception if called.
+     * </p>
+     * 
+     * @return true if the input {@link String} represents a valid {@link Short}. 
+     * Otherwise, false
+     * 
+     * @deprecated use {@link FnString#canBeShort()} instead. This method will be removed
+     * in version 1.3
+     */
+    @Deprecated
+    public static final Function<String,Boolean> isShort() {
+        return CAN_BE_SHORT;
+    }
+    
+    
+    /**
+     * <p>
+     * Returns true if the input {@link String} can be converted into a 
+     * valid {@link Short} in the given {@link Locale}.
+     * If this method returns false, {@link FnString#toShort(Locale)} will throw an exception if called.
+     * </p>
+     * 
+     * @param locale the locale defining the way in which the number is written
+     * @return true if the input {@link String} represents a valid {@link Short}. 
+     * Otherwise, false
+     * 
+     * @deprecated use {@link FnString#canBeShort(Locale)} instead. This method will be removed
+     * in version 1.3
+     */
+    @Deprecated
+    public static final Function<String,Boolean> isShort(final Locale locale) {
+        return new CanBeShort(locale);
+    }
+
+    
+    /**
+     * <p>
+     * Returns true if the input {@link String} can be converted into a 
+     * valid {@link Short} in the given {@link Locale} specified as a {@link String}.
+     * If this method returns false, {@link FnString#toShort(String)} will throw an exception if called.
+     * </p>
+     * 
+     * @param locale the locale defining the way in which the number is written
+     * @return true if the input {@link String} represents a valid {@link Short}. 
+     * Otherwise, false
+     * 
+     * @deprecated use {@link FnString#canBeShort(String)} instead. This method will be removed
+     * in version 1.3
+     */
+    @Deprecated
+    public static final Function<String,Boolean> isShort(final String locale) {
+        return new CanBeShort(locale);
+    }
+
+    
+    /**
+     * <p>
+     * Returns true if the input {@link String} can be converted into a 
+     * valid {@link Short} using the specified decimal point
+     * configuration ({@link DecimalPoint}). 
+     * If this method returns false, {@link FnString#toShort(DecimalPoint)} will throw an exception if called.
      * </p>
      * 
      * @param decimalPoint the decimal point being used by the String
      * @return true if the input {@link String} represents a valid {@link Short}. 
      * Otherwise, false
+     * 
+     * @deprecated use {@link FnString#canBeShort(DecimalPoint)} instead. This method will be removed
+     * in version 1.3
      */
+    @Deprecated
+    public static final Function<String,Boolean> isShort(final DecimalPoint decimalPoint) {
+        return new CanBeShort(decimalPoint);
+    }
+    
+    /**
+     * <p>
+     * Returns true if the input {@link String} can be converted into a 
+     * valid {@link Short} in the specified radix. It uses the default
+     * configuration to check the {@link String}.
+     * If this method returns false, {@link FnString#toShort(int)} will throw an exception if called.
+     * </p>
+     * 
+     * @param radix the radix being used by the String
+     * @return true if the input {@link String} represents a valid {@link Short}. 
+     * Otherwise, false
+     * 
+     * @deprecated use {@link FnString#canBeShort(int)} instead. This method will be removed
+     * in version 1.3
+     */
+    @Deprecated
     public static final Function<String,Boolean> isShort(final int radix) {
-        return new IsShort(radix);
+        return new CanBeShort(radix);
     }
     
     /**
@@ -3207,6 +3942,8 @@ public final class FnString {
      * 
      * @return true if the input {@link String} represents a valid {@link Short}. 
      * Otherwise, false
+     * 
+     * @since 1.2
      */
     public static final Function<String,Boolean> isValidShort() {
         return IS_VALID_SHORT;
@@ -3223,6 +3960,8 @@ public final class FnString {
      * @param locale the locale defining the way in which the number is written
      * @return true if the input {@link String} represents a valid {@link Short}. 
      * Otherwise, false
+     * 
+     * @since 1.2
      */
     public static final Function<String,Boolean> isValidShort(final Locale locale) {
         return new IsValidShort(locale);
@@ -3239,6 +3978,8 @@ public final class FnString {
      * @param locale the locale defining the way in which the number is written
      * @return true if the input {@link String} represents a valid {@link Short}. 
      * Otherwise, false
+     * 
+     * @since 1.2
      */
     public static final Function<String,Boolean> isValidShort(final String locale) {
         return new IsValidShort(locale);
@@ -3256,12 +3997,13 @@ public final class FnString {
      * @param radix the radix being used by the String
      * @return true if the input {@link String} represents a valid {@link Short}. 
      * Otherwise, false
+     * 
+     * @since 1.2
      */
     public static final Function<String,Boolean> isValidShort(final int radix) {
         return new IsValidShort(radix);
     }
 
-    
     /**
      * <p>
      * Returns true if the input {@link String} can be converted into a 
@@ -3272,9 +4014,11 @@ public final class FnString {
      * 
      * @return true if the input {@link String} represents a valid {@link Byte}. 
      * Otherwise, false
+     *
+     * @since 1.2
      */
-    public static final Function<String,Boolean> isByte() {
-        return IS_BYTE;
+    public static final Function<String,Boolean> canBeByte() {
+        return CAN_BE_BYTE;
     }
     
     
@@ -3288,9 +4032,11 @@ public final class FnString {
      * @param locale the locale defining the way in which the number is written
      * @return true if the input {@link String} represents a valid {@link Byte}. 
      * Otherwise, false
+     * 
+     * @since 1.2
      */
-    public static final Function<String,Boolean> isByte(final Locale locale) {
-        return new IsByte(locale);
+    public static final Function<String,Boolean> canBeByte(final Locale locale) {
+        return new CanBeByte(locale);
     }
 
     
@@ -3304,9 +4050,11 @@ public final class FnString {
      * @param locale the locale defining the way in which the number is written
      * @return true if the input {@link String} represents a valid {@link Byte}. 
      * Otherwise, false
+     * 
+     * @since 1.2
      */
-    public static final Function<String,Boolean> isByte(final String locale) {
-        return new IsByte(locale);
+    public static final Function<String,Boolean> canBeByte(final String locale) {
+        return new CanBeByte(locale);
     }
 
     
@@ -3321,9 +4069,11 @@ public final class FnString {
      * @param decimalPoint the decimal point being used by the String
      * @return true if the input {@link String} represents a valid {@link Byte}. 
      * Otherwise, false
+     * 
+     * @since 1.2
      */
-    public static final Function<String,Boolean> isByte(final DecimalPoint decimalPoint) {
-        return new IsByte(decimalPoint);
+    public static final Function<String,Boolean> canBeByte(final DecimalPoint decimalPoint) {
+        return new CanBeByte(decimalPoint);
     }
     
     /**
@@ -3334,12 +4084,119 @@ public final class FnString {
      * If this method returns false, {@link FnString#toByte(int)} will throw an exception if called.
      * </p>
      * 
+     * @param radix the radix being used by the String
+     * @return true if the input {@link String} represents a valid {@link Byte}. 
+     * Otherwise, false
+     * 
+     * @since 1.2
+     */
+    public static final Function<String,Boolean> canBeByte(final int radix) {
+        return new CanBeByte(radix);
+    }
+
+    /**
+     * <p>
+     * Returns true if the input {@link String} can be converted into a 
+     * valid {@link Byte}. It uses the default configuration from the JVM (en_US)
+     * to check whether the string is valid or not.
+     * If this method returns false, {@link FnString#toByte()} will throw an exception if called.
+     * </p>
+     * 
+     * @return true if the input {@link String} represents a valid {@link Byte}. 
+     * Otherwise, false
+     * 
+     * @deprecated use {@link FnString#canBeByte()} instead. This method will be removed 
+     * in version 1.3
+     * 
+     */
+    @Deprecated
+    public static final Function<String,Boolean> isByte() {
+        return CAN_BE_BYTE;
+    }
+    
+    
+    /**
+     * <p>
+     * Returns true if the input {@link String} can be converted into a 
+     * valid {@link Byte} in the given {@link Locale}.
+     * If this method returns false, {@link FnString#toByte(Locale)} will throw an exception if called.
+     * </p>
+     * 
+     * @param locale the locale defining the way in which the number is written
+     * @return true if the input {@link String} represents a valid {@link Byte}. 
+     * Otherwise, false
+     * 
+     * @deprecated use {@link FnString#canBeByte(Locale)} instead. This method will be removed 
+     * in version 1.3
+     * 
+     */
+    @Deprecated
+    public static final Function<String,Boolean> isByte(final Locale locale) {
+        return new CanBeByte(locale);
+    }
+
+    
+    /**
+     * <p>
+     * Returns true if the input {@link String} can be converted into a 
+     * valid {@link Byte} in the given {@link Locale} specified as a {@link String}.
+     * If this method returns false, {@link FnString#toByte(String)} will throw an exception if called.
+     * </p>
+     * 
+     * @param locale the locale defining the way in which the number is written
+     * @return true if the input {@link String} represents a valid {@link Byte}. 
+     * Otherwise, false
+     * 
+     * @deprecated use {@link FnString#canBeByte(String)} instead. This method will be removed 
+     * in version 1.3
+     * 
+     */
+    @Deprecated
+    public static final Function<String,Boolean> isByte(final String locale) {
+        return new CanBeByte(locale);
+    }
+
+    
+    /**
+     * <p>
+     * Returns true if the input {@link String} can be converted into a 
+     * valid {@link Byte} using the specified decimal point
+     * configuration ({@link DecimalPoint}). 
+     * If this method returns false, {@link FnString#toByte(DecimalPoint)} will throw an exception if called.
+     * </p>
+     * 
      * @param decimalPoint the decimal point being used by the String
      * @return true if the input {@link String} represents a valid {@link Byte}. 
      * Otherwise, false
+     * 
+     * @deprecated use {@link FnString#canBeByte(DecimalPoint)} instead. This method will be removed 
+     * in version 1.3
+     * 
      */
+    @Deprecated
+    public static final Function<String,Boolean> isByte(final DecimalPoint decimalPoint) {
+        return new CanBeByte(decimalPoint);
+    }
+    
+    /**
+     * <p>
+     * Returns true if the input {@link String} can be converted into a 
+     * valid {@link Byte} in the specified radix. It uses the default
+     * configuration to check the {@link String}.
+     * If this method returns false, {@link FnString#toByte(int)} will throw an exception if called.
+     * </p>
+     * 
+     * @param radix the radix being used by the String
+     * @return true if the input {@link String} represents a valid {@link Byte}. 
+     * Otherwise, false
+     * 
+     * @deprecated use {@link FnString#canBeByte(int)} instead. This method will be removed 
+     * in version 1.3
+     * 
+     */
+    @Deprecated
     public static final Function<String,Boolean> isByte(final int radix) {
-        return new IsByte(radix);
+        return new CanBeByte(radix);
     }
 
     /**
@@ -3351,6 +4208,8 @@ public final class FnString {
      * 
      * @return true if the input {@link String} represents a valid {@link Byte}. 
      * Otherwise, false
+     * 
+     * @since 1.2
      */
     public static final Function<String,Boolean> isValidByte() {
         return IS_VALID_BYTE;
@@ -3367,6 +4226,8 @@ public final class FnString {
      * @param locale the locale defining the way in which the number is written
      * @return true if the input {@link String} represents a valid {@link Byte}. 
      * Otherwise, false
+     * 
+     * @since 1.2
      */
     public static final Function<String,Boolean> isValidByte(final Locale locale) {
         return new IsValidByte(locale);
@@ -3383,6 +4244,8 @@ public final class FnString {
      * @param locale the locale defining the way in which the number is written
      * @return true if the input {@link String} represents a valid {@link Byte}. 
      * Otherwise, false
+     * 
+     * @since 1.2
      */
     public static final Function<String,Boolean> isValidByte(final String locale) {
         return new IsValidByte(locale);
@@ -3400,6 +4263,8 @@ public final class FnString {
      * @param radix the radix being used by the String
      * @return true if the input {@link String} represents a valid {@link Byte}. 
      * Otherwise, false
+     * 
+     * @since 1.2
      */
     public static final Function<String,Boolean> isValidByte(final int radix) {
         return new IsValidByte(radix);
@@ -4696,30 +5561,30 @@ public final class FnString {
         }
     }
     
-    static final class IsBigDecimal extends Function<String,Boolean> {
+    static final class CanBeBigDecimal extends Function<String,Boolean> {
          
         final Locale locale;
         final DecimalPoint decimalPoint;
         
-        public IsBigDecimal() {
+        public CanBeBigDecimal() {
             super();
             this.locale = null;
             this.decimalPoint = null;
         }
         
-        public IsBigDecimal(Locale locale) {
+        public CanBeBigDecimal(Locale locale) {
             super();
             this.locale = locale;
             this.decimalPoint = null;
         }
         
-        public IsBigDecimal(String locale) {
+        public CanBeBigDecimal(String locale) {
             super();
             this.locale = LocaleUtils.toLocale(locale);
             this.decimalPoint = null;
         }
         
-        public IsBigDecimal(DecimalPoint decimalPoint) {
+        public CanBeBigDecimal(DecimalPoint decimalPoint) {
             super();
             this.locale = null;
             this.decimalPoint = decimalPoint;
@@ -4754,41 +5619,41 @@ public final class FnString {
         }
     }
     
-    static final class IsBigInteger extends Function<String,Boolean> {
+    static final class CanBeBigInteger extends Function<String,Boolean> {
         
         final Locale locale;
         final DecimalPoint decimalPoint;
         final Integer radix;
         
-        public IsBigInteger() {
+        public CanBeBigInteger() {
             super();
             this.locale = null;
             this.decimalPoint = null;
             this.radix = null;
         }
         
-        public IsBigInteger(Locale locale) {
+        public CanBeBigInteger(Locale locale) {
             super();
             this.locale = locale;
             this.decimalPoint = null;
             this.radix = null;
         }
         
-        public IsBigInteger(String locale) {
+        public CanBeBigInteger(String locale) {
             super();
             this.locale = LocaleUtils.toLocale(locale);
             this.decimalPoint = null;
             this.radix = null;
         }
         
-        public IsBigInteger(DecimalPoint decimalPoint) {
+        public CanBeBigInteger(DecimalPoint decimalPoint) {
             super();
             this.locale = null;
             this.decimalPoint = decimalPoint;
             this.radix = null;
         }
         
-        public IsBigInteger(int radix) {
+        public CanBeBigInteger(int radix) {
             super();
             this.locale = null;
             this.decimalPoint = null;
@@ -4891,30 +5756,30 @@ public final class FnString {
         }
     }
 
-    static final class IsDouble extends Function<String,Boolean> {
+    static final class CanBeDouble extends Function<String,Boolean> {
         
         final Locale locale;
         final DecimalPoint decimalPoint;
         
-        public IsDouble() {
+        public CanBeDouble() {
             super();
             this.locale = null;
             this.decimalPoint = null;
         }
         
-        public IsDouble(Locale locale) {
+        public CanBeDouble(Locale locale) {
             super();
             this.locale = locale;
             this.decimalPoint = null;
         }
         
-        public IsDouble(String locale) {
+        public CanBeDouble(String locale) {
             super();
             this.locale = LocaleUtils.toLocale(locale);
             this.decimalPoint = null;
         }
         
-        public IsDouble(DecimalPoint decimalPoint) {
+        public CanBeDouble(DecimalPoint decimalPoint) {
             super();
             this.locale = null;
             this.decimalPoint = decimalPoint;
@@ -4949,30 +5814,30 @@ public final class FnString {
         }
     }
     
-    static final class IsFloat extends Function<String,Boolean> {
+    static final class CanBeFloat extends Function<String,Boolean> {
         
         final Locale locale;
         final DecimalPoint decimalPoint;
         
-        public IsFloat() {
+        public CanBeFloat() {
             super();
             this.locale = null;
             this.decimalPoint = null;
         }
         
-        public IsFloat(Locale locale) {
+        public CanBeFloat(Locale locale) {
             super();
             this.locale = locale;
             this.decimalPoint = null;
         }
         
-        public IsFloat(String locale) {
+        public CanBeFloat(String locale) {
             super();
             this.locale = LocaleUtils.toLocale(locale);
             this.decimalPoint = null;
         }
         
-        public IsFloat(DecimalPoint decimalPoint) {
+        public CanBeFloat(DecimalPoint decimalPoint) {
             super();
             this.locale = null;
             this.decimalPoint = decimalPoint;
@@ -5007,41 +5872,41 @@ public final class FnString {
         }
     }
     
-    static final class IsLong extends Function<String,Boolean> {
+    static final class CanBeLong extends Function<String,Boolean> {
         
         final Locale locale;
         final DecimalPoint decimalPoint;
         final Integer radix;
         
-        public IsLong() {
+        public CanBeLong() {
             super();
             this.locale = null;
             this.decimalPoint = null;
             this.radix = null;
         }
         
-        public IsLong(Locale locale) {
+        public CanBeLong(Locale locale) {
             super();
             this.locale = locale;
             this.decimalPoint = null;
             this.radix = null;
         }
         
-        public IsLong(String locale) {
+        public CanBeLong(String locale) {
             super();
             this.locale = LocaleUtils.toLocale(locale);
             this.decimalPoint = null;
             this.radix = null;
         }
         
-        public IsLong(DecimalPoint decimalPoint) {
+        public CanBeLong(DecimalPoint decimalPoint) {
             super();
             this.locale = null;
             this.decimalPoint = decimalPoint;
             this.radix = null;
         }
         
-        public IsLong(int radix) {
+        public CanBeLong(int radix) {
             super();
             this.locale = null;
             this.decimalPoint = null;
@@ -5156,41 +6021,41 @@ public final class FnString {
         }
     }
     
-    static final class IsInteger extends Function<String,Boolean> {
+    static final class CanBeInteger extends Function<String,Boolean> {
         
         final Locale locale;
         final DecimalPoint decimalPoint;
         final Integer radix;
         
-        public IsInteger() {
+        public CanBeInteger() {
             super();
             this.locale = null;
             this.decimalPoint = null;
             this.radix = null;
         }
         
-        public IsInteger(Locale locale) {
+        public CanBeInteger(Locale locale) {
             super();
             this.locale = locale;
             this.decimalPoint = null;
             this.radix = null;
         }
         
-        public IsInteger(String locale) {
+        public CanBeInteger(String locale) {
             super();
             this.locale = LocaleUtils.toLocale(locale);
             this.decimalPoint = null;
             this.radix = null;
         }
         
-        public IsInteger(DecimalPoint decimalPoint) {
+        public CanBeInteger(DecimalPoint decimalPoint) {
             super();
             this.locale = null;
             this.decimalPoint = decimalPoint;
             this.radix = null;
         }
         
-        public IsInteger(int radix) {
+        public CanBeInteger(int radix) {
             super();
             this.locale = null;
             this.decimalPoint = null;
@@ -5305,41 +6170,41 @@ public final class FnString {
         }
     }
 
-    static final class IsShort extends Function<String,Boolean> {
+    static final class CanBeShort extends Function<String,Boolean> {
         
         final Locale locale;
         final DecimalPoint decimalPoint;
         final Integer radix;
         
-        public IsShort() {
+        public CanBeShort() {
             super();
             this.locale = null;
             this.decimalPoint = null;
             this.radix = null;
         }
         
-        public IsShort(Locale locale) {
+        public CanBeShort(Locale locale) {
             super();
             this.locale = locale;
             this.decimalPoint = null;
             this.radix = null;
         }
         
-        public IsShort(String locale) {
+        public CanBeShort(String locale) {
             super();
             this.locale = LocaleUtils.toLocale(locale);
             this.decimalPoint = null;
             this.radix = null;
         }
         
-        public IsShort(DecimalPoint decimalPoint) {
+        public CanBeShort(DecimalPoint decimalPoint) {
             super();
             this.locale = null;
             this.decimalPoint = decimalPoint;
             this.radix = null;
         }
         
-        public IsShort(int radix) {
+        public CanBeShort(int radix) {
             super();
             this.locale = null;
             this.decimalPoint = null;
@@ -5454,41 +6319,41 @@ public final class FnString {
         }
     }
     
-    static final class IsByte extends Function<String,Boolean> {
+    static final class CanBeByte extends Function<String,Boolean> {
         
         final Locale locale;
         final DecimalPoint decimalPoint;
         final Integer radix;
         
-        public IsByte() {
+        public CanBeByte() {
             super();
             this.locale = null;
             this.decimalPoint = null;
             this.radix = null;
         }
         
-        public IsByte(Locale locale) {
+        public CanBeByte(Locale locale) {
             super();
             this.locale = locale;
             this.decimalPoint = null;
             this.radix = null;
         }
         
-        public IsByte(String locale) {
+        public CanBeByte(String locale) {
             super();
             this.locale = LocaleUtils.toLocale(locale);
             this.decimalPoint = null;
             this.radix = null;
         }
         
-        public IsByte(DecimalPoint decimalPoint) {
+        public CanBeByte(DecimalPoint decimalPoint) {
             super();
             this.locale = null;
             this.decimalPoint = decimalPoint;
             this.radix = null;
         }
         
-        public IsByte(int radix) {
+        public CanBeByte(int radix) {
             super();
             this.locale = null;
             this.decimalPoint = null;
