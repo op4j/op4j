@@ -20,7 +20,6 @@
 
 package org.op4j;
 
-import java.io.Serializable;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.math.RoundingMode;
@@ -58,15 +57,12 @@ import org.op4j.functions.FnInteger;
 import org.op4j.functions.FnList;
 import org.op4j.functions.FnNumber;
 import org.op4j.functions.FnObject;
-import org.op4j.functions.FnReduce;
 import org.op4j.functions.FnSet;
 import org.op4j.functions.FnString;
 import org.op4j.functions.FnTuple;
 import org.op4j.functions.Function;
 import org.op4j.functions.Get;
 import org.op4j.functions.IFunction;
-import org.op4j.functions.Reductor;
-import org.op4j.util.ValuePair;
 
 /**
  * 
@@ -465,77 +461,8 @@ watch.start();
         }).get();
         
         
-        Reductor<String,Integer,String> redFn1 = new Reductor<String,Integer,String>() {
-
-            @Override
-            protected String reduce(final String left, final Integer right, final ExecCtx ctx) throws Exception {
-                return left + "(" + right + ")";
-            }
+                
             
-        };
-        
-        System.out.println(Op.onListFor(12,3,41,22).toArrayOf(Types.INTEGER).reduce(FnReduce.onInteger().max()).get());
-        
-        System.out.println(Op.onListFor("hello", "hola", "ola", "ciao").toArrayOf(Types.STRING).reduce(FnReduce.onString().join("%")).get());
-        
-        System.out.println(Op.onListFor("hello", "hola", "ola", "ciao").toArrayOf(Types.STRING).reduce(FnReduce.onString().join("%"), "---").get());
-        
-        System.out.println(Op.onListFor(1,2,3,4,5,6).toArrayOf(Types.INTEGER).reduce(redFn1, "-->").get());
-        
-        System.out.println(Op.onListFor(1,2,3,4,5,6).reduce(redFn1, "-->").get());
-        
-
-        Function<Class,List<Class>> fnImplemented = 
-            Fn.on(Types.forClass(Class.class)).unfoldList(
-                    Call.methodFor(Types.forClass(Class.class), "getSuperclass")).get();
-                    
-        System.out.println(fnImplemented.execute(String.class));
-        System.out.println(fnImplemented.execute(Integer.class));
-        System.out.println(fnImplemented.execute(Serializable[].class));
-        
-        
-        IFunction<ValuePair<Number,Number>,BigDecimal> fnSumBigDecimal =
-            new IFunction<ValuePair<Number,Number>,BigDecimal>() {
-
-                public BigDecimal execute(final ValuePair<Number, Number> input, final ExecCtx ctx) throws Exception {
-                    final Number left = input.getLeft();
-                    final Number right = input.getRight();
-                    if (left == null && right == null) {
-                        return null;
-                    }
-                    if (left == null) {
-                        if (right instanceof BigDecimal) {
-                            return (BigDecimal) right;
-                        }
-                        if (right instanceof BigInteger) {
-                            return new BigDecimal((BigInteger)right);
-                        }
-                        return BigDecimal.valueOf(right.doubleValue());
-                    }
-                    if (right == null) {
-                        if (left instanceof BigDecimal) {
-                            return (BigDecimal) left;
-                        }
-                        if (left instanceof BigInteger) {
-                            return new BigDecimal((BigInteger)left);
-                        }
-                        return BigDecimal.valueOf(left.doubleValue());
-                    }
-                    return BigDecimal.valueOf(left.doubleValue()).add(BigDecimal.valueOf(right.doubleValue()));
-                }
-            
-            };
-        
-        
-        System.out.println(Op.onListFor(213,23,142).reduce(fnSumBigDecimal, BigDecimal.valueOf(0)).get());
-     
-        System.out.println(Op.onListFor(213,23,142).reduce(FnReduce.onBigInteger().sum(), BigInteger.valueOf(0)).get());
-        System.out.println(Op.onListFor(213,23,142).map(FnNumber.toBigDecimal()).reduce(FnReduce.onBigDecimal().sum()).get());
-        
-    
-        System.out.println(ValuePair.TYPE_VALUE_PAIR_OF_UNKNOWN);
-        System.out.println(ValuePair.TYPE_VALUE_PAIR_OF(Types.STRING, Types.CALENDAR));
-        
         
         System.out.println(Op.on(23.24).exec(FnDouble.add(43)).get());
         
@@ -544,10 +471,8 @@ watch.start();
         System.out.println(Op.onListFor(30,30,40).map(FnNumber.toBigInteger()).exec(FnBigInteger.avg(RoundingMode.CEILING)).get());
         
         System.out.println(Op.on(10).exec(FnInteger.divideBy(3,RoundingMode.CEILING)).get());
-        System.out.println(Op.onListFor(10,3).reduce(FnReduce.onInteger().div(RoundingMode.CEILING)).get());
         
         
-        System.out.println(Op.on(3).unfoldList(FnInteger.multiplyBy(2), FnNumber.lessOrEqTo(100)).get());
         
         Function<Integer,Boolean> fnAnd1 = FnBoolean.and(FnObject.eq("lala"), FnNumber.notEq(534));
         
@@ -743,8 +668,6 @@ watch.start();
         System.out.println(
                     Arrays.asList(Op.onArrayFor(1,2,1,2,2).zipAndGroupValues(Types.STRING, "a","b","c","d","e").get().get(1)));
     
-        
-        System.out.println(Op.onArrayFor(2,4,3,5).reduce(FnReduce.onInteger().max()).get());
 
         
         System.out.println(Op.on("hello").ifTrue(FnString.notEq("uncapitalizable")).exec(FnString.toUpperCase()).get());
