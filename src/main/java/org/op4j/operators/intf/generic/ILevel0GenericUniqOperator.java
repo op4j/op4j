@@ -102,37 +102,4 @@ public interface ILevel0GenericUniqOperator<I,T>
     public <V> ILevel0MapOperator<I,T,V> zipValue(final V value);
     
     
-    
-    /**
-     * @deprecated This class will be removed in version 1.2 
-     */
-    @Deprecated
-    public ILevel0ArrayOperator<I,T> unfoldArrayOf(final Type<T> type, final IFunction<? super T,? extends T> function);
-    /**
-     * @deprecated This class will be removed in version 1.2 
-     */
-    @Deprecated
-    public ILevel0ArrayOperator<I,T> unfoldArrayOf(final Type<T> type, final IFunction<? super T,? extends T> function, final IFunction<? super T,Boolean> whileCondition);
-    /**
-     * @deprecated This class will be removed in version 1.2 
-     */
-    @Deprecated
-    public ILevel0ListOperator<I,T> unfoldList(final IFunction<? super T,? extends T> function);
-    /**
-     * @deprecated This class will be removed in version 1.2 
-     */
-    @Deprecated
-    public ILevel0ListOperator<I,T> unfoldList(final IFunction<? super T,? extends T> function, final IFunction<? super T,Boolean> whileCondition);
-    /**
-     * @deprecated This class will be removed in version 1.2 
-     */
-    @Deprecated
-    public ILevel0SetOperator<I,T> unfoldSet(final IFunction<? super T,? extends T> function);
-    /**
-     * @deprecated This class will be removed in version 1.2 
-     */
-    @Deprecated
-    public ILevel0SetOperator<I,T> unfoldSet(final IFunction<? super T,? extends T> function, final IFunction<? super T,Boolean> whileCondition);
-    
-    
 }

@@ -39,7 +39,6 @@ import org.op4j.operators.qualities.ExecutableSetOperator;
 import org.op4j.operators.qualities.GenerizableOperator;
 import org.op4j.operators.qualities.ModifiableCollectionOperator;
 import org.op4j.operators.qualities.NavigableCollectionOperator;
-import org.op4j.operators.qualities.ReducibleOperator;
 import org.op4j.operators.qualities.ReplaceableIfNullOperator;
 import org.op4j.operators.qualities.ReplaceableOperator;
 import org.op4j.operators.qualities.ReversibleOperator;
@@ -47,7 +46,6 @@ import org.op4j.operators.qualities.SelectableOperator;
 import org.op4j.operators.qualities.SortableOperator;
 import org.op4j.operators.qualities.TotalizableOperator;
 import org.op4j.operators.qualities.UniqOperator;
-import org.op4j.util.ValuePair;
 /**
  * 
  * @since 1.0
@@ -55,7 +53,6 @@ import org.op4j.util.ValuePair;
  * @author Daniel Fern&aacute;ndez
  *
  */
-@SuppressWarnings("deprecation")
 public interface ILevel0SetOperator<I,T>
         extends UniqOperator<Set<T>>,
                 NavigableCollectionOperator<T>,
@@ -71,7 +68,6 @@ public interface ILevel0SetOperator<I,T>
 		        ConvertibleToListOperator,
                 ConvertibleToMapOperator<T>,
                 ConvertibleToMapOfSetOperator<T>,
-                ReducibleOperator<I,T>,
                 TotalizableOperator<I,T>,
                 ReversibleOperator<T> {
 
@@ -174,19 +170,6 @@ public interface ILevel0SetOperator<I,T>
     public <X> ILevel0SetOperator<I,X> of(final Type<X> type);
     public <X> ILevel0SetOperator<I,X> castToSetOf(final Type<X> type);
     
-    
-    /**
-     * @see org.op4j.operators.qualities.ReducibleOperator#reduce(org.op4j.functions.IFunction)
-     * @deprecated This method will be removed in version 1.2 
-     */
-    @Deprecated
-    public ILevel0GenericUniqOperator<I,T> reduce(final IFunction<? extends ValuePair<? super T,? super T>, ? extends T> reductor);
-    /**
-     * @see org.op4j.operators.qualities.ReducibleOperator#reduce(org.op4j.functions.IFunction, java.lang.Object)
-     * @deprecated This method will be removed in version 1.2 
-     */
-    @Deprecated
-    public <X> ILevel0GenericUniqOperator<I,X> reduce(final IFunction<? extends ValuePair<? super X,? super T>,X> reductor, final X initialValue);
     
     public ILevel0GenericUniqOperator<I,Boolean> any(final IFunction<? super T,Boolean> eval);
     public ILevel0GenericUniqOperator<I,Boolean> all(final IFunction<? super T,Boolean> eval);
