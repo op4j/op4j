@@ -24,10 +24,8 @@ import java.util.Map;
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
 import org.op4j.functions.ExpressionFunction;
-import org.op4j.functions.FnArray;
 import org.op4j.functions.FnList;
 import org.op4j.functions.FnObject;
-import org.op4j.functions.FnSet;
 import org.op4j.functions.Function;
 import org.op4j.functions.IFunction;
 import org.op4j.operators.impl.AbstractOperator;
@@ -219,58 +217,7 @@ public final class Level0GenericUniqOperator<I,T> extends AbstractOperator
     
     
 
-    
-    /**
-     * @deprecated This class will be removed in version 1.2 
-     */
-    @Deprecated
-    public Level0ArrayOperator<I, T> unfoldArrayOf(final Type<T> type, final IFunction<? super T, ? extends T> function) {
-        return new Level0ArrayOperator<I, T>(type, getTarget().execute(FnArray.of(type).unfold(function)));
-    }
 
-    /**
-     * @deprecated This class will be removed in version 1.2 
-     */
-    @Deprecated
-    public Level0ArrayOperator<I, T> unfoldArrayOf(final Type<T> type, final IFunction<? super T, ? extends T> function, final IFunction<? super T, Boolean> whileCondition) {
-        return new Level0ArrayOperator<I, T>(type, getTarget().execute(FnArray.of(type).unfold(function, whileCondition)));
-    }
-
-    /**
-     * @deprecated This class will be removed in version 1.2 
-     */
-    @Deprecated
-    @SuppressWarnings("unchecked")
-    public Level0ListOperator<I, T> unfoldList(final IFunction<? super T, ? extends T> function) {
-        return new Level0ListOperator<I, T>(getTarget().execute(FnList.of((Type<T>)Types.OBJECT).unfold(function)));
-    }
-
-    /**
-     * @deprecated This class will be removed in version 1.2 
-     */
-    @Deprecated
-    @SuppressWarnings("unchecked")
-    public Level0ListOperator<I, T> unfoldList(final IFunction<? super T, ? extends T> function, final IFunction<? super T, Boolean> whileCondition) {
-        return new Level0ListOperator<I, T>(getTarget().execute(FnList.of((Type<T>)Types.OBJECT).unfold(function, whileCondition)));
-    }
-
-    /**
-     * @deprecated This class will be removed in version 1.2 
-     */
-    @Deprecated
-    @SuppressWarnings("unchecked")
-    public Level0SetOperator<I, T> unfoldSet(final IFunction<? super T, ? extends T> function) {
-        return new Level0SetOperator<I, T>(getTarget().execute(FnSet.of((Type<T>)Types.OBJECT).unfold(function)));
-    }
-
-    /**
-     * @deprecated This class will be removed in version 1.2 
-     */
-    @Deprecated
-    @SuppressWarnings("unchecked")
-    public Level0SetOperator<I, T> unfoldSet(final IFunction<? super T, ? extends T> function, final IFunction<? super T, Boolean> whileCondition) {
-        return new Level0SetOperator<I, T>(getTarget().execute(FnSet.of((Type<T>)Types.OBJECT).unfold(function, whileCondition)));
-    }
     
     
     

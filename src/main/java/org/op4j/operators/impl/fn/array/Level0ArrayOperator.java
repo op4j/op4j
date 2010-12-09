@@ -38,7 +38,6 @@ import org.op4j.operators.qualities.UniqFnOperator;
 import org.op4j.target.Target;
 import org.op4j.target.Target.Normalisation;
 import org.op4j.target.Target.Structure;
-import org.op4j.util.ValuePair;
 
 /**
  * 
@@ -47,7 +46,6 @@ import org.op4j.util.ValuePair;
  * @author Daniel Fern&aacute;ndez
  * 
  */
-@SuppressWarnings("deprecation")
 public final class Level0ArrayOperator<I,T> 
         extends AbstractOperator 
         implements UniqFnOperator<I,T[]>, ILevel0ArrayOperator<I,T> {
@@ -334,27 +332,7 @@ public final class Level0ArrayOperator<I,T>
 
 
 
-    /**
-     * @see org.op4j.operators.intf.array.ILevel0ArrayOperator#reduce(org.op4j.functions.IFunction)
-     * @deprecated This method will be removed in version 1.2 
-     */
-    @Deprecated
-    public Level0GenericUniqOperator<I, T> reduce(final IFunction<? extends ValuePair<? super T,? super T>, ? extends T> reductor) {
-        return new Level0GenericUniqOperator<I, T>(getTarget().execute(FnArray.of(this.type).reduce(reductor)));
-    }
-
-
-
-    /**
-     * @see org.op4j.operators.intf.array.ILevel0ArrayOperator#reduce(org.op4j.functions.IFunction, java.lang.Object)
-     * @deprecated This method will be removed in version 1.2 
-     */
-    @Deprecated
-    public <X> Level0GenericUniqOperator<I, X> reduce(final IFunction<? extends ValuePair<? super X,? super T>,X> reductor, final X initialValue) {
-        return new Level0GenericUniqOperator<I, X>(getTarget().execute(FnArray.of(this.type).reduce(reductor, initialValue)));
-    }
-
-
+    
     
     
     
