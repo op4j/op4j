@@ -20,7 +20,6 @@
 
 package org.op4j.functions;
 
-import org.op4j.functions.AbstractNotNullFunction;
 
 
 /**

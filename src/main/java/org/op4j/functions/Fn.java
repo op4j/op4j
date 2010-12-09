@@ -28,7 +28,6 @@ import java.util.Map;
 import java.util.Set;
 
 import org.javaruntype.type.Type;
-import org.javaruntype.type.TypeParameters;
 import org.javaruntype.type.Types;
 import org.op4j.operators.impl.fn.array.Level0ArrayOperator;
 import org.op4j.operators.impl.fn.generic.Level0GenericUniqOperator;
@@ -37,7 +36,6 @@ import org.op4j.operators.impl.fn.map.Level0MapOperator;
 import org.op4j.operators.impl.fn.set.Level0SetOperator;
 import org.op4j.target.ExecutionTarget;
 import org.op4j.target.Target.Normalisation;
-import org.op4j.util.ValuePair;
 
 
 /**
@@ -1004,110 +1002,6 @@ public final class Fn {
         return onSetOf(Types.STRING);
     }
 
-    
-    
-    /**
-     * <p>
-     * Creates a <i>function expression</i> for building a function operating on
-     * a target object of type ValuePair&lt;L,R&gt;.
-     * </p>
-     * <p>
-     * These functions receiving a {@link ValuePair} are mainly meant to be used
-     * in <i>reduction</i> operations. 
-     * </p>
-     * 
-     * @param leftType type of the left part of the value pair
-     * @param rightType type of the right part of the value pair
-     * @return an operator, ready for chaining
-     * @deprecated This method will be removed in version 1.2 
-     */
-    @Deprecated
-    @SuppressWarnings("unchecked")
-    public static <L,R> Level0GenericUniqOperator<ValuePair<L,R>,ValuePair<L,R>> onValuePairOf(final Type<L> leftType, final Type<R> rightType) {
-        return on((Type<ValuePair<L,R>>)(Type<?>)Types.forClass(ValuePair.class, TypeParameters.forType(leftType), TypeParameters.forType(rightType)));
-    }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    /**
-     * <p>
-     * Creates a <i>function expression</i> for building a function operating on
-     * a target object of type T[].
-     * </p>
-     * 
-     * @param type the type to be used
-     * @return an operator, ready for chaining
-     * @deprecated This method will be removed in version 1.2 in order to be
-     *             compliant with http://bugs.sun.com/bugdatabase/view_bug.do?bug_id=6182950 
-     *             Use "onArrayOf(...)" instead. 
-     */
-    @Deprecated
-    public static <T> Level0ArrayOperator<T[],T> on(final Type<T[]> type) {
-        return onArrayOf(Types.arrayComponentOf(type));
-    }
-
-    
-    /**
-     * <p>
-     * Creates a <i>function expression</i> for building a function operating on
-     * a target object of type List&lt;T&gt;.
-     * </p>
-     * 
-     * @param type the type to be used
-     * @return an operator, ready for chaining
-     * @deprecated This method will be removed in version 1.2 in order to be
-     *             compliant with http://bugs.sun.com/bugdatabase/view_bug.do?bug_id=6182950 
-     *             Use "onListOf(...)" instead. 
-     */
-    @Deprecated
-    public static <T> Level0ListOperator<List<T>,T> on(final Type<List<T>> type) {
-        return onListOf(Types.listComponentOf(type));
-    }
-
-    
-    /**
-     * <p>
-     * Creates a <i>function expression</i> for building a function operating on
-     * a target object of type Map&lt;K,V&gt;.
-     * </p>
-     * 
-     * @param type the type to be used
-     * @return an operator, ready for chaining
-     * @deprecated This method will be removed in version 1.2 in order to be
-     *             compliant with http://bugs.sun.com/bugdatabase/view_bug.do?bug_id=6182950 
-     *             Use "onMapOf(...)" instead. 
-     */
-    @Deprecated
-    public static <K,V> Level0MapOperator<Map<K,V>,K,V> on(final Type<Map<K,V>> type) {
-        return onMapOf(Types.mapKeyComponentOf(type), Types.mapValueComponentOf(type));
-    }
-
-    
-    /**
-     * <p>
-     * Creates a <i>function expression</i> for building a function operating on
-     * a target object of type Set&lt;T&gt;.
-     * </p>
-     * 
-     * @param type the type to be used
-     * @return an operator, ready for chaining
-     * @deprecated This method will be removed in version 1.2 in order to be
-     *             compliant with http://bugs.sun.com/bugdatabase/view_bug.do?bug_id=6182950
-     *             Use "onSetOf(...)" instead. 
-     */
-    @Deprecated
-    public static <T> Level0SetOperator<Set<T>,T> on(final Type<Set<T>> type) {
-        return onSetOf(Types.setComponentOf(type));
-    }
-    
-    
     
     
     
