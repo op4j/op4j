@@ -24,7 +24,6 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
@@ -37,7 +36,6 @@ import org.apache.commons.lang.Validate;
 import org.javaruntype.type.Type;
 import org.op4j.exceptions.ExecutionException;
 import org.op4j.util.ExecCtxImpl;
-import org.op4j.util.ValuePair;
 import org.op4j.util.VarArgsUtil;
 
 /**
@@ -47,7 +45,6 @@ import org.op4j.util.VarArgsUtil;
  * @author Daniel Fern&aacute;ndez
  * 
  */
-@SuppressWarnings("deprecation")
 public class FnListOf<T> {
 
     
@@ -231,47 +228,8 @@ public class FnListOf<T> {
     
     
     
-    /**
-     * @deprecated This class will be removed in version 1.2 
-     */
-    @Deprecated
-    public final Function<T,List<T>> unfold(final IFunction<? super T,? extends T> function, final IFunction<? super T,Boolean> whileCondition) {
-        return new Unfold<T>(function, whileCondition);
-    }
-    
-    /**
-     * @deprecated This class will be removed in version 1.2 
-     */
-    @Deprecated
-    public final Function<T,List<T>> unfold(final IFunction<? super T,? extends T> function) {
-        return new Unfold<T>(function, null);
-    }
-    
 
     
-    /**
-     * @param function
-     * @return
-     * @deprecated This method will be removed in version 1.2 
-     */
-    @Deprecated
-    public final Function<List<T>,T> reduce(final IFunction<? extends ValuePair<? super T,? super T>, ? extends T> function) {
-        return new Reduce<T>(function);
-    }
-    
-    
-    /**
-     * @param <R>
-     * @param function
-     * @param initialValue
-     * @return
-     * @deprecated This method will be removed in version 1.2 
-     */
-    @Deprecated
-    public final <R> Function<List<T>,R> reduce(final IFunction<? extends ValuePair<? super R,? super T>,R> function, final R initialValue) {
-        return new ReduceInitialValue<T,R>(function, initialValue);
-    }
-
     
 
     public final Function<List<T>,Boolean> all(final IFunction<? super T,Boolean> eval) {
@@ -1146,156 +1104,7 @@ public class FnListOf<T> {
     
     
     
-    /**
-     * @deprecated This class will be removed in version 1.2 
-     */
-    @Deprecated
-    static final class Unfold<T> extends AbstractNotNullFunction<T,List<T>> {
         
-        private final IFunction<? super T,? extends T> function;
-        private final IFunction<? super T,Boolean> whileCondition;
-
-        
-        public Unfold(final IFunction<? super T,? extends T> function, final IFunction<? super T,Boolean> whileCondition) {
-            super();
-            Validate.notNull(function, "Unfold function cannot be null");
-            this.function = function;
-            this.whileCondition = whileCondition;
-        }
-
-        @Override
-        public List<T> notNullExecute(final T input, final ExecCtx ctx) throws Exception {
-            
-            final List<T> resultList = new ArrayList<T>();
-            int index = 0;
-            
-            T currentTarget = input;
-            ExecCtx currentCtx = new ExecCtxImpl(Integer.valueOf(index));
-
-            if (this.whileCondition == null) {
-                
-                while (currentTarget != null) {
-                    resultList.add(currentTarget);
-                    index++;
-                    currentCtx = new ExecCtxImpl(Integer.valueOf(index));
-                    currentTarget = this.function.execute(currentTarget, currentCtx);
-                }
-                
-            } else {
-                
-                Boolean whileResult = this.whileCondition.execute(currentTarget, currentCtx);
-                if (whileResult == null) {
-                    throw new ExecutionException("Unless function returned null!");
-                }
-
-                while (whileResult.booleanValue()) {
-                    resultList.add(currentTarget);
-                    index++;
-                    currentCtx = new ExecCtxImpl(Integer.valueOf(index));
-                    currentTarget = this.function.execute(currentTarget, currentCtx);
-                    whileResult = this.whileCondition.execute(currentTarget, currentCtx);
-                    if (whileResult == null) {
-                        throw new ExecutionException("Unless function returned null!");
-                    }
-                }
-                
-            }
-            
-            return Collections.unmodifiableList(resultList);
-            
-        }
-        
-        
-    }
-    
-    
-
-    
-    
-    
-    
-    
-    /**
-     * @deprecated This class will be removed in version 1.2 
-     */
-    @Deprecated
-    static final class Reduce<T> extends AbstractNotNullFunction<List<T>,T> {
-        
-        /*
-         * Result has to be "? extends T" instead of "X extends T" because this function 
-         * cannot change the operator's type. This is because, if the original structure only
-         * has one element, that element has to be returned (and it is of type T, not X).
-         */
-        private final IFunction<? extends ValuePair<? super T,? super T>, ? extends T> function;
-
-        
-        public Reduce(final IFunction<? extends ValuePair<? super T,? super T>, ? extends T> function) {
-            super();
-            Validate.notNull(function, "Reduce function cannot be null");
-            this.function = function;
-        }
-
-        
-        @Override
-        @SuppressWarnings({ "unchecked" })
-        public T notNullExecute(final List<T> input, final ExecCtx ctx) throws Exception {
-            if (input.size() == 0) {
-                throw new ExecutionException("Cannot reduce: array contains no elements");
-            }
-            if (input.size() == 1) {
-                return input.get(0);
-            }
-            T result = input.get(0);
-            
-            for (int i = 1, z = input.size(); i < z; i++) {
-                final ValuePair<T,T> currentPair = new ValuePair<T,T>(result, input.get(i));
-                final ExecCtx currentCtx = new ExecCtxImpl(Integer.valueOf(i - 1));
-                result = (T) ((IFunction)this.function).execute(currentPair, currentCtx);
-            }
-            return result;
-        }
-        
-    }
-    
-    
-    
-    /**
-     * @deprecated This class will be removed in version 1.2 
-     */
-    @Deprecated
-    static final class ReduceInitialValue<T,R> extends AbstractNotNullFunction<List<T>,R> {
-        
-        private final IFunction<? extends ValuePair<? super R,? super T>,R> function;
-        private final R initialValue;
-
-        
-        public ReduceInitialValue(final IFunction<? extends ValuePair<? super R,? super T>,R> function, final R initialValue) {
-            super();
-            Validate.notNull(function, "Reduce function cannot be null");
-            this.function = function;
-            this.initialValue = initialValue;
-        }
-
-        
-        @Override
-        @SuppressWarnings({ "unchecked" })
-        public R notNullExecute(final List<T> input, final ExecCtx ctx) throws Exception {
-            if (input.size() == 0) {
-                return this.initialValue;
-            }
-            R result = this.initialValue;
-            
-            for (int i = 0, z = input.size(); i < z; i++) {
-                final ValuePair<R,T> currentPair = new ValuePair<R,T>(result, input.get(i));
-                final ExecCtx currentCtx = new ExecCtxImpl(Integer.valueOf(i));
-                result = (R) ((IFunction)this.function).execute(currentPair, currentCtx);
-            }
-            return result;
-        }
-        
-    }
-    
-    
     
     
     
