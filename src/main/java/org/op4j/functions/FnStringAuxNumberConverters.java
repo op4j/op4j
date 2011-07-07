@@ -591,8 +591,8 @@ final class FnStringAuxNumberConverters {
                 } else {
                     numberAsBigDecimal = BigDecimal.valueOf(number.longValue());   
                 }
-                if (numberAsBigDecimal.compareTo(BigDecimal.valueOf(min.doubleValue())) < 0 
-                        || numberAsBigDecimal.compareTo(BigDecimal.valueOf(max.doubleValue())) > 0) {
+                if (numberAsBigDecimal.abs().compareTo(BigDecimal.valueOf(min.doubleValue())) < 0 
+                        || numberAsBigDecimal.abs().compareTo(BigDecimal.valueOf(max.doubleValue())) > 0) {
                     throw new ExecutionException("The number to be converted into Double is either lower than " + min
                             + " or greater than " + max);
                 }
@@ -653,8 +653,8 @@ final class FnStringAuxNumberConverters {
                 } else {
                     numberAsBigDecimal = BigDecimal.valueOf(number.longValue());   
                 }
-                if (numberAsBigDecimal.compareTo(BigDecimal.valueOf(min.floatValue())) < 0 
-                        || numberAsBigDecimal.compareTo(BigDecimal.valueOf(max.floatValue())) > 0) {
+                if (numberAsBigDecimal.abs().compareTo(BigDecimal.valueOf(min.floatValue())) < 0 
+                        || numberAsBigDecimal.abs().compareTo(BigDecimal.valueOf(max.floatValue())) > 0) {
                     throw new ExecutionException("The number to be converted into Float is either lower than " + min
                             + " or greater than " + max);
                 }
