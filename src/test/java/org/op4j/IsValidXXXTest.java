@@ -231,7 +231,7 @@ public class IsValidXXXTest extends TestCase {
         assertFalse(result);    
 
         result = Op.on(this.negativeInteger).exec(FnString.isValidDouble()).get();
-        assertFalse(result);    
+        assertTrue(result);    
 
     }
 
